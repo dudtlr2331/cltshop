@@ -2,34 +2,37 @@
 	font-size: 44px;
 	font-weight: bold;
 }
-.cc{
-	padding-top: 5px;
-	padding-left: 50px;
-	font-size: 30px;
-	font-weight: bold;
+#top{
+    display: flex;
+    flex-direction: column;
 }
-.dd{
-	font-size: 30px;
-	font-weight: bold;
+#top_log{
+	display: flex;
 }
-.ee{
-	font-size: 30px;
-	font-weight: bold;
-}
-.ff{
-	font-size: 30px;
-	font-weight: bold;
-}
-button {
+
+#top button {
 	width: 308px;
 	height: 30px;
 	margin: 2px;
 }
-input {
+
+#top input {
 	font-size: 16px;
 	width: 300px;
 	margin: 3px;
 }
+
+#sns_i{
+	padding-left: 25px;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+#bottom{
+	display: flex;
+    flex-direction: column;
+}
+
 .a{
 	padding-left: 70px;
 }
