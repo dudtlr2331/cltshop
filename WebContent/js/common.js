@@ -27,4 +27,7 @@ function pageMove(pageName){
     else if(pageName == 'mypage'){
         location.href = '/mypage/mypage.html';
     }
+    else if(pageName == 'join'){
+        location.href = '/login/login.html';
+    }
 }
