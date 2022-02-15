@@ -1,0 +1,54 @@
+#sub_menu {
+    margin:0; 
+    padding:0; 
+    list-style:none; 
+    font-family:"malgun gothic"; 
+    box-sizing:border-box;
+    background-color:#fff;
+    width:200px;
+    height: 100%; 
+    float:left;
+}
+
+#sub_menu a {
+    text-decoration:none;
+}
+
+.sub a {
+    position:relative;
+}
+
+#nav {
+    width:150px; 
+    padding:5px;
+    position:relative;
+    text-align:center;
+}
+
+.cateMenu {
+    line-height:2;
+    border:1px solid rgb(45, 0, 104);
+    list-style: none;
+    font-weight:bold; 
+}
+
+.cateMenu:hover{
+    background-color:rgb(111, 0, 255);
+}
+
+.cateMenu:hover>a{
+    color:white;   
+}
+
+#nav .sub {
+    padding:5px;
+    background-color:#fff;
+    display: none;
+    list-style: none;
+    font-weight: normal;
+    left:60px; top:20px;
+}
+
+#nav li:hover>.sub{
+    display:block;
+}
