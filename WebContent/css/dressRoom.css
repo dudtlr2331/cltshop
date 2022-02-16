@@ -1,0 +1,57 @@
+.dressRoom_bestMonth_detail{
+    width: 100%;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    padding: 14px;
+}
+
+.dressRoom_bestMonth_detail li{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dressRoom_bestMonth{
+    margin: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid;
+}
+
+#dressRoom_create_btn{
+    text-align: center;
+}
+
+.dressRoom_create_btn_detail{
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+}
+
+.dressRoom_dresser{
+    padding-left: 5%;
+}
+
+.dressRoom_dressers_detail{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    padding: 14px;
+    border-bottom: 1px solid;
+}
+
+.dressRoom_dressers_detail div{
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+#dressRoom_dressers{
+    padding: 5%;
+}
