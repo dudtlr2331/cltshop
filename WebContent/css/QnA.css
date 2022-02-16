@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+
+thead tr th {
+    background-color: blueviolet;
+    color:white;
+}
+
+th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+}
+
+th:first-child, td:first-child {
+    border-left: none;
+}
+
+.btnQnA {
+    padding:10px;
+    margin:auto;
+    float:right;
+}
