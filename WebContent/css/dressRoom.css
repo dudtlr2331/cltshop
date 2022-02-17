@@ -55,3 +55,88 @@
 #dressRoom_dressers{
     padding: 5%;
 }
+
+#dressRoom_category{
+    display: flex;
+}
+
+.dressRoom_category_detail{
+    width: 20%;
+    padding: 3%;
+}
+
+.dressRoom_category_list{
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.dressRoom_category_list li{
+    width: 100px;
+    height: 30px;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid;
+}
+
+.dressRoom_main_detail{
+    width: 70%;
+    height: 50px;
+    padding: 3%;
+}
+
+.dressRoom_main_up{
+    height: 50px;
+}
+
+.dressRoom_main_sort{
+    float: left;
+}
+
+.dressRoom_main_search{
+    float: right;
+}
+
+.dressRoom_main_down{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dressRoom_main_item{
+    width: 210px;
+    height: 300px;
+    margin: 20px;
+
+}
+
+.dressRoom_main_img{
+    width: 100%;
+    height: 70%;
+    align-self: center;
+    border: 1px solid;
+}
+
+.dressRoom_main_ul{
+    list-style: none;
+}
+
+.dressRoom_create_title{
+    padding-left: 5%;
+}
+
+#dressRoom_create{
+    width: 800px;
+    padding: 5%;
+}
+
+.dressRoom_create_content{
+    width: 800px;
+    height: 600px;
+    border: 1px solid;
+}
+
+.dressRoom_create_button{
+    width: 80px;
+    height: 30px;
+    float: right;
+}
