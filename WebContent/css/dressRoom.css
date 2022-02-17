@@ -1,4 +1,4 @@
-.dressRoom_bestMonth_detail{
+.dressroom_bestmonth_detail{
     width: 100%;
     display: flex;
     list-style: none;
@@ -6,7 +6,7 @@
     padding: 14px;
 }
 
-.dressRoom_bestMonth_detail li{
+.dressroom_bestmonth_detail li{
     width: 100%;
     height: 100px;
     display: flex;
@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-#dressRoom_bestMonth{
+#dressroom_bestmonth{
     margin: 5%;
     display: flex;
     justify-content: space-around;
@@ -22,21 +22,21 @@
     border: 1px solid;
 }
 
-#dressRoom_create_btn{
+#dressroom_create_btn{
     text-align: center;
 }
 
-.dressRoom_create_btn_detail{
+.dressroom_create_btn_detail{
     width: 200px;
     height: 60px;
     font-size: 20px;
 }
 
-.dressRoom_dresser{
+.dressroom_dresser{
     padding-left: 5%;
 }
 
-.dressRoom_dressers_detail{
+.dressroom_dressers_detail{
     width: 100%;
     height: 150px;
     display: flex;
@@ -45,33 +45,33 @@
     border-bottom: 1px solid;
 }
 
-.dressRoom_dressers_detail div{
+.dressroom_dressers_detail div{
     width: 100px;
     height: 100px;
     justify-content: center;
     align-items: center;
 }
 
-#dressRoom_dressers{
+#dressroom_dressers{
     padding: 5%;
 }
 
-#dressRoom_category{
+#dressroom_category{
     display: flex;
 }
 
-.dressRoom_category_detail{
+.dressroom_category_detail{
     width: 20%;
     padding: 3%;
 }
 
-.dressRoom_category_list{
+.dressroom_category_list{
     justify-content: center;
     align-items: center;
     list-style: none;
 }
 
-.dressRoom_category_list li{
+.dressroom_category_list li{
     width: 100px;
     height: 30px;
     justify-content: center;
@@ -79,63 +79,63 @@
     border: 1px solid;
 }
 
-.dressRoom_main_detail{
+.dressroom_main_detail{
     width: 70%;
     height: 50px;
     padding: 3%;
 }
 
-.dressRoom_main_up{
+.dressroom_main_up{
     height: 50px;
 }
 
-.dressRoom_main_sort{
+.dressroom_main_sort{
     float: left;
 }
 
-.dressRoom_main_search{
+.dressroom_main_search{
     float: right;
 }
 
-.dressRoom_main_down{
+.dressroom_main_down{
     display: flex;
     flex-wrap: wrap;
 }
 
-.dressRoom_main_item{
+.dressroom_main_item{
     width: 210px;
     height: 300px;
     margin: 20px;
 
 }
 
-.dressRoom_main_img{
+.dressroom_main_img{
     width: 100%;
     height: 70%;
     align-self: center;
     border: 1px solid;
 }
 
-.dressRoom_main_ul{
+.dressroom_main_ul{
     list-style: none;
 }
 
-.dressRoom_create_title{
+.dressroom_create_title{
     padding-left: 5%;
 }
 
-#dressRoom_create{
+#dressroom_create{
     width: 800px;
     padding: 5%;
 }
 
-.dressRoom_create_content{
+.dressroom_create_content{
     width: 800px;
     height: 600px;
     border: 1px solid;
 }
 
-.dressRoom_create_button{
+.dressroom_create_button{
     width: 80px;
     height: 30px;
     float: right;
