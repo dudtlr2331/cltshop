@@ -1,4 +1,4 @@
-#manageMain {
+#manage_main {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -12,28 +12,28 @@
     float:left;
 }
 
-#manageMain li {
+#manage_main li {
     padding-top : 10px;
     padding-bottom : 10px;
 }
 
-#manageMain li a {
+#manage_main li a {
     display: block;
     color:white;
     padding: 10px;
     text-decoration: none;
 }
 
-#manageMain li:hover{
+#manage_main li:hover{
     background-color:#dab9ff;
 } 
 
-#manageMain li:hover>a{
+#manage_main li:hover>a{
     color:white;
     font-weight:bold;
 } 
 
-#manageMain .submanageMenu{ 
+#manage_main .submanage_menu{ 
     padding:5px;
     background-color:#d3acff; 
     display:block; 
@@ -41,21 +41,22 @@
     left:60px; top:20px;
 } 
 
-#manageMain li:hover>.submanageMenu{ 
+#manage_main li:hover>.submanage_menu{ 
     display: block;
 }
 
-.product {
+.con, .search, .pro_qna {
     position : relative;
     left : 250px;
 }
 
-.product select {
-    position : relative;
-    width:160px;
-    padding:5px;
-    bottom:80%;
-    margin-bottom:10px;
+.se {
+    position: relative;
+    float: left;
+    left : 250px;
+}
+.search, .pro_qna {
+    padding : 5px;
 }
 
 table {
@@ -65,6 +66,7 @@ table {
     width: 85%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
+    margin-right:10px;
 }
 
 thead tr th {
@@ -78,12 +80,4 @@ th, td {
 
 th:first-child, td:first-child {
     border-left: none;
-}
-
-#btnProd {
-    position : relative;
-    padding:10px;
-    float:left;
-    left:425px;
-    bottom:50px;
 }

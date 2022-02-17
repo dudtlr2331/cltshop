@@ -26,17 +26,17 @@
     background-color: rgb(206, 168, 255);
 }
 
-.btnQA {
+.btn_qa {
     float:right;
 }
 
-#post .postL{
+#post .post_list{
     width:100%;
     position:relative;
     list-style:none;
 }
 
-#post .postL li {
+#post .post_list li {
     height:100%; width:25%;
     float:left;
     list-style:none;

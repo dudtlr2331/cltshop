@@ -25,18 +25,18 @@
     text-align:center;
 }
 
-.cateMenu {
+.cate_menu {
     line-height:2;
     border:1px solid rgb(45, 0, 104);
     list-style: none;
     font-weight:bold;
 }
 
-.cateMenu:hover{
+.cate_menu:hover{
     background-color:rgb(111, 0, 255);
 }
 
-.cateMenu:hover>a{
+.cate_menu:hover>a{
     color:white;   
 }
 
