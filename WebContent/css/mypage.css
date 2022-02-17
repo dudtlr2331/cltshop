@@ -65,3 +65,20 @@
     position: relative;
     left: 1125px;
 }
+#b_content .a{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 150px;
+    padding-left: 30px;
+    padding-right: 40px;
+}
+#b_content .b{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 70px;
+    padding-right: 70px;
+}
