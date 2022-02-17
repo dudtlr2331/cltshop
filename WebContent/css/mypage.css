@@ -22,13 +22,14 @@
     padding: 14px;
 }
     
-#main_benner .menu li{
+#main_benner .menu a{
     width: 100%;
     height: 40px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;    
+    background-color: beige;
 }
     
 #main_benner .menu li:hover{
@@ -39,31 +40,33 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding-top: 100px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-top: 60px;
+    padding-left: 10%;
+    padding-right: 10%;
     font-size: 80px;
+	border-top: 1px solid;
 }
 #content .icon_btn{
     display: flex;
     flex-direction: row;
     font-size: 17px;
+    border-bottom: 1px solid;
 }
 .icon_btn .a{
     position: relative;
-    left: 225px;
+    left: 275px;
 }
 .icon_btn .b{
     position: relative;
-    left: 490px;
+    left: 500px;
 }
 .icon_btn .c{
     position: relative;
-    left: 785px;
+    left: 770px;
 }
 .icon_btn .d{
     position: relative;
-    left: 1125px;
+    left: 1075px;
 }
 #b_content .a{
     font-size: 20px;
@@ -73,6 +76,7 @@
     padding-top: 150px;
     padding-left: 30px;
     padding-right: 40px;
+    border-bottom: 1px solid;
 }
 #b_content .b{
     font-size: 20px;
@@ -81,4 +85,5 @@
     justify-content: space-between;
     padding-left: 70px;
     padding-right: 70px;
+    border-bottom: 1px solid;
 }
