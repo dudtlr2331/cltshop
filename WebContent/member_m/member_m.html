@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/member.css" rel="stylesheet">
+    <title>회원 관리</title>
+    <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
+    <script src="../js/common.js" defer></script>
+</head>
+<body>
+    <header id="header">
+        <div class="logo">쇼핑몰로고...</div>
+    </header>
+    <div id="main_cate">
+        <ul id="manageMain">
+            <li><a href="#">상품 관리</a></li>
+            <li><a href="#">주문 관리</a></li>
+            <li><a href="#">회원 관리</a></li>
+            <li><a href="#">이벤트 관리</a></li>
+            <li><a href="#">매출현황</a></li>
+            <li><a href="#">드레스룸 관리</a></li>
+            <li><a href="#">1:1 문의 관리</a></li>
+            <li><a href="#">쿠폰/적립금 관리</a></li>
+        </ul>
+    </div>
+    <div class="member_search">
+        <h2>회원 관리</h2>
+        <h4>회원 검색</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th id="col">검색</th>
+                    <th><select>
+                        <option>아이디</option>
+                        <option>이름</option>
+                    </select></th>
+                    <th><input id="search" type="text"/></th>
+                </tr>
+                <tr>
+                    <th id="col">회원등급</th>
+                    <th><select>
+                        <option>등급</option>
+                        <option>회원</option>
+                        <option>관리자</option>
+                    </select></th>
+                    <th id="col2">회원구분</th>
+                    <!-- <th>
+                        <label><input type="radio" name="color" value="red" checked="checked">빨강</label>
+                        <label><input type="radio" name="color" value="yellow">노랑</label>
+                        <label><input type="radio" name="color" value="blue">파랑</label>
+                    </th>                     -->
+                </tr>
+                <tr>
+                    <th id="col">회원가입일</th>
+                    <th><input id="membership_date1" type="text"/></th>
+                    <th><input id="membership_date2" type="text"/></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <button id="btn_prod">회원 등록</button>
+    <button id="member_search_btn">검색</button>
+</body>
+</html>
