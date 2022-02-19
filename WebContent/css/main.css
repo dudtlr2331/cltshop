@@ -1,11 +1,4 @@
-#header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px;
-  }
-  
+
   .top_btn input {
     height: 27px;
     width: 250px;
@@ -20,7 +13,8 @@
     display: flex;
     list-style: none;
     justify-content: space-around;
-    padding: 14px;
+    background-color: beige;
+    border-radius: 5px;
   }
   
   #main_benner .menu ul {
@@ -33,20 +27,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: beige;
+    
     /* flex-direction: row; */
   }
   
-  #main_benner .menu li:hover,
-  #main_benner .menu li:hover a {
+  #main_benner .menu a:hover{
     background-color: gray;
     color: white;
   }
-  
-  #main_benner .menu li a {
-    text-decoration: none;
-    color: black;
-  }
+
   
   #main_benner .img_area {
     width: 100%;
@@ -57,8 +46,6 @@
   }
   
   #main_benner .img_area a {
-    text-decoration: none;
-    color: black;
     font-size: 24px;
     cursor: pointer;
   }
@@ -83,8 +70,6 @@
   }
   
   #main_benner .img_area .images .icons a {
-    text-decoration: none;
-    color: black;
     cursor: pointer;
     font-size: 18px;
   }

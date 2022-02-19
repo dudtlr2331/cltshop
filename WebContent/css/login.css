@@ -2,43 +2,48 @@
 	font-size: 44px;
 	font-weight: bold;
 }
-#header{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
+
 #section{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-#top{
+
+.section .input_area h1 {
+	text-align: center;
+}
+.section .input_area .top{
     display: flex;
     flex-direction: column;
 }
-#top_log{
+.section .input_area .top_log{
 	display: flex;
+    justify-content: center;
 }
 
-#top button {
+.section .input_area .top button {
 	width: 308px;
 	height: 30px;
 	margin: 2px;
 }
 
-#top input {
+.section .input_area .top input {
 	font-size: 16px;
 	width: 300px;
 	margin: 3px;
 }
 
-#sns_i{
-	font-size: 35px;
+.section .btn_area {
+	text-align: center;
+}
+
+.section .btn_area .sns_i{
+	font-size: 45px;
 	font-weight: bold;
 	border-top: 1px solid;
 }
 
-#bottom{
+.section .btn_area .bottom{
 	display: flex;
     flex-direction: column;
 }

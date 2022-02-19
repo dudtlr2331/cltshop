@@ -1,10 +1,4 @@
-#header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px;
-}
+
 .top_btn input{
     height: 27px;
     width: 250px;
