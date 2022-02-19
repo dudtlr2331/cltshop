@@ -22,12 +22,12 @@ let loginBtn = document.querySelector("#login_btn");
 
 function pageMove(pageName){
     if(pageName == 'main'){
-        location.href = '/main/main.html';
+        location.href = '/html/user/main/main.html';
     }
     else if(pageName == 'mypage'){
-        location.href = '/mypage/mypage.html';
+        location.href = '/html/user/mypage/mypage.html';
     }
     else if(pageName == 'join'){
-        location.href = '/login/login.html';
+        location.href = '/html/user/login/login.html';
     }
 }
