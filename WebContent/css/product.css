@@ -1,0 +1,94 @@
+#product_main{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.product_image{
+    width: 350px;
+    height: 350px;
+    margin: 50px;
+    border: 1px solid;
+    text-align: center;
+}
+
+.product_main_detail{
+    margin: 50px;
+}
+
+#product_main_detail_select{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 30px;
+}
+
+.product_main_detail_button_mid{
+    width: 100px;
+    height: 30px;
+}
+
+.product_main_detail_button_small{
+    width: 30px;
+    height: 30px;
+}
+
+.product_detail_image{
+    width: 700px;
+    height: 700px;
+    margin: 50px;
+    border: 1px solid;
+    text-align: center;
+}
+
+#product_detail{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+/* 문의 */
+#product .list{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    padding: 14px;
+    font-weight:bold;
+}
+
+#product .list li{
+    width: 100%;
+    height: 40px;
+    float:left;
+    list-style:none;
+    display: block;
+    margin:1px;
+    text-align:center; padding-top:10px;
+    background:rgb(111, 0, 255);
+    color:white;
+}
+
+#product .list li:hover{
+    background-color: rgb(184, 130, 255);
+}
+
+#product .list .select{
+    background-color: rgb(206, 168, 255);
+}
+
+.btn_qa {
+    float:right;
+}
+
+#post .post_list{
+    width:100%;
+    position:relative;
+    list-style:none;
+}
+
+#post .post_list li {
+    height:100%; width:25%;
+    float:left;
+    list-style:none;
+}

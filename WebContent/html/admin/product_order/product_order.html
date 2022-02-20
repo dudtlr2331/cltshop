@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/product_control.css" rel="stylesheet">
+    <link href="/css/product_order.css" rel="stylesheet">
     <title>상품 목록</title>
     <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
     <script src="/js/common.js" defer></script>
@@ -21,7 +22,7 @@
                     <li><a href="/html/admin/product_control/product_control.html">상품 목록</a></li>
                     <li><a href="/html/admin/product_postscript/product_postscript.html">상품 후기 관리</a></li>
                 </ul>
-           <li><a href="#">주문 관리</a></li>
+           <li><a href="/html/admin/product_order/product_order.html">주문 관리</a></li>
            <li><a href="#">회원 관리</a></li>
            <li><a href="#">이벤트 관리</a></li>
            <li><a href="#">매출현황</a></li>
@@ -30,8 +31,7 @@
            <li><a href="#">쿠폰/적립금 관리</a></li>
         </ul>
     </div>
-    <!-- 이 아래부터 클래스와 id 적용할 것 -->
-    <div class="product_order">
+    <div class="product_order_main">
         <h2>주문 목록</h2>
         <h4>주문 내역</h4>
         <h4>
@@ -106,6 +106,8 @@
             </tbody>
         </table>
     </div>
-    <button>1</button>
+    <div class="page_button">
+        <button>1</button>
+    </div>
 </body>
 </html>
