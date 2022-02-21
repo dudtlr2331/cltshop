@@ -61,7 +61,7 @@
             </thead>
         </table>
     </div>
-    <button class="btn_prod">회원 등록</button>
+    <button id="go" class="btn_prod">회원 등록</button>
     <button class="member_search_btn">검색</button>
     <section>
         <div class="a">
@@ -96,5 +96,36 @@
             <div>0</div>
         </div>
     </section>
+
+    <div id="bg" class="hidden"></div>
+    <div id="popup" class="hidden">
+        <h3>회원 등록</h3>
+        <div id="popup-text">
+            아이디  <input type="text"/><br>
+            닉네임  <input type="text"/><br>
+            이름  <input type="text"/><br>
+            등급  <input type="text"/><br>
+            적립금  <input type="text"/><br>
+            구매건수  <input type="text"/><br>
+            구매금액  <input type="text"/><br>
+            회원가입일  <input type="text"/><br>
+        </div>
+        <button id="exit" class="join_btn">등록</button>
+    </div>
+    <script>
+        const go = document.querySelector("#go");
+        const bg = document.querySelector("#bg");
+        const popup = document.querySelector("#popup");
+        const exit = document.querySelector("#exit");
+
+        go.addEventListener("click",function(){
+            bg.classList.remove("hidden");
+            popup.classList.remove("hidden");
+        });
+        exit.addEventListener("click",function(){
+            bg.classList.add("hidden");
+            popup.classList.add("hidden");
+        });
+    </script>
 </body>
 </html>
