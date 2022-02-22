@@ -1,7 +1,12 @@
+h3 {
+    margin-left : 10px;
+}
+
 table {
-    width: 100%;
+    width: 98%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
+    margin-left: 10px;
 }
 
 thead tr th {

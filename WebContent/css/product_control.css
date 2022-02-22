@@ -1,90 +1,102 @@
-#manage_main {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    left:0;
-    width: 200px;
-    background-color: #a75bff;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    font-weight: bold;
-    float:left;
-}
-
-#manage_main li {
-    padding-top : 10px;
-    padding-bottom : 10px;
-}
-
-#manage_main li a {
-    display: block;
-    color:white;
-    padding: 10px;
-    text-decoration: none;
-}
-
-#manage_main li:hover{
-    background-color:#dab9ff;
-} 
-
-#manage_main li:hover>a{
-    color:white;
-    font-weight:bold;
-} 
-
-#manage_main .submanage_menu{ 
-    padding:5px;
-    background-color:#d3acff; 
-    display:block; 
-    list-style: none;
-    left:60px; top:20px;
-} 
-
-#manage_main li:hover>.submanage_menu{ 
-    display: block;
-}
-
 .product {
-    position : relative;
+    position : fixed;
     left : 250px;
 }
 
 .product select {
     position : relative;
+    left : 1480px;
     width:160px;
     padding:5px;
     bottom:80%;
     margin-bottom:10px;
 }
 
-table {
-    position : absolute;
+.pro_createtbl {
+    position : fixed;
     float: left;
     /*left : 250px;*/
     width: 85%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
-    margin-right:10px;
 }
 
-thead tr th {
+.pro_createtbl thead tr th {
     padding : 15px;  
 }
 
-th, td {
+.pro_createtbl tbody {
+    text-align: center;  
+}
+
+.pro_createtbl th, .pro_createtbl td {
     border-bottom: 1px solid #444444;
     padding: 30px;
 }
 
-th:first-child, td:first-child {
+.pro_createtbl th:first-child, td:first-child {
     border-left: none;
 }
 
 #btn_prod {
-    position : relative;
+    position : fixed;
     padding:10px;
-    float:left;
-    left:425px;
-    bottom:50px;
+    left : 1800px;
+    top:400px;
+}
+
+/*▽product_control_register.html의 css▽*/
+
+#pro_register {
+    position : relative;
+    left : 250px;
+}
+
+.pro_n, .pro_pri, .pro_vol, .pro_del_c {
+    width:250px;
+}
+
+.pro_co, .pro_size {
+    width : 100px;
+}
+
+.pro_rep {
+    width:1000px;
+    height:250px;
+}
+
+.registertbl {
+    position: absolute;
+    float: left;
+    text-align: left;
+    border-collapse:collapse;
+}
+
+.registertbl th, .registertbl td {
+    width:100px;
+    padding: 8px;
+    border: none;
+}
+
+.sub_registertbl {   
+    width:400px;
+    text-align: left;
+    border-collapse:collapse;
+}
+
+.sub_registertbl select {   
+    width:100px;
+}
+
+#product_save_btn, #product_cancel_btn {
+    position: relative;
+    float: left;
+    padding: 5px;
+    width: 150px;
+    top : 600px;
+    left : 450px;
+}
+
+#product_cancel_btn {
+    left : 500px;
 }

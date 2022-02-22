@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/manager_menu.css" rel="stylesheet">
-    <link href="/css/product_control.css" rel="stylesheet">
-    <title>상품 목록</title>
+    <link href="/css/product_postscript.css" rel="stylesheet">
+    <title>답변하기</title>
     <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
     <script src="/js/common.js" defer></script>
 </head>
@@ -31,31 +31,38 @@
            <li><a href="#">쿠폰/적립금 관리</a></li>
         </ul>
     </nav>
-    <div class="product">
-        <h2>상품 목록</h2>
-        <select>
-            <option>등록일순</option>
-            <option>이름순</option>
-        </select>   
-        <table class="pro_createtbl">
-            <thead>
-                <tr>
-                    <th>전체선택</th><th>상품이미지</th><th>상품명</th><th>판매가</th><th>상태</th><th>재고수량</th><th>배송비</th><th>컬러</th><th>사이즈</th><th>등록일</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="checkbox" id="cb"></td><td>이미지1</td><td>상품1</td><td>29900</td><td>판매중</td><td>10</td><td>2500</td><td>블랙</td><td>S</td><td>2020-04-27</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" id="cb"></td><td>이미지2</td><td>상품2</td><td>38900</td><td>품절</td><td>0</td><td>무료</td><td>네이비</td><td>FREE</td><td>2019-05-01</td>
-                </tr>
-            </tbody>
-        </table>
+    <div id="pro_answer">
+        <h2>답변하기</h2>
+        <div class="answer_box1">
+            <select>
+                <option>에디터</option>
+                <option>test</option>
+            </select>
+            <select>
+                <option>돋움</option>
+                <option>굴림</option>
+            </select>
+            <select>
+                <option>10pt</option>
+                <option>12pt</option>
+                <option>14pt</option>
+                <option>16pt</option>
+                <option>18pt</option>
+            </select>
+            <button>B</button>
+            <button>I</button>
+            <button>U</button>
+            <button>T</button>
+            <button>왼쪽정렬</button>
+            <button>가운데정렬</button>
+            <button>오른쪽정렬</button>
+            <button>기본</button>
+            <button>이미지</button>
+            <button>동영상</button>
+        </div>
+        <div class="answer_box2">내용</div>
     </div>
-    <button id="btn_prod"><a href="/html/admin/product_control/product_control_register.html">상품 등록하기</a></button>
-    <footer>
-
-    </footer>
+    <button id="pro_save_btn"><a href="/html/admin/product_postscript/product_postscript.html">저장</a></button>
+    <button id="pro_cancel_btn"><a href="/html/admin/product_postscript/product_postscript.html">취소</a></button>
 </body>
 </html>
