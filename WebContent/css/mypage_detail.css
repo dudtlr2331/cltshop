@@ -39,7 +39,7 @@ dl, dt, dd {
 }
 
 .order_item {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #cccccc;
     overflow: hidden;
     font-size: 15px;
     margin-left: 200px;
@@ -57,10 +57,31 @@ dl, dt, dd {
     float: left;
 }
 
+
 .order_item2 img{
-    margin-left: 210px;
     width: 130px;
 }
-.i{
-    vertical-align: middle;
+.order_item2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 210px;
+    margin-right: 210px;
+    border-bottom: 1px solid #000;
+}
+
+
+.order_item3{
+    margin-left: 210px;
+    margin-right: 210px;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+.order_item3 .a{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
 }
