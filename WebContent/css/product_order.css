@@ -1,3 +1,4 @@
+/* 주문관리 */
 .product_order_main{
     padding-left: 250px;
 }
@@ -5,4 +6,65 @@
 .page_button{
     padding-left: 250px;
     padding-top: 250px;
+}
+
+/* 배송정보입력 */
+#product_order_delivery{
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#product_order_delivery div{
+    width: 600px;
+}
+
+.product_order_delivery_title{
+    padding-top: 30px;
+    border-bottom: 1px solid;
+}
+
+.product_order_number{
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-bottom: 1px solid;
+}
+
+.product_order_detail{
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-bottom: 1px solid;
+}
+
+.product_delivery_detail{
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-bottom: 1px solid; 
+}
+
+.product_delivery_number{
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-bottom: 1px solid; 
+}
+
+.product_delivery_time{
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.product_delivery_button{
+    margin-top: 30px;
 }
