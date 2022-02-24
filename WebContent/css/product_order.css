@@ -21,6 +21,10 @@
     width: 600px;
 }
 
+#product_order_delivery div h2{
+    text-align: center;
+}
+
 .product_order_delivery_title{
     padding-top: 30px;
     border-bottom: 1px solid;
@@ -67,4 +71,8 @@
 
 .product_delivery_button{
     margin-top: 30px;
+}
+
+.product_delivery_button_div{
+    text-align: center;
 }
