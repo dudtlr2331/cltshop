@@ -37,6 +37,7 @@
     padding-top: 60px;
     padding-left: 10%;
     padding-right: 10%;
+    margin-top: 50px;
     font-size: 80px;
 	border-top: 1px solid;
 }
@@ -80,4 +81,22 @@
     padding-left: 70px;
     padding-right: 70px;
     border-bottom: 1px solid;
+}
+#b_content .b .b_money{
+    padding-left: 630px;
+}
+#b_content .b .b_progres{
+    padding-right: 25px;
+}
+#b_content .c{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    border-bottom: 1px solid #000;
+}
+#b_content img{
+    width: 130px;
 }
