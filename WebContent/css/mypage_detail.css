@@ -85,3 +85,10 @@ dl, dt, dd {
     justify-content: space-between;
     padding-top: 10px;
 }
+
+.delivery_btn{
+    height: 50px;
+    position: relative;
+    left: 750px;
+    margin-bottom: 50px;
+}
