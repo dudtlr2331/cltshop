@@ -5,11 +5,17 @@ ul{
 
 body{
   margin: 0;
+  padding: 0;
 }
 
 a{
   text-decoration: none;
   color: black;
+}
+
+dl, dd, dt{
+  margin: 0;
+  padding: 0;
 }
 
 /* 공통 해더 */

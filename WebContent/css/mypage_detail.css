@@ -27,12 +27,16 @@ h2{
     font-weight: 500;
 }
 .order_member dd {
-    width: 80%;
+    width: 79%;
+    text-align: end;
+    padding-right: 5px;
 }
 .order_member dd, .order_member dt {
+    border-collapse: collapse;
     border-bottom: 1px solid #cccccc;
-    padding: 15px;
-    float: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: inline-block;
 }
 dl, dt, dd {
     margin: 0px;

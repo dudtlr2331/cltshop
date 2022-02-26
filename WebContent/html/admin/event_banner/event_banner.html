@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/manager_menu.css" rel="stylesheet">
     <link href="/css/event_banner.css" rel="stylesheet">
     <title>이벤트 관리</title>
     <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
@@ -14,18 +15,22 @@
     <header id="header">
         <div class="logo">쇼핑몰로고...</div>
     </header>
-    <div id="main_cate">
-        <ul id="manageMain">
-            <li><a href="#">상품 관리</a></li>
-            <li><a href="#">주문 관리</a></li>
-            <li><a href="#">회원 관리</a></li>
-            <li><a href="#">이벤트 관리</a></li>
-            <li><a href="#">매출현황</a></li>
-            <li><a href="#">드레스룸 관리</a></li>
-            <li><a href="#">1:1 문의 관리</a></li>
-            <li><a href="#">쿠폰/적립금 관리</a></li>
+    <nav id="main_cate">
+        <ul id="manage_main">
+           <li><a href="#">상품 문의 관리</a></li>
+                <ul class="submanage_menu">
+                    <li><a href="/html/admin/product_control/product_control.html">상품 목록</a></li>
+                    <li><a href="/html/admin/product_postscript/product_postscript.html">상품 문의 관리</a></li>
+                </ul>
+           <li><a href="#">주문 관리</a></li>
+           <li><a href="#">회원 관리</a></li>
+           <li><a href="#">이벤트 관리</a></li>
+           <li><a href="#">매출현황</a></li>
+           <li><a href="#">드레스룸 관리</a></li>
+           <li><a href="#">1:1 문의 관리</a></li>
+           <li><a href="#">쿠폰/적립금 관리</a></li>
         </ul>
-    </div>
+    </nav>
     <section id="top">
         <div>
             선택한 항목을 <button>X삭제</button>
