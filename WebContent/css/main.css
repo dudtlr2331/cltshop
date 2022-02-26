@@ -98,13 +98,7 @@
   flex-direction: row;
   justify-content: space-around;
 }
-.img_area .img_b{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-.img_area .img_a .item,
-.img_area .img_b .item{
+.img_area .img_a .item{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -114,28 +108,24 @@
   position: relative;
 }
 
-.img_area .img_a .item .txt_area,
-.img_area .img_b .item .txt_area{
+.img_area .img_a .item .txt_area{
   padding: 10px 15px;
 }
 
-.img_area .img_a .item .txt_area .item_name,
-.img_area .img_b .item .txt_area .item_name{
+.img_area .img_a .item .txt_area .item_name{
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 16px;
 }
 
-.img_area .img_a .item .txt_area .item_price,
-.img_area .img_b .item .txt_area .item_price{
+.img_area .img_a .item .txt_area .item_price{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 15px;
 }
 
-.img_area .img_a .item .dim,
-.img_area .img_b .item .dim{
+.img_area .img_a .item .dim{
   background-color: black;
   /* background-color: dimgray; */
   width: 100%;
@@ -146,13 +136,11 @@
   opacity: 0;
 }
 
-.img_area .img_a .item:hover .dim,
-.img_area .img_b .item:hover .dim{
+.img_area .img_a .item:hover .dim{
   opacity: 0.5;
 }
 
-.img_area .img_a .item img,
-.img_area .img_b .item img{
+.img_area .img_a .item img{
   overflow: hidden;
   border: 1px solid #111;
   width: 100%;
