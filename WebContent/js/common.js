@@ -30,6 +30,9 @@ function pageMove(pageName){
     else if(pageName == 'join'){
         location.href = '/html/user/login/login.html';
     }
+    else if(pageName == 'product'){
+        location.href = '/html/user/product/product.html';
+    }
 }
 
 //상품 중간 메뉴 선택시 해당 부분으로 이동(상단 포함)

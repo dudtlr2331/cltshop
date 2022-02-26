@@ -1,75 +1,160 @@
+* {
+  box-sizing: border-box;
+}
 
-  .top_btn input {
-    height: 27px;
-    width: 250px;
-  }
-  
-  .top_btn i {
-    font-size: 27px;
-    margin: 0 3px;
-  }
-  
-  #main_benner .menu {
-    display: flex;
-    list-style: none;
-    justify-content: space-around;
-    background-color: beige;
-    border-radius: 5px;
-  }
-  
-  #main_benner .menu ul {
-  }
-  
-  #main_benner .menu a {
-    width: 100%;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    /* flex-direction: row; */
-  }
-  
-  #main_benner .menu a:hover{
-    background-color: gray;
-    color: white;
-  }
+.top_btn input {
+  height: 27px;
+  width: 250px;
+}
 
+.top_btn i {
+  font-size: 27px;
+  margin: 0 3px;
+}
+
+#main_benner .menu {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  background-color: beige;
+  border-radius: 5px;
+}
+
+#main_benner .menu ul {
+}
+
+#main_benner .menu a {
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
-  #main_benner .img_area {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  #main_benner .img_area a {
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  #main_benner .img_area .images {
-    background: url("/cltshop/images/bnr_event.png");
-    width: 100%;
-    position: relative;
-  }
-  
-  #main_benner .img_area .images img {
-    width: 100%;
-  }
-  
-  #main_benner .img_area .images .icons {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: bisque;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  
-  #main_benner .img_area .images .icons a {
-    cursor: pointer;
-    font-size: 18px;
-  }
+  /* flex-direction: row; */
+}
+
+#main_benner .menu a:hover{
+  background-color: gray;
+  color: white;
+}
+
+
+#main_benner .img_area {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#main_benner .img_area a {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#main_benner .img_area .images {
+  background: url("/cltshop/images/bnr_event.png");
+  width: 100%;
+  position: relative;
+}
+
+#main_benner .img_area .images img {
+  width: 100%;
+}
+
+#main_benner .img_area .images .icons {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: bisque;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#main_benner .img_area .images .icons a {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#product_ranking{
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 100px;
+}
+.product_group{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  font-size: 18px;
+  font-weight: 200;
+}
+.product_group pre{
+  margin-left: 15px;
+}
+
+.img_area .img_a{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.img_area .img_b{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.img_area .img_a .item,
+.img_area .img_b .item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24%;
+  height: 450px;
+  cursor: pointer;
+  position: relative;
+}
+
+.img_area .img_a .item .txt_area,
+.img_area .img_b .item .txt_area{
+  padding: 10px 15px;
+}
+
+.img_area .img_a .item .txt_area .item_name,
+.img_area .img_b .item .txt_area .item_name{
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.img_area .img_a .item .txt_area .item_price,
+.img_area .img_b .item .txt_area .item_price{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.img_area .img_a .item .dim,
+.img_area .img_b .item .dim{
+  background-color: black;
+  /* background-color: dimgray; */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 1;
+  top: 1;
+  opacity: 0;
+}
+
+.img_area .img_a .item:hover .dim,
+.img_area .img_b .item:hover .dim{
+  opacity: 0.5;
+}
+
+.img_area .img_a .item img,
+.img_area .img_b .item img{
+  overflow: hidden;
+  border: 1px solid #111;
+  width: 100%;
+  height: 100%;
+}
