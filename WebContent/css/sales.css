@@ -15,11 +15,11 @@
 }
 
 .date_area {
-    margin-left: 750px;
-    margin-bottom : -50px;
+    position : fixed;
+    left: 50%;
 }
 
-.date_area a, .date_area .date {
+.date_area a, .date_area .date {  
     float: left;
     padding: 10px;
 }
@@ -28,15 +28,15 @@
 #chart_box {
     left : 250px;
     top : 100px;
-    position: absolute;
-    max-width: 800px;
+    position: fixed;
+    max-width: 80%;
     margin:0 auto;
     padding: 20px;
 }
 
 .chart {
-    position: relative;
-    height: 185px;
+    position: fixed;
+    height: 18%;
     margin-top: 15px;
 }
 
@@ -51,7 +51,7 @@
 
 .chart .axis_y > li {
     position: relative;
-    width:calc(100% - 20px);
+    width:calc(100% - 20%);
     height: calc(100% / 8);
     margin-left: 20px;
     text-align: left;
@@ -79,9 +79,9 @@
 
 .bar { 
     display: flex; 
-    position:absolute; 
-    left:110px; 
-    top:20%; 
+    position:fixed; 
+    left:19%; 
+    top:18%; 
 }
 
 .bar li { 
@@ -112,11 +112,11 @@
 }
 
 .amount {
-    position : absolute;
+    position : fixed;
     float: left;
     left : 250px;
-    top : 485px;
-    width:1600px;
+    top : 46%;
+    width:83%;
     border: 2px solid #000;
     border-collapse:collapse;
 }
@@ -130,12 +130,14 @@
 .a_another td {
     text-align: center;
     padding: 3px;
-    width : 1500px;
+    width : 10%;
     font-size: 10pt;
 }
 
 .date_select {
-    top : 625px;    
+    position : fixed;
+    float: left;
+    top : 61%;    
 }
 
 .date_select select {
@@ -145,12 +147,12 @@
 }
 
 .count table {
-    position : absolute;
+    position : fixed;
     float: left;
     left: 250px;
-    top : 680px;
-    width: 1605px;
-    height: 250px;
+    top : 66%;
+    width: 83%;
+    height: 30%;
     border: 2px solid #000;
     border-collapse:collapse;
 }

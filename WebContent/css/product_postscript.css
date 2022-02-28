@@ -1,12 +1,14 @@
 .con, .search, .pro_qna {
     position : relative;
     left : 250px;
-    width:1000px;
+    width:20%;
     height:100%;
 }
 
 .con hr {
-    width:163%;
+    position : fixed;
+    float: left;
+    width:85%;
 }
 
 .search, .pro_qna {
@@ -14,10 +16,10 @@
 }
 
 table {
-    position : absolute;
+    position : fixed;
     float: left;
     /*left : 250px;*/
-    width: 1625px;
+    width: 85%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
     margin-top:10px;
@@ -51,43 +53,44 @@ th:first-child, td:first-child {
 #pro_answer {
     position : relative;
     left : 250px;
-    width:1000px;
+    width:50%;
     height:100%;
 }
 
 #pro_answer .answer_box1 {
-    position : relative;
+    position : fixed;
     float: left;
-    width : 1620px;
+    width : 85%;
     padding : 10px;
     border : 1px solid #444444;
     box-sizing: border-box;
 }
 
 #pro_answer .answer_box2 {
-    position : relative;
+    position : fixed;
     float: left;
-    width : 1620px;
-    height: 600px;
+    width : 85%;
+    height: 60%;
+    top : 17%;
     padding : 10px;
     border : 1px solid #444444;
     box-sizing: border-box;
 }
 
 #pro_save_btn {
-    position : absolute;
+    position : fixed;
     float: left;
-    width: 130px;
+    width: 8%;
     padding: 5px;
-    top : 800px;
-    right: 950px;
+    top : 80%;
+    left: 45%;
 }
 
 #pro_cancel_btn {
-    position : absolute;
+    position : fixed;
     float: left;
-    width: 130px;
+    width: 8%;
     padding: 5px;
-    top : 800px;
-    right: 770px;
+    top : 80%;
+    left: 55%;
 }
