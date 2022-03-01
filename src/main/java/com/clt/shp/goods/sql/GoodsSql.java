@@ -1,36 +1,42 @@
 package com.clt.shp.goods.sql;
 
 public interface GoodsSql{
-	String MAIN_INSERT = 
-	  "INSERT INTO MAIN_BOARD(MAIN_BOARD_SN, IMG_PATH) "
-	+ "VALUES(?, ?)"
+	String GOODS_INSERT = 
+	  "INSERT INTO GOODS_INFO(GOODS_INFO_SEQ, GOODS_NM, GOODS_PRC) "
+	+ "VALUES(?, ?, ?)"
 	;
 	
-	String MAIN_SELECT =
-	  "SELECT MAIN_BOARD_SN"
-	+ "	    , IMG_PATH "
-	+ "  FROM MAIN_BOARD"
+	String GOODS_SELECT =
+	  "SELECT GOODS_INFO_SEQ"
+	+ "	    , GOODS_NM "
+	+ "     , GOODS_PRC"
+	+ "  FROM GOODS_INFO"
 	+ " WHERE 1=1"
-	+ "   AND MAIN_BOARD_SN = ?"
+	+ "   AND GOODS_INFO_SEQ = ?"
 	;
 	
-	String MAIN_LIST =
-	  "SELECT MAIN_BOARD_SN"
-	+ "	    , IMG_PATH "
-	+ "  FROM MAIN_BOARD"
+	String GOODS_LIST =
+	  "SELECT GOODS_INFO_SEQ"
+	+ "	    , GOODS_NM "
+	+ "	    , GOODS_PRC "
+	+ "  FROM GOODS_INFO"
+	+ " WHERE 1=1 "
+	+ " ORDER BY GOODS_INFO_SEQ DESC"
+	;
+	
+	String GOODS_UPDATE =
+	  "UPDATE GOODS_INFO "
+	+ "   SET GOODS_NM = ?"
+	+ "     , GOODS_PRC = ?"
 	+ " WHERE 1=1"
+	+ "   AND GOODS_INFO_SEQ = ?"
 	;
 	
-	String MAIN_UPDATE =
-	  "UPDATE MAIN_BOARD "
-	+ "   SET IMG_PATH = ?"
-	+ " WHERE 1=1"
-	+ " MAIN_BOARD_SN = ?"
-	;
-	
-	String MAIN_DELETE = 
-	  "DELETE FROM MAIN_BOARD "
-	+ " WHERE 1=1 AND MAIN_BOARD_SN = ?"
+	String GOODS_DELETE = 
+	  "DELETE FROM GOODS_INFO "
+	+ " WHERE 1=1 "
+//	+ "  AND GOODS_INFO_SEQ = ?"
+	+ "  AND GOODS_INFO_SEQ = ?"
 	;
 	
 }

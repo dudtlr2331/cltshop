@@ -8,31 +8,31 @@ import com.clt.shp.goods.dao.GoodsDao;
 public class GoodsDaoMysql implements GoodsDao{
 
 	@Override
-	public int insertMain(GoodsVO pvo) {
+	public int insertGoods(GoodsVO pvo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public GoodsVO selectMain(GoodsVO pvo) {
+	public GoodsVO selectGoods(GoodsVO pvo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<GoodsVO> selectListMain(GoodsVO pvo) {
+	public List<GoodsVO> selectListGoods(GoodsVO pvo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int updateMain(GoodsVO pvo) {
+	public int updateGoods(GoodsVO pvo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int deleteMain(GoodsVO pvo) {
+	public int deleteGoods(GoodsVO pvo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

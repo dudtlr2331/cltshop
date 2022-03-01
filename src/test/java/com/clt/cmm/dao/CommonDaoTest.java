@@ -12,25 +12,26 @@ public class CommonDaoTest {
 	}
 	
 	public void insert_test() {
-		GoodsDaoOracle mainDao = new GoodsDaoOracle();
+		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
 		GoodsVO pvo = new GoodsVO();
-		pvo.setMainBoardSn(1);
-		pvo.setImgPath("test..");
+		pvo.setGoodsInfoSeq(5);
+		pvo.setGoodsNm("맨투맨5");
+		pvo.setGoodsPrc(29000);
 		
-		mainDao.insertMain(pvo);
+		goodsDao.insertGoods(pvo);
 	}
 	
 	public void select_obj_test() {
-		GoodsDaoOracle mainDao = new GoodsDaoOracle();
+		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
 		GoodsVO pvo = new GoodsVO();
-		GoodsVO obj = mainDao.selectMain(pvo);
+		GoodsVO obj = goodsDao.selectGoods(pvo);
 		System.out.println(obj.toString());
 	}
 	
 	public void select_list_test() {
-		GoodsDaoOracle mainDao = new GoodsDaoOracle();
+		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
 		GoodsVO pvo = new GoodsVO();
-		List<GoodsVO> list = mainDao.selectListMain(pvo);
+		List<GoodsVO> list = goodsDao.selectListGoods(pvo);
 		for(GoodsVO obj : list) {
 			System.out.println(obj.toString());
 		}

@@ -1,29 +1,39 @@
 package com.clt.shp.goods;
 
 public class GoodsVO {
-	private long mainBoardSn;
-	private String imgPath;
+	private long goodsInfoSeq;
+	private String goodsNm;
+	private int goodsPrc;
 	
-	public GoodsVO() {}
-	public GoodsVO (long mainBoardSn, String imgPath) {
-		this.mainBoardSn = mainBoardSn;
-		this.imgPath = imgPath;
+	public GoodsVO() {
+		
+	}
+	public GoodsVO(long goodsInfoSeq, String goodsNm, int goodsPrc) {
+		this.goodsInfoSeq = goodsInfoSeq;
+		this.goodsNm = goodsNm;
+		this.goodsPrc = goodsPrc;
 	}
 	
-	public long getMainBoardSn() {
-		return mainBoardSn;
+	public long getGoodsInfoSeq() {
+		return goodsInfoSeq;
 	}
-	public void setMainBoardSn(long mainBoardSn) {
-		this.mainBoardSn = mainBoardSn;
+	public void setGoodsInfoSeq(long goodsInfoSeq) {
+		this.goodsInfoSeq = goodsInfoSeq;
 	}
-	public String getImgPath() {
-		return imgPath;
+	public String getGoodsNm() {
+		return goodsNm;
 	}
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
+	public void setGoodsNm(String goodsNm) {
+		this.goodsNm = goodsNm;
+	}
+	public int getGoodsPrc() {
+		return goodsPrc;
+	}
+	public void setGoodsPrc(int goodsPrc) {
+		this.goodsPrc = goodsPrc;
 	}
 	@Override
 	public String toString() {
-		return "MainVO [mainBoardSn=" + mainBoardSn + ", imgPath=" + imgPath + "]";
+		return "GoodsVO [goodsInfoSeq=" + goodsInfoSeq + ", goodsNm=" + goodsNm + ", goodsPrc=" + goodsPrc + "]";
 	}
 }

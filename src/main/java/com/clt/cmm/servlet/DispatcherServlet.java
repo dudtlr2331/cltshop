@@ -22,6 +22,7 @@ public class DispatcherServlet extends HttpServlet{
 		doProcess(req, res);
 	}
 	
+	
 	protected void doProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String command = req.getParameter("command");
 		Controller controller = HandlerMapping.getInstance().createController(command);

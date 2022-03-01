@@ -19,8 +19,32 @@
 		<servlet-name>DispatcherServlet</servlet-name>
 		<servlet-class>com.clt.cmm.servlet.DispatcherServlet</servlet-class>
 	</servlet>
+	
+	
+	
+	
+	
+	
+	
+	
 	<servlet-mapping>
 		<servlet-name>DispatcherServlet</servlet-name>
 		<url-pattern>/DispatcherServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>/a</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>/a.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>/b</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>/b.do</url-pattern>
 	</servlet-mapping>
 </web-app>

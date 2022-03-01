@@ -20,7 +20,7 @@ public class GoodsDaoOracle implements GoodsDao{
 	}
 	
 	@Override
-	public int insertMain(GoodsVO pvo) {
+	public int insertGoods(GoodsVO pvo) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -28,13 +28,14 @@ public class GoodsDaoOracle implements GoodsDao{
 		
 		try {
 			conn = commonDao.getConnection();
-			ps = conn.prepareStatement(GoodsSql.MAIN_INSERT);
-			ps.setString(1, String.valueOf(pvo.getMainBoardSn()));
-			ps.setString(2, pvo.getImgPath());
+			ps = conn.prepareStatement(GoodsSql.GOODS_INSERT);
+			ps.setLong(1, pvo.getGoodsInfoSeq());
+			ps.setString(2, pvo.getGoodsNm());
+			ps.setInt(3, pvo.getGoodsPrc());
 
 			row = ps.executeUpdate();
 			
-			System.out.println("dao..INSERT OK!!..No ::" + pvo.getMainBoardSn());
+			System.out.println("INSERT OK.. Seq::" + pvo.getGoodsInfoSeq());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -49,18 +50,18 @@ public class GoodsDaoOracle implements GoodsDao{
 	}
 	
 	@Override
-	public GoodsVO selectMain(GoodsVO pvo){
+	public GoodsVO selectGoods(GoodsVO pvo){
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		GoodsVO vo = null;
 		try {
 			conn = commonDao.getConnection();
-			ps = conn.prepareStatement(GoodsSql.MAIN_SELECT);
-			ps.setLong(1, pvo.getMainBoardSn());
+			ps = conn.prepareStatement(GoodsSql.GOODS_SELECT);
+			ps.setLong(1, pvo.getGoodsInfoSeq());
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				vo = new GoodsVO(rs.getLong("MAIN_BOARD_SN"), rs.getString("IMG_PATH"));
+				vo = new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getString("GOODS_NM"), rs.getInt("GOODS_PRC"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -75,17 +76,17 @@ public class GoodsDaoOracle implements GoodsDao{
 	}
 	
 	@Override
-	public List<GoodsVO> selectListMain(GoodsVO pvo) {
+	public List<GoodsVO> selectListGoods(GoodsVO pvo) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<GoodsVO> list = new ArrayList<GoodsVO>();
 		try {
 			conn = commonDao.getConnection();
-			ps = conn.prepareStatement(GoodsSql.MAIN_LIST);
+			ps = conn.prepareStatement(GoodsSql.GOODS_LIST);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				list.add(new GoodsVO(rs.getLong("MAIN_BOARD_SN"), rs.getString("IMG_PATH")));
+				list.add(new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getString("GOODS_NM"), rs.getInt("GOODS_PRC")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -100,17 +101,18 @@ public class GoodsDaoOracle implements GoodsDao{
 	}
 	
 	@Override
-	public int updateMain(GoodsVO pvo) {
+	public int updateGoods(GoodsVO pvo) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		int row = 0;
 		try {
 			conn = commonDao.getConnection();
-			ps = conn.prepareStatement(GoodsSql.MAIN_UPDATE);
-			ps.setString(1, pvo.getImgPath());
-			ps.setLong(2, pvo.getMainBoardSn());
+			ps = conn.prepareStatement(GoodsSql.GOODS_UPDATE);
+			ps.setString(1, pvo.getGoodsNm());
+			ps.setInt(2, pvo.getGoodsPrc());
+			ps.setLong(3, pvo.getGoodsInfoSeq());
 			row = ps.executeUpdate();
-			System.out.println(row + "row UPDATE..updatePosting()..end");
+			System.out.println("UPDATE OK.. Seq::" + pvo.getGoodsInfoSeq());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -124,16 +126,16 @@ public class GoodsDaoOracle implements GoodsDao{
 	}
 	
 	@Override
-	public int deleteMain(GoodsVO pvo) {
+	public int deleteGoods(GoodsVO pvo) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		int row = 0;
 		try {
 			conn = commonDao.getConnection();
-			ps = conn.prepareStatement(GoodsSql.MAIN_DELETE);
-			ps.setLong(1, pvo.getMainBoardSn());
+			ps = conn.prepareStatement(GoodsSql.GOODS_DELETE);
+			ps.setLong(1, pvo.getGoodsInfoSeq());
 			row = ps.executeUpdate();
-			System.out.println(row + " row DELETE...deletePosting()...end...");
+			System.out.println("DELETE OK.. Seq::" + pvo.getGoodsInfoSeq());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
