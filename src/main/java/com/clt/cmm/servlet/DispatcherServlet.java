@@ -23,16 +23,14 @@ public class DispatcherServlet extends HttpServlet{
 	}
 	
 	protected void doProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		//로직은 여기다 작성...
 		String command = req.getParameter("command");
-		Controller controller = 
-				HandlerMapping.getInstance().createController(command);
+		Controller controller = HandlerMapping.getInstance().createController(command);
 		
 		String path = "error.jsp";
 		ModelAndView mv=  null;
 		boolean isRedirect = false;
 		try{
-			mv=controller.execute(req, res);
+			mv = controller.execute(req, res);
 			path = mv.getPath();
 			isRedirect = mv.isRedirect();
 		}catch(Exception e){

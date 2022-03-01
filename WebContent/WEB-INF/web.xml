@@ -17,7 +17,7 @@
 		<description>프론트 서블릿</description>
 		<display-name>DispatcherServlet</display-name>
 		<servlet-name>DispatcherServlet</servlet-name>
-		<servlet-class>com.clt.cmm.controller.DispatcherServlet</servlet-class>
+		<servlet-class>com.clt.cmm.servlet.DispatcherServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DispatcherServlet</servlet-name>
