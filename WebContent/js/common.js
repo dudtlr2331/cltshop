@@ -22,16 +22,16 @@ let loginBtn = document.querySelector("#login_btn");
 
 function pageMove(pageName){
     if(pageName == 'main'){
-        location.href = '/html/user/main/main.html';
+        location.href = '/html/shp/goods/goods_list.html';
     }
     else if(pageName == 'mypage'){
-        location.href = '/html/user/mypage/mypage.html';
+        location.href = '/html/shp/mypage/mypage.html';
     }
     else if(pageName == 'join'){
-        location.href = '/html/user/login/login.html';
+        location.href = '/html/shp/user/login.html';
     }
     else if(pageName == 'product'){
-        location.href = '/html/user/product/product.html';
+        location.href = '/html/shp/goods/goods_detail.html';
     }
 }
 
