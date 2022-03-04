@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.clt.shp.goods.GoodsVO;
 import com.clt.shp.goods.dao.impl.GoodsDaoOracle;
+import com.clt.shp.user.UserVo;
+import com.clt.shp.user.dao.impl.UserDaoOracle;
 
 public class CommonDaoTest {
 	public static void main(String[] args) {
@@ -12,14 +14,25 @@ public class CommonDaoTest {
 	}
 	
 	public void insert_test() {
-		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
-		GoodsVO pvo = new GoodsVO();
-		pvo.setGoodsInfoSeq(5);
-		pvo.setGoodsNm("맨투맨5");
-		pvo.setGoodsPrc(29000);
+		UserDaoOracle userDao = new UserDaoOracle();
+		UserVo pvo = new UserVo();
+		pvo.setMember_seq(4);
+		pvo.setMember_id("d");
+		pvo.setMember_name("d");
+		pvo.setMember_pwd("1234");
 		
-		goodsDao.insertGoods(pvo);
+		userDao.insertUser(pvo);
 	}
+	
+//	public void insert_test() {
+//		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
+//		GoodsVO pvo = new GoodsVO();
+//		pvo.setGoodsInfoSeq(5);
+//		pvo.setGoodsNm("맨투맨5");
+//		pvo.setGoodsPrc(29000);
+//		
+//		goodsDao.insertGoods(pvo);
+//	}
 	
 	public void select_obj_test() {
 		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
