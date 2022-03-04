@@ -26,6 +26,19 @@ dl, dd, dt{
   align-items: center;
   padding: 14px;
 }
+#header_login{
+  display: flex;
+  justify-content: end;
+  margin-right: 22px;
+}
+#header_login div a{
+  color: gray;
+  font-size: 14px;
+}
+#header_login div span{
+  color: gray;
+  font-size: 14px;
+}
 
 
 .color_red{
