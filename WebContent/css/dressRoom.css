@@ -69,14 +69,15 @@
     justify-content: center;
     align-items: center;
     list-style: none;
+    width: 132px;
+    border: 1px solid;
 }
 
 .dressroom_category_list li{
-    width: 100px;
+    width: 130px;
     height: 30px;
     justify-content: center;
     text-align: center;
-    border: 1px solid;
 }
 
 .dressroom_main_detail{
@@ -139,4 +140,18 @@
     width: 80px;
     height: 30px;
     float: right;
+}
+
+.item_main {
+    line-height:2;
+    border:1px solid rgb(45, 0, 104);
+    font-weight:bold;
+    background-color:rgb(111, 0, 255);  
+    color:#fff; 
+}
+
+.item_sub {
+    padding:5px;
+    background-color:#fff;
+    font-weight: normal;
 }
