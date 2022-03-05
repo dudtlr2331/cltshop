@@ -30,25 +30,17 @@
     border:1px solid rgb(45, 0, 104);
     list-style: none;
     font-weight:bold;
+    background-color:rgb(111, 0, 255);  
 }
 
-.cate_menu:hover{
-    background-color:rgb(111, 0, 255);
-}
-
-.cate_menu:hover>a{
-    color:white;   
+.cate {
+    color:#fff; 
 }
 
 #nav .sub {
     padding:5px;
     background-color:#fff;
-    display: none;
     list-style: none;
     font-weight: normal;
-    left:60px; top:20px;
-}
-
-#nav li:hover>.sub{
-    display:block;
+    left:60px; top:20px; 
 }
