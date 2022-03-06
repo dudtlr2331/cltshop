@@ -1,3 +1,24 @@
+#coupon{
+    position: relative;
+    margin: 200px 250px 100px 250px;
+}
 #coupon table{
-    
+    border-top: 2px solid #111;
+    width: 100%;
+    font-size: 18px;
+    border-collapse: collapse;
+}
+#coupon table th{
+    padding: 18px 20px;
+    border-bottom: 1px solid rgb(165, 162, 162);
+}
+table .cen{
+    border-bottom: 1px solid #111;
+}
+table .cen td{
+    text-align: end;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    position: relative;
+    left: 242px;
 }
