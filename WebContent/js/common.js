@@ -35,7 +35,19 @@ function pageMove(pageName){
     }
 }
 
-//상품 중간 메뉴 선택시 해당 부분으로 이동(상단 포함)
+// 메인 화면 -------------------------------------------------------
+// 메인 화면 카테고리 마우스 오버 시 하위 메뉴 노출
+const categoryMenuMain = document.querySelector(".menu_category_item_main");
+const categoryMenu = document.querySelector(".menu_category");
+categoryMenuMain.addEventListener("mouseenter", (event) => {
+    categoryMenu.classList.add("visible");
+});
+categoryMenu.addEventListener("mouseleave", (event) => {
+    categoryMenu.classList.remove("visible");
+});
+
+// 상품 선택 화면 --------------------------------------------------
+// 상품 중간 메뉴 선택시 해당 부분으로 이동(상단 포함)
 const productMenu = document.querySelector(".product_menu_list");
 const productMenuUpperbar = document.querySelector(".product_menu_list_upperbar");
 productMenu.addEventListener("click", (event) => { //클릭 이벤트 발생시
