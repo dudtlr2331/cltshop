@@ -1,24 +1,26 @@
-#coupon{
-    position: relative;
-    margin: 200px 250px 100px 250px;
+h2{
+    font-weight: 600;
+    font-size: 27px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 15px;
+    margin-bottom: 0px;
+    margin-top: 70px;
+    margin-left: 200px;
+    margin-right: 200px;
 }
-#coupon table{
-    border-top: 2px solid #111;
-    width: 100%;
-    font-size: 18px;
-    border-collapse: collapse;
+.coupon_header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px 100px;
 }
-#coupon table th{
-    padding: 18px 20px;
-    border-bottom: 1px solid rgb(165, 162, 162);
-}
-table .cen{
-    border-bottom: 1px solid #111;
-}
-table .cen td{
-    text-align: end;
-    padding-top: 150px;
-    padding-bottom: 150px;
-    position: relative;
-    left: 242px;
+.coupon_body{
+    text-align: center;
+    padding: 150px 0px;
+    margin-left: 200px;
+    margin-right: 200px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #000;
+    /* 밑줄 보려고 생성 */
+    margin-bottom: 200px;
 }
