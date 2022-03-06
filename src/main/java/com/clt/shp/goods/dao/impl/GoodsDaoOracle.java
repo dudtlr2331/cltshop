@@ -32,6 +32,7 @@ public class GoodsDaoOracle implements GoodsDao{
 			ps.setLong(1, pvo.getGoodsInfoSeq());
 			ps.setString(2, pvo.getGoodsNm());
 			ps.setInt(3, pvo.getGoodsPrc());
+			ps.setString(4, pvo.getGoodsImg());
 
 			row = ps.executeUpdate();
 			
@@ -61,7 +62,7 @@ public class GoodsDaoOracle implements GoodsDao{
 			ps.setLong(1, pvo.getGoodsInfoSeq());
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				vo = new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getString("GOODS_NM"), rs.getInt("GOODS_PRC"));
+				vo = new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getString("GOODS_NM"), rs.getInt("GOODS_PRC"), rs.getString("GOODS_IMG"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -86,7 +87,7 @@ public class GoodsDaoOracle implements GoodsDao{
 			ps = conn.prepareStatement(GoodsSql.GOODS_LIST);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				list.add(new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getString("GOODS_NM"), rs.getInt("GOODS_PRC")));
+				list.add(new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getString("GOODS_NM"), rs.getInt("GOODS_PRC"), rs.getString("GOODS_IMG")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -4,16 +4,24 @@ public class GoodsVO {
 	private long goodsInfoSeq;
 	private String goodsNm;
 	private int goodsPrc;
+	private String goodsImg;
 	
 	public GoodsVO() {
 		
 	}
-	public GoodsVO(long goodsInfoSeq, String goodsNm, int goodsPrc) {
+	public GoodsVO(long goodsInfoSeq, String goodsNm, int goodsPrc, String goodsImg) {
 		this.goodsInfoSeq = goodsInfoSeq;
 		this.goodsNm = goodsNm;
 		this.goodsPrc = goodsPrc;
+		this.goodsImg = goodsImg;
 	}
 	
+	public String getGoodsImg() {
+		return goodsImg;
+	}
+	public void setGoodsImg(String goodsImg) {
+		this.goodsImg = goodsImg;
+	}
 	public long getGoodsInfoSeq() {
 		return goodsInfoSeq;
 	}
@@ -34,6 +42,7 @@ public class GoodsVO {
 	}
 	@Override
 	public String toString() {
-		return "GoodsVO [goodsInfoSeq=" + goodsInfoSeq + ", goodsNm=" + goodsNm + ", goodsPrc=" + goodsPrc + "]";
+		return "GoodsVO [goodsInfoSeq=" + goodsInfoSeq + ", goodsNm=" + goodsNm + ", goodsPrc=" + goodsPrc
+				+ ", goodsImg=" + goodsImg + "]";
 	}
 }

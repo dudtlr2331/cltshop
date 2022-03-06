@@ -57,7 +57,7 @@
          		<c:when test="${not empty goodsList }">
          			<c:forEach var="obj" items="${goodsList}">
          				<div class="item" onclick="pageMove('product')">
-			               <img src="/images/맨투맨1.jpg">
+			               <img src="${obj.goodsImg}">
 			               <div class="txt_area">
 			                  <div class="item_name">${obj.goodsNm}</div>
 			                  <div class="item_price">

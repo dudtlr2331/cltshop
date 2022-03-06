@@ -11,62 +11,63 @@ import com.clt.shp.user.dao.impl.UserDaoOracle;
 public class CommonDaoTest {
 	public static void main(String[] args) {
 		CommonDaoTest test = new CommonDaoTest();
-//	      test.insert_test();
+	      test.insert_test();
 //	      test.select_obj_test();
-		test.select_list_test();
-	}
-	
-	public void insert_test() {
-		UserDaoOracle userDao = new UserDaoOracle();
-		UserVo pvo = new UserVo();
-		pvo.setMember_seq(6);
-		pvo.setMember_id("f");
-		pvo.setMember_name("f");
-		pvo.setMember_pwd("1234");
-		
-		userDao.insertUser(pvo);
-	}
-	
-	public void select_obj_test() {
-		UserDaoOracle userDao = new UserDaoOracle();
-		UserVo pvo = new UserVo();
-		pvo.setMember_seq(1);
-		UserVo obj = userDao.selectUser(pvo);
-		System.out.println(obj.toString());
-	}
-	
-	public void select_list_test() {
-		UserDaoOracle userDao = new UserDaoOracle();
-		UserVo pvo = new UserVo();
-		List<UserVo> list = userDao.selectListUser(pvo);
-		for(UserVo obj : list) {
-			System.out.println(obj.toString());
-		}
+//		test.select_list_test();
 	}
 	
 //	public void insert_test() {
-//		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
-//		GoodsVO pvo = new GoodsVO();
-//		pvo.setGoodsInfoSeq(5);
-//		pvo.setGoodsNm("맨투맨5");
-//		pvo.setGoodsPrc(29000);
+//		UserDaoOracle userDao = new UserDaoOracle();
+//		UserVo pvo = new UserVo();
+//		pvo.setMember_seq(7);
+//		pvo.setMember_id("g");
+//		pvo.setMember_name("g");
+//		pvo.setMember_pwd("1234");
 //		
-//		goodsDao.insertGoods(pvo);
+//		userDao.insertUser(pvo);
 //	}
-	
+//	
 //	public void select_obj_test() {
-//		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
-//		GoodsVO pvo = new GoodsVO();
-//		GoodsVO obj = goodsDao.selectGoods(pvo);
+//		UserDaoOracle userDao = new UserDaoOracle();
+//		UserVo pvo = new UserVo();
+//		pvo.setMember_seq(1);
+//		UserVo obj = userDao.selectUser(pvo);
 //		System.out.println(obj.toString());
 //	}
 //	
 //	public void select_list_test() {
-//		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
-//		GoodsVO pvo = new GoodsVO();
-//		List<GoodsVO> list = goodsDao.selectListGoods(pvo);
-//		for(GoodsVO obj : list) {
+//		UserDaoOracle userDao = new UserDaoOracle();
+//		UserVo pvo = new UserVo();
+//		List<UserVo> list = userDao.selectListUser(pvo);
+//		for(UserVo obj : list) {
 //			System.out.println(obj.toString());
 //		}
 //	}
+	
+	public void insert_test() {
+		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
+		GoodsVO pvo = new GoodsVO();
+		pvo.setGoodsInfoSeq(4);
+		pvo.setGoodsNm("맨투맨4");
+		pvo.setGoodsPrc(29000);
+		pvo.setGoodsImg("/images/맨투맨4.jpg");
+		
+		goodsDao.insertGoods(pvo);
+	}
+	
+	public void select_obj_test() {
+		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
+		GoodsVO pvo = new GoodsVO();
+		GoodsVO obj = goodsDao.selectGoods(pvo);
+		System.out.println(obj.toString());
+	}
+	
+	public void select_list_test() {
+		GoodsDaoOracle goodsDao = new GoodsDaoOracle();
+		GoodsVO pvo = new GoodsVO();
+		List<GoodsVO> list = goodsDao.selectListGoods(pvo);
+		for(GoodsVO obj : list) {
+			System.out.println(obj.toString());
+		}
+	}
 }
