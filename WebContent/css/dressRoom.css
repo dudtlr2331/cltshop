@@ -155,3 +155,43 @@
     background-color:#fff;
     font-weight: normal;
 }
+
+
+#dress_document_main{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.dress_document_main_image{
+    text-align: center;
+    width: 800px;
+    height: 300px;
+    border: 1px solid;
+    padding-bottom: 50px;
+}
+
+.dress_document_main_detail{
+    width: 800px;
+    height: 800px; /* 임시 높이 */
+}
+
+#dress_document_product{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.dress_document_product_box{
+    display: flex;
+    width: 700px;
+    height: 200px;
+    border: 2px solid;
+    margin-bottom: 30px;
+}
+
+.dress_document_product_image{
+    width: 200px;
+    height: 200px;
+    border-right: 2px solid;
+}
