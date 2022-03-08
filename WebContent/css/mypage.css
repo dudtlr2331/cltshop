@@ -1,35 +1,3 @@
-
-.top_btn input{
-    height: 27px;
-    width: 250px;
-}
-    
-.top_btn i{
-    font-size: 27px;
-    margin: 0 3px;
-}
-    
-#main_benner .menu{
-    display: flex;
-    list-style: none;
-    justify-content: space-around;
-    padding: 14px;
-}
-    
-#main_benner .menu a{
-    width: 100%;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    background-color: beige;
-}
-    
-#main_benner .menu li:hover{
-    background-color: gray;
-}
-
 #content .icon{
     display: flex;
     flex-direction: row;
