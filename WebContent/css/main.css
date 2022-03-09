@@ -177,3 +177,9 @@
   background-color: gray;
   color: white;
 }
+
+#event_page_main{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
