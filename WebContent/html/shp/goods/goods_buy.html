@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/goods_buy.css" rel="stylesheet">
+    <title>주문</title>
+    <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
+    <script src="/js/common.js" defer></script>
+</head>
+<body>
+    <header id="header_login">
+        <div>
+            <a href="/html/shp/user/login.html">로그인</a>
+            <span> ㅣ </span>
+            <a href="/html/shp/user/join.html" space="line">회원가입</a>
+        </div>
+    </header>
+    <header id="header">
+        <div class="logo">쇼핑몰로고...</div>
+        <div class="top_btn">
+            <input type="text"/>
+            <a href="/html/shp/goods/goods_cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="/html/shp/user/login.html"><i class="fa-solid fa-user-large"></i></a>
+        </div>
+    </header>
+    <section id="main_benner">
+        <ul class="menu">
+            <a href="/html/shp/goods/goods_list.html"><li>홈</li></a>
+            <a href="" class="menu_category_item_main"><li>카테고리</li></a>
+            <div class="menu_category">
+                <ul>
+                    <li class="menu_category_item"><a href="/html/shp/goods/goods_category.html"><div>카테고리</div></a></li>
+                    <li class="menu_category_item"><a href=""><div>상의</div></a></li>
+                    <li class="menu_category_item"><a href=""><div>아우터</div></a></li>
+                    <li class="menu_category_item"><a href=""><div>바지</div></a></li>
+                </ul>
+            </div>
+            <a href="/html/shp/qna/qna.html"><li>1:1문의</li></a>
+            <a href="/html/shp/dress/dress_main.html"><li>커뮤니티</li></a>
+        </ul>
+    </section>
+    <article id="buy_item">
+        <h1>주문하기</h1>
+        <h2>주문상품 정보</h2>
+        <div class="buy_item_top">
+            <div>챔피온</div><!--회사명-->
+            <div class="coupon">쿠폰적용</div>
+            <div>주문금액</div>
+        </div>
+        <div class="buy_item_mid">
+            <div><img src="/images/아우터4.jpg"></div>
+            <div>
+                <div>[1+1] 후드티</div>
+                <div>그레이XL/다크그린XL</div>
+                <div>1개</div>
+            </div>
+            <div>적용 가능한 쿠폰이 없습니다.</div>
+            <div>55,900 원</div>
+        </div>
+        <div class="buy_item_bottom">
+            <div>상품 55,900원</div>
+            <div> + </div>
+            <div>배송 0원</div>
+            <div class="order_money">주문금액 55,900원</div>
+        </div>
+    </article>
+    <article id="member_data">
+        <h2>주문자 정보</h2>
+        <div class="border">
+            <span>이름</span>
+            <input type="text">
+        </div>
+        <div class="border">
+            <span>휴대폰</span>
+            <input type="text">
+        </div>
+        <div class="end_border">
+            <span>이메일</span>
+            <input type="text">
+        </div>
+    </article>
+    <article id="delivery_location">
+        <h2>배송지 정보</h2>
+        <div class="border">
+            <span>수령인</span>
+            <input type="text">
+        </div>
+        <div class="border">
+            <span>휴대폰</span>
+            <input type="text">
+        </div>
+        <div class="border">
+            <span>배송주소</span>
+            <input type="text">
+        </div>
+        <div class="end_border">
+            <span>배송메모</span>
+            <input type="text">
+        </div>
+    </article>
+    <article id="use_point">
+        <h2>배송지 정보</h2>
+        <div class="border">
+            <span>보유</span>
+            <input type="text">
+        </div>
+        <div class="end_border">
+            <span>사용</span>
+            <input type="text">
+        </div>
+    </article>
+    <article id="payment">
+        <h2>최종 결제 금액</h2>
+        <div>
+            <span>총 상품금액</span>
+            <span>55,900 원</span>
+        </div>
+        <div>
+            <span>배송비</span>
+            <span>0 원</span>
+        </div>
+        <div>
+            <span>쿠폰 할인</span>
+            <span>0 원</span>
+        </div>
+        <div>
+            <span>포인트 할인</span>
+            <span>0 원</span>
+        </div>
+        <div class="end_border">
+            <span>총 결제예상 금액</span>
+            <span class="color_point">55,900 원</span>
+        </div>
+    </article>
+    <button onclick="pageMove('main')">주문하기</button>
+</body>
+</html>
