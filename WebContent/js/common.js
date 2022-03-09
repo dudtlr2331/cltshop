@@ -36,6 +36,15 @@ function pageMove(pageName){
     else if(pageName == 'document'){
         location.href = '/html/shp/dress/dress_document.html';
     }
+    else if(pageName == 'buy'){
+        location.href = '/html/shp/goods/goods_buy.html';
+    }
+    else if(pageName == 'mypage'){
+        location.href = '/html/shp/mypage/mypage.html';
+    }
+    else if(pageName == 'cart'){
+        location.href = '/html/shp/goods/goods_cart.html';
+    }
 }
 
 // 메인 화면 -------------------------------------------------------
