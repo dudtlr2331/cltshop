@@ -43,19 +43,42 @@
             <a href="/html/shp/dress/dress_main.html"><li>커뮤니티</li></a>
          </ul>
     </section>
-    <h3>1:1 문의</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>번호</th><th>구분</th><th>제목</th><th>등록일</th><th>처리일</th><th>상태</th>
+    <div class="document">
+        <h3>문의 답변하기</h3>
+        <table class="docu_ans">
+            <tr class="document_a">
+                <th><div>문의 유형 선택</div></th>
+                <td>
+                    <select class="d_select">
+                        <option>홈페이지 관련</option>
+                        <option>결제 이용</option>
+                        <option>건의사항</option>
+                    </select>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>1</th><th>테스트</th><th>테스트입니다</th><th>2022-02-15</th><th>2022-02-15</th><th>대기중</th>
+            <tr class="d_name">
+                <th><div>닉네임</div></th>
+                <td><input class="name"></td>
             </tr>
-        </tbody>
-    </table>
-    <div class="btn_qna"><a href="/html/shp/qna/qna_document.html"><button>문의 작성하기</button></a></div>
+            <tr class="d_mail">
+                <th><div>이메일 주소</div></th>
+                <td><input class="mail"></td>
+            </tr>
+            <tr class="d_title">
+                <th><div>문의 제목</div></th>
+                <td><input class="title"></td>
+            </tr>
+            <tr class="d_content">
+                <th><div>문의 내용</div></th>
+                <td><input class="content"></td>
+            </tr>
+            <tr class="d_file">
+                <th><div>파일 첨부</div></th>
+                <td><button class="file">파일선택</button></td>
+            </tr>
+        </table>
+        <button id="d_save_btn"><a href="/html/shp/qna/qna.html">등록</a></button>
+        <button id="d_cancel_btn"><a href="/html/shp/qna/qna.html">취소</a></button>
+    </div>
 </body>
 </html>
