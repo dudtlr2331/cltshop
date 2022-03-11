@@ -45,6 +45,9 @@ function pageMove(pageName){
     else if(pageName == 'cart'){
         location.href = '/html/shp/goods/goods_cart.html';
     }
+    else if(pageName == '1:1qna'){
+        location.href = '/html/shp/qna/qna.html';
+    }
 }
 
 // 메인 화면 -------------------------------------------------------
