@@ -5,22 +5,29 @@ import com.clt.shp.goods.GoodsController;
 import com.clt.shp.user.UserController;
 
 public class HandlerMapping {
-	private static HandlerMapping handler = new HandlerMapping();
+   private static HandlerMapping handler = new HandlerMapping();
+   
+   public static final String GOODS_LIST = "goods_list";
+   public static final String USER_LOGIN = "user_login";
+   public static final String USER_JOIN = "user_join";
+   public static final String USER_JOIN_INSERT = "user_join_insert";
 
-	private HandlerMapping() {
-	}
+   private HandlerMapping() {
+   }
 
-	public static HandlerMapping getInstance() {
-		return handler;
-	}
+   public static HandlerMapping getInstance() {
+      return handler;
+   }
 
-	public Controller createController(String command) {
-		Controller controller = null;
-		if (command.equals("goods_list")) {
-			controller = new GoodsController();
-		}else if(command.equals("join")) {
-			controller = new UserController();
-		}
-		return controller;
-	}
+   public Controller createController(String command) {
+      Controller controller = null;
+      if (command.equals(HandlerMapping.GOODS_LIST)) {
+         controller = new GoodsController();
+      }
+      //user
+      else if(command.equals(HandlerMapping.USER_LOGIN) || command.equals(HandlerMapping.USER_JOIN) || command.equals(HandlerMapping.USER_JOIN_INSERT)) {
+         controller = new UserController(command);
+      }
+      return controller;
+   }
 }

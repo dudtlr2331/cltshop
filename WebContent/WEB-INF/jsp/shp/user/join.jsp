@@ -13,6 +13,7 @@
     <script src="/js/common.js" defer></script>
 </head>
 <body>
+   <form action="DispatcherServlet?command=user_join_insert" method="post">
     <div class="logo">쇼핑몰로고...</div>
     <section id="section">
         <h1>회원가입</h1>
@@ -31,70 +32,30 @@
         </div>
         <div id="ph">
             <pre>전화번호</pre>
-            <input class="ph" type="tel" placeholder="010">
-            <input class="ph" type="tel" placeholder="0000">
-            <input class="ph" type="tel" placeholder="0000">
+            <input class="ph" type="tel" name="tel_front" placeholder="010">
+            <input class="ph" type="tel" name="tel_midle" placeholder="0000">
+            <input class="ph" type="tel" name="tel_back" placeholder="0000">
             <button id="c_btn">인증요청</button>
         </div>
         <div id="ymd">
             <pre>생년월일</pre>
-            <select name="yy">
+            <select name="birth_yy">
                 <option value="">년도</option>
-                <option value="년도">1999</option>
-                <option value="년도">1998</option>
-                <option value="년도">1997</option>
-                <option value="년도">1996</option>
-                <option value="년도">1995</option>
-                <option value="년도">1994</option>
+                <c:forEach items="${birthYyList }" var="obj">
+                   <option value="${obj }">${obj }</option>
+                </c:forEach>
             </select>
-            <select name="mm">
+            <select name="birth_mm">
                 <option value="">월</option>
-                <option value="월">1</option>
-                <option value="월">2</option>
-                <option value="월">3</option>
-                <option value="월">4</option>
-                <option value="월">5</option>
-                <option value="월">6</option>
-                <option value="월">7</option>
-                <option value="월">8</option>
-                <option value="월">9</option>
-                <option value="월">10</option>
-                <option value="월">11</option>
-                <option value="월">12</option>
+                <c:forEach items="${birthMmList }" var="obj">
+                   <option value="${obj }">${obj }</option>
+                </c:forEach>
             </select>
-            <select name="dd">
+            <select name="birth_dd">
                 <option value="">일</option>
-                <option value="일">1</option>
-                <option value="일">2</option>
-                <option value="일">3</option>
-                <option value="일">4</option>
-                <option value="일">5</option>
-                <option value="일">6</option>
-                <option value="일">7</option>
-                <option value="일">8</option>
-                <option value="일">9</option>
-                <option value="일">10</option>
-                <option value="일">11</option>
-                <option value="일">12</option>
-                <option value="일">13</option>
-                <option value="일">14</option>
-                <option value="일">15</option>
-                <option value="일">16</option>
-                <option value="일">17</option>
-                <option value="일">18</option>
-                <option value="일">19</option>
-                <option value="일">20</option>
-                <option value="일">21</option>
-                <option value="일">22</option>
-                <option value="일">23</option>
-                <option value="일">24</option>
-                <option value="일">25</option>
-                <option value="일">26</option>
-                <option value="일">27</option>
-                <option value="일">28</option>
-                <option value="일">29</option>
-                <option value="일">30</option>
-                <option value="일">31</option>
+                <c:forEach items="${birthDdList }" var="obj">
+                   <option value="${obj }">${obj }</option>
+                </c:forEach>
             </select>
         </div>
         <input type="submit" value="가입하기"/>
