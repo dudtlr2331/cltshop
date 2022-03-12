@@ -14,6 +14,8 @@ import com.clt.shp.goods.service.GoodsService;
 import com.clt.shp.user.dao.impl.UserDaoOracle;
 import com.clt.shp.user.service.UserService;
 
+import javafx.scene.control.Alert;
+
 public class UserController implements Controller{
    
    private ModelAndView modelAndView;
@@ -103,6 +105,17 @@ public class UserController implements Controller{
       String birthDd = req.getParameter("birth_dd");
       
       //값셋팅...
+      UserDaoOracle userDao = new UserDaoOracle();
+      UserVo pvo = new UserVo();
+      
+      pvo.setMember_seq(2);
+      pvo.setMember_id(id);
+      pvo.setMember_email(email);;
+      pvo.setMember_pwd(pwd);
+		
+      userDao.insertUser(pvo);
+      
+      modelAndView.setPath("/WEB-INF/jsp/shp/user/login.jsp");
       
       return modelAndView;
    }
