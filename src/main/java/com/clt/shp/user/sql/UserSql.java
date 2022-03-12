@@ -2,14 +2,14 @@ package com.clt.shp.user.sql;
 
 public interface UserSql {
 			String USER_INSERT = 
-			  "INSERT INTO MEMBER(MEMBER_SEQ, MEMBER_ID, MEMBER_NAME, MEMBER_PWD) "
+			  "INSERT INTO MEMBER(MEMBER_SEQ, MEMBER_ID, MEMBER_EMAIL, MEMBER_PWD) "
 			+ "VALUES(?, ?, ?, ?)"
 			;
 			
 			String USER_SELECT =
 			  "SELECT MEMBER_SEQ"
 			+ "	    , MEMBER_ID "
-			+ "     , MEMBER_NAME"
+			+ "     , MEMBER_EMAIL"
 			+ "     , MEMBER_PWD"
 			+ "  FROM MEMBER"
 			+ " WHERE 1=1"
@@ -19,7 +19,7 @@ public interface UserSql {
 			String USER_LIST =
 			  "SELECT MEMBER_SEQ"
 			+ "	    , MEMBER_ID "
-			+ "     , MEMBER_NAME"
+			+ "     , MEMBER_EMAIL"
 			+ "     , MEMBER_PWD"
 			+ "  FROM MEMBER"
 			+ " WHERE 1=1 "

@@ -31,7 +31,7 @@ public class UserDaoOracle implements UserDao{
 			ps = conn.prepareStatement(UserSql.USER_INSERT);
 			ps.setLong(1, pvo.getMember_seq());
 			ps.setString(2, pvo.getMember_id());
-			ps.setString(3, pvo.getMember_name());
+			ps.setString(3, pvo.getMember_email());
 			ps.setString(4, pvo.getMember_pwd());
 
 			row = ps.executeUpdate();
@@ -62,7 +62,7 @@ public class UserDaoOracle implements UserDao{
 			ps.setLong(1, pvo.getMember_seq());
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"));
+				vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -87,7 +87,7 @@ public class UserDaoOracle implements UserDao{
 			ps = conn.prepareStatement(UserSql.USER_LIST);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				list.add(new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD")));
+				list.add(new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

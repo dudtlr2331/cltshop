@@ -21,7 +21,7 @@ public class CommonDaoTest {
 		UserVo pvo = new UserVo();
 		pvo.setMember_seq(7);
 		pvo.setMember_id("g");
-		pvo.setMember_name("g");
+		pvo.setMember_email("g@naver.com");;
 		pvo.setMember_pwd("1234");
 		
 		userDao.insertUser(pvo);

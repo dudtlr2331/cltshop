@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,22 +12,21 @@
     <title>회원가입</title>
     <script src="/js/common.js" defer></script>
 </head>
-
 <body>
     <div class="logo">쇼핑몰로고...</div>
     <section id="section">
         <h1>회원가입</h1>
         <div id="id">
             <pre>아이디</pre>
-            <input class="id" placeholder="아이디 입력 ">
+            <input class="id" placeholder="아이디 입력 " name="id">
         </div>
         <div id="email">
             <pre>이메일</pre>
-            <input class="email" type="email" placeholder="이메일 입력 ">
+            <input class="email" type="email" placeholder="이메일 입력 " name="email">
         </div>
         <div id="pwd">
             <pre>비밀번호</pre>
-            <input class="pwd" type="password" placeholder="비밀번호 입력 ">
+            <input class="pwd" type="password" placeholder="비밀번호 입력 " name="pwd">
             <input class="pwd" type="password" placeholder="비밀번호 재입력 ">
         </div>
         <div id="ph">
@@ -97,8 +97,10 @@
                 <option value="일">31</option>
             </select>
         </div>
-        <button id="join_btn" onclick="pageMove('join')">가입하기</button>
+        <input type="submit" value="가입하기"/>
+        <!-- <button id="join_btn" onclick="pageMove('join')">가입하기</button> -->
     </section>
+   </form>
 </body>
 
 </html>

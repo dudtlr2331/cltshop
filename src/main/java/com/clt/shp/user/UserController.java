@@ -24,12 +24,15 @@ public class UserController implements Controller{
 	public ModelAndView execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		
 		UserVo param = new UserVo();
+//		param.setGoodsInfoSeq(1);
+//		GoodsVO goodsInfo = goodsService.selectGoodsOne(param);
+//		req.setAttribute("goodsInfo", goodsInfo);
 		
 		List<UserVo> userList = userService.selectUserList(param);
 		
 		req.setAttribute("userList", userList);
 		
-		return new ModelAndView("/WEB-INF/jsp/shp/goods/goods_list.jsp");
+		return new ModelAndView("/WEB-INF/jsp/shp/user/join.jsp");
 	}
 
 }
