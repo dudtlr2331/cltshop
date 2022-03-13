@@ -33,6 +33,12 @@ public class UserDaoOracle implements UserDao{
 			ps.setString(2, pvo.getMember_id());
 			ps.setString(3, pvo.getMember_email());
 			ps.setString(4, pvo.getMember_pwd());
+			ps.setString(5, pvo.getTel_front());
+			ps.setString(6, pvo.getTel_midle());
+			ps.setString(7, pvo.getTel_back());
+			ps.setString(8, pvo.getBirth_yy());
+			ps.setString(9, pvo.getBirth_mm());
+			ps.setString(10, pvo.getBirth_dd());
 
 			row = ps.executeUpdate();
 			
@@ -62,7 +68,9 @@ public class UserDaoOracle implements UserDao{
 			ps.setLong(1, pvo.getMember_seq());
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"));
+				vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"),
+						rs.getString("TEL_FRONT"),rs.getString("TEL_MIDLE"),rs.getString("TEL_BACK"),rs.getString("BIRTH_YY"),
+						rs.getString("BIRTH_MM"),rs.getString("BIRTH_DD"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -87,7 +95,9 @@ public class UserDaoOracle implements UserDao{
 			ps = conn.prepareStatement(UserSql.USER_LIST);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				list.add(new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD")));
+				list.add(new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"),
+						rs.getString("TEL_FRONT"),rs.getString("TEL_MIDLE"),rs.getString("TEL_BACK"),rs.getString("BIRTH_YY"),
+						rs.getString("BIRTH_MM"),rs.getString("BIRTH_DD")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

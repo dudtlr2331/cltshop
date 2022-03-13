@@ -2,8 +2,8 @@ package com.clt.shp.user.sql;
 
 public interface UserSql {
 			String USER_INSERT = 
-			  "INSERT INTO MEMBER(MEMBER_SEQ, MEMBER_ID, MEMBER_EMAIL, MEMBER_PWD) "
-			+ "VALUES(?, ?, ?, ?)"
+			  "INSERT INTO MEMBER(MEMBER_SEQ, MEMBER_ID, MEMBER_EMAIL, MEMBER_PWD, TEL_FRONT, TEL_MIDLE, TEL_BACK, BIRTH_YY, BIRTH_MM, BIRTH_DD) "
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 			;
 			
 			String USER_SELECT =
@@ -11,6 +11,12 @@ public interface UserSql {
 			+ "	    , MEMBER_ID "
 			+ "     , MEMBER_EMAIL"
 			+ "     , MEMBER_PWD"
+			+ "     , TEL_FRONT"
+			+ "     , TEL_MIDLE"
+			+ "     , TEL_BACK"
+			+ "     , BIRTH_YY"
+			+ "     , BIRTH_MM"
+			+ "     , BIRTH_DD"
 			+ "  FROM MEMBER"
 			+ " WHERE 1=1"
 			+ "   AND MEMBER_SEQ = ?"
@@ -21,6 +27,12 @@ public interface UserSql {
 			+ "	    , MEMBER_ID "
 			+ "     , MEMBER_EMAIL"
 			+ "     , MEMBER_PWD"
+			+ "     , TEL_FRONT"
+			+ "     , TEL_MIDLE"
+			+ "     , TEL_BACK"
+			+ "     , BIRTH_YY"
+			+ "     , BIRTH_MM"
+			+ "     , BIRTH_DD"
 			+ "  FROM MEMBER"
 			+ " WHERE 1=1 "
 			+ " ORDER BY MEMBER_SEQ DESC"

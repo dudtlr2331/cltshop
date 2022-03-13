@@ -108,10 +108,16 @@ public class UserController implements Controller{
       UserDaoOracle userDao = new UserDaoOracle();
       UserVo pvo = new UserVo();
       
-      pvo.setMember_seq(2);
+      pvo.setMember_seq(1);
       pvo.setMember_id(id);
       pvo.setMember_email(email);;
       pvo.setMember_pwd(pwd);
+      pvo.setTel_front(telFront);
+      pvo.setTel_midle(telMidle);
+      pvo.setTel_back(telBack)	;
+      pvo.setBirth_yy(birthYy);
+      pvo.setBirth_mm(birthMm);
+      pvo.setBirth_dd(birthDd);
 		
       userDao.insertUser(pvo);
       
