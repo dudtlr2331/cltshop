@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,15 +57,15 @@
     </section>
     <section id="coupon_making">
         <h2>쿠폰 제작</h2>
-        <div>이름 <input type="text"></div>
-        <div class="op">할인율 <input type="text">
+        <div>이름 <input class="cou_name" type="text"></div>
+        <div class="op">할인율 <input class="cou_discount" type="text">
             <select>
                 <option>원</option>
                 <option>%</option>
             </select>
         </div>
-        <div>사용기간 <input type="text"></div>
-        <div>개수 <input type="text"></div>
+        <div>사용기간 <input class="cou_time" type="text"></div>
+        <div>개수 <input class="cou_count" type="text"></div>
         <button class="coupon_btn">등록하기</button>
     </section>
 </body>
