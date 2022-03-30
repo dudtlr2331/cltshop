@@ -29,16 +29,11 @@ public class UserDaoOracle implements UserDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(UserSql.USER_INSERT);
-			ps.setLong(1, pvo.getMember_seq());
-			ps.setString(2, pvo.getMember_id());
-			ps.setString(3, pvo.getMember_email());
-			ps.setString(4, pvo.getMember_pwd());
-			ps.setString(5, pvo.getTel_front());
-			ps.setString(6, pvo.getTel_midle());
-			ps.setString(7, pvo.getTel_back());
-			ps.setString(8, pvo.getBirth_yy());
-			ps.setString(9, pvo.getBirth_mm());
-			ps.setString(10, pvo.getBirth_dd());
+			ps.setString(1, pvo.getMember_id());
+			ps.setString(2, pvo.getMember_email());
+			ps.setString(3, pvo.getMember_pwd());
+			ps.setString(4, pvo.getMember_tel());
+			ps.setString(5, pvo.getBirth());
 
 			row = ps.executeUpdate();
 			
@@ -69,8 +64,7 @@ public class UserDaoOracle implements UserDao{
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"),
-						rs.getString("TEL_FRONT"),rs.getString("TEL_MIDLE"),rs.getString("TEL_BACK"),rs.getString("BIRTH_YY"),
-						rs.getString("BIRTH_MM"),rs.getString("BIRTH_DD"));
+						rs.getString("MEMBER_TEL"), rs.getString("BIRTH"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,8 +90,7 @@ public class UserDaoOracle implements UserDao{
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				list.add(new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"),
-						rs.getString("TEL_FRONT"),rs.getString("TEL_MIDLE"),rs.getString("TEL_BACK"),rs.getString("BIRTH_YY"),
-						rs.getString("BIRTH_MM"),rs.getString("BIRTH_DD")));
+						rs.getString("MEMBER_TEL"), rs.getString("BIRTH")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
