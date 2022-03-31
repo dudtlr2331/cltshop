@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,13 @@
 <title>로그인</title>
 <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
 <script src="/js/common.js" defer></script>
+<%-- <c:if test="${sessionScope.message ne ''}"> 아래와 같다--%>
+<c:if test="${not empty sessionScope.message}">
+	<script type="text/javascript">alert("${sessionScope.message}");</script>
+	<%-- <c:out scope="session" var="message" value="메세지가 들어갑니다."/> jsp에서 메세지 추가하고 싶을 떄 사용 --%>
+	<c:remove var="message" scope="session"/>
+</c:if>
+
 </head>
 <body>
 <i class="fa-brands fa-bots bb"></i>
@@ -17,9 +25,14 @@
    <div class="input_area">
       <h1>로그인</h1>
       <div class="top">
-         <input class="id" placeholder="아이디 입력 ">
-         <input class="pwd" type="password" placeholder="비밀번호 입력 ">
-         <button id="login_btn" onclick="pageMove('mypage')">로그인</button>
+      	 <form action="DispatcherServlet?command=user_login_insert" method="post">
+         	<input class="id" placeholder="아이디 입력 " name="id"><br/>
+         	<input class="pwd" type="password" placeholder="비밀번호 입력 " name="pwd"><br/>
+         	<input type="submit" value="로그인"/>
+         </form>
+         	<!-- <input class="id" placeholder="아이디 입력 " name="id">
+         	<input class="pwd" type="password" placeholder="비밀번호 입력 " name="pwd">
+         	<button id="login_btn" onclick="pageMove('mypage')">로그인</button> -->
       </div>
       <div class="top_log">
          <pre> 아이디 찾기 |</pre>

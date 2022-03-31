@@ -16,9 +16,15 @@
    <header id="header">
       <div class="logo">쇼핑몰로고...</div>
       <div class="top_btn">
-         <input type="text"/>
-         <a href="/html/user/cart/cart_view.html"><i class="fa-solid fa-cart-shopping"></i></a>
-         <a href="DispatcherServlet?command=user_login"><i class="fa-solid fa-user-large"></i></a>
+		<!-- 로그인 성공 시 회원 아이디 출력 -->
+		<c:choose>
+			<c:when test="${not empty sessionScope.loginInfo }">
+				<span>${sessionScope.loginInfo.member_id }님 환영합니다.</span>
+			</c:when>
+		</c:choose>
+		<input type="text"/>
+		<a href="/html/user/cart/cart_view.html"><i class="fa-solid fa-cart-shopping"></i></a>
+		<a href="DispatcherServlet?command=user_login"><i class="fa-solid fa-user-large"></i></a>
       </div>
    </header>
 

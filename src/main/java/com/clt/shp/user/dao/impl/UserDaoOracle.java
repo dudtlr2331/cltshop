@@ -151,6 +151,32 @@ public class UserDaoOracle implements UserDao{
 		}
 		return row;
 	}
+	
+	public UserVo userLogin(UserVo pvo) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		UserVo vo = null;
+		try {
+			conn = commonDao.getConnection();
+			ps = conn.prepareStatement(UserSql.USER_LOGIN);
+			ps.setString(1, pvo.getMember_id());
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"),
+						rs.getString("MEMBER_TEL"), rs.getString("BIRTH"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				commonDao.closeAll(rs, ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return vo;
+	}
 
 
 }

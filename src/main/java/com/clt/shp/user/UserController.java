@@ -1,10 +1,13 @@
 package com.clt.shp.user;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.clt.cmm.controller.Controller;
 import com.clt.cmm.servlet.HandlerMapping;
@@ -15,6 +18,7 @@ import com.clt.shp.user.dao.impl.UserDaoOracle;
 import com.clt.shp.user.service.UserService;
 
 import javafx.scene.control.Alert;
+import jdk.nashorn.internal.parser.JSONParser;
 
 public class UserController implements Controller{
    
@@ -42,6 +46,14 @@ public class UserController implements Controller{
          modelAndView = userLogin(req, res);
          
       }
+      else if(command.equals(HandlerMapping.USER_LOGIN_INSERT)) {
+    	  modelAndView = userLoginService(req, res);
+    	  
+      }
+      else if(command.equals(HandlerMapping.USER_ID_CHECK)) {
+    	  modelAndView = userIdCheck(req, res);
+    	  
+      }
       
 //      UserVo param = new UserVo();
 //      param.setGoodsInfoSeq(1);
@@ -55,7 +67,61 @@ public class UserController implements Controller{
       return modelAndView;
    }
    
+   // 회원가입 시 회원 아이디 중복 체크
+	private ModelAndView userIdCheck(HttpServletRequest req, HttpServletResponse res) {
+		modelAndView.setPath("jsonView.jsp");
+		modelAndView.setRedirect(false);
+		String json = "";
+		String id = req.getParameter("id");
+		
+		UserDaoOracle userDao = new UserDaoOracle();
+		UserVo pvo = new UserVo();
 
+		pvo.setMember_id(id);
+		UserVo sessionVO = userDao.userLogin(pvo);
+		
+		if(id.equals(sessionVO.getMember_id())) {
+			json = "{\"result\":\"fail\"}";
+		}else {
+			json = "{\"result\":\"success\"}";
+		}
+		
+		req.setAttribute("json", json);
+		return modelAndView;
+	}
+
+//로그인 화면 호출
+	
+	private ModelAndView userLoginService(HttpServletRequest req, HttpServletResponse res) {
+		HttpSession session = req.getSession();
+		String id = req.getParameter("id");
+		String pwd = req.getParameter("pwd");
+		String returnPage = "";
+
+		UserDaoOracle userDao = new UserDaoOracle();
+		UserVo pvo = new UserVo();
+
+		pvo.setMember_id(id);
+		UserVo sessionVO = userDao.userLogin(pvo);
+		
+		
+		if (null == sessionVO) {
+			session.setAttribute("message", "아이디/비밀번호를 입력해 주세요.");
+			returnPage = "DispatcherServlet?command=user_login";
+		}else if(id.equals(sessionVO.getMember_id()) && pwd.equals(sessionVO.getMember_pwd())) {
+			session.setAttribute("loginInfo", sessionVO);
+			returnPage = "DispatcherServlet?command=goods_list";
+		}else {
+			session.setAttribute("message", "아이디/비밀번호를 확인해 주세요.");
+			returnPage = "DispatcherServlet?command=user_login";
+		}
+
+		modelAndView.setRedirect(true);
+		modelAndView.setPath(returnPage);
+		return modelAndView;
+	}
+	 
+   
    //로그인 화면 호출
    private ModelAndView userLogin(HttpServletRequest req, HttpServletResponse res) {
       modelAndView.setPath("/WEB-INF/jsp/shp/user/login.jsp");

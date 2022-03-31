@@ -44,4 +44,16 @@ public interface UserSql {
 //			+ "  AND GOODS_INFO_SEQ = ?"
 			+ "  AND MEMBER_SEQ = ?"
 			;
+			
+			String USER_LOGIN =
+			  "SELECT MEMBER_SEQ"
+			+ "	    , MEMBER_ID "
+			+ "     , MEMBER_EMAIL"
+			+ "     , MEMBER_PWD"
+			+ "     , MEMBER_TEL"
+			+ "     , BIRTH"
+			+ "  FROM MEMBER"
+			+ " WHERE 1=1"
+			+ "   AND MEMBER_ID = ?"
+			;
 }

@@ -9,8 +9,10 @@ public class HandlerMapping {
    
    public static final String GOODS_LIST = "goods_list";
    public static final String USER_LOGIN = "user_login";
+   public static final String USER_LOGIN_INSERT = "user_login_insert";
    public static final String USER_JOIN = "user_join";
    public static final String USER_JOIN_INSERT = "user_join_insert";
+   public static final String USER_ID_CHECK = "user_id_check";
 
    private HandlerMapping() {
    }
@@ -25,7 +27,8 @@ public class HandlerMapping {
          controller = new GoodsController();
       }
       //user
-      else if(command.equals(HandlerMapping.USER_LOGIN) || command.equals(HandlerMapping.USER_JOIN) || command.equals(HandlerMapping.USER_JOIN_INSERT)) {
+      else if(command.equals(HandlerMapping.USER_LOGIN) || command.equals(HandlerMapping.USER_JOIN) || command.equals(HandlerMapping.USER_JOIN_INSERT)
+    		  || command.equals(HandlerMapping.USER_LOGIN_INSERT) || command.equals(HandlerMapping.USER_ID_CHECK)) {
          controller = new UserController(command);
       }
       return controller;

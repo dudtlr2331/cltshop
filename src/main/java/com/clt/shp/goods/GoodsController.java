@@ -31,6 +31,8 @@ public class GoodsController implements Controller{
 		
 		req.setAttribute("goodsList", goodsList);
 		
+		//req.getSession().invalidate(); 연습
+		
 		return new ModelAndView("/WEB-INF/jsp/shp/goods/goods_list.jsp");
 	}
 
