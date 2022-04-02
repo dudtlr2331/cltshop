@@ -25,7 +25,7 @@
     </header>
     <section id="main_benner">
        <ul class="menu">
-         <a href="/html/user/main/main.html"><li>홈</li></a>
+         <a href="/DispatcherServlet?command=goods_list"><li>홈</li></a>
          <a href="/html/user/category/category.html"><li>카테고리</li></a>
          <a href="/html/user/one_qna/one_qna.html"><li>1:1문의</li></a>
          <a href="/html/user/dressroom/dressroom_main.html"><li>커뮤니티</li></a>

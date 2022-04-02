@@ -28,9 +28,9 @@ public class HandlerMapping {
 
    public Controller createController(String command) {
       Controller controller = null;
-    //goods
-      if (command.equals(HandlerMapping.GOODS_LIST) || command.equals(HandlerMapping.GOODS_LIST)) {
-         controller = new GoodsController();
+      //goods
+      if (command.equals(HandlerMapping.GOODS_LIST) || command.equals(HandlerMapping.GOODS_CATEGORY)) {
+         controller = new GoodsController(command);
       }
       //user
       else if(command.equals(HandlerMapping.USER_LOGIN) || command.equals(HandlerMapping.USER_JOIN) || command.equals(HandlerMapping.USER_JOIN_INSERT)
