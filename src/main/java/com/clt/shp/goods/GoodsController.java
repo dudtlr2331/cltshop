@@ -10,8 +10,6 @@ import com.clt.cmm.servlet.HandlerMapping;
 import com.clt.cmm.servlet.ModelAndView;
 import com.clt.shp.goods.dao.impl.GoodsDaoOracle;
 import com.clt.shp.goods.service.GoodsService;
-import com.clt.shp.user.UserVo;
-import com.clt.shp.user.service.UserService;
 
 public class GoodsController implements Controller {
 	private String command = "";

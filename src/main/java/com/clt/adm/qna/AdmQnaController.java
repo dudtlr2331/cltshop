@@ -23,7 +23,7 @@ public class AdmQnaController implements Controller{
 		AdmQnaVO pvo = parameterSetting(req);
 		
 		//비즈니스 처리
-		if(command.equals(HandlerMapping.ADM_GOODS_LIST)) {
+		if(command.equals(HandlerMapping.ADM_QNA_LIST)) {
 			modelAndView.setPath("/WEB-INF/jsp/adm/qna/qna_list.jsp");
 			modelAndView.setRedirect(false);
 		}

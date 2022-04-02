@@ -20,19 +20,19 @@ public class AdmDressController implements Controller{
 		ModelAndView modelAndView = new ModelAndView();
 		
 		//파라미터 셋팅
-		GoodsVO pvo = parameterSetting(req);
+		AdmDressVO pvo = parameterSetting(req);
 		
 		//비즈니스 처리
-		if(command.equals(HandlerMapping.ADM_GOODS_LIST)) {
-			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_list.jsp");
+		if(command.equals(HandlerMapping.ADM_DRESSROOM_MANAGER)) {
+			modelAndView.setPath("/WEB-INF/jsp/adm/dress/dressroom_manager.jsp");
 			modelAndView.setRedirect(false);
 		}
 				
 		return modelAndView;
 	}
 
-	private GoodsVO parameterSetting(HttpServletRequest req) {
-		GoodsVO pvo = new GoodsVO();
+	private AdmDressVO parameterSetting(HttpServletRequest req) {
+		AdmDressVO pvo = new AdmDressVO();
 		return pvo;
 	}
 }

@@ -20,7 +20,7 @@ public class AdmGoodsController implements Controller{
 		ModelAndView modelAndView = new ModelAndView();
 		
 		//파라미터 셋팅
-		GoodsVO pvo = parameterSetting(req);
+		AdmGoodsVO pvo = parameterSetting(req);
 		
 		//비즈니스 처리
 		if(command.equals(HandlerMapping.ADM_GOODS_LIST)) {
@@ -31,8 +31,8 @@ public class AdmGoodsController implements Controller{
 		return modelAndView;
 	}
 
-	private GoodsVO parameterSetting(HttpServletRequest req) {
-		GoodsVO pvo = new GoodsVO();
+	private AdmGoodsVO parameterSetting(HttpServletRequest req) {
+		AdmGoodsVO pvo = new AdmGoodsVO();
 		return pvo;
 	}
 }
