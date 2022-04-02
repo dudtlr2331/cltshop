@@ -2,3 +2,5 @@
 .classpath
 .settings/
 build/
+.vscode/settings.json
+WebContent/test.html
