@@ -13,6 +13,7 @@ public class HandlerMapping {
    public static final String USER_JOIN = "user_join";
    public static final String USER_JOIN_INSERT = "user_join_insert";
    public static final String USER_ID_CHECK = "user_id_check";
+   public static final String USER_UPDATE = "user_update";
 
    private HandlerMapping() {
    }
@@ -28,7 +29,7 @@ public class HandlerMapping {
       }
       //user
       else if(command.equals(HandlerMapping.USER_LOGIN) || command.equals(HandlerMapping.USER_JOIN) || command.equals(HandlerMapping.USER_JOIN_INSERT)
-    		  || command.equals(HandlerMapping.USER_LOGIN_INSERT) || command.equals(HandlerMapping.USER_ID_CHECK)) {
+    		  || command.equals(HandlerMapping.USER_LOGIN_INSERT) || command.equals(HandlerMapping.USER_ID_CHECK) || command.equals(HandlerMapping.USER_UPDATE)) {
          controller = new UserController(command);
       }
       return controller;

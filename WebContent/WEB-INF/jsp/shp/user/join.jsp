@@ -66,43 +66,44 @@
    
 <script>
 (function() {
-	var httpRequest;
-	var frm = document.frm;
-	var id = frm.id.value;
+	document.getElementById("ajaxBtn").addEventListener('click', makeRequest);
+	function makeRequest() {
+	  httpRequest = new XMLHttpRequest();
 	
-	
-	  document.getElementById("ajaxBtn").addEventListener('click', makeRequest);
-
-	  function makeRequest() {
-	    httpRequest = new XMLHttpRequest();
-
-	    if(!httpRequest) {
-	      alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
-	      return false;
-	    }
-	    httpRequest.onreadystatechange = alertContents;
-	    httpRequest.open('POST', "DispatcherServlet?command=user_id_check");
-	    httpRequest.send(id);
+	  if(!httpRequest) {
+	    alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
+	    return false;
 	  }
-
-	  function alertContents() {
-	    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-	      if (httpRequest.status === 200) {
-	    	  var rtnJson = JSON.parse(httpRequest.responseText);
-	    	  if(rtnJson.result == 'success'){
-	    		  alert("사용할수 있는 아이디 입니다.");
-	    		  isIdCheck = true;
-	    	  }else{
-	    		  alert("이미 사용중인 아이디 입니다.");
-	    	  }
-	      } else {
-	        alert('request에 뭔가 문제가 있어요.');
-	      }
+	  id = frm.id.value;
+	  httpRequest.onreadystatechange = alertContents;
+	  httpRequest.open('POST', "DispatcherServlet?command=user_id_check");
+	  httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	  httpRequest.send('id='+encodeURIComponent(id));
+	}
+	
+	function alertContents() {
+	  if (httpRequest.readyState === XMLHttpRequest.DONE) {
+	    if (httpRequest.status === 200) {
+	  	  var res = httpRequest.responseText;
+	  	  console.log('res:' + res);
+	  	  var rtnJson = JSON.parse(res);
+	  	  if(rtnJson.result == 'success'){
+	  		  alert("사용할수 있는 아이디 입니다.");
+	  		  isIdCheck = true;
+	  	  }else{
+	  		  alert("이미 사용중인 아이디 입니다.");
+	  	  }
+	    } else {
+	      alert('request에 뭔가 문제가 있어요.');
 	    }
 	  }
+	}
 	
 })();
 var isIdCheck = false;
+var httpRequest;
+var frm = document.frm;
+var id = '';
 
 function checkForm(){
 	if(!isIdCheck){

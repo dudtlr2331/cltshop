@@ -19,7 +19,10 @@
 		<!-- 로그인 성공 시 회원 아이디 출력 -->
 		<c:choose>
 			<c:when test="${not empty sessionScope.loginInfo }">
-				<span>${sessionScope.loginInfo.member_id }님 환영합니다.</span>
+				<form action="DispatcherServlet?command=user_update" method="post">
+					<span>${sessionScope.loginInfo.member_id }님 환영합니다.</span>
+					<input type="submit" value="중복 확인"/>
+				</form>
 			</c:when>
 		</c:choose>
 		<input type="text"/>

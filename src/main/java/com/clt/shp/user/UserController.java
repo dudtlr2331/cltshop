@@ -54,6 +54,10 @@ public class UserController implements Controller{
     	  modelAndView = userIdCheck(req, res);
     	  
       }
+      else if(command.equals(HandlerMapping.USER_UPDATE)) {
+    	  modelAndView = userUpdate(req, res);
+    	  
+      }
       
 //      UserVo param = new UserVo();
 //      param.setGoodsInfoSeq(1);
@@ -67,7 +71,17 @@ public class UserController implements Controller{
       return modelAndView;
    }
    
-   // 회원가입 시 회원 아이디 중복 체크
+   //회원 정보 수정
+   private ModelAndView userUpdate(HttpServletRequest req, HttpServletResponse res) {
+	   HttpSession session = req.getSession();
+	  String id = req.getParameter("id");
+	   System.out.println(id);
+	   
+	   modelAndView.setPath("/WEB-INF/jsp/shp/user/login.jsp");
+	   return modelAndView;
+   }
+
+// 회원가입 시 회원 아이디 중복 체크
 	private ModelAndView userIdCheck(HttpServletRequest req, HttpServletResponse res) {
 		modelAndView.setPath("jsonView.jsp");
 		modelAndView.setRedirect(false);
@@ -80,18 +94,24 @@ public class UserController implements Controller{
 		pvo.setMember_id(id);
 		UserVo sessionVO = userDao.userLogin(pvo);
 		
-		if(id.equals(sessionVO.getMember_id())) {
+		try {
+			if(null == sessionVO) {
+				json = "{\"result\":\"success\"}";
+			}else {
+				json = "{\"result\":\"fail\"}";
+			}
+		}catch (Exception e) {
 			json = "{\"result\":\"fail\"}";
-		}else {
-			json = "{\"result\":\"success\"}";
+			e.printStackTrace();
 		}
+		
 		
 		req.setAttribute("json", json);
 		return modelAndView;
 	}
 
-//로그인 화면 호출
-	
+
+	//로그인 - 아이디, 비밀번호 입력 시 호출
 	private ModelAndView userLoginService(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession();
 		String id = req.getParameter("id");
