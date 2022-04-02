@@ -77,11 +77,11 @@ public class UserController implements Controller {
 
    // 회원 정보 수정
    private ModelAndView userUpdate(HttpServletRequest req, HttpServletResponse res) {
-      HttpSession session = req.getSession();
-      String id = req.getParameter("id");
-      System.out.println(id);
-
-      modelAndView.setPath("/WEB-INF/jsp/shp/user/login.jsp");
+//      HttpSession session = req.getSession();
+//      String id = req.getParameter("id");
+//      System.out.println(id);
+//
+//      modelAndView.setPath("/WEB-INF/jsp/shp/user/login.jsp");
       return modelAndView;
    }
 
