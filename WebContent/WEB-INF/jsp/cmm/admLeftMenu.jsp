@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- admmenu start -->
-<header id="header">
-    <div class="logo">쇼핑몰로고...</div>
-</header>
-<nav id="main_cate">
+<!-- adm menu start -->
+<nav class="adm_left_menu" id="main_cate">
     <ul id="manage_main">
        <li><a href="/DispatcherServlet?command=adm_goods_list">상품 관리</a></li>
             <ul class="submanage_menu">
@@ -19,4 +16,4 @@
        <li><a href="/DispatcherServlet?command=adm_coupon">쿠폰/적립금 관리</a></li>
     </ul>
 </nav>
-<!-- admmenu end -->
+<!-- adm menu end -->

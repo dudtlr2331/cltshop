@@ -1,29 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/cmm/admLeftMenu.jsp" %>
-<section id="top">
-    <div>
-        선택한 항목을 <button>X삭제</button>
-    </div>
-    <button id="go" class="btn_prod">등록</button>
-</section>
-<section id="bottom">
-    <table>
-        <tr>
-            <th><input type="checkbox"></th>
-            <th class="b1">번호</th>
-            <th class="b2">제목</th>
-            <th class="b3">상태</th>
-            <th class="b4">기간</th>
-            <th class="b5">등록일</th>
-        </tr>
-        <tr>
-            <td class="bb">배너 내역이 없습니다.</td>
-        </tr>
-    </table>
-</section>
+<%@ include file="/WEB-INF/jsp/cmm/admHeader.jsp" %>
+<h2>이벤트 배너 관리</h2>
+<div class="src_area">
+	<!-- <h4>이벤트 검색</h4>
+	<div>
+		<table>
+			<colgroup>
+				<col width="20%"/>
+				<col width="80%"/>
+			</colgroup>
+			<tr>
+				<th>
+					
+				</th>
+				<td></td>
+			</tr>
+		</table>
+	</div> -->
+</div>
 
-<div id="bg" class="hidden"></div>
-<div id="popup" class="hidden">
+<div>
+    선택한 항목을 <button>X삭제</button>
+</div>
+<button id="go" class="btn_prod">등록</button>
+
+<div class="data_list">
+	<table>
+		<colgroup>
+			<col width="">
+			<col width="">
+			<col width="">
+			<col width="">
+			<col width="">
+			<col width="">
+		</colgroup>
+		<thead>
+			<tr>
+				<th><input type="checkbox"></th>
+				<th>번호</th>
+				<th>제목</th>
+				<th>상태</th>
+				<th>기간</th>
+				<th>등록일</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+	            <td colspan="6">배너 내역이 없습니다.</td>
+	        </tr>
+		</tbody>
+	</table>
+</div>
+
+<div id="popup" style="display: none;">
     <h3>이벤트 배너 등록</h3>
     <div id="popup-text">
         <table>
@@ -76,3 +105,4 @@
         popup.classList.add("hidden");
     });
 </script>
+<%@ include file="/WEB-INF/jsp/cmm/admFooter.jsp" %>

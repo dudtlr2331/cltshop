@@ -10,19 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/category.css" rel="stylesheet">
-    <link href="/css/list.css" rel="stylesheet"> 
     <link href="/css/login.css" rel="stylesheet">
-    <link href="/css/manager_menu.css" rel="stylesheet">
-    <link href="/css/product_control.css" rel="stylesheet">
-    <link href="/css/product_postscript.css" rel="stylesheet">
-    <link href="/css/product_order.css" rel="stylesheet">
-    <link href="/css/coupon.css" rel="stylesheet">
-    <link href="/css/dressroom_manager.css" rel="stylesheet">
-    <link href="/css/event_banner.css" rel="stylesheet">
-    <link href="/css/one_management.css" rel="stylesheet">
-    <link href="/css/sales.css" rel="stylesheet">
-    <link href="/css/member.css" rel="stylesheet">
+    <link href="/css/admin.css" rel="stylesheet">
     <title>쇼핑몰</title>
     <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
     <script src="/js/common.js" defer></script>

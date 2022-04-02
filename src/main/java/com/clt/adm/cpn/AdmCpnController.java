@@ -23,7 +23,7 @@ public class AdmCpnController implements Controller{
 		AdmCpnVO pvo = parameterSetting(req);
 		
 		//비즈니스 처리
-		if(command.equals(HandlerMapping.ADM_GOODS_LIST)) {
+		if(command.equals(HandlerMapping.ADM_COUPON)) {
 			modelAndView.setPath("/WEB-INF/jsp/adm/coupon/coupon.jsp");
 			modelAndView.setRedirect(false);
 		}

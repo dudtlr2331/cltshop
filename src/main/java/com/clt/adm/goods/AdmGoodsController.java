@@ -27,6 +27,10 @@ public class AdmGoodsController implements Controller{
 			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_list.jsp");
 			modelAndView.setRedirect(false);
 		}
+		else if(command.equals(HandlerMapping.ADM_GOODS_QNA)) {
+			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_qna.jsp");
+			modelAndView.setRedirect(false);
+		}
 				
 		return modelAndView;
 	}

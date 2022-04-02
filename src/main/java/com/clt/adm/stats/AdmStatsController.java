@@ -23,7 +23,7 @@ public class AdmStatsController implements Controller{
 		AdmStatsVO pvo = parameterSetting(req);
 		
 		//비즈니스 처리
-		if(command.equals(HandlerMapping.ADM_GOODS_LIST)) {
+		if(command.equals(HandlerMapping.ADM_STATS_SALES)) {
 			modelAndView.setPath("/WEB-INF/jsp/adm/stats/stats_sales.jsp");
 			modelAndView.setRedirect(false);
 		}

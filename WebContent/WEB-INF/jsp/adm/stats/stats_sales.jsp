@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/cmm/admLeftMenu.jsp" %>
+<%@ include file="/WEB-INF/jsp/cmm/admHeader.jsp" %>
+<link href="/css/sales.css" rel="stylesheet">
+<h2>매출현황</h2>
 <div id="sales">
-    <h2>매출현황</h2>
     <div class="check">
         <li><a href="#">월간</a></li>
         <li><a href="#">주간</a></li>
@@ -139,3 +140,4 @@
         </tr>
     </table>
 </div>
+<%@ include file="/WEB-INF/jsp/cmm/admFooter.jsp" %>
