@@ -12,7 +12,8 @@
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/category.css" rel="stylesheet">
     <link href="/css/list.css" rel="stylesheet">
-    <title>홈</title>
+    <link href="/css/*.css" rel="stylesheet">    
+    <title>쇼핑몰</title>
     <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
     <script src="/js/common.js" defer></script>
 </head>

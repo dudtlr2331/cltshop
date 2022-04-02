@@ -103,16 +103,16 @@ CREATE TABLE stats_tbl (
 );
 
 CREATE TABLE GOODS_INFO (
-	GOODS_INFO_SEQ	number	NOT NULL,
-	goods_category_id	number	NOT NULL,
-	size_id	number	NOT NULL,
-	color_id2	number	NOT NULL,
-	goods_id	number	NOT NULL,
-	color_id	number	NOT NULL,
-	goods_name	varchar2(40)	NULL,
-	goods_price	number	NULL,
-	goods_stock	number	NULL,
-	goods_description	varchar2(3000)	NULL
+	GOODS_INFO_SEQ	NUMBER	NOT NULL,
+	GOODS_CATEGORY_ID	NUMBER	NOT NULL,
+	SIZE_ID	NUMBER	NOT NULL,
+	GOODS_ID	NUMBER	NOT NULL,
+	COLOR_ID	NUMBER	NOT NULL,
+	GOODS_NAME	VARCHAR2(40)	NULL,
+	GOODS_PRICE	NUMBER	NULL,
+	GOODS_STOCK	NUMBER	NULL,
+	GOODS_DESCRIPTION	VARCHAR2(3000)	NULL,
+	GOODS_IMG	VARCHAR2(100)	NULL
 );
 
 CREATE TABLE goodsCategory (
