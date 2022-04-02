@@ -7,6 +7,10 @@
 	<%-- <c:out scope="session" var="message" value="메세지가 들어갑니다."/> jsp에서 메세지 추가하고 싶을 떄 사용 --%>
 	<c:remove var="message" scope="session"/>
 </c:if>
+<c:if test="${not empty requestScope.message}">
+	<script type="text/javascript">alert("${requestScope.message}");</script>
+	<c:remove var="message" scope="session"/>
+</c:if>
 <i class="fa-brands fa-bots bb"></i>
 <section id="section" class="section">
    <div class="input_area">

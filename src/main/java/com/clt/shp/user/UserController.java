@@ -13,6 +13,8 @@ import com.clt.cmm.servlet.ModelAndView;
 import com.clt.shp.user.dao.impl.UserDaoOracle;
 import com.clt.shp.user.service.UserService;
 
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
+
 public class UserController implements Controller {
 
    private ModelAndView modelAndView;
@@ -175,9 +177,10 @@ public class UserController implements Controller {
    private ModelAndView userJoinService(HttpServletRequest req, HttpServletResponse res) {
       // 값셋팅...
       UserDaoOracle userDao = new UserDaoOracle();
-
+      
       userDao.insertUser(pvo);
 
+      req.setAttribute("message", "회원가입을 환영합니다!");
       modelAndView.setPath("/WEB-INF/jsp/shp/user/login.jsp");
 
       return modelAndView;
