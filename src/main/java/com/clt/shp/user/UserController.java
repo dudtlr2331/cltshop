@@ -70,7 +70,7 @@ public class UserController implements Controller {
 
       pvo.setMemberId(id);
       pvo.setMemberPwd(pwd);
-      pvo.setMemberEmail(email);
+      pvo.setEmail(email);
       pvo.setMemberTel(member_tel);
       pvo.setBirth(birth);
    }

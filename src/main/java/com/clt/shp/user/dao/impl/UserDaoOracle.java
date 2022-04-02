@@ -30,10 +30,18 @@ public class UserDaoOracle implements UserDao{
          conn = commonDao.getConnection();
          ps = conn.prepareStatement(UserSql.USER_INSERT);
          ps.setString(1, pvo.getMemberId());
-         ps.setString(2, pvo.getMemberEmail());
+         ps.setString(2, pvo.getMemberName());
          ps.setString(3, pvo.getMemberPwd());
          ps.setString(4, pvo.getMemberTel());
          ps.setString(5, pvo.getBirth());
+         ps.setString(6, pvo.getGender());
+         ps.setString(7, pvo.getEmail());
+         ps.setString(8, pvo.getCreatedAt());
+         ps.setString(9, pvo.getGrade());
+         ps.setString(10, pvo.getDelFlag());
+         ps.setString(11, pvo.getDelDate());
+         ps.setString(12, pvo.getCoupon());
+         ps.setString(13, pvo.getAccumulatedMoney());
 
          row = ps.executeUpdate();
          
@@ -63,8 +71,9 @@ public class UserDaoOracle implements UserDao{
          ps.setLong(1, pvo.getMemberSeq());
          rs = ps.executeQuery();
          if (rs.next()) {
-            vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"),
-                  rs.getString("MEMBER_TEL"), rs.getString("BIRTH"));
+            vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
+                  rs.getString("MEMBER_TEL"), rs.getString("BIRTH"), rs.getString("GENDER"), rs.getString("EMAIL"), rs.getString("CREATED_AT")
+                  , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getString("DEL_DATE"), rs.getString("COUPON"), rs.getString("ACCUMULATED_MONEY"));
          }
       } catch (SQLException e) {
          e.printStackTrace();
@@ -89,8 +98,9 @@ public class UserDaoOracle implements UserDao{
          ps = conn.prepareStatement(UserSql.USER_LIST);
          rs = ps.executeQuery();
          while (rs.next()) {
-            list.add(new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"),
-                  rs.getString("MEMBER_TEL"), rs.getString("BIRTH")));
+            list.add(new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
+                    rs.getString("MEMBER_TEL"), rs.getString("BIRTH"), rs.getString("GENDER"), rs.getString("EMAIL"), rs.getString("CREATED_AT")
+                    , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getString("DEL_DATE"), rs.getString("COUPON"), rs.getString("ACCUMULATED_MONEY")));
          }
       } catch (SQLException e) {
          e.printStackTrace();
@@ -163,8 +173,9 @@ public class UserDaoOracle implements UserDao{
          ps.setString(1, pvo.getMemberId());
          rs = ps.executeQuery();
          if (rs.next()) {
-            vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_PWD"),
-                  rs.getString("MEMBER_TEL"), rs.getString("BIRTH"));
+            vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
+                    rs.getString("MEMBER_TEL"), rs.getString("BIRTH"), rs.getString("GENDER"), rs.getString("EMAIL"), rs.getString("CREATED_AT")
+                    , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getString("DEL_DATE"), rs.getString("COUPON"), rs.getString("ACCUMULATED_MONEY"));
          }
       } catch (SQLException e) {
          e.printStackTrace();
