@@ -43,7 +43,7 @@
             <h3>태그 : 남성, 겨울</h3>
         </div>
         <div class="dressRoom_create_down">
-            <a class="dressroom_create_button" href="/html/user/dressroom/dressroom_main.html">등록하기</a>
+            <a class="dressroom_create_button" href="DispatcherServlet?command=dress_main">등록하기</a>
         </div>
     </section>
 </body>

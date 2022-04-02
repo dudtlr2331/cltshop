@@ -40,7 +40,7 @@
         <a href="">▶</a>
      </section>
      <section id="dressroom_create_btn">
-        <a class="dressroom_create_btn_detail" href="/html/user/dressroom/dressroom_create.html">드레스룸 만들기</a>
+        <a class="dressroom_create_btn_detail" href="DispatcherServlet?command=dress_register">드레스룸 만들기</a>
     </section>
     <h3 class="dressroom_dresser">베스트 드레서</h3>
     <section id="dressroom_dressers">

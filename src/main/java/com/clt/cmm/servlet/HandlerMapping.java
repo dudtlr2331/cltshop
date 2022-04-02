@@ -9,6 +9,7 @@ import com.clt.adm.qna.AdmQnaController;
 import com.clt.adm.stats.AdmStatsController;
 import com.clt.adm.user.AdmUserController;
 import com.clt.cmm.controller.Controller;
+import com.clt.shp.dress.DressController;
 import com.clt.shp.goods.GoodsController;
 import com.clt.shp.user.UserController;
 
@@ -34,6 +35,11 @@ public class HandlerMapping {
    public static final String USER_JOIN_INSERT = "user_join_insert";
    public static final String USER_ID_CHECK = "user_id_check";
    public static final String USER_UPDATE = "user_update";
+   
+   //드레스룸
+   public static final String DRESS_MAIN = "dress_main";
+   public static final String DRESS_REGISTER = "dress_register";
+   
    
    //상품
    public static final String GOODS_LIST = "goods_list";
@@ -91,6 +97,10 @@ public class HandlerMapping {
       else if(command.equals(HandlerMapping.USER_LOGIN) || command.equals(HandlerMapping.USER_JOIN) || command.equals(HandlerMapping.USER_JOIN_INSERT)
             || command.equals(HandlerMapping.USER_LOGIN_INSERT) || command.equals(HandlerMapping.USER_ID_CHECK) || command.equals(HandlerMapping.USER_UPDATE)) {
          controller = new UserController(command);
+      }
+      //dress
+      else if(command.equals(HandlerMapping.DRESS_MAIN) || command.equals(HandlerMapping.DRESS_REGISTER)) {
+    	  controller = new DressController(command);
       }
       return controller;
    }

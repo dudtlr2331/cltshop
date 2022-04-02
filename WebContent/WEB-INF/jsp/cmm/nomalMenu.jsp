@@ -29,7 +29,7 @@
 			</ul>
 		</div>
 		<a href="/html/shp/qna/qna.html"><li>1:1문의</li></a>
-		<a href="/html/shp/dress/dress_main.html"><li>커뮤니티</li></a>
+		<a href="DispatcherServlet?command=dress_main"><li>커뮤니티</li></a>
 	</ul>
 </section>
 <!-- menu end -->

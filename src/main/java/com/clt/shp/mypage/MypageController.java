@@ -1,4 +1,4 @@
-package com.clt.shp.dress;
+package com.clt.shp.mypage;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import com.clt.shp.user.UserVo;
 import com.clt.shp.user.dao.impl.UserDaoOracle;
 import com.clt.shp.user.service.UserService;
 
-public class DressController implements Controller {
+public class MypageController implements Controller {
 private String command = "";
 	
-	public DressController(String command) {
+	public MypageController(String command) {
 		this.command = command;
 	}
 
@@ -27,7 +27,7 @@ private String command = "";
 		ModelAndView modelAndView = new ModelAndView();
 		
 		//파라미터 셋팅
-		DressVo pvo = parameterSetting(req);
+		MypageVo pvo = parameterSetting(req);
 		
 		//비즈니스 처리
 		if(command.equals(HandlerMapping.DRESS_MAIN)) {
@@ -41,8 +41,8 @@ private String command = "";
 		return modelAndView;
 	}
 
-	private DressVo parameterSetting(HttpServletRequest req) {
-		DressVo pvo = new DressVo();
+	private MypageVo parameterSetting(HttpServletRequest req) {
+		MypageVo pvo = new MypageVo();
 		return pvo;
 	}
 }
