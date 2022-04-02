@@ -23,7 +23,7 @@ public class HandlerMapping {
    public static final String ADM_EVENT_BANNER       = "adm_event_banner";/*이벤트 관리*/
    public static final String ADM_STATS_SALES       = "adm_stats_sales";/*매출현황*/
    public static final String ADM_DRESSROOM_MANAGER = "adm_dressroom_manager";/*드레스룸 관리*/
-   public static final String ADM_ONE_MANAGEMENT    = "adm_one_management";/*1:1 문의 관리*/
+   public static final String ADM_QNA_LIST    = "adm_qna_list";/*1:1 문의 관리*/
    public static final String ADM_COUPON          = "adm_coupon";/*쿠폰/적립금 관리*/
    
    /******************************** shp ********************************/
@@ -75,7 +75,7 @@ public class HandlerMapping {
          controller = new AdmDressController(command);
       }
       //1:1 문의 관리
-      else if(command.equals(HandlerMapping.ADM_ONE_MANAGEMENT)){
+      else if(command.equals(HandlerMapping.ADM_QNA_LIST)){
          controller = new AdmQnaController(command);
       }
       //쿠폰/적립금 관리
