@@ -1,3 +1,5 @@
+drop SEQUENCE SQ_GOODS_INFO_SEQ;
+
 drop table buy;
 drop table DRESSROOM;
 drop table DRESSROOM_COMMENT;
@@ -102,26 +104,29 @@ CREATE TABLE stats_tbl (
 	returncom_count	number	NULL
 );
 
+CREATE SEQUENCE SQ_GOODS_INFO_SEQ;
+
 CREATE TABLE GOODS_INFO (
-   GOODS_CD   NUMBER(12)   NOT NULL PRIMARY KEY /*상품 코드*/,
-   ENTR_NO   NUMBER(12)   NULL /*거래처 번호*/,
-   GOODS_NM   VARCHAR2(200)   NULL /*상품이름*/,
-   GOODS_PRC   NUMBER(12)   NULL /*상품가격*/,
-   CATGRY_CD   VARCHAR2(20)   NULL /*대분류*/,
-   CATGRY_CD2   VARCHAR2(20)   NULL /*소분류*/,
-   INY_QTY   NUMBER(14)   NULL /*재고수량*/,
-   DLV_PRC   NUMBER(20)   NULL /*배송비*/,
-   GOODS_SIZE   VARCHAR2(200)   NULL /*상품싸이즈*/,
-   GOODS_CLR   VARCHAR2(200)   NULL /*상품컬러*/,
-   IMG_PATH   VARCHAR2(500)   NULL /*이미지경로*/,
-   IMG_NM   VARCHAR2(300)   NULL /*이미지이름*/,
-   GOODS_INTR   VARCHAR2(4000)   NULL /*상품소개*/,
-   SALE_STAT_CD   VARCHAR2(2)   NULL /*판매상태*/,
-   USE_YN   VARCHAR2(1)   NULL /*사용여부*/,
-   RGST_ID   VARCHAR2(20)   NULL /*등록자*/,
-   RGST_DATE   DATE   NULL /*등록일*/,
-   UPDT_ID   VARCHAR2(20)   NULL /*수정자*/,
-   UPDT_DATE   DATE   NULL /*수정일*/
+	GOODS_INFO_SEQ NUMBER(20) PRIMARY KEY,
+	GOODS_CD	NUMBER(12)	NOT NULL /*상품 코드*/,
+	ENTR_NO	NUMBER(12)	NULL /*거래처 번호*/,
+	GOODS_NM	VARCHAR2(200)	NULL /*상품이름*/,
+	GOODS_PRC	NUMBER(12)	NULL /*상품가격*/,
+	CATGRY_CD	VARCHAR2(20)	NULL /*대분류*/,
+	CATGRY_CD2	VARCHAR2(20)	NULL /*소분류*/,
+	INY_QTY	NUMBER(14)	NULL /*재고수량*/,
+	DLV_PRC	NUMBER(20)	NULL /*배송비*/,
+	GOODS_SIZE	VARCHAR2(200)	NULL /*상품싸이즈*/,
+	GOODS_CLR	VARCHAR2(200)	NULL /*상품컬러*/,
+	IMG_PATH	VARCHAR2(500)	NULL /*이미지경로*/,
+	IMG_NM	VARCHAR2(300)	NULL /*이미지이름*/,
+	GOODS_INTR	VARCHAR2(4000)	NULL /*상품소개*/,
+	SALE_STAT_CD	VARCHAR2(2)	NULL /*판매상태*/,
+	USE_YN	VARCHAR2(1)	NULL /*사용여부*/,
+	RGST_ID	VARCHAR2(20)	NULL /*등록자*/,
+	RGST_DATE	DATE	NULL /*등록일*/,
+	UPDT_ID	VARCHAR2(20)	NULL /*수정자*/,
+	UPDT_DATE	DATE	NULL /*수정일*/
 );
 
 
@@ -177,3 +182,6 @@ CREATE TABLE dressroom_comment (
 );
 
 
+
+
+	
