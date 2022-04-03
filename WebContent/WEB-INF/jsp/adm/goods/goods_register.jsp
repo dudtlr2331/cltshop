@@ -36,7 +36,8 @@
         <tr>
 			<th><div>대분류</div></th>
             <td>
-                <select name="catgryCd">
+                <select name="catgryCd" id="catgryCd">
+                    <option value="">선택</option>
                     <option value="S01">상의</option>
                     <option value="S02">아우터</option>
                     <option value="S03">바지</option>
@@ -47,8 +48,8 @@
             </td>
             <th><div>소분류</div></th>
             <td>
-				<select name="catgryCd2">
-					<option value="">대분류선택</option>
+				<select name="catgryCd2" id="catgryCd2">
+					<option value="">선택</option>
 				</select>
             </td>            
         </tr>
@@ -114,6 +115,63 @@
 </div>
 </form>
 <script>
+window.onload = ()=>{
+	let sel_catgryCd = document.querySelector('#catgryCd');
+	let sel_catgryCd2 = document.querySelector('#catgryCd2');
+	sel_catgryCd.addEventListener('change', (e)=>{
+		//option 삭제
+		let sel_catgryCd2_options = document.querySelectorAll('#catgryCd2 option');
+		for(let i=0; i<sel_catgryCd2_options.length; i++){
+			sel_catgryCd2_options[i].remove();
+		}
+		
+		let selectedIdx = e.target.selectedIndex;
+		let selectedVal = e.target.value;
+		let optionList = [];
+		if(selectedVal == 'S01'){ //상의
+			optionList.push({'':'선택'});
+			optionList.push({'A01':'반팔'});
+			optionList.push({'A02':'긴팔'});
+		}
+		else if(selectedVal == 'S02'){ //아우터
+			optionList.push({'':'선택'});
+			optionList.push({'B01':'자켓'});
+			optionList.push({'B02':'패딩'});
+			optionList.push({'B03':'롱패딩'});
+		}
+		else if(selectedVal == 'S03'){ //바지
+			optionList.push({'':'선택'});
+			optionList.push({'C01':'청바지'});
+		}
+		else if(selectedVal == 'S04'){ //원피스
+			optionList.push({'':'선택'});
+			optionList.push({'D01':'원피스'});
+		}
+		else if(selectedVal == 'S05'){ //신발
+			optionList.push({'':'선택'});
+			optionList.push({'E01':'운동화'});
+		}
+		else if(selectedVal == 'S06'){ //가방
+			optionList.push({'':'선택'});
+			optionList.push({'F01':'책가방'});
+		}
+		
+		for(let obj in optionList){
+			let objValue = optionList[obj];
+			for(val in objValue) {
+				let option = document.createElement('option');
+				let key = val;
+				let value = objValue[key];
+				option.value = key;
+				option.innerHTML = value;
+				sel_catgryCd2.append(option);
+			}
+			//option.value = 
+		}
+	});
+};
+
+
 function previewImg(e){
 	let reader = new FileReader();
 	reader.onload = function(event) {

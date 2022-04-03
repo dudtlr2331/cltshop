@@ -20,6 +20,9 @@ public class HandlerMapping {
    public static final String ADM_GOODS_LIST = "adm_goods_list";/*상품목록*/
    public static final String ADM_GOODS_REGISTER = "adm_goods_register";/*상품등록*/
    public static final String ADM_GOODS_REGISTER_ACT = "adm_goods_register_act";/*상품등록*/
+   public static final String ADM_GOODS_EDIT = "adm_goods_edit";/*상품수정*/
+   public static final String ADM_GOODS_EDIT_ACT = "adm_goods_edit_act";/*상품수정*/
+   public static final String ADM_GOODS_REMOVE_ACT = "adm_goods_remove_act";/*상품삭제*/
    public static final String ADM_GOODS_QNA = "adm_goods_qna";/*상품 문의 관리*/
    public static final String ADM_ORDER_LIST = "adm_order_list";/*주문 관리*/
    public static final String ADM_USER_LIST = "adm_user_list";/*회원 관리*/
@@ -62,7 +65,10 @@ public class HandlerMapping {
       if(command.equals(HandlerMapping.ADM_GOODS_LIST) 
 		  || command.equals(HandlerMapping.ADM_GOODS_QNA)
 		  || command.equals(HandlerMapping.ADM_GOODS_REGISTER) 
-		  || command.equals(HandlerMapping.ADM_GOODS_REGISTER_ACT)){
+		  || command.equals(HandlerMapping.ADM_GOODS_REGISTER_ACT)
+		  || command.equals(HandlerMapping.ADM_GOODS_EDIT)
+		  || command.equals(HandlerMapping.ADM_GOODS_EDIT_ACT)
+    	  || command.equals(HandlerMapping.ADM_GOODS_REMOVE_ACT)){
          controller = new AdmGoodsController(command);
       }
       //주문 관리

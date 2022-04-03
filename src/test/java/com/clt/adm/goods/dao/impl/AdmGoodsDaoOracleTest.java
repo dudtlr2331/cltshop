@@ -19,7 +19,7 @@ public class AdmGoodsDaoOracleTest {
 		GoodsVO pvo = new GoodsVO();
 		GoodsDao dao = new GoodsDaoOracle();
 		
-		pvo.setGoodsSeq(2);
+		pvo.setGoodsInfoSeq(2);
 		dao.deleteGoods(pvo);
 	}
 	
@@ -65,7 +65,7 @@ public class AdmGoodsDaoOracleTest {
 		long mtime = utilDate.getTime();
 		java.sql.Date sqlDate = new java.sql.Date(mtime);
 		
-		pvo.setGoodsSeq(2);
+		pvo.setGoodsInfoSeq(2);
 		pvo.setGoodsCd(1);
 		pvo.setEntrNo(1);
 		pvo.setGoodsNm("흰색 반팔티");
@@ -98,7 +98,7 @@ public class AdmGoodsDaoOracleTest {
 	private static void 샐렉트테스트() {
 		GoodsVO pvo = new GoodsVO();
 		GoodsDao dao = new GoodsDaoOracle();
-		pvo.setGoodsSeq(2);
+		pvo.setGoodsInfoSeq(2);
 		
 		GoodsVO rvo = dao.selectGoodsOne(pvo);
 		

@@ -14,7 +14,7 @@
             <c:when test="${not empty goodsList }">
                <c:forEach var="obj" items="${goodsList}" begin="0" end="3">
                   <div class="item" onclick="pageMove('product')">
-                     <img src="${obj.goodsImg}">
+                     <img src="${obj.imgPath}${obj.imgNm}">
                      <div class="txt_area">
                         <div class="item_name">${obj.goodsNm}</div>
                         <div class="item_price">
@@ -37,7 +37,7 @@
             <c:when test="${not empty goodsList }">
                <c:forEach var="obj" items="${goodsList}" begin="4" end="7">
                   <div class="item" onclick="pageMove('product')">
-                     <img src="${obj.goodsImg}">
+                     <img src="${obj.imgPath}${obj.imgNm}">
                      <div class="txt_area">
                         <div class="item_name">${obj.goodsNm}</div>
                         <div class="item_price">
@@ -60,7 +60,7 @@
             <c:when test="${not empty goodsList }">
                <c:forEach var="obj" items="${goodsList}" begin="8" end="11">
                   <div class="item" onclick="pageMove('product')">
-                     <img src="${obj.goodsImg}">
+                     <img src="${obj.imgPath}${obj.imgNm}">
                      <div class="txt_area">
                         <div class="item_name">${obj.goodsNm}</div>
                         <div class="item_price">
@@ -83,7 +83,7 @@
             <c:when test="${not empty goodsList }">
                <c:forEach var="obj" items="${goodsList}" begin="12" end="15">
                   <div class="item" onclick="pageMove('product')">
-                     <img src="${obj.goodsImg}">
+                     <img src="${obj.imgPath}${obj.imgNm}">
                      <div class="txt_area">
                         <div class="item_name">${obj.goodsNm}</div>
                         <div class="item_price">

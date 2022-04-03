@@ -3,7 +3,7 @@ package com.clt.shp.goods;
 import java.sql.Date;
 
 public class GoodsVO {
-	private long goodsSeq;/*상품 시퀀스*/
+	private long goodsInfoSeq;/*상품 시퀀스*/
 	private long goodsCd;/*상품 코드*/
 	private long entrNo;/*거래처 번호*/
 	private String goodsNm;/*상품이름*/
@@ -26,10 +26,10 @@ public class GoodsVO {
 	
 	public GoodsVO() {
 	}
-	public GoodsVO(long goodsSeq, long goodsCd, long entrNo, String goodsNm, int goodsPrc, String catgryCd, String catgryCd2,
+	public GoodsVO(long goodsInfoSeq, long goodsCd, long entrNo, String goodsNm, int goodsPrc, String catgryCd, String catgryCd2,
 			int inyQty, int dlvPrc, String goodsSize, String goodsClr, String imgPath, String imgNm, String goodsIntr,
 			String saleStatCd, String useYn, String rgstId, Date rgstDate, String updtId, Date updtDate) {
-		this.goodsSeq = goodsSeq;
+		this.goodsInfoSeq = goodsInfoSeq;
 		this.goodsCd = goodsCd;
 		this.entrNo = entrNo;
 		this.goodsNm = goodsNm;
@@ -51,11 +51,11 @@ public class GoodsVO {
 		this.updtDate = updtDate;
 	}
 	
-	public long getGoodsSeq() {
-		return goodsSeq;
+	public long getGoodsInfoSeq() {
+		return goodsInfoSeq;
 	}
-	public void setGoodsSeq(long goodsSeq) {
-		this.goodsSeq = goodsSeq;
+	public void setGoodsInfoSeq(long goodsInfoSeq) {
+		this.goodsInfoSeq = goodsInfoSeq;
 	}
 	public long getGoodsCd() {
 		return goodsCd;

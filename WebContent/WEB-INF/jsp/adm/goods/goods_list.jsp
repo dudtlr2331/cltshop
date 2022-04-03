@@ -28,6 +28,9 @@
 	        </tr>
 	    </thead>
 	    <tbody>
+	    	<c:if test="${empty list }">
+	    		<tr><td colspan="12">데이터가 없습니다.</td></tr>
+	    	</c:if>
 	    	<c:forEach items="${list }" var="obj" varStatus="cnt">
 		        <tr>
 		            <td>
@@ -35,8 +38,8 @@
 		            </td>
 		            <td>${cnt.count}</td>
 		            <td>${obj.goodsCd}</td>
-		            <td><img src="${obj.imgPath}${obj.imgNm }" width="200px" /></td>
-		            <td>${obj.goodsNm}</td>
+		            <td><img src="${obj.imgPath}${obj.imgNm }" height="200px" width="200px" /></td>
+		            <td><a href="/DispatcherServlet?command=adm_goods_edit&goodsInfoSeq=${obj.goodsInfoSeq}">${obj.goodsNm}</a></td>
 		            <td>${obj.goodsPrc}</td>
 		            <td>${obj.saleStatCd}</td>
 		            <td>${obj.inyQty}</td>

@@ -72,7 +72,7 @@ public class GoodsDaoOracle implements GoodsDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(GoodsSql.GOODS_SELECT);
-			ps.setLong(1, pvo.getGoodsSeq());
+			ps.setLong(1, pvo.getGoodsInfoSeq());
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				vo = new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getLong("GOODS_CD")
@@ -153,7 +153,7 @@ public class GoodsDaoOracle implements GoodsDao{
 			ps.setDate(17, pvo.getRgstDate());
 			ps.setString(18, pvo.getUpdtId());
 			ps.setDate(19, pvo.getUpdtDate());
-			ps.setLong(20, pvo.getGoodsSeq());
+			ps.setLong(20, pvo.getGoodsInfoSeq());
 			row = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -175,7 +175,7 @@ public class GoodsDaoOracle implements GoodsDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(GoodsSql.GOODS_DELETE);
-			ps.setLong(1, pvo.getGoodsSeq());
+			ps.setLong(1, pvo.getGoodsInfoSeq());
 			row = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

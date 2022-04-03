@@ -28,4 +28,8 @@ public class GoodsService {
 	public int updateGoods(GoodsVO pvo) {
 		return dao.updateGoods(pvo);
 	}
+	
+	public int deleteGoods(GoodsVO pvo) {
+		return dao.deleteGoods(pvo);
+	}
 }

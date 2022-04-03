@@ -30,6 +30,7 @@ public class AdmGoodsController implements Controller{
 		GoodsVO pvo = parameterSetting(req);
 		
 		//비즈니스 처리
+		//상품 리스트 화면
 		if(command.equals(HandlerMapping.ADM_GOODS_LIST)) {
 			List<GoodsVO> list = goodsService.selectGoodsList(pvo);
 			req.setAttribute("list", list);
@@ -37,19 +38,46 @@ public class AdmGoodsController implements Controller{
 			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_list.jsp");
 			modelAndView.setRedirect(false);
 		}
+		//상품 등록 화면
 		else if(command.equals(HandlerMapping.ADM_GOODS_REGISTER)) {
 			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_register.jsp");
 			modelAndView.setRedirect(false);
 		}
+		//상품 등록 엑션
 		else if(command.equals(HandlerMapping.ADM_GOODS_REGISTER_ACT)) {
 			int result = goodsService.insertGoods(pvo);
 			
-			req.setAttribute("result", result);
 			req.setAttribute("pvo", pvo);
 			
 			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_edit.jsp");
 			modelAndView.setRedirect(false);
 		}
+		//상품 수정 화면
+		else if(command.equals(HandlerMapping.ADM_GOODS_EDIT)) {
+			GoodsVO rvo = goodsService.selectGoodsOne(pvo);
+			
+			req.setAttribute("pvo", rvo);
+			
+			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_edit.jsp");
+			modelAndView.setRedirect(false);
+		}
+		//상품 수정 엑션
+		else if(command.equals(HandlerMapping.ADM_GOODS_EDIT_ACT)) {
+			int result = goodsService.updateGoods(pvo);
+			
+			req.setAttribute("pvo", pvo);
+			
+			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_edit.jsp");
+			modelAndView.setRedirect(false);
+		}
+		//상품 삭제 엑션
+		else if(command.equals(HandlerMapping.ADM_GOODS_REMOVE_ACT)) {
+			int result = goodsService.deleteGoods(pvo);
+			
+			modelAndView.setPath("/DispatcherServlet?command=adm_goods_list");
+			modelAndView.setRedirect(false);
+		}
+		//상품 문의 화면
 		else if(command.equals(HandlerMapping.ADM_GOODS_QNA)) {
 			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_qna.jsp");
 			modelAndView.setRedirect(false);
@@ -63,6 +91,8 @@ public class AdmGoodsController implements Controller{
 	}
 
 	private GoodsVO parameterSetting(HttpServletRequest req) {
+		long goodsInfoSeq = req.getParameter("goodsInfoSeq") == null? 0L : Long.parseLong(req.getParameter("goodsInfoSeq"));
+		long goodsCd = req.getParameter("goodsCd") == null? 0L : Long.parseLong(req.getParameter("goodsCd"));
 		long entrNo = req.getParameter("entrNo") == null? 0L : Long.parseLong(req.getParameter("entrNo"));
 		String saleStatCd = req.getParameter("saleStatCd");
 		String goodsNm = req.getParameter("goodsNm");
@@ -77,6 +107,8 @@ public class AdmGoodsController implements Controller{
 		String goodsIntr = req.getParameter("goodsIntr");
 		
 		GoodsVO pvo = new GoodsVO();
+		pvo.setGoodsInfoSeq(goodsInfoSeq);
+		pvo.setGoodsCd(goodsCd);
 		pvo.setEntrNo(entrNo);
 		pvo.setSaleStatCd(saleStatCd);
 		pvo.setGoodsNm(goodsNm);
@@ -92,7 +124,14 @@ public class AdmGoodsController implements Controller{
 		
 		//첨부파일 있으면 셋팅
 		String imgPath = (String) req.getAttribute("imgPath");
+		if(null == imgPath || "".equals(imgPath)) {
+			imgPath = req.getParameter("imgPath");
+		}
 		String imgNm = (String) req.getAttribute("imgNm");
+		if(null == imgNm || "".equals(imgNm)) {
+			imgNm = req.getParameter("imgNm");
+		}
+		
 		if(null != imgPath && !"".equals(imgPath)) {
 			pvo.setImgPath(imgPath);
 		}
