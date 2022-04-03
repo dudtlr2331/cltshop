@@ -27,6 +27,9 @@ public class AdmDressController implements Controller{
 			modelAndView.setPath("/WEB-INF/jsp/adm/dress/dressroom_manager.jsp");
 			modelAndView.setRedirect(false);
 		}
+		
+		//레프트 메뉴 네비게이션
+		req.setAttribute("leftMenuNav", HandlerMapping.ADM_DRESSROOM_MANAGER);
 				
 		return modelAndView;
 	}

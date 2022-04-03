@@ -26,6 +26,9 @@ public class AdmUserController implements Controller{
 			modelAndView.setPath("/WEB-INF/jsp/adm/user/user_list.jsp");
 			modelAndView.setRedirect(false);
 		}
+		
+		//레프트 메뉴 네비게이션
+		req.setAttribute("leftMenuNav", HandlerMapping.ADM_USER_LIST);
 				
 		return modelAndView;
 	}

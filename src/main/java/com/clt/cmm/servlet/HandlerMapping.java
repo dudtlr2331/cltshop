@@ -17,15 +17,17 @@ public class HandlerMapping {
    private static HandlerMapping handler = new HandlerMapping();
    
    /******************************** adm ********************************/
-   public static final String ADM_GOODS_LIST       = "adm_goods_list";/*상품목록*/
-   public static final String ADM_GOODS_QNA       = "adm_goods_qna";/*상품 문의 관리*/
-   public static final String ADM_ORDER_LIST       = "adm_order_list";/*주문 관리*/
-   public static final String ADM_USER_LIST       = "adm_user_list";/*회원 관리*/
-   public static final String ADM_EVENT_BANNER       = "adm_event_banner";/*이벤트 관리*/
-   public static final String ADM_STATS_SALES       = "adm_stats_sales";/*매출현황*/
+   public static final String ADM_GOODS_LIST = "adm_goods_list";/*상품목록*/
+   public static final String ADM_GOODS_REGISTER = "adm_goods_register";/*상품등록*/
+   public static final String ADM_GOODS_REGISTER_ACT = "adm_goods_register_act";/*상품등록*/
+   public static final String ADM_GOODS_QNA = "adm_goods_qna";/*상품 문의 관리*/
+   public static final String ADM_ORDER_LIST = "adm_order_list";/*주문 관리*/
+   public static final String ADM_USER_LIST = "adm_user_list";/*회원 관리*/
+   public static final String ADM_EVENT_BANNER = "adm_event_banner";/*이벤트 관리*/
+   public static final String ADM_STATS_SALES = "adm_stats_sales";/*매출현황*/
    public static final String ADM_DRESSROOM_MANAGER = "adm_dressroom_manager";/*드레스룸 관리*/
-   public static final String ADM_QNA_LIST    = "adm_qna_list";/*1:1 문의 관리*/
-   public static final String ADM_COUPON          = "adm_coupon";/*쿠폰/적립금 관리*/
+   public static final String ADM_QNA_LIST = "adm_qna_list";/*1:1 문의 관리*/
+   public static final String ADM_COUPON = "adm_coupon";/*쿠폰/적립금 관리*/
    
    /******************************** shp ********************************/
    //유저
@@ -57,7 +59,10 @@ public class HandlerMapping {
       
       /******************************** adm ********************************/
       //상품목록, 상품 문의 관리
-      if(command.equals(HandlerMapping.ADM_GOODS_LIST) || command.equals(HandlerMapping.ADM_GOODS_QNA)){
+      if(command.equals(HandlerMapping.ADM_GOODS_LIST) 
+		  || command.equals(HandlerMapping.ADM_GOODS_QNA)
+		  || command.equals(HandlerMapping.ADM_GOODS_REGISTER) 
+		  || command.equals(HandlerMapping.ADM_GOODS_REGISTER_ACT)){
          controller = new AdmGoodsController(command);
       }
       //주문 관리

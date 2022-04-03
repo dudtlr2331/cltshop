@@ -18,7 +18,7 @@ public class GoodsDaoOracle implements GoodsDao{
 	public GoodsDaoOracle() {
 		commonDao = new CommonDao();
 	}
-	
+
 	@Override
 	public int insertGoods(GoodsVO pvo) {
 		Connection conn = null;
@@ -29,20 +29,27 @@ public class GoodsDaoOracle implements GoodsDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(GoodsSql.GOODS_INSERT);
-			ps.setLong(1, pvo.getGoodsInfoSeq());
-			ps.setInt(2, pvo.getGoodsCategoryId());
-			ps.setInt(3, pvo.getSizeId());
-			ps.setInt(4, pvo.getGoodsId());
-			ps.setInt(5, pvo.getColorId());
-			ps.setString(6, pvo.getGoodsName());
-			ps.setInt(7, pvo.getGoodsPrice());
-			ps.setInt(8, pvo.getGoodsStock());
-			ps.setString(9, pvo.getGoodsDescription());
-			ps.setString(10, pvo.getGoodsImg());
+			ps.setLong(1, pvo.getEntrNo());
+			ps.setString(2, pvo.getGoodsNm());
+			ps.setInt(3, pvo.getGoodsPrc());
+			ps.setString(4, pvo.getCatgryCd());
+			ps.setString(5, pvo.getCatgryCd2());
+			ps.setInt(6, pvo.getInyQty());
+			ps.setInt(7, pvo.getDlvPrc());
+			ps.setString(8, pvo.getGoodsSize());
+			ps.setString(9, pvo.getGoodsClr());
+			ps.setString(10, pvo.getImgPath());
+			ps.setString(11, pvo.getImgNm());
+			ps.setString(12, pvo.getGoodsIntr());
+			ps.setString(13, pvo.getSaleStatCd());
+			ps.setString(14, pvo.getUseYn());
+			ps.setString(15, pvo.getRgstId());
+			ps.setDate(16, pvo.getRgstDate());
+			ps.setString(17, pvo.getUpdtId());
+			ps.setDate(18, pvo.getUpdtDate());
 
 			row = ps.executeUpdate();
 			
-			System.out.println("INSERT OK.. Seq::" + pvo.getGoodsInfoSeq());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -57,7 +64,7 @@ public class GoodsDaoOracle implements GoodsDao{
 	}
 	
 	@Override
-	public GoodsVO selectGoods(GoodsVO pvo){
+	public GoodsVO selectGoodsOne(GoodsVO pvo){
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -65,13 +72,16 @@ public class GoodsDaoOracle implements GoodsDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(GoodsSql.GOODS_SELECT);
-			ps.setLong(1, pvo.getGoodsInfoSeq());
+			ps.setLong(1, pvo.getGoodsSeq());
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				vo = new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getInt("GOODS_CATEGORY_ID")
-						, rs.getInt("SIZE_ID"), rs.getInt("GOODS_ID"), rs.getInt("COLOR_ID")
-						, rs.getString("GOODS_NAME"), rs.getInt("GOODS_PRICE"), rs.getInt("GOODS_STOCK")
-						, rs.getString("GOODS_DESCRIPTION"), rs.getString("GOODS_IMG"));
+				vo = new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getLong("GOODS_CD")
+					, rs.getLong("ENTR_NO"), rs.getString("GOODS_NM"), rs.getInt("GOODS_PRC")
+					, rs.getString("CATGRY_CD"), rs.getString("CATGRY_CD2"), rs.getInt("INY_QTY")
+					, rs.getInt("DLV_PRC"), rs.getString("GOODS_SIZE"), rs.getString("GOODS_CLR")
+					, rs.getString("IMG_PATH") , rs.getString("IMG_NM") , rs.getString("GOODS_INTR")
+					, rs.getString("SALE_STAT_CD") , rs.getString("USE_YN"), rs.getString("RGST_ID")
+					, rs.getDate("RGST_DATE") , rs.getString("UPDT_ID") , rs.getDate("UPDT_DATE"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -86,7 +96,7 @@ public class GoodsDaoOracle implements GoodsDao{
 	}
 	
 	@Override
-	public List<GoodsVO> selectListGoods(GoodsVO pvo) {
+	public List<GoodsVO> selectGoodsList(GoodsVO pvo) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -96,10 +106,13 @@ public class GoodsDaoOracle implements GoodsDao{
 			ps = conn.prepareStatement(GoodsSql.GOODS_LIST);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				list.add(new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getInt("GOODS_CATEGORY_ID")
-						, rs.getInt("SIZE_ID"), rs.getInt("GOODS_ID"), rs.getInt("COLOR_ID")
-						, rs.getString("GOODS_NAME"), rs.getInt("GOODS_PRICE"), rs.getInt("GOODS_STOCK")
-						, rs.getString("GOODS_DESCRIPTION"), rs.getString("GOODS_IMG")));
+				list.add(new GoodsVO(rs.getLong("GOODS_INFO_SEQ"), rs.getLong("GOODS_CD")
+					, rs.getLong("ENTR_NO"), rs.getString("GOODS_NM"), rs.getInt("GOODS_PRC")
+					, rs.getString("CATGRY_CD"), rs.getString("CATGRY_CD2"), rs.getInt("INY_QTY")
+					, rs.getInt("DLV_PRC"), rs.getString("GOODS_SIZE"), rs.getString("GOODS_CLR")
+					, rs.getString("IMG_PATH") , rs.getString("IMG_NM") , rs.getString("GOODS_INTR")
+					, rs.getString("SALE_STAT_CD") , rs.getString("USE_YN"), rs.getString("RGST_ID")
+					, rs.getDate("RGST_DATE") , rs.getString("UPDT_ID") , rs.getDate("UPDT_DATE")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -121,11 +134,27 @@ public class GoodsDaoOracle implements GoodsDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(GoodsSql.GOODS_UPDATE);
-			ps.setString(1, pvo.getGoodsName());
-			ps.setInt(2, pvo.getGoodsPrice());
-			ps.setLong(3, pvo.getGoodsInfoSeq());
+			ps.setLong(1, pvo.getGoodsCd());
+			ps.setLong(2, pvo.getEntrNo());
+			ps.setString(3, pvo.getGoodsNm());
+			ps.setInt(4, pvo.getGoodsPrc());
+			ps.setString(5, pvo.getCatgryCd());
+			ps.setString(6, pvo.getCatgryCd2());
+			ps.setInt(7, pvo.getInyQty());
+			ps.setInt(8, pvo.getDlvPrc());
+			ps.setString(9, pvo.getGoodsSize());
+			ps.setString(10, pvo.getGoodsClr());
+			ps.setString(11, pvo.getImgPath());
+			ps.setString(12, pvo.getImgNm());
+			ps.setString(13, pvo.getGoodsIntr());
+			ps.setString(14, pvo.getSaleStatCd());
+			ps.setString(15, pvo.getUseYn());
+			ps.setString(16, pvo.getRgstId());
+			ps.setDate(17, pvo.getRgstDate());
+			ps.setString(18, pvo.getUpdtId());
+			ps.setDate(19, pvo.getUpdtDate());
+			ps.setLong(20, pvo.getGoodsSeq());
 			row = ps.executeUpdate();
-			System.out.println("UPDATE OK.. Seq::" + pvo.getGoodsInfoSeq());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -146,9 +175,8 @@ public class GoodsDaoOracle implements GoodsDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(GoodsSql.GOODS_DELETE);
-			ps.setLong(1, pvo.getGoodsInfoSeq());
+			ps.setLong(1, pvo.getGoodsSeq());
 			row = ps.executeUpdate();
-			System.out.println("DELETE OK.. Seq::" + pvo.getGoodsInfoSeq());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -160,6 +188,6 @@ public class GoodsDaoOracle implements GoodsDao{
 		}
 		return row;
 	}
-
+	
 
 }

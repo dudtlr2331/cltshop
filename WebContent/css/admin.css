@@ -44,11 +44,12 @@ body{
 } 
 
 .adm_left_menu li:hover>a{
-    color:white;
+    /* color:white; */
+    color: #7b7bff;
     font-weight:bold;
 }
 
-.adm_left_menu .submanage_menu{ 
+.adm_left_menu .sub{ 
     padding:5px;
     background-color:#d3acff; 
     display:block; 
@@ -56,8 +57,16 @@ body{
     left:60px; top:20px;
 } 
 
-.adm_left_menu li:hover>.submanage_menu{ 
+.adm_left_menu li:hover>.sub{ 
     display: block;
+}
+
+.adm_left_menu .active{
+	background-color:#e9d5ff;
+}
+
+.adm_left_menu .active>a{
+	color: #0606ff;
 }
 
 .adm_content{
@@ -70,11 +79,14 @@ body{
 /* 검색 조건 테이블 */
 .admin_body .src_area table{
 	width: 100%;
-	border-top: 1px solid #444444;
-	border-bottom: 1px solid #444444;
-	border-collapse: collapse;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	border-collapse: collapse;
+}
+
+.admin_body .src_area table tr{
+	border-top: 1px solid #444444;
+	border-bottom: 1px solid #444444;
 }
 
 .admin_body .src_area table th{
@@ -86,15 +98,18 @@ body{
 .admin_body .src_area table td{
 	padding-top: 10px;
     padding-bottom: 10px;
+    text-align: center;
 }
 
 /* 검색 데이터 테이블 */
 .admin_body .data_list table{
 	width: 100%;
-	border-top: 1px solid #444444;
-	border-collapse: collapse;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	border-collapse: collapse;
+}
+.admin_body .data_list table tr{
+	border-bottom: 1px solid #444444;
 }
 
 .admin_body .data_list table th{
@@ -103,9 +118,9 @@ body{
 
 .admin_body .data_list table th,
 .admin_body .data_list table td{
-	border-bottom: 1px solid #444444;	
 	padding-top: 20px;
     padding-bottom: 20px;
+    text-align: center;
 }
 
 .admin_body select, 
@@ -121,9 +136,13 @@ body{
     height: 15px;
 }
 
-.admin_body button{
+.admin_body button,
+.admin_body input[type=button],
+.admin_body input[type=submit]{
+	width: 80px;
     padding: 10px;
     margin-bottom: 10px;
+    margin-right: 0px;
 }
 
 .src_area{

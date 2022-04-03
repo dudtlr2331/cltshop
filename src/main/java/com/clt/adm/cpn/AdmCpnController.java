@@ -27,7 +27,10 @@ public class AdmCpnController implements Controller{
 			modelAndView.setPath("/WEB-INF/jsp/adm/coupon/coupon.jsp");
 			modelAndView.setRedirect(false);
 		}
-				
+		
+		//레프트 메뉴 네비게이션
+		req.setAttribute("leftMenuNav", HandlerMapping.ADM_GOODS_LIST);
+		
 		return modelAndView;
 	}
 

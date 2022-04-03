@@ -27,6 +27,9 @@ public class AdmQnaController implements Controller{
 			modelAndView.setPath("/WEB-INF/jsp/adm/qna/qna_list.jsp");
 			modelAndView.setRedirect(false);
 		}
+		
+		//레프트 메뉴 네비게이션
+		req.setAttribute("leftMenuNav", HandlerMapping.ADM_QNA_LIST);
 				
 		return modelAndView;
 	}

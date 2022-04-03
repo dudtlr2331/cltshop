@@ -11,7 +11,6 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/login.css" rel="stylesheet">
-    <link href="/css/admin.css" rel="stylesheet">
     <title>쇼핑몰</title>
     <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
     <script src="/js/common.js" defer></script>

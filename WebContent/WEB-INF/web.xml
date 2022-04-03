@@ -12,19 +12,34 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<context-param>
+		<param-name>tomcatPath</param-name>
+		<param-value>C:\developer\apache-tomcat-8.0.45\wtpwebapps\cltshop\images\</param-value><!-- 톰켓위치 -->
+	</context-param>
+	<context-param>
+		<param-name>uploadPath</param-name>
+		<param-value>C:\git\cltshop\WebContent\images\</param-value><!-- 실프로잭트위치 -->
+	</context-param>
 
 	<servlet>
 		<description>프론트 서블릿</description>
 		<display-name>DispatcherServlet</display-name>
 		<servlet-name>DispatcherServlet</servlet-name>
 		<servlet-class>com.clt.cmm.servlet.DispatcherServlet</servlet-class>
+		<multipart-config>
+			<location>C:\git\cltshop\WebContent\images</location><!-- 실프로잭트위치 -->
+			<max-file-size>-1</max-file-size>
+			<max-request-size>-1</max-request-size>
+			<file-size-threshold>1024</file-size-threshold>
+		</multipart-config>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>DispatcherServlet</servlet-name>
 		<url-pattern>/DispatcherServlet</url-pattern>
 	</servlet-mapping>
-
+	
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>

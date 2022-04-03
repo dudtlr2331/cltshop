@@ -14,13 +14,13 @@ public class GoodsDaoMysql implements GoodsDao{
 	}
 
 	@Override
-	public GoodsVO selectGoods(GoodsVO pvo) {
+	public GoodsVO selectGoodsOne(GoodsVO pvo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<GoodsVO> selectListGoods(GoodsVO pvo) {
+	public List<GoodsVO> selectGoodsList(GoodsVO pvo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -36,6 +36,4 @@ public class GoodsDaoMysql implements GoodsDao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	
 }

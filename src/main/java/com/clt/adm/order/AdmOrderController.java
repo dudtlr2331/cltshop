@@ -27,6 +27,9 @@ public class AdmOrderController implements Controller{
 			modelAndView.setPath("/WEB-INF/jsp/adm/order/order_list.jsp");
 			modelAndView.setRedirect(false);
 		}
+		
+		//레프트 메뉴 네비게이션
+		req.setAttribute("leftMenuNav", HandlerMapping.ADM_ORDER_LIST);
 				
 		return modelAndView;
 	}

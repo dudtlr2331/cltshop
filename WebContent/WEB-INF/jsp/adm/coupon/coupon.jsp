@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/cmm/admLeftMenu.jsp" %>
-<section id="coupon_list">
-    <h2>생성된 쿠폰</h2>
-    <table>
+<%@ include file="/WEB-INF/jsp/cmm/admHeader.jsp" %>
+<h2>생성된 쿠폰</h2>
+<div class="data_list">
+	<table>
         <tr>
-            <th class="c_name">쿠폰이름</th>
-            <th class="discount">할인율</th>
+            <th>쿠폰이름</th>
+            <th>할인율</th>
             <th>사용시간</th>
             <th>개수</th>
         </tr>
@@ -22,7 +22,8 @@
             <td>1</td>
         </tr>
     </table>
-</section>
+</div>
+
 <section id="coupon_making">
     <h2>쿠폰 제작</h2>
     <div>이름 <input class="cou_name" type="text"></div>
@@ -36,3 +37,4 @@
     <div>개수 <input class="cou_count" type="text"></div>
     <button class="coupon_btn">등록하기</button>
 </section>
+<%@ include file="/WEB-INF/jsp/cmm/admFooter.jsp" %>

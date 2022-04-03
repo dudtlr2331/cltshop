@@ -27,6 +27,9 @@ public class AdmStatsController implements Controller{
 			modelAndView.setPath("/WEB-INF/jsp/adm/stats/stats_sales.jsp");
 			modelAndView.setRedirect(false);
 		}
+		
+		//레프트 메뉴 네비게이션
+		req.setAttribute("leftMenuNav", HandlerMapping.ADM_STATS_SALES);
 				
 		return modelAndView;
 	}
