@@ -12,6 +12,7 @@ import com.clt.cmm.controller.Controller;
 import com.clt.shp.dress.DressController;
 import com.clt.shp.goods.GoodsController;
 import com.clt.shp.mypage.MypageController;
+import com.clt.shp.qna.QnaController;
 import com.clt.shp.user.UserController;
 
 public class HandlerMapping {
@@ -53,7 +54,8 @@ public class HandlerMapping {
    public static final String MYPAGE_POINT = "mypage_point";
    public static final String MYPAGE_QNA = "mypage_qna";
    
-   
+   //Q&A
+   public static final String QNA = "qna";
    
    //상품
    public static final String GOODS_LIST = "goods_list";
@@ -126,6 +128,10 @@ public class HandlerMapping {
       else if(command.equals(HandlerMapping.MYPAGE) || command.equals(HandlerMapping.MYPAGE_COUPON) || command.equals(HandlerMapping.MYPAGE_DETAIL) 
     		  || command.equals(HandlerMapping.MYPAGE_POINT) || command.equals(HandlerMapping.MYPAGE_QNA)) {
     	  controller = new MypageController(command);
+      }
+      //Q&A
+      else if(command.equals(HandlerMapping.QNA)) { 
+    	  controller = new QnaController(command);
       }
       return controller;
    }
