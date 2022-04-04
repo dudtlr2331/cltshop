@@ -30,11 +30,20 @@ private String command = "";
 		MypageVo pvo = parameterSetting(req);
 		
 		//비즈니스 처리
-		if(command.equals(HandlerMapping.DRESS_MAIN)) {
-			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_main.jsp");
+		if(command.equals(HandlerMapping.MYPAGE)) {
+			modelAndView.setPath("/WEB-INF/jsp/shp/mypage/mypage.jsp");
 			modelAndView.setRedirect(false);
-		}else if(command.equals(HandlerMapping.DRESS_REGISTER)) {
-			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_register.jsp");
+		}else if(command.equals(HandlerMapping.MYPAGE_COUPON)) {
+			modelAndView.setPath("/WEB-INF/jsp/shp/mypage/mypage_coupon.jsp");
+			modelAndView.setRedirect(false);
+		}else if(command.equals(HandlerMapping.MYPAGE_DETAIL)) {
+			modelAndView.setPath("/WEB-INF/jsp/shp/mypage/mypage_detail.jsp");
+			modelAndView.setRedirect(false);
+		}else if(command.equals(HandlerMapping.MYPAGE_POINT)) {
+			modelAndView.setPath("/WEB-INF/jsp/shp/mypage/mypage_point.jsp");
+			modelAndView.setRedirect(false);
+		}else if(command.equals(HandlerMapping.MYPAGE_QNA)) {
+			modelAndView.setPath("/WEB-INF/jsp/shp/mypage/mypage_qna.jsp");
 			modelAndView.setRedirect(false);
 		}
 				

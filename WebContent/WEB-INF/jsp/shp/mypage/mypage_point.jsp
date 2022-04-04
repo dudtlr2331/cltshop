@@ -37,10 +37,10 @@
             <i class="fa-solid fa-comments"></i>
         </div>
         <div class="icon_btn">
-            <a href="/html/user/mypage/mypage.html" class="a">주문/배송조회 ></a>
-            <a href="/html/user/mypage/mypage_point.html" class="b">포인트 ></a>
-            <a href="" class="c">쿠폰 ></a>
-            <a href="" class="d">Q&A</a>
+            <a href="DispatcherServlet?command=mypage" class="a">주문/배송조회 ></a>
+            <a href="DispatcherServlet?command=mypage_point" class="b">포인트 ></a>
+            <a href="DispatcherServlet?command=mypage_coupon" class="c">쿠폰 ></a>
+            <a href="DispatcherServlet?command=mypage_qna" class="d">Q&A</a>
         </div>
     </article>
     <article id="point">

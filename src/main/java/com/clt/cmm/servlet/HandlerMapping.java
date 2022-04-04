@@ -11,6 +11,7 @@ import com.clt.adm.user.AdmUserController;
 import com.clt.cmm.controller.Controller;
 import com.clt.shp.dress.DressController;
 import com.clt.shp.goods.GoodsController;
+import com.clt.shp.mypage.MypageController;
 import com.clt.shp.user.UserController;
 
 public class HandlerMapping {
@@ -44,6 +45,14 @@ public class HandlerMapping {
    //드레스룸
    public static final String DRESS_MAIN = "dress_main";
    public static final String DRESS_REGISTER = "dress_register";
+   
+   //마이페이지
+   public static final String MYPAGE = "mypage";
+   public static final String MYPAGE_COUPON = "mypage_coupon";
+   public static final String MYPAGE_DETAIL = "mypage_detail";
+   public static final String MYPAGE_POINT = "mypage_point";
+   public static final String MYPAGE_QNA = "mypage_qna";
+   
    
    
    //상품
@@ -112,6 +121,11 @@ public class HandlerMapping {
       //dress
       else if(command.equals(HandlerMapping.DRESS_MAIN) || command.equals(HandlerMapping.DRESS_REGISTER)) {
     	  controller = new DressController(command);
+      }
+      //mypage
+      else if(command.equals(HandlerMapping.MYPAGE) || command.equals(HandlerMapping.MYPAGE_COUPON) || command.equals(HandlerMapping.MYPAGE_DETAIL) 
+    		  || command.equals(HandlerMapping.MYPAGE_POINT) || command.equals(HandlerMapping.MYPAGE_QNA)) {
+    	  controller = new MypageController(command);
       }
       return controller;
    }

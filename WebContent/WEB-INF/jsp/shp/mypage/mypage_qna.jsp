@@ -8,8 +8,8 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/mypage.css" rel="stylesheet">
-    <link href="/css/mypage_coupon.css" rel="stylesheet">
-    <title>마이페이지-쿠폰</title>
+    <link href="/css/mypage_qna.css" rel="stylesheet">
+    <title>마이페이지- Q&A</title>
     <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
     <script src="/js/common.js" defer></script>
 </head>
@@ -53,24 +53,17 @@
             <i class="fa-solid fa-comments"></i>
         </div>
         <div class="icon_btn">
-           <a href="DispatcherServlet?command=mypage" class="a">주문/배송조회 ></a>
-            <a href="DispatcherServlet?command=mypage_point" class="b">포인트 ></a>
-            <a href="DispatcherServlet?command=mypage_coupon" class="c">쿠폰 ></a>
-            <a href="DispatcherServlet?command=mypage_qna" class="d">Q&A</a>
+            <a href="/html/shp/mypage/mypage.html" class="a">주문/배송조회 ></a>
+            <a href="/html/shp/mypage/mypage_point.html" class="b">포인트 ></a>
+            <a href="/html/shp/mypage/mypage_coupon.html" class="c">쿠폰 ></a>
+            <a href="/html/shp/mypage/mypage_qna.html" class="d">Q&A</a>
         </div>
     </article>
-    <article id="coupon">
-        <h2>쿠폰 내역</h2>
-        <div class="coupon_header">
-            <span>쿠폰명</span>
-            <span>사용혜택</span>
-            <span>사용조건</span>
-            <span>유효기간</span>
+    <article id="my_qna">
+        <h2>상품 Q&A</h2>
+        <div class="qna_body">
+            <span>Q&A 내역이 존재하지 않습니다.</span>
         </div>
-        <div class="coupon_body">
-            <span>사용 가능한 쿠폰이 없습니다.</span>
-        </div>
-        </table>
     </article>
 </body>
 </html>
