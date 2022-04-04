@@ -60,6 +60,7 @@ public class HandlerMapping {
    //상품
    public static final String GOODS_LIST = "goods_list";
    public static final String GOODS_CATEGORY = "goods_category";
+   public static final String GOODS_CART = "goods_cart";
 
    private HandlerMapping() {
    }
@@ -112,7 +113,7 @@ public class HandlerMapping {
       }
       /******************************** shp ********************************/
       //goods
-      else if (command.equals(HandlerMapping.GOODS_LIST) || command.equals(HandlerMapping.GOODS_CATEGORY)) {
+      else if (command.equals(HandlerMapping.GOODS_LIST) || command.equals(HandlerMapping.GOODS_CATEGORY)|| command.equals(HandlerMapping.GOODS_CART)) {
          controller = new GoodsController(command);
       }
       //user

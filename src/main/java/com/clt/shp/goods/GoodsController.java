@@ -36,6 +36,9 @@ public class GoodsController implements Controller {
 		} else if(command.equals(HandlerMapping.GOODS_CATEGORY)) {
 			modelAndView.setPath("/WEB-INF/jsp/shp/goods/goods_category.jsp");
 			modelAndView.setRedirect(false);
+		} else if(command.equals(HandlerMapping.GOODS_CART)) {
+			modelAndView.setPath("/WEB-INF/jsp/shp/goods/goods_cart.jsp");
+			modelAndView.setRedirect(false);
 		}
 
 		return modelAndView;

@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- menu start -->
+<header id="header_login">
+        <div>
+           <a href="DispatcherServlet?command=user_login">로그인</a>
+           <span> ㅣ </span>
+           <a href="DispatcherServlet?command=user_join" space="line">회원가입</a>
+        </div>
+</header>
 <header id="header">
 	<div class="logo">쇼핑몰로고...</div>
 	<div class="top_btn">
@@ -12,7 +19,7 @@
 			</c:when>
 		</c:choose>
 		<input type="text" />
-		<a href="/html/user/cart/cart_view.html"><i class="fa-solid fa-cart-shopping"></i></a>
+		<a href="DispatcherServlet?command=goods_cart"><i class="fa-solid fa-cart-shopping"></i></a>
 		<a href="DispatcherServlet?command=user_login"><i class="fa-solid fa-user-large"></i></a>
 	</div>
 </header>
@@ -22,13 +29,13 @@
 		<a href="/DispatcherServlet?command=goods_category" class="menu_category_item_main"><li>카테고리</li></a>
 		<div class="menu_category">
 			<ul>
-				<li class="menu_category_item"><a href="/html/shp/goods/goods_category.html"><div>카테고리</div></a></li>
+				<li class="menu_category_item"><a href="/DispatcherServlet?command=goods_category"><div>카테고리</div></a></li>
 				<li class="menu_category_item"><a href=""><div>상의</div></a></li>
 				<li class="menu_category_item"><a href=""><div>아우터</div></a></li>
 				<li class="menu_category_item"><a href=""><div>바지</div></a></li>
 			</ul>
 		</div>
-		<a href="/html/shp/qna/qna.html"><li>1:1문의</li></a>
+		<a href="DispatcherServlet?command=qna"><li>1:1문의</li></a>
 		<a href="DispatcherServlet?command=dress_main"><li>커뮤니티</li></a>
 	</ul>
 </section>
