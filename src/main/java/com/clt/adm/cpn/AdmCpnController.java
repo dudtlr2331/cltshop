@@ -7,9 +7,14 @@ import com.clt.cmm.controller.Controller;
 import com.clt.cmm.servlet.HandlerMapping;
 import com.clt.cmm.servlet.ModelAndView;
 import com.clt.shp.goods.GoodsVO;
+import com.clt.shp.user.UserVo;
+import com.clt.shp.user.service.UserService;
 
 public class AdmCpnController implements Controller{
+	private ModelAndView modelAndView;
+	private AdmService AdmService;
 	private String command = "";
+	private AdmVo pvo;
 	
 	public AdmCpnController(String command) {
 		this.command = command;
@@ -30,12 +35,22 @@ public class AdmCpnController implements Controller{
 		
 		//레프트 메뉴 네비게이션
 		req.setAttribute("leftMenuNav", HandlerMapping.ADM_GOODS_LIST);
-		
+		//화면 반환
 		return modelAndView;
 	}
 
 	private AdmCpnVO parameterSetting(HttpServletRequest req) {
-		AdmCpnVO pvo = new AdmCpnVO();
-		return pvo;
+		pvo = new AdmVo();
+	    // 파라미터 셋팅
+		
+	    String cou_name = req.getParameter("cou_name");
+	    String cou_discount = req.getParameter("cou_discount");
+	    String cou_time = req.getParameter("cou_time");
+	    String cou_count = req.getParameter("cou_count");
+	    
+	    pvo.setCouN(cou_name);
+	    pvo.setCouD(cou_discount);
+	    pvo.setCouT(cou_time);
+	    pvo.setCouC(cou_count);
 	}
 }
