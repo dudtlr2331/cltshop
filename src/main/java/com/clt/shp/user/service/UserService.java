@@ -20,4 +20,8 @@ public class UserService {
 	public List<UserVo> selectUserList(UserVo param) {
 		return service.selectListUser(param);
 	}
+	
+	public int updateUser(UserVo pvo) {
+		return service.updateUser(pvo);
+	}
 }

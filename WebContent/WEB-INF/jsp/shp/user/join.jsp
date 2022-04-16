@@ -95,7 +95,8 @@ var id = '';
 function checkForm(){
 	if(!isIdCheck){
 		alert("아이디를 체크해 주세요.");
-		return false;
+		return ture;
+		/* return false; */
 	}
 }
 </script>

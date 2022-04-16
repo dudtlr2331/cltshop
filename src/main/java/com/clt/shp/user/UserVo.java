@@ -1,5 +1,7 @@
 package com.clt.shp.user;
 
+import java.sql.Date;
+
 public class UserVo {
    private long memberSeq;
    private String memberId;
@@ -12,17 +14,17 @@ public class UserVo {
    private String createdAt;
    private String grade;
    private String delFlag;
-   private String delDate;
+   private Date delDate;
    private String coupon;
-   private String accumulatedMoney;
+   private long accumulatedMoney;
 
    public UserVo() {
       super();
    }
 
 public UserVo(long memberSeq, String memberId, String memberName, String memberPwd, String memberTel, String birth,
-		String gender, String email, String createdAt, String grade, String delFlag, String delDate, String coupon,
-		String accumulatedMoney) {
+		String gender, String email, String createdAt, String grade, String delFlag, Date delDate, String coupon,
+		long accumulatedMoney) {
 	this.memberSeq = memberSeq;
 	this.memberId = memberId;
 	this.memberName = memberName;
@@ -127,11 +129,11 @@ public void setDelFlag(String delFlag) {
 	this.delFlag = delFlag;
 }
 
-public String getDelDate() {
+public Date getDelDate() {
 	return delDate;
 }
 
-public void setDelDate(String delDate) {
+public void setDelDate(Date delDate) {
 	this.delDate = delDate;
 }
 
@@ -143,11 +145,11 @@ public void setCoupon(String coupon) {
 	this.coupon = coupon;
 }
 
-public String getAccumulatedMoney() {
+public long getAccumulatedMoney() {
 	return accumulatedMoney;
 }
 
-public void setAccumulatedMoney(String accumulatedMoney) {
+public void setAccumulatedMoney(long accumulatedMoney) {
 	this.accumulatedMoney = accumulatedMoney;
 }
 

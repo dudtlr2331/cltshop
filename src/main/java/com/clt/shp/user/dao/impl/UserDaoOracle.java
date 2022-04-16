@@ -39,9 +39,9 @@ public class UserDaoOracle implements UserDao{
          ps.setString(8, pvo.getCreatedAt());
          ps.setString(9, pvo.getGrade());
          ps.setString(10, pvo.getDelFlag());
-         ps.setString(11, pvo.getDelDate());
+         ps.setDate(11, pvo.getDelDate());
          ps.setString(12, pvo.getCoupon());
-         ps.setString(13, pvo.getAccumulatedMoney());
+         ps.setLong(13, pvo.getAccumulatedMoney());
 
          row = ps.executeUpdate();
          
@@ -73,7 +73,7 @@ public class UserDaoOracle implements UserDao{
          if (rs.next()) {
             vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
                   rs.getString("MEMBER_TEL"), rs.getString("BIRTH"), rs.getString("GENDER"), rs.getString("EMAIL"), rs.getString("CREATED_AT")
-                  , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getString("DEL_DATE"), rs.getString("COUPON"), rs.getString("ACCUMULATED_MONEY"));
+                  , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getDate("DEL_DATE"), rs.getString("COUPON"), rs.getLong("ACCUMULATED_MONEY"));
          }
       } catch (SQLException e) {
          e.printStackTrace();
@@ -100,7 +100,7 @@ public class UserDaoOracle implements UserDao{
          while (rs.next()) {
             list.add(new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
                     rs.getString("MEMBER_TEL"), rs.getString("BIRTH"), rs.getString("GENDER"), rs.getString("EMAIL"), rs.getString("CREATED_AT")
-                    , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getString("DEL_DATE"), rs.getString("COUPON"), rs.getString("ACCUMULATED_MONEY")));
+                    , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getDate("DEL_DATE"), rs.getString("COUPON"), rs.getLong("ACCUMULATED_MONEY")));
          }
       } catch (SQLException e) {
          e.printStackTrace();
@@ -122,9 +122,18 @@ public class UserDaoOracle implements UserDao{
       try {
          conn = commonDao.getConnection();
          ps = conn.prepareStatement(UserSql.USER_UPDATE);
-         ps.setString(1, pvo.getMemberId());
+         ps.setString(1, pvo.getMemberName());
          ps.setString(2, pvo.getMemberPwd());
-         ps.setLong(3, pvo.getMemberSeq());
+         ps.setString(3, pvo.getMemberTel());
+         ps.setString(4, pvo.getBirth());
+         ps.setString(5, pvo.getGender());
+         ps.setString(6, pvo.getEmail());
+         ps.setString(7, pvo.getCreatedAt());
+         ps.setString(8, pvo.getGrade());
+         ps.setString(9, pvo.getDelFlag());
+         ps.setDate(10, pvo.getDelDate());
+         ps.setString(11, pvo.getCoupon());
+         ps.setLong(12, pvo.getAccumulatedMoney());
          row = ps.executeUpdate();
          System.out.println("UPDATE OK.. Seq::" + pvo.getMemberSeq());
       } catch (SQLException e) {
@@ -175,7 +184,7 @@ public class UserDaoOracle implements UserDao{
          if (rs.next()) {
             vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
                     rs.getString("MEMBER_TEL"), rs.getString("BIRTH"), rs.getString("GENDER"), rs.getString("EMAIL"), rs.getString("CREATED_AT")
-                    , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getString("DEL_DATE"), rs.getString("COUPON"), rs.getString("ACCUMULATED_MONEY"));
+                    , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getDate("DEL_DATE"), rs.getString("COUPON"), rs.getLong("ACCUMULATED_MONEY"));
          }
       } catch (SQLException e) {
          e.printStackTrace();

@@ -15,7 +15,7 @@
 	
 	<context-param>
 		<param-name>tomcatPath</param-name>
-		<param-value>C:\developer\apache-tomcat-8.0.45\wtpwebapps\cltshop\images\</param-value><!-- 톰켓위치 -->
+		<param-value>C:\apache-tomcat-8.0.9\wtpwebapps\cltshop\images\</param-value><!-- 톰켓위치 -->
 	</context-param>
 	<context-param>
 		<param-name>uploadPath</param-name>

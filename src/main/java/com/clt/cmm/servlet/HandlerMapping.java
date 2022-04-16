@@ -41,7 +41,8 @@ public class HandlerMapping {
    public static final String USER_JOIN = "user_join";
    public static final String USER_JOIN_INSERT = "user_join_insert";
    public static final String USER_ID_CHECK = "user_id_check";
-   public static final String USER_UPDATE = "user_update";
+   public static final String USER_EDIT = "user_edit"; /*회원수정*/
+   public static final String USER_EDIT_ACT = "user_edit_act";/*회원수정*/
    
    //드레스룸
    public static final String DRESS_MAIN = "dress_main";
@@ -118,7 +119,8 @@ public class HandlerMapping {
       }
       //user
       else if(command.equals(HandlerMapping.USER_LOGIN) || command.equals(HandlerMapping.USER_JOIN) || command.equals(HandlerMapping.USER_JOIN_INSERT)
-            || command.equals(HandlerMapping.USER_LOGIN_INSERT) || command.equals(HandlerMapping.USER_ID_CHECK) || command.equals(HandlerMapping.USER_UPDATE)) {
+            || command.equals(HandlerMapping.USER_LOGIN_INSERT) || command.equals(HandlerMapping.USER_ID_CHECK) || command.equals(HandlerMapping.USER_EDIT)
+            || command.equals(HandlerMapping.USER_EDIT_ACT)) {
          controller = new UserController(command);
       }
       //dress

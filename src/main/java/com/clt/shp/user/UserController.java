@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.clt.cmm.controller.Controller;
 import com.clt.cmm.servlet.HandlerMapping;
 import com.clt.cmm.servlet.ModelAndView;
+import com.clt.shp.goods.GoodsVO;
 import com.clt.shp.user.dao.impl.UserDaoOracle;
 import com.clt.shp.user.service.UserService;
 
@@ -46,8 +47,10 @@ public class UserController implements Controller {
          modelAndView = userLoginService(req, res);
       } else if (command.equals(HandlerMapping.USER_ID_CHECK)) {
          modelAndView = userIdCheck(req, res);
-      } else if (command.equals(HandlerMapping.USER_UPDATE)) {
-         modelAndView = userUpdate(req, res);
+      } else if (command.equals(HandlerMapping.USER_EDIT)) {
+         modelAndView = userEdit(req, res);
+      } else if (command.equals(HandlerMapping.USER_EDIT_ACT)) {
+          modelAndView = userEditAct(req, res);
       }
 
       //화면 반환
@@ -77,15 +80,28 @@ public class UserController implements Controller {
       pvo.setBirth(birth);
    }
 
-   // 회원 정보 수정
-   private ModelAndView userUpdate(HttpServletRequest req, HttpServletResponse res) {
-//      HttpSession session = req.getSession();
-//      String id = req.getParameter("id");
-//      System.out.println(id);
-//
-//      modelAndView.setPath("/WEB-INF/jsp/shp/user/login.jsp");
-      return modelAndView;
-   }
+   // 회원 정보 수정 화면
+	private ModelAndView userEdit(HttpServletRequest req, HttpServletResponse res) {
+		pvo = userService.selectUserOne(pvo);
+		
+		req.setAttribute("pvo", pvo);
+		
+		modelAndView.setPath("/WEB-INF/jsp/shp/user/user_edit.jsp");
+		modelAndView.setRedirect(false);
+		
+		return modelAndView;
+	}
+	
+	// 회원 정보 수정
+		private ModelAndView userEditAct(HttpServletRequest req, HttpServletResponse res) {
+			int result = userService.updateUser(pvo);
+			
+			req.setAttribute("pvo", pvo);
+			
+			modelAndView.setPath("/WEB-INF/jsp/shp/user/user_edit.jsp");
+			modelAndView.setRedirect(false);
+			return modelAndView;
+		}
 
    // 회원가입 시 회원 아이디 중복 체크
    private ModelAndView userIdCheck(HttpServletRequest req, HttpServletResponse res) {

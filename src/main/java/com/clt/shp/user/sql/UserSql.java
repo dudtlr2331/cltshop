@@ -49,8 +49,18 @@ public interface UserSql {
 			
 			String USER_UPDATE =
 			  "UPDATE MEMBER "
-			+ "   SET MEMBER_ID = ?"
+			+ "   SET MEMBER_NAME = ?"
 			+ "     , MEMBER_PWD = ?"
+			+ "     , MEMBER_TEL = ?"
+			+ "     , BIRTH = ?"
+			+ "     , GENDER = ?"
+			+ "     , EMAIL = ?"
+			+ "     , CREATED_AT = ?"
+			+ "     , GRADE = ?"
+			+ "     , DEL_FLAG = ?"
+			+ "     , DEL_DATE = ?"
+			+ "     , COUPON = ?"
+			+ "     , ACCUMULATED_MONEY = ?"
 			+ " WHERE 1=1"
 			+ "   AND MEMBER_SEQ = ?"
 			;
