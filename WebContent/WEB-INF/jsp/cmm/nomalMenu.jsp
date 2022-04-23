@@ -18,7 +18,7 @@
 				</form> --%>
 				
 				<span>${sessionScope.loginInfo.memberId }님 환영합니다.</span>
-				<input type="text" id="btn_edit" onclick="fn_user_edit('${sessionScope.loginInfo.memberSeq}')" value="수정">
+				<input type="button" id="btn_edit" onclick="fn_user_edit('${sessionScope.loginInfo.memberSeq}')" value="수정">
 			</c:when>
 		</c:choose>
 		<input type="text" />
@@ -45,7 +45,6 @@
 <!-- menu end -->
 <script>
 function fn_user_edit(memberSeq){
-	debugger;
 	const form = document.createElement('form');
 	form.method = 'post';
 	form.action = 'DispatcherServlet?command=user_edit';

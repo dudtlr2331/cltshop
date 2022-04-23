@@ -2,12 +2,12 @@ package com.clt.shp.user.dao;
 
 import java.util.List;
 
-import com.clt.shp.user.UserVo;
+import com.clt.shp.user.UserVO;
 
 public interface UserDao {
-	int insertUser(UserVo pvo);
-	UserVo selectUser(UserVo pvo);
-	List<UserVo> selectListUser(UserVo pvo);
-	int updateUser(UserVo pvo);
-	int deleteUser(UserVo pvo);
+	int insertUser(UserVO pvo);
+	UserVO selectUser(UserVO pvo);
+	List<UserVO> selectListUser(UserVO pvo);
+	int updateUser(UserVO pvo);
+	int deleteUser(UserVO pvo);
 }

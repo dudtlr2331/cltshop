@@ -10,18 +10,15 @@ import javax.servlet.http.HttpSession;
 import com.clt.cmm.controller.Controller;
 import com.clt.cmm.servlet.HandlerMapping;
 import com.clt.cmm.servlet.ModelAndView;
-import com.clt.shp.goods.GoodsVO;
 import com.clt.shp.user.dao.impl.UserDaoOracle;
 import com.clt.shp.user.service.UserService;
-
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 public class UserController implements Controller {
 
    private ModelAndView modelAndView;
    private UserService userService;
    private String command = "";
-   private UserVo pvo;
+   private UserVO pvo;
 
    public UserController(String command) {
       userService = new UserService(new UserDaoOracle());
@@ -58,7 +55,7 @@ public class UserController implements Controller {
    }
 
    private void parameterSetting(HttpServletRequest req) {
-      pvo = new UserVo();
+      pvo = new UserVO();
       // 파라미터 셋팅
       String id = req.getParameter("id");
       String pwd = req.getParameter("pwd");
@@ -111,7 +108,7 @@ public class UserController implements Controller {
 
       UserDaoOracle userDao = new UserDaoOracle();
 
-      UserVo sessionVO = userDao.userLogin(pvo);
+      UserVO sessionVO = userDao.userLogin(pvo);
 
       try {
          if (null == sessionVO) {
@@ -136,7 +133,7 @@ public class UserController implements Controller {
 
       UserDaoOracle userDao = new UserDaoOracle();
 
-      UserVo sessionVO = userDao.userLogin(pvo);
+      UserVO sessionVO = userDao.userLogin(pvo);
 
       if (null == sessionVO) {
          session.setAttribute("message", "아이디/비밀번호를 입력해 주세요.");

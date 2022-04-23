@@ -1,19 +1,11 @@
 package com.clt.shp.mypage;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.clt.adm.user.AdmUserVO;
 import com.clt.cmm.controller.Controller;
 import com.clt.cmm.servlet.HandlerMapping;
 import com.clt.cmm.servlet.ModelAndView;
-import com.clt.shp.goods.dao.impl.GoodsDaoOracle;
-import com.clt.shp.goods.service.GoodsService;
-import com.clt.shp.user.UserVo;
-import com.clt.shp.user.dao.impl.UserDaoOracle;
-import com.clt.shp.user.service.UserService;
 
 public class MypageController implements Controller {
 private String command = "";

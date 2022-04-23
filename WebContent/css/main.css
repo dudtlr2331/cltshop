@@ -7,6 +7,11 @@
   width: 250px;
 }
 
+.top_btn input[type=button],
+.top_btn input[type=submit] {
+  width: 55px;
+}
+
 .top_btn i {
   font-size: 27px;
   margin: 0 3px;

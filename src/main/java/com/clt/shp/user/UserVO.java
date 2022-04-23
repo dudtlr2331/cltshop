@@ -2,7 +2,7 @@ package com.clt.shp.user;
 
 import java.sql.Date;
 
-public class UserVo {
+public class UserVO {
    private long memberSeq;
    private String memberId;
    private String memberName;
@@ -18,11 +18,11 @@ public class UserVo {
    private String coupon;
    private long accumulatedMoney;
 
-   public UserVo() {
+   public UserVO() {
       super();
    }
 
-public UserVo(long memberSeq, String memberId, String memberName, String memberPwd, String memberTel, String birth,
+public UserVO(long memberSeq, String memberId, String memberName, String memberPwd, String memberTel, String birth,
 		String gender, String email, String createdAt, String grade, String delFlag, Date delDate, String coupon,
 		long accumulatedMoney) {
 	this.memberSeq = memberSeq;

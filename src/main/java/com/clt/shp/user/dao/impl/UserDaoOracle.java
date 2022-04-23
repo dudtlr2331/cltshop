@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.clt.cmm.dao.CommonDao;
-import com.clt.shp.user.UserVo;
+import com.clt.shp.user.UserVO;
 import com.clt.shp.user.dao.UserDao;
 import com.clt.shp.user.sql.UserSql;
 
@@ -20,7 +20,7 @@ public class UserDaoOracle implements UserDao{
    }
    
    @Override
-   public int insertUser(UserVo pvo) {
+   public int insertUser(UserVO pvo) {
       Connection conn = null;
       PreparedStatement ps = null;
       ResultSet rs = null;
@@ -60,18 +60,18 @@ public class UserDaoOracle implements UserDao{
    }
    
    @Override
-   public UserVo selectUser(UserVo pvo){
+   public UserVO selectUser(UserVO pvo){
       Connection conn = null;
       PreparedStatement ps = null;
       ResultSet rs = null;
-      UserVo vo = null;
+      UserVO vo = null;
       try {
          conn = commonDao.getConnection();
          ps = conn.prepareStatement(UserSql.USER_SELECT);
          ps.setLong(1, pvo.getMemberSeq());
          rs = ps.executeQuery();
          if (rs.next()) {
-            vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
+            vo = new UserVO(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
                   rs.getString("MEMBER_TEL"), rs.getString("BIRTH"), rs.getString("GENDER"), rs.getString("EMAIL"), rs.getString("CREATED_AT")
                   , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getDate("DEL_DATE"), rs.getString("COUPON"), rs.getLong("ACCUMULATED_MONEY"));
          }
@@ -88,17 +88,17 @@ public class UserDaoOracle implements UserDao{
    }
    
    @Override
-   public List<UserVo> selectListUser(UserVo pvo) {
+   public List<UserVO> selectListUser(UserVO pvo) {
       Connection conn = null;
       PreparedStatement ps = null;
       ResultSet rs = null;
-      List<UserVo> list = new ArrayList<UserVo>();
+      List<UserVO> list = new ArrayList<UserVO>();
       try {
          conn = commonDao.getConnection();
          ps = conn.prepareStatement(UserSql.USER_LIST);
          rs = ps.executeQuery();
          while (rs.next()) {
-            list.add(new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
+            list.add(new UserVO(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
                     rs.getString("MEMBER_TEL"), rs.getString("BIRTH"), rs.getString("GENDER"), rs.getString("EMAIL"), rs.getString("CREATED_AT")
                     , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getDate("DEL_DATE"), rs.getString("COUPON"), rs.getLong("ACCUMULATED_MONEY")));
          }
@@ -115,7 +115,7 @@ public class UserDaoOracle implements UserDao{
    }
    
    @Override
-   public int updateUser(UserVo pvo) {
+   public int updateUser(UserVO pvo) {
       Connection conn = null;
       PreparedStatement ps = null;
       int row = 0;
@@ -149,7 +149,7 @@ public class UserDaoOracle implements UserDao{
    }
    
    @Override
-   public int deleteUser(UserVo pvo) {
+   public int deleteUser(UserVO pvo) {
       Connection conn = null;
       PreparedStatement ps = null;
       int row = 0;
@@ -171,18 +171,18 @@ public class UserDaoOracle implements UserDao{
       return row;
    }
    
-   public UserVo userLogin(UserVo pvo) {
+   public UserVO userLogin(UserVO pvo) {
       Connection conn = null;
       PreparedStatement ps = null;
       ResultSet rs = null;
-      UserVo vo = null;
+      UserVO vo = null;
       try {
          conn = commonDao.getConnection();
          ps = conn.prepareStatement(UserSql.USER_LOGIN);
          ps.setString(1, pvo.getMemberId());
          rs = ps.executeQuery();
          if (rs.next()) {
-            vo = new UserVo(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
+            vo = new UserVO(rs.getLong("MEMBER_SEQ"), rs.getString("MEMBER_ID"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"),
                     rs.getString("MEMBER_TEL"), rs.getString("BIRTH"), rs.getString("GENDER"), rs.getString("EMAIL"), rs.getString("CREATED_AT")
                     , rs.getString("GRADE"), rs.getString("DEL_FLAG"), rs.getDate("DEL_DATE"), rs.getString("COUPON"), rs.getLong("ACCUMULATED_MONEY"));
          }

@@ -1,6 +1,6 @@
 package com.clt.shp.dress;
 
-public class DressVo {
+public class DressVO {
     private String dressroom_name;
 	private long dressroom_description;
 	private int dressroom_like;
@@ -30,7 +30,7 @@ public class DressVo {
 	public int getDressroom_like() {
 		return dressroom_like;
 	}
-	public void setDressroom_like(String dressroom_like) {
+	public void setDressroom_like(int dressroom_like) {
 		this.dressroom_like = dressroom_like;
 	}
 	@Override

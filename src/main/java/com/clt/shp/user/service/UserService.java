@@ -2,7 +2,7 @@ package com.clt.shp.user.service;
 
 import java.util.List;
 
-import com.clt.shp.user.UserVo;
+import com.clt.shp.user.UserVO;
 import com.clt.shp.user.dao.UserDao;
 
 public class UserService {
@@ -13,15 +13,15 @@ public class UserService {
 		this.service = service;
 	}
 
-	public UserVo selectUserOne(UserVo pvo) {
+	public UserVO selectUserOne(UserVO pvo) {
 		return service.selectUser(pvo);
 	}
 
-	public List<UserVo> selectUserList(UserVo param) {
+	public List<UserVO> selectUserList(UserVO param) {
 		return service.selectListUser(param);
 	}
 	
-	public int updateUser(UserVo pvo) {
+	public int updateUser(UserVO pvo) {
 		return service.updateUser(pvo);
 	}
 }

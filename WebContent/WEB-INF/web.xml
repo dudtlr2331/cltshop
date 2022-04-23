@@ -13,6 +13,15 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 	
+	<filter>
+		<filter-name>CmmHttpFilter</filter-name>
+		<filter-class>com.clt.cmm.filter.CmmHttpFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CmmHttpFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+	
 	<context-param>
 		<param-name>tomcatPath</param-name>
 		<param-value>C:\apache-tomcat-8.0.9\wtpwebapps\cltshop\images\</param-value><!-- 톰켓위치 -->
@@ -20,6 +29,10 @@
 	<context-param>
 		<param-name>uploadPath</param-name>
 		<param-value>C:\git\cltshop\WebContent\images\</param-value><!-- 실프로잭트위치 -->
+	</context-param>
+	<context-param>
+		<param-name>debugMode</param-name>
+		<param-value>info</param-value><!-- info/debug -->
 	</context-param>
 
 	<servlet>

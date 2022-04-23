@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.clt.shp.goods.GoodsVO;
 import com.clt.shp.goods.dao.impl.GoodsDaoOracle;
-import com.clt.shp.user.UserVo;
+import com.clt.shp.user.UserVO;
 import com.clt.shp.user.dao.UserDao;
 import com.clt.shp.user.dao.impl.UserDaoOracle;
 

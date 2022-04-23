@@ -94,9 +94,9 @@ var id = '';
 
 function checkForm(){
 	if(!isIdCheck){
-		alert("아이디를 체크해 주세요.");
-		return ture;
-		/* return false; */
+ 		alert("아이디를 체크해 주세요.");
+		/* return false; 아이디 체크 오류로 임시 수정 */
+		return true;
 	}
 }
 </script>
