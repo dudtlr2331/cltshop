@@ -7,8 +7,8 @@ public class AdmCpnVO {
 	private long cou_count;
 	
 
-	public AdmCpnVo() {
-		super();
+	public AdmCpnVO() {
+
 	}
 
 	public void AdmCpnVo(String cou_name, long cou_discount, String cou_time, long cou_count) {
@@ -47,7 +47,7 @@ public class AdmCpnVO {
 
 	@Override
 	public String toString() {
-		return "AdmVo [cou_num=cou_num.nextval, cou_name=" + cou_name + ", cou_discount=" + cou_discount + ", cou_time=" 
+		return "AdmCpnVo [cou_num=cou_num.nextval, cou_name=" + cou_name + ", cou_discount=" + cou_discount + ", cou_time=" 
 	+ cou_time + ", cou_count=" + cou_count + "]";
 	}
 }

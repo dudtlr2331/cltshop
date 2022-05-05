@@ -1,12 +1,12 @@
-package com.clt.adm.sql;
+package com.clt.adm.cpn.sql;
 
-public interface AdmSql {
-			String ADM_INSERT = 
+public interface AdmCpnSql {
+			String CPN_INSERT = 
 			  "INSERT INTO COUPON(COU_NUM, COU_NAME, COU_DISCOUNT, COU_TIME, COU_COUNT) "
 			+ "VALUES(cou_num.nextval, ?, ?, ?, ?, ?)"
 			;
 			
-			String ADM_SELECT =
+			String CPN_SELECT =
 			  "SELECT COU_NUM"
 			+ "	    , COU_NAME "
 			+ "     , COU_DISCOUNT"
@@ -17,7 +17,7 @@ public interface AdmSql {
 			+ "   AND COU_NUM = ?"
 			;
 			
-			String ADM_LIST =
+			String CPN_LIST =
 			  "SELECT COU_NUM"
 			+ "	    , COU_NAME "
 			+ "     , COU_DISCOUNT"
@@ -28,7 +28,7 @@ public interface AdmSql {
 			+ " ORDER BY COU_NUM DESC"
 			;
 			
-			String ADM_UPDATE =
+			String CPN_UPDATE =
 			  "UPDATE COUPON "
 			+ "   SET COU_NAME = ?"
 			+ "     , COU_TIME = ?"
@@ -36,7 +36,7 @@ public interface AdmSql {
 			+ "   AND COU_NUM = ?"
 			;
 			
-			String ADM_DELETE = 
+			String CPN_DELETE = 
 			  "DELETE FROM COUPON "
 			+ " WHERE 1=1 "
 			+ "  AND MEMBER_SEQ = ?"

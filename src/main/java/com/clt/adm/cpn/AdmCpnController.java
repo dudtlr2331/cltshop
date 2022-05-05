@@ -12,9 +12,9 @@ import com.clt.shp.user.service.UserService;
 
 public class AdmCpnController implements Controller{
 	private ModelAndView modelAndView;
-	private AdmService AdmService;
+	private AdmCpnService AdmService;
 	private String command = "";
-	private AdmVo pvo;
+	private AdmCpnVo pvo;
 	
 	public AdmCpnController(String command) {
 		this.command = command;

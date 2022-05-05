@@ -8,7 +8,7 @@ public class AdmVo {
 	
 
 	public AdmVo() {
-		
+		super();
 	}
 
 	public AdmVo(String cou_name, long cou_discount, String cou_time, long cou_count) {
