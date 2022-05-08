@@ -159,7 +159,7 @@ CREATE TABLE goods_qna (
 );
 
 CREATE TABLE dressroom (
-	dressroom_id	number	NOT NULL,
+	dressroom_id_SEQ	NUMBER(20)	PRIMARY KEY,
 	tag_id	number	NOT NULL,
 	user_id	number	NULL,
 	dressroom_name	varchar2(40)	NULL,

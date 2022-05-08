@@ -29,12 +29,12 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_INSERT); //DressSql
-			ps.setInt(1, pvo.getTagId());
-			ps.setInt(2, pvo.getUserId());
-			ps.setString(3, pvo.getDressroomName());
-			ps.setLong(4, pvo.getDressroomDescription());
-			ps.setDate(5, pvo.getDressroomDate());
-			ps.setInt(6, pvo.getDressroomLike());
+			ps.setInt(1, pvo.getTag_id());
+			ps.setLong(2, pvo.getUser_id());
+			ps.setString(3, pvo.getDressroom_name());
+			ps.setString(4, pvo.getDressroom_description());
+			ps.setDate(5, pvo.getDressroom_date());
+			ps.setInt(6, pvo.getDressroom_like());
 
 			row = ps.executeUpdate();
 			
@@ -60,18 +60,17 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_SELECT); //DressSql
-			ps.setLong(1, pvo.getDressInfoSeq());
+			ps.setLong(1, pvo.getDressroom_id_SEQ());
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				vo = new DressVO(
-                      rs.setInt("DRESSROOM_INFO_SEQ");
-                    , rs.setInt("DRESSROOM_ID");
-			        , rs.setInt("TAG_ID");
-                    , rs.setInt("USER_ID");
-			        , rs.setString("DRESSROOM_NAME");
-			        , rs.setLong("DRESSROOM_DESCRIPTION");
-			        , rs.setDate("DRESSROOM_DATE");
-			        , rs.setInt("DRESSROOM_LIKE");
+                      rs.getLong("DRESSROOM_INFO_SEQ")
+			        , rs.getInt("TAG_ID")
+                    , rs.getLong("USER_ID")
+			        , rs.getString("DRESSROOM_NAME")
+			        , rs.getString("DRESSROOM_DESCRIPTION")
+			        , rs.getDate("DRESSROOM_DATE")
+			        , rs.getInt("DRESSROOM_LIKE")
                 );
 			}
 		} catch (SQLException e) {
@@ -99,15 +98,14 @@ public class DressDaoOracle implements DressDao{
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				list.add(new DressVO(
-                      rs.setInt("DRESSROOM_INFO_SEQ");
-                    , rs.setInt("DRESSROOM_ID");
-			        , rs.setInt("TAG_ID");
-                    , rs.setInt("USER_ID");
-			        , rs.setString("DRESSROOM_NAME");
-			        , rs.setLong("DRESSROOM_DESCRIPTION");
-			        , rs.setDate("DRESSROOM_DATE");
-			        , rs.setInt("DRESSROOM_LIKE");
-                );
+						rs.getLong("DRESSROOM_INFO_SEQ")
+				      , rs.getInt("TAG_ID")
+	                  , rs.getLong("USER_ID")
+				      , rs.getString("DRESSROOM_NAME")
+				      , rs.getString("DRESSROOM_DESCRIPTION")
+				      , rs.getDate("DRESSROOM_DATE")
+				      , rs.getInt("DRESSROOM_LIKE")
+                ));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,12 +128,12 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_UPDATE); //DressSql
-			ps.setInt(1, pvo.getTagId());
-			ps.setInt(2, pvo.getUserId());
-			ps.setString(3, pvo.getDressroomName());
-			ps.setLong(4, pvo.getDressroomDescription());
-			ps.setDate(5, pvo.getDressroomDate());
-			ps.setInt(6, pvo.getDressroomLike());
+			ps.setInt(1, pvo.getTag_id());
+			ps.setLong(2, pvo.getUser_id());
+			ps.setString(3, pvo.getDressroom_name());
+			ps.setString(4, pvo.getDressroom_description());
+			ps.setDate(5, pvo.getDressroom_date());
+			ps.setInt(6, pvo.getDressroom_like());
 
 			row = ps.executeUpdate();
 
@@ -160,7 +158,7 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_DELETE); //DressSql
-			ps.setLong(1, pvo.getDressInfoSeq());
+			ps.setLong(1, pvo.getDressroom_id_SEQ());
 
 			row = ps.executeUpdate();
 
