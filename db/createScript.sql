@@ -1,4 +1,5 @@
 drop SEQUENCE SQ_GOODS_INFO_SEQ;
+drop SEQUENCE SQ_DRESSROOM_INFO_SEQ;
 
 drop table buy;
 drop table DRESSROOM;
@@ -158,8 +159,11 @@ CREATE TABLE goods_qna (
 	goods_qna_pwd	number	NULL
 );
 
+CREATE SEQUENCE SQ_DRESSROOM_INFO_SEQ;
+
 CREATE TABLE dressroom (
-	dressroom_id_SEQ	NUMBER(20)	PRIMARY KEY,
+	dressroom_info_seq	NUMBER(20)	PRIMARY KEY,
+	dressroom_id	NUMBER(12)	NOT NULL,
 	tag_id	number	NOT NULL,
 	user_id	number	NULL,
 	dressroom_name	varchar2(40)	NULL,

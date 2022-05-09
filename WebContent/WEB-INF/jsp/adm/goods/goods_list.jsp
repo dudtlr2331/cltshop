@@ -44,7 +44,7 @@
 		            <td>${obj.saleStatCd}</td>
 		            <td>${obj.inyQty}</td>
 		            <td>${obj.dlvPrc}</td>
-		            <td>${obj.goodsClr}</td>
+		            <td>${obj.goodsClr}</td> 
 		            <td>${obj.goodsSize}</td>
 		            <td>${obj.rgstDate}</td>
 		        </tr>

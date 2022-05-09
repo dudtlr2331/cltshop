@@ -48,6 +48,11 @@ public class HandlerMapping {
    //드레스룸
    public static final String DRESS_MAIN = "dress_main";
    public static final String DRESS_REGISTER = "dress_register";
+   public static final String DRESS_REGISTER_ACT = "dress_register_act";
+   public static final String DRESS_DETAIL = "dress_detail";
+   public static final String DRESS_EDIT = "dress_edit";
+   public static final String DRESS_EDIT_ACT = "dress_edit_act";
+   public static final String DRESS_REMOVE_ACT = "dress_remove_act";
    
    //마이페이지
    public static final String MYPAGE = "mypage";
@@ -131,7 +136,9 @@ public class HandlerMapping {
          controller = new UserController(command);
       }
       //dress
-      else if(command.equals(HandlerMapping.DRESS_MAIN) || command.equals(HandlerMapping.DRESS_REGISTER)) {
+      else if(command.equals(HandlerMapping.DRESS_MAIN) || command.equals(HandlerMapping.DRESS_REGISTER) || command.equals(HandlerMapping.DRESS_REGISTER_ACT) 
+    		  || command.equals(HandlerMapping.DRESS_DETAIL) || command.equals(HandlerMapping.DRESS_EDIT) || command.equals(HandlerMapping.DRESS_EDIT_ACT)
+    		  || command.equals(HandlerMapping.DRESS_REMOVE_ACT)) {
     	  controller = new DressController(command);
       }
       //mypage

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/nomalMenu.jsp" %>
+<c:if test="${not empty sessionScope.message}">
+	<script type="text/javascript">alert("${sessionScope.message}");</script>
+	<c:remove var="message" scope="session"/>
+</c:if>
 
 <section id="dressroom_bestmonth">
     <a href="">◀</a>
@@ -70,46 +74,28 @@
           </div>
        </div>
        <div class="dressroom_main_down">
-          <div class="dressroom_main_item">
-             <div class="dressroom_main_img"><img width="100%" height="100%" src="../../../images/드레스룸-샘플1.png"></div>
-             <div class="dressroom_main_item_detail">
-                <ul class="dressroom_main_ul">
-                   <li>제목</li>
-                   <li>작성자</li>
-                   <li>좋아요 수</li>
-                </ul>
-             </div>
+           <table>
+    		<thead>
+        	 <tr>
+              <th>번호</th><th>제목</th><th>태그</th><th>작성자</th><th>작성일자</th><th>좋아요</th>
+             </tr>
+    		</thead>
+    		<tbody>
+	    	 <c:if test="${empty list }">
+	    	  <tr><td colspan="6">데이터가 없습니다.</td></tr>
+	    	 </c:if>
+	    	 <c:forEach items="${list }" var="obj">
+		      <tr>
+		       <td>${obj.dressroomId}</td>
+		       <td><a href="/DispatcherServlet?command=dress_detail&dressroomInfoSEQ=${obj.dressroomInfoSEQ}">${obj.dressroomName}</a></td>
+		       <td>${obj.tagId}</td>
+		       <td>${obj.userId}</td>
+		       <td>${obj.dressroomDate}</td>
+		       <td>${obj.dressroomLike}</td>
+		      </tr>
+	    	 </c:forEach>
+	        </table>
           </div>
-          <div class="dressroom_main_item">
-           <div class="dressroom_main_img"><img width="100%" height="100%" src="../../../images/드레스룸-샘플2.png"></div>
-           <div class="dressroom_main_item_detail">
-              <ul class="dressroom_main_ul">
-                 <li>제목</li>
-                 <li>작성자</li>
-                 <li>좋아요 수</li>
-              </ul>
-           </div>
-        </div>
-        <div class="dressroom_main_item">
-           <div class="dressroom_main_img"><img width="100%" height="100%" src="../../../images/드레스룸-샘플3.png"></div>
-           <div class="dressroom_main_item_detail">
-              <ul class="dressroom_main_ul">
-                 <li>제목</li>
-                 <li>작성자</li>
-                 <li>좋아요 수</li>
-              </ul>
-           </div>
-        </div>
-        <div class="dressroom_main_item">
-           <div class="dressroom_main_img"><img width="100%" height="100%" src="../../../images/드레스룸-샘플4.png"></div>
-           <div class="dressroom_main_item_detail">
-              <ul class="dressroom_main_ul">
-                 <li>제목</li>
-                 <li>작성자</li>
-                 <li>좋아요 수</li>
-              </ul>
-           </div>
-        </div>
        </div>
     </div>
  </section>

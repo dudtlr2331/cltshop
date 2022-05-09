@@ -29,12 +29,11 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_INSERT); //DressSql
-			ps.setInt(1, pvo.getTag_id());
-			ps.setLong(2, pvo.getUser_id());
-			ps.setString(3, pvo.getDressroom_name());
-			ps.setString(4, pvo.getDressroom_description());
-			ps.setDate(5, pvo.getDressroom_date());
-			ps.setInt(6, pvo.getDressroom_like());
+			ps.setInt(1, pvo.getTagId());
+			ps.setLong(2, pvo.getUserId());
+			ps.setString(3, pvo.getDressroomName());
+			ps.setString(4, pvo.getDressroomDescription());
+			ps.setInt(5, pvo.getDressroomLike());
 
 			row = ps.executeUpdate();
 			
@@ -60,11 +59,12 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_SELECT); //DressSql
-			ps.setLong(1, pvo.getDressroom_id_SEQ());
+			ps.setLong(1, pvo.getDressroomInfoSEQ());
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				vo = new DressVO(
                       rs.getLong("DRESSROOM_INFO_SEQ")
+                    , rs.getLong("DRESSROOM_ID")
 			        , rs.getInt("TAG_ID")
                     , rs.getLong("USER_ID")
 			        , rs.getString("DRESSROOM_NAME")
@@ -99,6 +99,7 @@ public class DressDaoOracle implements DressDao{
 			while (rs.next()) {
 				list.add(new DressVO(
 						rs.getLong("DRESSROOM_INFO_SEQ")
+					  , rs.getLong("DRESSROOM_ID")
 				      , rs.getInt("TAG_ID")
 	                  , rs.getLong("USER_ID")
 				      , rs.getString("DRESSROOM_NAME")
@@ -128,12 +129,9 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_UPDATE); //DressSql
-			ps.setInt(1, pvo.getTag_id());
-			ps.setLong(2, pvo.getUser_id());
-			ps.setString(3, pvo.getDressroom_name());
-			ps.setString(4, pvo.getDressroom_description());
-			ps.setDate(5, pvo.getDressroom_date());
-			ps.setInt(6, pvo.getDressroom_like());
+			ps.setString(1, pvo.getDressroomName());
+			ps.setString(2, pvo.getDressroomDescription());
+			ps.setLong(3, pvo.getDressroomInfoSEQ());
 
 			row = ps.executeUpdate();
 
@@ -158,7 +156,7 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_DELETE); //DressSql
-			ps.setLong(1, pvo.getDressroom_id_SEQ());
+			ps.setLong(1, pvo.getDressroomInfoSEQ());
 
 			row = ps.executeUpdate();
 

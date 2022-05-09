@@ -12,9 +12,11 @@ import com.clt.shp.dress.dao.impl.DressDaoOracle;
 import com.clt.shp.dress.service.DressService;
 
 public class DressController implements Controller {
-private String command = "";
+	private String command = "";
+	private DressService dressService;
 	
 	public DressController(String command) {
+		dressService = new DressService(new DressDaoOracle());
 		this.command = command;
 	}
 
@@ -27,47 +29,75 @@ private String command = "";
 		
 		//비즈니스 처리
 		if(command.equals(HandlerMapping.DRESS_MAIN)) {
+			List<DressVO> list = dressService.selectDressList(pvo);
+			req.setAttribute("list", list);
+			
 			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_main.jsp");
 			modelAndView.setRedirect(false);
-		}else if(command.equals(HandlerMapping.DRESS_REGISTER)) {
+		}
+		else if(command.equals(HandlerMapping.DRESS_REGISTER)) {
 			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_register.jsp");
 			modelAndView.setRedirect(false);
 		}
-				
+		else if(command.equals(HandlerMapping.DRESS_REGISTER_ACT)) {
+			int result = dressService.insertDress(pvo);
+			
+			req.setAttribute("pvo", pvo);
+			
+			modelAndView.setPath("/DispatcherServlet?command=dress_main");
+			modelAndView.setRedirect(false);
+		}
+		else if (command.equals(HandlerMapping.DRESS_EDIT)) {
+			DressVO rvo = dressService.selectDressOne(pvo);
+			
+			req.setAttribute("pvo", rvo);
+			
+			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_edit.jsp");
+			modelAndView.setRedirect(false);		
+		}
+		else if(command.equals(HandlerMapping.DRESS_EDIT_ACT)) {
+			int result = dressService.updateDress(pvo);
+			
+			req.setAttribute("pvo", pvo);
+			
+			modelAndView.setPath("/DispatcherServlet?command=dress_main");
+			modelAndView.setRedirect(false);
+		}
+		else if (command.equals(HandlerMapping.DRESS_DETAIL)) {
+			DressVO rvo = dressService.selectDressOne(pvo);
+			
+			req.setAttribute("pvo", rvo);
+			
+			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_detail.jsp");
+			modelAndView.setRedirect(false);
+		}
+		else if(command.equals(HandlerMapping.DRESS_REMOVE_ACT)) {
+			int result = dressService.deleteDress(pvo);
+			
+			modelAndView.setPath("/DispatcherServlet?command=dress_main");
+			modelAndView.setRedirect(false);
+		}
+		
 		return modelAndView;
 	}
 
 	private DressVO parameterSetting(HttpServletRequest req) {
-		long dressroom_id_SEQ = req.getParameter("dressroom_id_SEQ") == null? 0L : Long.parseLong(req.getParameter("dressroom_id_SEQ"));
-		int tag_id = req.getParameter("tag_id") == null? 0 : Integer.parseInt(req.getParameter("tag_id"));
-		long entrNo = req.getParameter("entrNo") == null? 0L : Long.parseLong(req.getParameter("entrNo"));
-		String saleStatCd = req.getParameter("saleStatCd");
-		String goodsNm = req.getParameter("goodsNm");
-		int goodsPrc = req.getParameter("goodsPrc") == null? 0 : Integer.parseInt(req.getParameter("goodsPrc"));
-		String catgryCd = req.getParameter("catgryCd");
-		String catgryCd2 = req.getParameter("catgryCd2");
-		int inyQty = req.getParameter("inyQty") == null? 0 : Integer.parseInt(req.getParameter("inyQty"));
-		int dlvPrc = req.getParameter("dlvPrc") == null? 0 : Integer.parseInt(req.getParameter("dlvPrc"));
-		String goodsSize = req.getParameter("goodsSize");
-		String goodsClr = req.getParameter("goodsClr");
-		String useYn = req.getParameter("useYn");
-		String goodsIntr = req.getParameter("goodsIntr");
+		long dressroomInfoSEQ = req.getParameter("dressroomInfoSEQ") == null? 0L : Long.parseLong(req.getParameter("dressroomInfoSEQ"));
+		long dressroomId = req.getParameter("dressroomId") == null? 0L : Long.parseLong(req.getParameter("dressroomId"));
+		int tagId = req.getParameter("tagId") == null? 0 : Integer.parseInt(req.getParameter("tagId"));
+		long userId = req.getParameter("userId") == null? 0L : Long.parseLong(req.getParameter("userId"));
+		String dressroomName = req.getParameter("dressroomName");
+		String dressroomDescription = req.getParameter("dressroomDescription");
+		int dressroomLike = req.getParameter("dressroomLike") == null? 0 : Integer.parseInt(req.getParameter("dressroomLike"));
 
 		DressVO pvo = new DressVO();
-		pvo.setGoodsInfoSeq(goodsInfoSeq);
-		pvo.setGoodsCd(goodsCd);
-		pvo.setEntrNo(entrNo);
-		pvo.setSaleStatCd(saleStatCd);
-		pvo.setGoodsNm(goodsNm);
-		pvo.setGoodsPrc(goodsPrc);
-		pvo.setCatgryCd(catgryCd);
-		pvo.setCatgryCd2(catgryCd2);
-		pvo.setInyQty(inyQty);
-		pvo.setDlvPrc(dlvPrc);
-		pvo.setGoodsSize(goodsSize);
-		pvo.setGoodsClr(goodsClr);
-		pvo.setUseYn(useYn);
-		pvo.setGoodsIntr(goodsIntr);
+		pvo.setDressroomInfoSEQ(dressroomInfoSEQ);
+		pvo.setDressroomId(dressroomId);
+		pvo.setTagId(tagId);
+		pvo.setUserId(userId);
+		pvo.setDressroomName(dressroomName);
+		pvo.setDressroomDescription(dressroomDescription);
+		pvo.setDressroomLike(dressroomLike);
 
 		return pvo;
 	}

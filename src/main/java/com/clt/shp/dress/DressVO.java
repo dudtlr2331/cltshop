@@ -3,72 +3,80 @@ package com.clt.shp.dress;
 import java.sql.Date;
 
 public class DressVO {
-	private long dressroom_id_SEQ;
-	private int tag_id;
-	private long user_id;
-    private String dressroom_name;
-	private String dressroom_description;
-	private Date dressroom_date;
-	private int dressroom_like;
+	private long dressroomInfoSEQ;
+	private long dressroomId;
+	private int tagId;
+	private long userId;
+    private String dressroomName;
+	private String dressroomDescription;
+	private Date dressroomDate;
+	private int dressroomLike;
 	
 	public DressVO() {
 		
 	}
 	
-	public DressVO(long dressroom_id_SEQ, int tag_id, long user_id, String dressroom_name, String dressroom_description, Date dressroom_date, int dressroom_like) {
-		this.dressroom_id_SEQ = dressroom_id_SEQ;
-		this.tag_id = tag_id;
-		this.user_id = user_id;
-		this.dressroom_name = dressroom_name;
-		this.dressroom_description = dressroom_description;
-		this.dressroom_date = dressroom_date;
-		this.dressroom_like = dressroom_like;
+	public DressVO(long dressroomInfoSEQ, long dressroomId, int tagId, long userId, String dressroomName, String dressroomDescription, Date dressroomDate, int dressroomLike) {
+		this.dressroomInfoSEQ = dressroomInfoSEQ;
+		this.dressroomId = dressroomId;
+		this.tagId = tagId;
+		this.userId = userId;
+		this.dressroomName = dressroomName;
+		this.dressroomDescription = dressroomDescription;
+		this.dressroomDate = dressroomDate;
+		this.dressroomLike = dressroomLike;
 	}
 	
-	public long getDressroom_id_SEQ() {
-		return dressroom_id_SEQ;
+	public long getDressroomInfoSEQ() {
+		return dressroomInfoSEQ;
 	}
-	public void setDressroom_id_SEQ(long dressroom_id_SEQ) {
-		this.dressroom_id_SEQ = dressroom_id_SEQ;
+	public void setDressroomInfoSEQ(long dressroomInfoSEQ) {
+		this.dressroomInfoSEQ = dressroomInfoSEQ;
 	}
-	public int getTag_id() {
-		return tag_id;
+	public long getDressroomId() {
+		return dressroomId;
 	}
-	public void setTag_id(int tag_id) {
-		this.tag_id = tag_id;
+	public void setDressroomId(long dressroomId) {
+		this.dressroomId = dressroomId;
 	}
-	public long getUser_id() {
-		return user_id;
+	public int getTagId() {
+		return tagId;
 	}
-	public void setUser_id(long user_id) {
-		this.user_id = user_id;
+	public void setTagId(int tagId) {
+		this.tagId = tagId;
 	}
-	public String getDressroom_name() {
-		return dressroom_name;
+	public long getUserId() {
+		return userId;
 	}
-	public void setDressroom_name(String dressroom_name) {
-		this.dressroom_name = dressroom_name;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
-	public String getDressroom_description() {
-		return dressroom_description;
+	public String getDressroomName() {
+		return dressroomName;
 	}
-	public void setDressroom_description(String dressroom_description) {
-		this.dressroom_description = dressroom_description;
+	public void setDressroomName(String dressroomName) {
+		this.dressroomName = dressroomName;
 	}
-	public Date getDressroom_date() {
-		return dressroom_date;
+	public String getDressroomDescription() {
+		return dressroomDescription;
 	}
-	public void setDressroom_date(Date dressroom_date) {
-		this.dressroom_date = dressroom_date;
+	public void setDressroomDescription(String dressroomDescription) {
+		this.dressroomDescription = dressroomDescription;
 	}
-	public int getDressroom_like() {
-		return dressroom_like;
+	public Date getDressroomDate() {
+		return dressroomDate;
 	}
-	public void setDressroom_like(int dressroom_like) {
-		this.dressroom_like = dressroom_like;
+	public void setDressroomDate(Date dressroomDate) {
+		this.dressroomDate = dressroomDate;
+	}
+	public int getDressroomLike() {
+		return dressroomLike;
+	}
+	public void setDressroomLike(int dressroomLike) {
+		this.dressroomLike = dressroomLike;
 	}
 	@Override
 	public String toString() {
-		return "DressVO [dressroom_id_SEQ=" + dressroom_id_SEQ + ", tag_id=" + tag_id + ", user_id=" + user_id + ", dressroom_name=" + dressroom_name + ", dressroom_description=" + dressroom_description + ", dressroom_date=" + dressroom_date + ", dressroom_like=" + dressroom_like + "]";
+		return "DressVO [dressroomInfoSEQ=" + dressroomInfoSEQ + ", dressroomId=" + dressroomId + ", tagId=" + tagId + ", userId=" + userId + ", dressroomName=" + dressroomName + ", dressroomDescription=" + dressroomDescription + ", dressroomDate=" + dressroomDate + ", dressroomLike=" + dressroomLike + "]";
 	}
 }
