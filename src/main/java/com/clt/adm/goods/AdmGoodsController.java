@@ -43,7 +43,7 @@ public class AdmGoodsController implements Controller{
 			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_register.jsp");
 			modelAndView.setRedirect(false);
 		}
-		//상품 등록 엑션
+		//상품 등록 액션
 		else if(command.equals(HandlerMapping.ADM_GOODS_REGISTER_ACT)) {
 			int result = goodsService.insertGoods(pvo);
 			
@@ -107,6 +107,7 @@ public class AdmGoodsController implements Controller{
 		String goodsIntr = req.getParameter("goodsIntr");
 		
 		GoodsVO pvo = new GoodsVO();
+		
 		pvo.setGoodsInfoSeq(goodsInfoSeq);
 		pvo.setGoodsCd(goodsCd);
 		pvo.setEntrNo(entrNo);

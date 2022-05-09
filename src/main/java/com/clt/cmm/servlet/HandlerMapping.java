@@ -37,6 +37,7 @@ public class HandlerMapping {
    /******************************** shp ********************************/
    //유저
    public static final String USER_LOGIN = "user_login";
+   public static final String USER_LOGOUT = "user_logout";
    public static final String USER_LOGIN_INSERT = "user_login_insert";
    public static final String USER_JOIN = "user_join";
    public static final String USER_JOIN_INSERT = "user_join_insert";
@@ -56,7 +57,13 @@ public class HandlerMapping {
    public static final String MYPAGE_QNA = "mypage_qna";
    
    //Q&A
-   public static final String QNA = "qna";
+   public static final String QNA = "qna"; /*Q&A리스트*/
+   public static final String QNA_DETAIL = "qna_detail"; /*Q&A상세보기*/   
+   public static final String QNA_INSERT = "qna_insert"; /*Q&A작성*/
+   public static final String QNA_INSERT_ACT = "qna_insert_act"; /*Q&A작성*/
+   public static final String QNA_EDIT = "qna_edit"; /*Q&A수정*/
+   public static final String QNA_EDIT_ACT = "qna_edit_act"; /*Q&A수정*/
+   public static final String QNA_REMOVE_ACT = "qna_remove_act"; /*Q&A삭제*/
    
    //상품
    public static final String GOODS_LIST = "goods_list";
@@ -120,7 +127,7 @@ public class HandlerMapping {
       //user
       else if(command.equals(HandlerMapping.USER_LOGIN) || command.equals(HandlerMapping.USER_JOIN) || command.equals(HandlerMapping.USER_JOIN_INSERT)
             || command.equals(HandlerMapping.USER_LOGIN_INSERT) || command.equals(HandlerMapping.USER_ID_CHECK) || command.equals(HandlerMapping.USER_EDIT)
-            || command.equals(HandlerMapping.USER_EDIT_ACT)) {
+            || command.equals(HandlerMapping.USER_EDIT_ACT) || command.equals(HandlerMapping.USER_LOGOUT)) {
          controller = new UserController(command);
       }
       //dress
@@ -133,7 +140,8 @@ public class HandlerMapping {
     	  controller = new MypageController(command);
       }
       //Q&A
-      else if(command.equals(HandlerMapping.QNA)) { 
+      else if(command.equals(HandlerMapping.QNA) || command.equals(HandlerMapping.QNA_INSERT) || command.equals(HandlerMapping.QNA_INSERT_ACT) || command.equals(HandlerMapping.QNA_DETAIL)
+    		  || command.equals(HandlerMapping.QNA_EDIT) || command.equals(HandlerMapping.QNA_EDIT_ACT) || command.equals(HandlerMapping.QNA_REMOVE_ACT)) { 
     	  controller = new QnaController(command);
       }
       return controller;

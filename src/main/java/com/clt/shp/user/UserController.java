@@ -48,13 +48,16 @@ public class UserController implements Controller {
          modelAndView = userEdit(req, res);
       } else if (command.equals(HandlerMapping.USER_EDIT_ACT)) {
           modelAndView = userEditAct(req, res);
+      } else if (command.equals(HandlerMapping.USER_LOGOUT)) {
+          modelAndView = userLogout(req, res);
       }
 
       //화면 반환
       return modelAndView;
    }
 
-   private void parameterSetting(HttpServletRequest req) {
+
+private void parameterSetting(HttpServletRequest req) {
       pvo = new UserVO();
       // 파라미터 셋팅
       String id = req.getParameter("id");
@@ -77,6 +80,18 @@ public class UserController implements Controller {
       pvo.setBirth(birth);
    }
 
+	// 로그아웃
+	private ModelAndView userLogout(HttpServletRequest req, HttpServletResponse res) {
+		HttpSession session = req.getSession();
+		session.invalidate();
+		
+//		modelAndView.setRedirect(false);
+		modelAndView.setRedirect(true);
+		modelAndView.setPath("DispatcherServlet?command=goods_list");
+		
+		return modelAndView;
+	}
+	
    // 회원 정보 수정 화면
 	private ModelAndView userEdit(HttpServletRequest req, HttpServletResponse res) {
 		pvo = userService.selectUserOne(pvo);

@@ -19,6 +19,9 @@
 				
 				<span>${sessionScope.loginInfo.memberId }님 환영합니다.</span>
 				<input type="button" id="btn_edit" onclick="fn_user_edit('${sessionScope.loginInfo.memberSeq}')" value="수정">
+				<form action="DispatcherServlet?command=user_logout" method="post">
+					<input type="submit" id="logout_btn" value="로그아웃">
+         		</form>
 			</c:when>
 		</c:choose>
 		<input type="text" />
@@ -57,6 +60,14 @@ function fn_user_edit(memberSeq){
 	form.appendChild(hiddenField);
 	
 	document.body.appendChild(form);
+	
+	form.submit();
+}
+
+function fn_logout(){
+	const form = document.createElement('form');
+	form.method = 'post';
+	form.action = 'DispatcherServlet?command=user_logout';
 	
 	form.submit();
 }
