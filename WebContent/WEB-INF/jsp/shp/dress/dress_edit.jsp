@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/nomalMenu.jsp" %>
+<link href="/css/dressRoom.css" rel="stylesheet">
 
 <form name="frm" action="/DispatcherServlet?command=dress_edit_act" method="post" onsubmit="return fn_dress_edit()">
 	<input type="hidden" name="dressroomInfoSEQ" value="${pvo.dressroomInfoSEQ }" />

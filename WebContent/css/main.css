@@ -1,28 +1,19 @@
-* {
-  box-sizing: border-box;
-}
-
 .top_btn input {
   height: 27px;
   width: 250px;
-}
-
-.top_btn input[type=button],
-.top_btn input[type=submit] {
-  width: 55px;
 }
 
 .top_btn i {
   font-size: 27px;
   margin: 0 3px;
 }
-
 #main_benner .menu {
   display: flex;
   list-style: none;
   justify-content: space-around;
   background-color: beige;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 #main_benner .menu ul {
@@ -35,8 +26,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  /* flex-direction: row; */
 }
 
 #main_benner .menu a:hover{
@@ -101,7 +90,7 @@
 .img_area .img_a{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
   padding-bottom: 25px;
 }
 .img_area .img_a .item{
@@ -112,6 +101,8 @@
   height: 450px;
   cursor: pointer;
   position: relative;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .img_area .img_a .item .txt_area{

@@ -11,16 +11,12 @@
     <link href="/css/common.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/login.css" rel="stylesheet">
-    <link href="/css/one_qna.css" rel="stylesheet">
     <link href="/css/category.css" rel="stylesheet">
     <link href="/css/list.css" rel="stylesheet">
-    <link href="/css/cart.css" rel="stylesheet">
-    <link href="/css/dressRoom.css" rel="stylesheet">
-    <link href="/css/mypage.css" rel="stylesheet">
-    <link href="/css/mypage_coupon.css" rel="stylesheet">
-    <link href="/css/mypage_point.css" rel="stylesheet">
-    <link href="/css/mypage_detail.css" rel="stylesheet">
-    <link href="/css/mypage_coupon.css" rel="stylesheet">
+	
+   <!--      <link href="/css/one_qna.css" rel="stylesheet"> -->
+    
+    
     <title>쇼핑몰</title>
     <script src="https://kit.fontawesome.com/db1622cae4.js" crossorigin="anonymous"></script>
     <script src="/js/common.js" defer></script>

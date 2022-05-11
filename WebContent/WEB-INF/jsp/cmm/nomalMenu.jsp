@@ -26,7 +26,7 @@
 		</c:choose>
 		<input type="text" />
 		<a href="DispatcherServlet?command=goods_cart"><i class="fa-solid fa-cart-shopping"></i></a>
-		<a href="DispatcherServlet?command=user_login"><i class="fa-solid fa-user-large"></i></a>
+		<a href="DispatcherServlet?command=mypage"><i class="fa-solid fa-user-large"></i></a>
 	</div>
 </header>
 <section id="main_benner">

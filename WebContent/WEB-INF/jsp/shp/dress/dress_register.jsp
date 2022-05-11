@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/nomalMenu.jsp" %>
+<link href="/css/dressRoom.css" rel="stylesheet">
+
 <form action="/DispatcherServlet?command=dress_register_act" method="post" enctype="multipart/form-data">
 
 <h3 class="dressroom_create_title">드레스룸 등록</h3>

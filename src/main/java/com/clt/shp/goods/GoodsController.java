@@ -34,6 +34,8 @@ public class GoodsController implements Controller {
 			modelAndView.setPath("/WEB-INF/jsp/shp/goods/goods_list.jsp");
 			modelAndView.setRedirect(false);
 		} else if(command.equals(HandlerMapping.GOODS_CATEGORY)) {
+			List<GoodsVO> goodsList = goodsService.selectGoodsList(pvo);
+			req.setAttribute("goodsList", goodsList);
 			modelAndView.setPath("/WEB-INF/jsp/shp/goods/goods_category.jsp");
 			modelAndView.setRedirect(false);
 		} else if(command.equals(HandlerMapping.GOODS_CART)) {

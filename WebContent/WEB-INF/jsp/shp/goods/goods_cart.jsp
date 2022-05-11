@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/nomalMenu.jsp" %>
+<link href="/css/cart.css" rel="stylesheet">
 
 <h2 class="cart_title">장바구니</h2>
 <section id="cart_up">
