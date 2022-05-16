@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.clt.cmm.controller.Controller;
 import com.clt.cmm.servlet.HandlerMapping;
 import com.clt.cmm.servlet.ModelAndView;
 import com.clt.shp.dress.dao.impl.DressDaoOracle;
 import com.clt.shp.dress.service.DressService;
+import com.clt.shp.user.UserVO;
 
 public class DressController implements Controller {
 	private String command = "";
@@ -23,6 +25,8 @@ public class DressController implements Controller {
 	@Override
 	public ModelAndView execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
+		HttpSession session = req.getSession();
+		UserVO loginVo = (UserVO) session.getAttribute("loginInfo");
 		
 		//파라미터 셋팅
 		DressVO pvo = parameterSetting(req);
@@ -36,6 +40,7 @@ public class DressController implements Controller {
 			modelAndView.setRedirect(false);
 		}
 		else if(command.equals(HandlerMapping.DRESS_REGISTER)) {
+			
 			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_register.jsp");
 			modelAndView.setRedirect(false);
 		}
@@ -48,6 +53,13 @@ public class DressController implements Controller {
 			modelAndView.setRedirect(false);
 		}
 		else if (command.equals(HandlerMapping.DRESS_EDIT)) {
+			if(loginVo == null) {
+				session.setAttribute("message", "로그인을 해주세요.");
+				modelAndView.setPath("/DispatcherServlet?command=user_login");
+				modelAndView.setRedirect(true);
+				return modelAndView;
+			}
+			
 			DressVO rvo = dressService.selectDressOne(pvo);
 			
 			req.setAttribute("pvo", rvo);

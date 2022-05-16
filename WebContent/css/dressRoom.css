@@ -231,3 +231,24 @@
 .dress_document_review_detail{
     margin: 25px;
 }
+
+.data_list table{
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-collapse: collapse;
+}
+.data_list table tr{
+	border-bottom: 1px solid #444444;
+}
+
+.data_list table th{
+	background-color: #e6e3fc;
+}
+
+.data_list table th,
+.data_list table td{
+	padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}

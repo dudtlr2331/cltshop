@@ -31,6 +31,9 @@ public class HandlerMapping {
    public static final String ADM_EVENT_BANNER = "adm_event_banner";/*이벤트 관리*/
    public static final String ADM_STATS_SALES = "adm_stats_sales";/*매출현황*/
    public static final String ADM_DRESSROOM_MANAGER = "adm_dressroom_manager";/*드레스룸 관리*/
+   public static final String ADM_DRESSROOM_MANAGER_EDIT = "adm_dressroom_manager_edit";/*드레스룸 수정*/
+   public static final String ADM_DRESSROOM_MANAGER_EDIT_ACT = "adm_dressroom_manager_edit_act";/*드레스룸 수정*/
+   public static final String ADM_DRESSROOM_MANAGER_REMOVE_ACT = "adm_dressroom_manager_remove_act";/*드레스룸 삭제*/
    public static final String ADM_QNA_LIST = "adm_qna_list";/*1:1 문의 관리*/
    public static final String ADM_COUPON = "adm_coupon";/*쿠폰/적립금 관리*/
    
@@ -113,7 +116,10 @@ public class HandlerMapping {
          controller = new AdmStatsController(command);
       }
       //드레스룸 관리
-      else if(command.equals(HandlerMapping.ADM_DRESSROOM_MANAGER)){
+      else if(command.equals(HandlerMapping.ADM_DRESSROOM_MANAGER)
+    		  || command.equals(HandlerMapping.ADM_DRESSROOM_MANAGER_EDIT)
+    		  || command.equals(HandlerMapping.ADM_DRESSROOM_MANAGER_EDIT_ACT)
+    		  || command.equals(HandlerMapping.ADM_DRESSROOM_MANAGER_REMOVE_ACT)){
          controller = new AdmDressController(command);
       }
       //1:1 문의 관리
