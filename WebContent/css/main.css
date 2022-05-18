@@ -2,7 +2,9 @@
   height: 27px;
   width: 250px;
 }
-
+/* .top_btn input[type:button]{
+  width: 70px;
+} */
 .top_btn i {
   font-size: 27px;
   margin: 0 3px;

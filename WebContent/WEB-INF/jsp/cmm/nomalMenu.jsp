@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- menu start -->
 <header id="header_login">
-        <div>
-           <a href="DispatcherServlet?command=user_login">로그인</a>
-           <span> ㅣ </span>
-           <a href="DispatcherServlet?command=user_join" space="line">회원가입</a>
-        </div>
+	<c:choose>
+		<c:when test="${empty sessionScope.loginInfo }">
+			<div>
+				<a href="DispatcherServlet?command=user_login">로그인</a>
+				<span>ㅣ </span>
+				<a href="DispatcherServlet?command=user_join" space="line">회원가입</a>
+			</div>
+		</c:when>
+	</c:choose>
 </header>
 <header id="header">
 	<div class="logo">쇼핑몰로고...</div>
