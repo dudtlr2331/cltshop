@@ -14,7 +14,7 @@
        <li><a href="/DispatcherServlet?command=adm_stats_sales">매출현황</a></li>
        <li><a href="/DispatcherServlet?command=adm_dressroom_manager">드레스룸 관리</a></li>
        <li><a href="/DispatcherServlet?command=adm_qna_list">1:1 문의 관리</a></li>
-       <li><a href="/DispatcherServlet?command=adm_coupon">쿠폰/적립금 관리</a></li>
+       <li><a href="/DispatcherServlet?command=adm_cpn_list">쿠폰/적립금 관리</a></li>
     </ul>
 </nav>
 <!-- adm menu end -->
@@ -40,7 +40,7 @@ window.onload = ()=>{
 		leftMenu[7].classList.add('active');		
 	}else if(leftMenuNav == 'adm_qna_list'){
 		leftMenu[8].classList.add('active');		
-	}else if(leftMenuNav == 'adm_coupon'){
+	}else if(leftMenuNav == 'adm_cpn_list'){
 		leftMenu[9].classList.add('active');		
 	}
 	

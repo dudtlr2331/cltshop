@@ -1,7 +1,9 @@
 drop SEQUENCE SQ_GOODS_INFO_SEQ;
 drop SEQUENCE SQ_DRESSROOM_INFO_SEQ;
+drop SEQUENCE SQ_COU_INFO_SEQ;
 
 drop table buy;
+drop table COUPON_TBL
 drop table DRESSROOM;
 drop table DRESSROOM_COMMENT;
 drop table DRESSROOM_TAG;
@@ -56,12 +58,16 @@ CREATE TABLE product_io (
 	pDate	date	NULL
 );
 
-CREATE TABLE coupon_tbl (
-	cou_num	number	NOT NULL,
-	cou_name	varchar2(30)	NULL,
-	cou_discount	number	NULL,
-	cou_time	datetime	NULL,
-	cou_count	number	NULL
+CREATE SEQUENCE SQ_COU_INFO_SEQ;
+
+CREATE TABLE COUPON_TBL (
+	COU_INFO_SEQ NUMBER(20) 	PRIMARY KEY, 	/*쿠폰 시퀀스*/
+	COU_NUM		 NUMBER(12)		NOT NULL,		/*쿠폰 코드*/
+	COU_NAME	 VARCHAR2(200)	NULL,			/*쿠폰 이름*/
+	COU_DISCOUNT NUMBER(12)		NULL,			/*쿠폰 할인율*/
+	COU_REGIST_DATE	DATE		NULL,			/*쿠폰 등록 날짜*/
+	COU_END_DATE	DATE		NULL,			/*쿠폰 만료 날짜*/
+	COU_COUNT	 NUMBER(12)		NULL			/*쿠폰 개수*/
 );
 
 CREATE TABLE event_tbl (

@@ -94,23 +94,7 @@ public class DressController implements Controller {
 	}
 
 	private DressVO parameterSetting(HttpServletRequest req) {
-		long dressroomInfoSEQ = req.getParameter("dressroomInfoSEQ") == null? 0L : Long.parseLong(req.getParameter("dressroomInfoSEQ"));
-		long dressroomId = req.getParameter("dressroomId") == null? 0L : Long.parseLong(req.getParameter("dressroomId"));
-		int tagId = req.getParameter("tagId") == null? 0 : Integer.parseInt(req.getParameter("tagId"));
-		long userId = req.getParameter("userId") == null? 0L : Long.parseLong(req.getParameter("userId"));
-		String dressroomName = req.getParameter("dressroomName");
-		String dressroomDescription = req.getParameter("dressroomDescription");
-		int dressroomLike = req.getParameter("dressroomLike") == null? 0 : Integer.parseInt(req.getParameter("dressroomLike"));
-
 		DressVO pvo = new DressVO();
-		pvo.setDressroomInfoSEQ(dressroomInfoSEQ);
-		pvo.setDressroomId(dressroomId);
-		pvo.setTagId(tagId);
-		pvo.setUserId(userId);
-		pvo.setDressroomName(dressroomName);
-		pvo.setDressroomDescription(dressroomDescription);
-		pvo.setDressroomLike(dressroomLike);
-
 		return pvo;
 	}
 }
