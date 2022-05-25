@@ -16,7 +16,7 @@ public class CpnService {
 		this.dao = dao;
 	}
 	
-	private CpnVO parameterSetting(HttpServletRequest req) {
+	public CpnVO parameterSetting(HttpServletRequest req) {
 		long couInfoSeq = req.getParameter("couInfoSeq") == null? 0L : Long.parseLong(req.getParameter("couInfoSeq"));
 		long couNum = req.getParameter("couNum") == null? 0L : Long.parseLong(req.getParameter("couNum"));
 		String couName = req.getParameter("couName");

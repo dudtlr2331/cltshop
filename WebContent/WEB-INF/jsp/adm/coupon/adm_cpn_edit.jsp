@@ -3,7 +3,6 @@
 <h2>쿠폰 목록 > 쿠폰 수정</h2>
 <form action="/DispatcherServlet?command=adm_cpn_edit_act" method="post" enctype="multipart/form-data" onsubmit="return fn_cpn_edit()">
 <input type="hidden" name="couInfoSeq" value="${pvo.couInfoSeq }" />
-<input type="hidden" name="couNum" value="${pvo.couNum }" />
 <div class="data_list">
     <table>
     	<colgroup>
@@ -14,15 +13,15 @@
     	</colgroup>
     	<tr>
     		<th><div>쿠폰 이름</div></th>
-            <td><input type="text" name="couName"></td>
+            <td><input type="text" name="couName" value="${pvo.couNum }"></td>
             <th><div>쿠폰 할인율</div></th>
-            <td><input type="number" name="couDiscount"></td>
+            <td><input type="number" name="couDiscount" value="${pvo.couDiscount }"></td>
         </tr>
         <tr>
     		<th><div>쿠폰 만료 날짜</div></th>
-            <td><input type="Date" name="couEndDate"></td>
+            <td><input type="Date" name="couEndDate" value="${pvo.couEndDate }"></td>
             <th><div>쿠폰 개수</div></th>
-            <td><input type="number" name="couCount"></td>
+            <td><input type="number" name="couCount" value="${pvo.couCount }"></td>
         </tr>
     </table>
 </div>

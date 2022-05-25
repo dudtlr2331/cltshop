@@ -29,7 +29,7 @@ public class AdmCpnController implements Controller{
 		HttpSession session = req.getSession();
 		
 		//파라미터 셋팅
-		CpnVO pvo = parameterSetting(req);
+		CpnVO pvo = cpnService.parameterSetting(req);
 		
 		//비즈니스 처리
 		if(command.equals(HandlerMapping.ADM_CPN_LIST)) {
@@ -78,10 +78,5 @@ public class AdmCpnController implements Controller{
 		req.setAttribute("leftMenuNav", HandlerMapping.ADM_CPN_LIST);
 				
 		return modelAndView;
-	}
-	
-	private CpnVO parameterSetting(HttpServletRequest req) {
-		CpnVO pvo = new CpnVO();
-		return pvo;
 	}
 }

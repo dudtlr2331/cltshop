@@ -29,7 +29,7 @@ public class DressController implements Controller {
 		UserVO loginVo = (UserVO) session.getAttribute("loginInfo");
 		
 		//파라미터 셋팅
-		DressVO pvo = parameterSetting(req);
+		DressVO pvo = dressService.parameterSetting(req);
 		
 		//비즈니스 처리
 		if(command.equals(HandlerMapping.DRESS_MAIN)) {
@@ -91,10 +91,5 @@ public class DressController implements Controller {
 		}
 		
 		return modelAndView;
-	}
-
-	private DressVO parameterSetting(HttpServletRequest req) {
-		DressVO pvo = new DressVO();
-		return pvo;
 	}
 }
