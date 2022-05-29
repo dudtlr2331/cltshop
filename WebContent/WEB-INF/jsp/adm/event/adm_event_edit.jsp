@@ -26,6 +26,8 @@
             <td colspan="5">
             	<div id="imgPreView">
             		<img alt="" src="${pvo.imgPath}${pvo.imgNm}">
+            		<input type="hidden" name="imgPath" value="${pvo.imgPath}" />
+            		<input type="hidden" name="imgNm" value="${pvo.imgNm}" />
             	</div>
             </td>
         </tr>
