@@ -28,7 +28,7 @@
 	</context-param>
 	<context-param>
 		<param-name>uploadPath</param-name>
-		<param-value>D:\cltshop\WebContent\images\</param-value><!-- 실프로잭트위치 -->
+        <param-value>C:\git\cltshop\WebContent\images\</param-value><!-- 실프로잭트위치 -->
 	</context-param>
 	<context-param>
 		<param-name>debugMode</param-name>
@@ -41,7 +41,7 @@
 		<servlet-name>DispatcherServlet</servlet-name>
 		<servlet-class>com.clt.cmm.servlet.DispatcherServlet</servlet-class>
 		<multipart-config>
-			<location>D:\cltshop\WebContent\images</location><!-- 실프로잭트위치 -->
+            <location>C:\git\cltshop\WebContent\images</location><!-- 실프로잭트위치 -->
 			<max-file-size>-1</max-file-size>
 			<max-request-size>-1</max-request-size>
 			<file-size-threshold>1024</file-size-threshold>
