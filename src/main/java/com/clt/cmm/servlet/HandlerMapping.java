@@ -28,7 +28,12 @@ public class HandlerMapping {
    public static final String ADM_GOODS_QNA = "adm_goods_qna";/*상품 문의 관리*/
    public static final String ADM_ORDER_LIST = "adm_order_list";/*주문 관리*/
    public static final String ADM_USER_LIST = "adm_user_list";/*회원 관리*/
-   public static final String ADM_EVENT_BANNER = "adm_event_banner";/*이벤트 관리*/
+   public static final String ADM_EVENT_LIST = "adm_event_list";/*이벤트 배너 관리*/
+   public static final String ADM_EVENT_REGISTER = "adm_event_register";/*이벤트 배너 관리*/
+   public static final String ADM_EVENT_REGISTER_ACT = "adm_event_register_act";/*이벤트 배너 관리*/
+   public static final String ADM_EVENT_EDIT = "adm_event_edit";/*이벤트 배너 관리*/
+   public static final String ADM_EVENT_EDIT_ACT = "adm_event_deit_act";/*이벤트 배너 관리*/
+   public static final String ADM_EVENT_REMOVE_ACT = "adm_event_remove_act";/*이벤트 배너 관리*/
    public static final String ADM_STATS_SALES = "adm_stats_sales";/*매출현황*/
    public static final String ADM_DRESSROOM_MANAGER = "adm_dressroom_manager";/*드레스룸 관리*/
    public static final String ADM_DRESSROOM_MANAGER_EDIT = "adm_dressroom_manager_edit";/*드레스룸 수정*/
@@ -113,7 +118,12 @@ public class HandlerMapping {
          controller = new AdmUserController(command);
       }
       //이벤트 관리
-      else if(command.equals(HandlerMapping.ADM_EVENT_BANNER)){
+      else if(command.equals(HandlerMapping.ADM_EVENT_LIST)
+    	  || command.equals(HandlerMapping.ADM_EVENT_REGISTER)
+		  || command.equals(HandlerMapping.ADM_EVENT_REGISTER_ACT)
+		  || command.equals(HandlerMapping.ADM_EVENT_EDIT)
+		  || command.equals(HandlerMapping.ADM_EVENT_EDIT_ACT)
+		  || command.equals(HandlerMapping.ADM_EVENT_REMOVE_ACT)){
          controller = new AdmEventController(command);
       }
       //매출현황

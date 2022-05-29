@@ -47,22 +47,5 @@ function fn_cpn_remove(couInfoSeq){
 		location.href='/DispatcherServlet?command=adm_cpn_remove_act&couInfoSeq=' + couInfoSeq;
 	}
 }
-
-//첨부파일 이미지 미리보기
-function previewImg(e){
-	let reader = new FileReader();
-	reader.onload = function(event) {
-		let img = document.querySelector("#imgPreView img");
-		if(null!=img){
-			document.querySelector("#imgPreView img").remove();
-		}
-		img = document.createElement("img");
-		img.setAttribute("src", event.target.result);
-		img.setAttribute("width", "300px");
-		//img.setAttribute("height", "");
-		document.querySelector("#imgPreView").appendChild(img);
-	};
-	reader.readAsDataURL(event.target.files[0]);
-}
 </script>
 <%@ include file="/WEB-INF/jsp/cmm/admFooter.jsp" %>

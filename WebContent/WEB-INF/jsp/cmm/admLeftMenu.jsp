@@ -10,7 +10,7 @@
        <li class="sub"><a href="/DispatcherServlet?command=adm_goods_qna">상품 문의 관리</a></li>
        <li><a href="/DispatcherServlet?command=adm_order_list">주문 관리</a></li>
        <li><a href="/DispatcherServlet?command=adm_user_list">회원 관리</a></li>
-       <li><a href="/DispatcherServlet?command=adm_event_banner">이벤트 관리</a></li>
+       <li><a href="/DispatcherServlet?command=adm_event_list">이벤트 관리</a></li>
        <li><a href="/DispatcherServlet?command=adm_stats_sales">매출현황</a></li>
        <li><a href="/DispatcherServlet?command=adm_dressroom_manager">드레스룸 관리</a></li>
        <li><a href="/DispatcherServlet?command=adm_qna_list">1:1 문의 관리</a></li>
@@ -32,7 +32,7 @@ window.onload = ()=>{
 		leftMenu[3].classList.add('active');		
 	}else if(leftMenuNav == 'adm_user_list'){
 		leftMenu[4].classList.add('active');		
-	}else if(leftMenuNav == 'adm_event_banner'){
+	}else if(leftMenuNav == 'adm_event_list'){
 		leftMenu[5].classList.add('active');		
 	}else if(leftMenuNav == 'adm_stats_sales'){
 		leftMenu[6].classList.add('active');		

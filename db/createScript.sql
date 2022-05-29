@@ -1,9 +1,11 @@
 drop SEQUENCE SQ_GOODS_INFO_SEQ;
 drop SEQUENCE SQ_DRESSROOM_INFO_SEQ;
 drop SEQUENCE SQ_COU_INFO_SEQ;
+drop SEQUENCE SQ_EVNET_INFO_SEQ;
+drop SEQUENCE SQ_EVENT_INFO_SEQ;
 
 drop table buy;
-drop table COUPON_TBL
+drop table COUPON_TBL;
 drop table DRESSROOM;
 drop table DRESSROOM_COMMENT;
 drop table DRESSROOM_TAG;
@@ -70,12 +72,16 @@ CREATE TABLE COUPON_TBL (
 	COU_COUNT	 NUMBER(12)		NULL			/*쿠폰 개수*/
 );
 
-CREATE TABLE event_tbl (
-	eve_num	number	NOT NULL,
-	eve_title	varchar2(30)	NULL,
-	eve_con	varchar2(30)	NULL,
-	eve_regd	date	NULL,
-	eve_date	date	NULL
+CREATE SEQUENCE SQ_EVENT_INFO_SEQ;
+
+CREATE TABLE EVENT_TBL (
+	EVENT_INFO_SEQ 	NUMBER(20) 	PRIMARY KEY, 	/*이벤트 시퀀스*/
+	EVENT_NUM		NUMBER(12)	NOT NULL,		/*이벤트 코드*/
+	EVENT_NAME	 	VARCHAR2(200)	NULL,		/*이벤트 이름*/
+	IMG_PATH		VARCHAR2(500)	NULL,		/*이미지경로*/
+	IMG_NM			VARCHAR2(300)	NULL, 		/*이미지이름*/
+	EVENT_REGIST_DATE	DATE		NULL,		/*이벤트 등록 날짜*/
+	EVENT_END_DATE		DATE		NULL		/*이벤트 만료 날짜*/
 );
 
 CREATE TABLE oneqna_tbl (
