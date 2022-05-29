@@ -51,7 +51,7 @@ public interface EventSql{
 			  "UPDATE EVENT_TBL "
 			+ "   SET EVENT_NAME = ?" /*이벤트 이름*/
 			+ "     , IMG_PATH = ?" /*이미지경로*/
-			+ "     , IMG_NM" /*이미지이름*/
+			+ "     , IMG_NM = ?" /*이미지이름*/
 			+ "     , EVENT_END_DATE = ?" /*이벤트 만료 날짜*/
 			+ " WHERE 1=1"
 			+ "   AND EVENT_INFO_SEQ = ?"

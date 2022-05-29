@@ -11,6 +11,7 @@ import com.clt.cmm.dao.CommonDao;
 import com.clt.shp.cpn.CpnVO;
 import com.clt.shp.cpn.dao.CpnDao;
 import com.clt.shp.cpn.sql.CpnSql;
+import com.clt.shp.event.sql.EventSql;
 
 public class CpnDaoOracle implements CpnDao{
 	private CommonDao commonDao;
@@ -123,10 +124,12 @@ public class CpnDaoOracle implements CpnDao{
 		int row = 0;
 		try {
 			conn = commonDao.getConnection();
+			ps = conn.prepareStatement(CpnSql.CPN_UPDATE);
 			ps.setString(1, pvo.getCouName());
 			ps.setInt(2, pvo.getCouDiscount());
 			ps.setString(3, pvo.getCouEndDate());
 			ps.setInt(4, pvo.getCouCount());
+			ps.setLong(5, pvo.getCouInfoSeq());
 			row = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

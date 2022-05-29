@@ -64,7 +64,7 @@ public class AdmEventController implements Controller{
 			req.setAttribute("pvo", pvo);
 			
 			modelAndView.setPath("/DispatcherServlet?command=adm_event_list");
-			modelAndView.setRedirect(false);
+			modelAndView.setRedirect(true);
 		}
 		else if(command.equals(HandlerMapping.ADM_EVENT_REMOVE_ACT)) {
 			int result = eventService.deleteEvent(pvo);

@@ -32,7 +32,7 @@ public class HandlerMapping {
    public static final String ADM_EVENT_REGISTER = "adm_event_register";/*이벤트 배너 관리*/
    public static final String ADM_EVENT_REGISTER_ACT = "adm_event_register_act";/*이벤트 배너 관리*/
    public static final String ADM_EVENT_EDIT = "adm_event_edit";/*이벤트 배너 관리*/
-   public static final String ADM_EVENT_EDIT_ACT = "adm_event_deit_act";/*이벤트 배너 관리*/
+   public static final String ADM_EVENT_EDIT_ACT = "adm_event_edit_act";/*이벤트 배너 관리*/
    public static final String ADM_EVENT_REMOVE_ACT = "adm_event_remove_act";/*이벤트 배너 관리*/
    public static final String ADM_STATS_SALES = "adm_stats_sales";/*매출현황*/
    public static final String ADM_DRESSROOM_MANAGER = "adm_dressroom_manager";/*드레스룸 관리*/
@@ -44,7 +44,7 @@ public class HandlerMapping {
    public static final String ADM_CPN_REGISTER = "adm_cpn_register";/*쿠폰/적립금 관리*/
    public static final String ADM_CPN_REGISTER_ACT = "adm_cpn_register_act";/*쿠폰/적립금 관리*/
    public static final String ADM_CPN_EDIT = "adm_cpn_edit";/*쿠폰/적립금 관리*/
-   public static final String ADM_CPN_EDIT_ACT = "adm_cpn_deit_act";/*쿠폰/적립금 관리*/
+   public static final String ADM_CPN_EDIT_ACT = "adm_cpn_edit_act";/*쿠폰/적립금 관리*/
    public static final String ADM_CPN_REMOVE_ACT = "adm_cpn_remove_act";/*쿠폰/적립금 관리*/
    
    /******************************** shp ********************************/

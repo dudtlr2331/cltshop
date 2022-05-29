@@ -11,6 +11,7 @@ import com.clt.cmm.dao.CommonDao;
 import com.clt.shp.event.EventVO;
 import com.clt.shp.event.dao.EventDao;
 import com.clt.shp.event.sql.EventSql;
+import com.clt.shp.goods.sql.GoodsSql;
 
 public class EventDaoOracle implements EventDao{
 	private CommonDao commonDao;
@@ -123,10 +124,12 @@ public class EventDaoOracle implements EventDao{
 		int row = 0;
 		try {
 			conn = commonDao.getConnection();
+			ps = conn.prepareStatement(EventSql.EVENT_UPDATE);
 			ps.setString(1, pvo.getEventName());
 			ps.setString(2, pvo.getImgPath());
 			ps.setString(3, pvo.getImgNm());
 			ps.setString(4, pvo.getEventEndDate());
+			ps.setLong(5, pvo.getEventInfoSeq());
 			row = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
