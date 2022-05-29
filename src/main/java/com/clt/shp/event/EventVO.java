@@ -43,7 +43,7 @@ public class EventVO {
 	public String getImgPath() {
 		return imgPath;
 	}
-	public void setImgPath(String couName) {
+	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
 	public String getImgNm() {
