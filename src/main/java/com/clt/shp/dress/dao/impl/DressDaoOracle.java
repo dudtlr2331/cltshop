@@ -29,11 +29,20 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_INSERT); //DressSql
-			ps.setInt(1, pvo.getTagId());
-			ps.setLong(2, pvo.getUserId());
-			ps.setString(3, pvo.getDressroomName());
-			ps.setString(4, pvo.getDressroomDescription());
-			ps.setInt(5, pvo.getDressroomLike());
+			ps.setInt(1, pvo.getSaleBoardSeq());
+			ps.setInt(2, pvo.getGoodsCd());
+			ps.setInt(3, pvo.getEntrNo());
+			ps.setString(4, pvo.getBulTitNm());
+			ps.setString(5, pvo.getBulCont());
+			ps.setInt(6, pvo.getRpyLvl());
+			ps.setInt(7, pvo.getParSaleBoardRpySn());
+			ps.setInt(8, pvo.getQryCnt());
+			ps.setInt(9, pvo.getLkeCnt());
+			ps.setString(10, pvo.getRgstId());
+			ps.setString(11, pvo.getUpdtId());
+			ps.setString(12, pvo.getUseYn());
+			ps.setString(13, pvo.getImgPath());
+			ps.setString(14, pvo.getImgNm());
 
 			row = ps.executeUpdate();
 			
@@ -59,18 +68,27 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_SELECT); //DressSql
-			ps.setLong(1, pvo.getDressroomInfoSEQ());
+			ps.setLong(1, pvo.getSaleBoardRpySeq());
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				vo = new DressVO(
-                      rs.getLong("DRESSROOM_INFO_SEQ")
-                    , rs.getLong("DRESSROOM_ID")
-			        , rs.getInt("TAG_ID")
-                    , rs.getLong("USER_ID")
-			        , rs.getString("DRESSROOM_NAME")
-			        , rs.getString("DRESSROOM_DESCRIPTION")
-			        , rs.getDate("DRESSROOM_DATE")
-			        , rs.getInt("DRESSROOM_LIKE")
+                      rs.getInt("SALE_BOARD_RPY_SEQ")
+                    , rs.getInt("SALE_BOARD_SEQ")
+			        , rs.getInt("GOODS_CD")
+                    , rs.getInt("ENTR_NO")
+			        , rs.getString("BUL_TIT_NM")
+			        , rs.getString("BUL_CONT")
+			        , rs.getInt("RPY_LVL")
+			        , rs.getInt("PAR_SALE_BOARD_RPY_SN")
+			        , rs.getInt("QRY_CNT")
+			        , rs.getInt("LKE_CNT")
+			        , rs.getString("RGST_ID")
+			        , rs.getString("RGST_DATE")
+			        , rs.getString("UPDT_ID")
+			        , rs.getString("UPDT_DATE")
+			        , rs.getString("USE_YN")
+			        , rs.getString("IMG_PATH")
+			        , rs.getString("IMG_NM")
                 );
 			}
 		} catch (SQLException e) {
@@ -98,15 +116,24 @@ public class DressDaoOracle implements DressDao{
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				list.add(new DressVO(
-						rs.getLong("DRESSROOM_INFO_SEQ")
-					  , rs.getLong("DRESSROOM_ID")
-				      , rs.getInt("TAG_ID")
-	                  , rs.getLong("USER_ID")
-				      , rs.getString("DRESSROOM_NAME")
-				      , rs.getString("DRESSROOM_DESCRIPTION")
-				      , rs.getDate("DRESSROOM_DATE")
-				      , rs.getInt("DRESSROOM_LIKE")
-                ));
+	                      rs.getInt("SALE_BOARD_RPY_SEQ")
+	                    , rs.getInt("SALE_BOARD_SEQ")
+	  			        , rs.getInt("GOODS_CD")
+	                    , rs.getInt("ENTR_NO")
+	  			        , rs.getString("BUL_TIT_NM")
+	  			        , rs.getString("BUL_CONT")
+	  			        , rs.getInt("RPY_LVL")
+	  			        , rs.getInt("PAR_SALE_BOARD_RPY_SN")
+	  			        , rs.getInt("QRY_CNT")
+	  			        , rs.getInt("LKE_CNT")
+	  			        , rs.getString("RGST_ID")
+	  			        , rs.getString("RGST_DATE")
+	  			        , rs.getString("UPDT_ID")
+	  			        , rs.getString("UPDT_DATE")
+	  			        , rs.getString("USE_YN")
+	  			        , rs.getString("IMG_PATH")
+				        , rs.getString("IMG_NM")
+	                  ));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -129,9 +156,12 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_UPDATE); //DressSql
-			ps.setString(1, pvo.getDressroomName());
-			ps.setString(2, pvo.getDressroomDescription());
-			ps.setLong(3, pvo.getDressroomInfoSEQ());
+			ps.setString(1, pvo.getBulTitNm());
+			ps.setString(2, pvo.getBulCont());
+			ps.setString(3, pvo.getUseYn());
+			ps.setInt(4, pvo.getSaleBoardRpySeq());
+			ps.setString(5, pvo.getImgPath());
+			ps.setString(6, pvo.getImgNm());
 
 			row = ps.executeUpdate();
 
@@ -156,7 +186,7 @@ public class DressDaoOracle implements DressDao{
 		try {
 			conn = commonDao.getConnection();
 			ps = conn.prepareStatement(DressSql.DRESS_DELETE); //DressSql
-			ps.setLong(1, pvo.getDressroomInfoSEQ());
+			ps.setInt(1, pvo.getSaleBoardRpySeq());
 
 			row = ps.executeUpdate();
 

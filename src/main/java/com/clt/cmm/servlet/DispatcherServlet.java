@@ -30,8 +30,16 @@ public class DispatcherServlet extends HttpServlet{
 	
 	
 	protected void doProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        //한글깨짐 방지 인코딩
+        req.setCharacterEncoding("utf-8");
+        res.setContentType("text/html; charset=UTF-8");
+		
 		//커맨드 얻기
 		String command = req.getParameter("command");
+		String[] arrCommand = command.split("\\&");
+		if(null != arrCommand[0]) {
+			command = arrCommand[0];
+		}
 		
 		//컨트롤러 팩토리에서 얻어오기
 		Controller controller = HandlerMapping.getInstance().createController(command);

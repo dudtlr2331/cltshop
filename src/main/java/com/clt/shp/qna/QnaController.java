@@ -39,16 +39,17 @@ public class QnaController implements Controller {
 
 		// 파라미터 셋팅
 		QnaVO pvo = qnaService.parameterSetting(req);
-		pvo.setRgstId(loginVo.getMemberId());
+		pvo.setRgstId(loginVo.getUsrId());
 		
 		// 비즈니스 처리
-		if (command.equals(HandlerMapping.QNA)) { //리스트
-			List<QnaVO> list = qnaService.selectQnaList(pvo);
-			req.setAttribute("list", list);
-			
-			modelAndView.setPath("/WEB-INF/jsp/shp/qna/qna.jsp");
-			modelAndView.setRedirect(false);
-		}else if (command.equals(HandlerMapping.QNA_DETAIL)) { /* 상세페이지 */
+//		if (command.equals(HandlerMapping.QNA)) { //리스트
+//			List<QnaVO> list = qnaService.selectQnaList(pvo);
+//			req.setAttribute("list", list);
+//
+//			modelAndView.setPath("/WEB-INF/jsp/shp/qna/qna.jsp");
+//			modelAndView.setRedirect(false);
+//		}else
+		if (command.equals(HandlerMapping.QNA_DETAIL)) { /* 상세페이지 */
 			QnaVO rvo = qnaService.selectQnaOne(pvo);
 			
 			req.setAttribute("pvo", rvo);
@@ -62,7 +63,7 @@ public class QnaController implements Controller {
 			int result = qnaService.insertQna(pvo);
 			req.setAttribute("pvo", pvo);
 			
-			modelAndView.setPath("/DispatcherServlet?command=qna");
+			modelAndView.setPath("/DispatcherServlet?command=main_qna_list");
 			modelAndView.setRedirect(true);
 		}else if (command.equals(HandlerMapping.QNA_EDIT)) { /* 수정 화면 호출 */
 			QnaVO rvo = qnaService.selectQnaOne(pvo);
@@ -72,17 +73,17 @@ public class QnaController implements Controller {
 			modelAndView.setPath("/WEB-INF/jsp/shp/qna/qna_edit.jsp");
 			modelAndView.setRedirect(false);
 		}else if (command.equals(HandlerMapping.QNA_EDIT_ACT)) { /* 수정 */
-			pvo.setUpdtId(loginVo.getMemberId());
+			pvo.setUpdtId(loginVo.getUsrId());
 			int result = qnaService.updateQna(pvo);
 			
 			req.setAttribute("pvo", pvo);
 			
-			modelAndView.setPath("/DispatcherServlet?command=qna");
+			modelAndView.setPath("/DispatcherServlet?command=main_qna_list");
 			modelAndView.setRedirect(true);
 		}else if (command.equals(HandlerMapping.QNA_REMOVE_ACT)) { /* 삭제 */
 			int result = qnaService.deleteQna(pvo);
 			
-			modelAndView.setPath("/DispatcherServlet?command=qna");
+			modelAndView.setPath("/DispatcherServlet?command=main_qna_list");
 			modelAndView.setRedirect(false);
 		}
 		

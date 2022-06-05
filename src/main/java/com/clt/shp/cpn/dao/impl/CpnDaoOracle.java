@@ -11,7 +11,6 @@ import com.clt.cmm.dao.CommonDao;
 import com.clt.shp.cpn.CpnVO;
 import com.clt.shp.cpn.dao.CpnDao;
 import com.clt.shp.cpn.sql.CpnSql;
-import com.clt.shp.event.sql.EventSql;
 
 public class CpnDaoOracle implements CpnDao{
 	private CommonDao commonDao;

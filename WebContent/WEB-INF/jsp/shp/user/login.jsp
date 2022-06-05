@@ -11,19 +11,22 @@
 	<script type="text/javascript">alert("${requestScope.message}");</script>
 	<c:remove var="message" scope="session"/>
 </c:if>
-<i class="fa-brands fa-bots bb"></i>
+
+<header id="header">
+	<div class="logo"><a href="/DispatcherServlet?command=main_home_list"><bold style="font-size: 25px; margin-left: 20px;">CLT</bold> shop</a></div>
+</header>
 <section id="section" class="section">
    <div class="input_area">
       <h1>로그인</h1>
       <div class="top">
-      	 <form action="DispatcherServlet?command=user_login_insert" method="post">
-         	<input class="id" placeholder="아이디 입력 " name="id"><br/>
-         	<input class="pwd" type="password" placeholder="비밀번호 입력 " name="pwd"><br/>
+      	 <form id="frm" action="DispatcherServlet?command=user_login_insert" method="post">
+         	<input type="text" name="usrId" placeholder="아이디 입력 "><br/>
+         	<input type="password" name="passWd" placeholder="비밀번호 입력 "><br/>
          	<input type="submit" value="로그인"/>
          </form>
-         	<!-- <input class="id" placeholder="아이디 입력 " name="id">
-         	<input class="pwd" type="password" placeholder="비밀번호 입력 " name="pwd">
-         	<button id="login_btn" onclick="pageMove('mypage')">로그인</button> -->
+		<!-- <input class="id" placeholder="아이디 입력 " name="id">
+		<input class="pwd" type="password" placeholder="비밀번호 입력 " name="pwd">
+		<button id="login_btn" onclick="pageMove('mypage')">로그인</button> -->
       </div>
       <div class="top_log">
          <pre> 아이디 찾기 |</pre>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.clt.cmm.controller.Controller;
 import com.clt.cmm.servlet.HandlerMapping;
 import com.clt.cmm.servlet.ModelAndView;
+import com.clt.shp.entr.dao.impl.EntrDaoOracle;
 import com.clt.shp.user.dao.impl.UserDaoOracle;
 import com.clt.shp.user.service.UserService;
 
@@ -18,10 +19,13 @@ public class UserController implements Controller {
    private ModelAndView modelAndView;
    private UserService userService;
    private String command = "";
-   private UserVO pvo;
+   UserVO pvo;
 
    public UserController(String command) {
-      userService = new UserService(new UserDaoOracle());
+      userService = new UserService();
+      userService.setUserDao(new UserDaoOracle());
+      userService.setEntrDao(new EntrDaoOracle());
+      
       modelAndView = new ModelAndView();
       modelAndView.setPath("/error.jsp");
       modelAndView.setRedirect(false);
@@ -30,8 +34,8 @@ public class UserController implements Controller {
 
    @Override
    public ModelAndView execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-      //파라미터 셋팅
-      parameterSetting(req);
+	// 파라미터 셋팅
+	  pvo = userService.parameterSetting(req);
 
       //비즈니스로직 호출
       if (command.equals(HandlerMapping.USER_JOIN)) {
@@ -56,42 +60,6 @@ public class UserController implements Controller {
       return modelAndView;
    }
 
-
-private void parameterSetting(HttpServletRequest req) {
-      pvo = new UserVO();
-      // 파라미터 셋팅
-      String id = req.getParameter("id");
-      String pwd = req.getParameter("pwd");
-      String email = req.getParameter("email");
-      String telFront = req.getParameter("tel_front");
-      String telMidle = req.getParameter("tel_midle");
-      String telBack = req.getParameter("tel_back");
-      String birthYy = req.getParameter("birth_yy");
-      String birthMm = req.getParameter("birth_mm");
-      String birthDd = req.getParameter("birth_dd");
-
-      String member_tel = telFront + telMidle + telBack;
-      String birth = birthYy + birthMm + birthDd;
-
-      pvo.setMemberId(id);
-      pvo.setMemberPwd(pwd);
-      pvo.setEmail(email);
-      pvo.setMemberTel(member_tel);
-      pvo.setBirth(birth);
-   }
-
-	// 로그아웃
-	private ModelAndView userLogout(HttpServletRequest req, HttpServletResponse res) {
-		HttpSession session = req.getSession();
-		session.invalidate();
-		
-//		modelAndView.setRedirect(false);
-		modelAndView.setRedirect(true);
-		modelAndView.setPath("DispatcherServlet?command=goods_list");
-		
-		return modelAndView;
-	}
-	
    // 회원 정보 수정 화면
 	private ModelAndView userEdit(HttpServletRequest req, HttpServletResponse res) {
 		pvo = userService.selectUserOne(pvo);
@@ -105,15 +73,15 @@ private void parameterSetting(HttpServletRequest req) {
 	}
 	
 	// 회원 정보 수정
-		private ModelAndView userEditAct(HttpServletRequest req, HttpServletResponse res) {
-			int result = userService.updateUser(pvo);
-			
-			req.setAttribute("pvo", pvo);
-			
-			modelAndView.setPath("/WEB-INF/jsp/shp/user/user_edit.jsp");
-			modelAndView.setRedirect(false);
-			return modelAndView;
-		}
+	private ModelAndView userEditAct(HttpServletRequest req, HttpServletResponse res) {
+		int result = userService.updateUser(pvo);
+		
+		req.setAttribute("pvo", pvo);
+		
+		modelAndView.setPath("/WEB-INF/jsp/shp/user/user_edit.jsp");
+		modelAndView.setRedirect(false);
+		return modelAndView;
+	}
 
    // 회원가입 시 회원 아이디 중복 체크
    private ModelAndView userIdCheck(HttpServletRequest req, HttpServletResponse res) {
@@ -121,9 +89,9 @@ private void parameterSetting(HttpServletRequest req) {
       modelAndView.setRedirect(false);
       String json = "";
 
-      UserDaoOracle userDao = new UserDaoOracle();
+//      UserDaoOracle userDao = new UserDaoOracle();
 
-      UserVO sessionVO = userDao.userLogin(pvo);
+      UserVO sessionVO = userService.userLogin(pvo);
 
       try {
          if (null == sessionVO) {
@@ -146,16 +114,16 @@ private void parameterSetting(HttpServletRequest req) {
 
       String returnPage = "";
 
-      UserDaoOracle userDao = new UserDaoOracle();
+//      UserDaoOracle userDao = new UserDaoOracle();
 
-      UserVO sessionVO = userDao.userLogin(pvo);
+      UserVO sessionVO = userService.userLogin(pvo);
 
       if (null == sessionVO) {
          session.setAttribute("message", "아이디/비밀번호를 입력해 주세요.");
          returnPage = "DispatcherServlet?command=user_login";
-      } else if (pvo.getMemberId().equals(sessionVO.getMemberId()) && pvo.getMemberPwd().equals(sessionVO.getMemberPwd())) {
+      } else if (pvo.getUsrId().equals(sessionVO.getUsrId()) && pvo.getPassWd().equals(sessionVO.getPassWd())) {
          session.setAttribute("loginInfo", sessionVO);
-         returnPage = "DispatcherServlet?command=goods_list";
+         returnPage = "DispatcherServlet?command=main_home_list";
       } else {
          session.setAttribute("message", "아이디/비밀번호를 확인해 주세요.");
          returnPage = "DispatcherServlet?command=user_login";
@@ -204,9 +172,9 @@ private void parameterSetting(HttpServletRequest req) {
    // 회원 가입 백단 로직 실행
    private ModelAndView userJoinService(HttpServletRequest req, HttpServletResponse res) {
       // 값셋팅...
-      UserDaoOracle userDao = new UserDaoOracle();
+//      UserDaoOracle userDao = new UserDaoOracle();
       
-      userDao.insertUser(pvo);
+	   userService.insertUser(pvo);
 
       req.setAttribute("message", "회원가입을 환영합니다!");
       modelAndView.setPath("/WEB-INF/jsp/shp/user/login.jsp");
@@ -214,4 +182,14 @@ private void parameterSetting(HttpServletRequest req) {
       return modelAndView;
    }
 
+   	// 로그아웃
+	private ModelAndView userLogout(HttpServletRequest req, HttpServletResponse res) {
+		HttpSession session = req.getSession();
+		session.invalidate();
+		
+		modelAndView.setRedirect(true);
+		modelAndView.setPath("DispatcherServlet?command=main_home_list");
+		
+		return modelAndView;
+	}
 }

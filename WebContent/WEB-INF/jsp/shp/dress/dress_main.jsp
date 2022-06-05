@@ -1,107 +1,272 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/nomalMenu.jsp" %>
-<link href="/css/dressRoom.css" rel="stylesheet">
+<style>
+.wrap_center{
+    width: 100%;
+    height: 100%;
+}
+.container{
+    margin: 0 auto;
+    width: 50%;
+    height: 450px;
+    overflow: hidden;
+}
+.img_wrap{
+    width: 50%;
+    height: 450px;
+    position: absolute;
+    overflow: hidden;
+}
 
-<c:if test="${not empty sessionScope.message}">
-	<script type="text/javascript">alert("${sessionScope.message}");</script>
-	<c:remove var="message" scope="session"/>
-</c:if>
+/* 롤링 이미지 UL */
+.rollimgs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-<section id="dressroom_bestmonth">
-    <a href="">◀</a>
-    <ul class="dressroom_bestmonth_detail">
-       <li>이미지</li>
-       <li>제목<br><br>내용</li>
-    </ul>
-    <a href="">▶</a>
- </section>
- <section id="dressroom_create_btn">
-    <a class="dressroom_create_btn_detail" href="DispatcherServlet?command=dress_register">드레스룸 만들기</a>
+.rollimgs li{
+    position: absolute;
+    width: 100%;
+    height: 450px;
+    left: 3000px;
+}
+.rollimgs li img{
+    width: 100%;
+    height: 100%;
+}
+.rollimgs li.currentroll{
+    left: 0;
+    transition: left .5s ease-in-out, right .5s ease-in-out;
+}
+.rollimgs li.prevroll{
+    left: -3000px;
+    transition: left .5s ease-in-out, right .5s ease-in-out;
+}
+.rollimgs.reverse li.prevroll{
+    transition: none;
+}
+.rollimgs li.nextroll{
+    left: 3000px;
+    display: block;
+    transition: none;
+}
+.rollimgs.reverse li.nextroll{
+    transition: left .5s ease-in-out, right .5s ease-in-out;
+}
+
+.img_wrap .btnmove{
+    position: absolute;
+    top: 190px;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    font-size: 1.4em;
+    opacity: 0.5;
+    background-color: #444435;
+    text-align: center;
+    border-radius: 50%;
+}
+.img_wrap .btnmove.prev{
+    cursor: pointer;
+    left: 10px;
+}
+.img_wrap .btnmove.next{
+    cursor: pointer;
+    right: 10px;
+}
+.img_wrap i{
+    color: #fff;
+}
+
+.wrap_center{
+    padding-top: 10px;
+}
+.wrap_center, .best_dresser_list, #dressroom_create_btn{
+    background-color: #ffffff;
+}
+
+.best_dresser_list{
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+.best_dresser_list .item{
+    padding: 10px;
+}
+
+.best_dresser_list img{
+    width: 100px;
+    height: 100px;
+}
+
+.item_list_area .list_area .list_search{
+    width: 100%;
+    text-align: right;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.item_list_area .list_area .data_list{
+    display: flex;
+    padding: 10px;
+}
+
+.item_list_area .list_area .data_list .item{
+    padding: 10px;
+}
+
+/* .item_list_area .list_area .data_list .item a{
+	cursor: pointer;
+} */
+
+.item_list_area .list_area .data_list .item img{
+    width: 100px;
+    height: 100px;
+}
+</style>
+
+<section class="title_area">
+	<h3 class="title">베스트 드레서 top 10</h3>
 </section>
-<h3 class="dressroom_dresser">베스트 드레서</h3>
-<section id="dressroom_dressers">
-    <div class="dressroom_dressers_detail">
-       <div>
-            <div>이미지</div>
-            이름<br>
-            <i class="fa-solid fa-heart"></i>191
-       </div>
-       <div>
-            <div>이미지</div>
-            이름<br>
-            <i class="fa-solid fa-heart"></i>191
-       </div>
-       <div>
-            <div>이미지</div>
-            이름<br>
-            <i class="fa-solid fa-heart"></i>85
-       </div>
-        <div>
-            <div>이미지</div>
-            이름<br>
-            <i class="fa-solid fa-heart"></i>34
-       </div>
+<div class="wrap_center">
+    <div class="container">
+        <div class="img_wrap">
+            <div class="prev btnmove">
+                <a href="#" title="이전"><i class="fa-solid fa-angle-left"></i></a>
+            </div>
+            <div class="next btnmove">
+                <a href="#" title="다음"><i class="fa-solid fa-angle-right"></i></a>
+            </div>
+            <ul class="rollimgs">
+                <li><img src="/images/reviews/dress_sample1.png" /></li>
+                <li><img src="/images/reviews/dress_sample2.png" /></li>
+                <li><img src="/images/reviews/dress_sample3.png" /></li>
+                <li><img src="/images/reviews/dress_sample4.png" /></li>
+            </ul>
+        </div>
     </div>
- </section>
- <section id="dressroom_category">
-    <div class="dressroom_category_detail">
-       <ul class="dressroom_category_list">
-           <li class="item_main"><div>성별</div></li>
-           <li class="item_sub"><div>남성</div></li>
-           <li class="item_sub"><div>여성</div></li>
-           <li class="item_main"><div>계절</div></li>
-           <li class="item_sub"><div>봄</div></li>
-           <li class="item_sub"><div>여름</div></li>
-           <li class="item_sub"><div>가을</div></li>
-           <li class="item_sub"><div>겨울</div></li>
-           <li class="item_main"><div>나이대</div></li>
-           <li class="item_sub"><div>10대 이하</div></li>
-           <li class="item_sub"><div>10-20대</div></li>
-           <li class="item_sub"><div>20-30대</div></li>
-           <li class="item_sub"><div>30-40대</div></li>
-           <li class="item_sub"><div>40-50대</div></li>
-           <li class="item_sub"><div>50-60대</div></li>
-           <li class="item_sub"><div>60대 이상</div></li>
-       </ul>
+</div>
+
+<section class="best_dresser_list">
+    <div class="item">
+        <div><img src="/images/reviews/dress_sample1.png" /></div>
+        이름<br>
+        <i class="fa-solid fa-heart"></i>191
     </div>
-    <div class="dressroom_main_detail">
-       <div class="dressroom_main_up">
-          <div class="dressroom_main_sort">
-             <a href="">이름순</a>
-             <a href="">최신순</a>
-             <a href="">좋아요순</a>
-          </div>
-          <div class="dressroom_main_search">
-             <input type="text"/>
-          </div>
-       </div>
-       <div class="data_list">
-           <table>
-    		<thead>
-        	 <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>태그</th>
-              <th>작성자</th>
-              <th>작성일자</th>
-              <th>좋아요</th>
-             </tr>
-    		</thead>
-    		<tbody>
-	    	 <c:if test="${empty list }">
-	    	  <tr><td colspan="6">데이터가 없습니다.</td></tr>
-	    	 </c:if>
-	    	 <c:forEach items="${list }" var="obj">
-		      <tr>
-		       <td>${obj.dressroomId}</td>
-		       <td><a href="/DispatcherServlet?command=dress_detail&dressroomInfoSEQ=${obj.dressroomInfoSEQ}">${obj.dressroomName}</a></td>
-		       <td>${obj.tagId}</td>
-		       <td>${obj.userId}</td>
-		       <td>${obj.dressroomDate}</td>
-		       <td>${obj.dressroomLike}</td>
-		      </tr>
-	    	 </c:forEach>
-	        </table>
-          </div>
-       </div>
- </section>
+    <div class="item">
+        <div><img src="/images/reviews/dress_sample1.png" /></div>
+        이름<br>
+        <i class="fa-solid fa-heart"></i>191
+    </div>
+    <div class="item">
+        <div><img src="/images/reviews/dress_sample1.png" /></div>
+        이름<br>
+        <i class="fa-solid fa-heart"></i>85
+    </div>
+    <div class="item">
+        <div><img src="/images/reviews/dress_sample1.png" /></div>
+        이름<br>
+        <i class="fa-solid fa-heart"></i>34
+    </div>
+    <div class="item">
+        <div><img src="/images/reviews/dress_sample1.png" /></div>
+        이름<br>
+        <i class="fa-solid fa-heart"></i>34
+    </div>
+</section>
+
+<section class="item_list_area">
+    <div class="list_area">
+        <div class="list_search">
+            <div class="search_btn">
+                <a href="">이름순</a>
+                <a href="">최신순</a>
+                <a href="">좋아요순</a>
+            </div>
+            <div class="search_txt">
+                <input type="text"/>
+            </div>
+        </div>
+        <div class="data_list">
+            <c:forEach items="${list }" var="obj">
+            <a href="/DispatcherServlet?command=dress_detail&saleBoardRpySeq=${obj.saleBoardRpySeq}">
+            <div class="item">
+                <img src="${obj.imgPath}${obj.imgNm}">
+                <h3>${obj.bulTitNm}</h3>
+                <h6>${obj.updtId}</h6>
+                <span>${obj.updtDate} * ${obj.lkeCnt} </span>
+            </div>
+            </a>
+            </c:forEach>
+        </div>
+    </div>
+    <div class="btn_area">
+        <a class="dressroom_create_btn_detail" href="DispatcherServlet?command=dress_register">드레스룸 만들기</a>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        banner.rollInit(4000); // 배너 롤링
+    });
+    //앞뒤 클릭 이벤트 리스너
+    document.querySelectorAll('.btnmove').forEach(function(item){
+        item.addEventListener('click', function(e){
+            clearInterval(banner.rollId);//롤링 인터벌 해제
+            //화살표 방향 구분
+            if(e.target.parentElement.parentElement.classList.contains('prev')){
+                banner.rollPrev();
+            }else{
+                banner.rollNext();
+            }
+            banner.rollId = setInterval(banner.rollNext, banner.interval);//롤링 인터벌 재호출
+        });
+    });
+    let banner = {
+        rollId: null,
+        interval: 2000,
+
+        //롤링 배너 초기화
+        rollInit: function (newinterval) {
+            if(parseInt(newinterval) > 0){
+                this.interval = newinterval;
+            }
+            //현재 배너
+            let firstitem = document.querySelector('.rollimgs li');
+            if(firstitem){
+                firstitem.classList.add('currentroll');
+            }
+            //다음 배너
+            let seconditem = document.querySelectorAll('.rollimgs li')[1];
+            if(seconditem){
+                seconditem.classList.add('nextroll');
+            }
+            //이전 배너
+            document.querySelector('.rollimgs li:last-child').classList.add('prevroll');
+            this.rollId = setInterval(this.rollNext, this.interval);//롤링 인터벌 호출
+        },
+
+        //다음 배너 롤링
+        rollNext: function () {
+            if(document.querySelector('.prevroll')){
+                document.querySelector('.prevroll').classList.remove('prevroll');
+            }
+            if(document.querySelector('.currentroll')){
+                document.querySelector('.currentroll').classList.add('prevroll');
+                document.querySelector('.currentroll').classList.remove('currentroll');
+            }
+            if(document.querySelector('.nextroll')){
+                document.querySelector('.nextroll').classList.add('currentroll');
+                document.querySelector('.nextroll').classList.remove('nextroll');
+            }
+            //다음 이미지 있으면 다음 롤링 이미지로 선택, 없으면 첫번째 이미지를 롤링 이미지로 지정
+            if(document.querySelector('.currentroll').nextElementSibling){
+                document.querySelector('.currentroll').nextElementSibling.classList.add('nextroll');
+            }else{
+                document.querySelector('.rollimgs li').classList.add('nextroll');
+            }
+        }
+    }
+</script>

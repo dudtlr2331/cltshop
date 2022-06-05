@@ -84,22 +84,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>20200501-12345678</td>
-                <td>2020-05-01</td>
-                <td>상품1</td>
-                <td>user1</td>
-                <td>29,900<br>신용카드</td>
-                <td></td>
-                <td></td>
-                <td>
-                    <select>
-                        <option>배송중</option>
-                        <option>배송완료</option>
-                    </select>
-                </td>
-            </tr>
+        	<c:forEach items="${orderList}" var="obj">
+				<tr>
+					<td><input type="checkbox"></td>
+					<td><a href="/DispatcherServlet?command=adm_order_detail&ordNo=${obj.ordNo}">${obj.ordNo}</td>
+					<td>${obj.ordDate}</td>
+					<td>${obj.goodsNm}</td>
+					<td>${obj.usrId}<br>${obj.ordrNm}
+					</td>
+					<td>${obj.payMny}원<br>${obj.payWay}
+					</td>
+					<td></td>
+					<td></td>
+					<td>${obj.codeNm }</td>
+				</tr>
+			</c:forEach>
         </tbody>
     </table>
     <div>

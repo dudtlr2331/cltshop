@@ -1,8 +1,31 @@
+#product_menu_upperbar{
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#product_menu_upperbar.visible{
+	top: 0;
+    opacity: 1;
+}
+
+#product_menu_upperbar.invisible{
+    opacity: 0;
+}
+
+#product_menu_upperbar div{
+    width: 900px;
+    background-color: white;
+}
+
 /* 상품 메인 */
 #product_main{
     justify-content: center;
     align-items: center;
     display: flex;
+    background-color: #ffffff;
 }
 
 .product_image{
@@ -11,6 +34,10 @@
     margin: 50px;
     border: 1px solid;
     text-align: center;
+}
+
+.product_image img{
+	height: 100%;
 }
 
 .product_main_detail{
@@ -39,6 +66,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    background-color: #ffffff;
 }
 
 .product_detail_image{
@@ -59,6 +87,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    background-color: #ffffff;
 }
 
 .product_review_box{
@@ -133,6 +162,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    background-color: #ffffff;
 }
 
 .product_qna_titlebar{
@@ -212,6 +242,8 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    background-color: #ffffff;
+    padding-bottom: 50px;
 }
 
 .product_order_title{
@@ -242,6 +274,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    background-color: #ffffff;
 }
 
 #product_menu div{
@@ -265,7 +298,6 @@
     margin: 0px;
     padding: 0px;
     font-weight:bold;
-    border-bottom: 1px solid;
     transition: all 300ms ease-in-out;
 }
 
@@ -277,35 +309,16 @@
     display: block;
     margin:1px;
     text-align:center; padding-top:10px;
-    background:rgb(111, 0, 255);
+    background: #000000;
     color:white;
+    cursor: pointer;
 }
 
 .product_menu_item:hover{
-    background-color: rgb(184, 130, 255);
+    background-color: #A9A9A9;
 }
 
 .product_menu_item.select{
-    background-color: rgb(206, 168, 255);
+    background-color: #A9A9A9;
 }
 
-#product_menu_upperbar{
-    width: 100%;
-    position: fixed;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-#product_menu_upperbar.visible{
-    opacity: 1;
-}
-
-#product_menu_upperbar.invisible{
-    opacity: 0;
-}
-
-#product_menu_upperbar div{
-    width: 900px;
-    background-color: white;
-}

@@ -28,7 +28,7 @@ public class AdmDressController implements Controller{
 		HttpSession session = req.getSession();
 		
 		//파라미터 셋팅
-		DressVO pvo = parameterSetting(req);
+		DressVO pvo = dressService.parameterSetting(req);
 		
 		//비즈니스 처리
 		if(command.equals(HandlerMapping.ADM_DRESSROOM_MANAGER)) {
@@ -65,10 +65,5 @@ public class AdmDressController implements Controller{
 		req.setAttribute("leftMenuNav", HandlerMapping.ADM_DRESSROOM_MANAGER);
 				
 		return modelAndView;
-	}
-	
-	private DressVO parameterSetting(HttpServletRequest req) {
-		DressVO pvo = new DressVO();
-		return pvo;
 	}
 }

@@ -96,7 +96,6 @@ public interface GoodsSql{
 	+ "	    , UPDT_DATE" /*수정일*/
 	+ "  FROM GOODS_INFO"
 	+ " WHERE 1=1"
-	+ " ORDER BY GOODS_INFO_SEQ ASC"
 	;
 	
 	String GOODS_UPDATE =
@@ -124,10 +123,113 @@ public interface GoodsSql{
 	+ "   AND GOODS_INFO_SEQ = ?"
 	;
 	
-	String GOODS_DELETE = 
-	  "DELETE FROM GOODS_INFO "
+	String GOODS_DETAIL_ONE =
+	 "SELECT GOODS.GOODS_CD"
+	+"     , GOODS.ENTR_NO"
+	+"     , GOODS.GOODS_NM"
+	+"     , GOODS.GOODS_PRC"
+	+"     , GOODS.INY_QTY"
+	+"     , GOODS.DLV_PRC"
+	+"     , GOODS.GOODS_SIZE"
+	+"     , GOODS.GOODS_CLR"
+	+"     , GOODS.IMG_PATH"
+	+"     , GOODS.IMG_NM"
+	+"     , GOODS.GOODS_INTR"
+	+"     , GOODS.SALE_STAT_CD"
+	+"     , GOODS.USE_YN"
+	+"     , GOODS.RGST_ID"
+	+"     , GOODS.RGST_DATE"
+	+"     , GOODS.UPDT_ID"
+	+"     , GOODS.UPDT_DATE"
+	+"     , SALE.SALE_BOARD_SEQ"
+	+"     , SALE.SALE_STAT_CD"
+	+"     , SALE.BUL_TIT_NM"
+	+"     , SALE.BUL_STRT_DT"
+	+"     , SALE.BUL_END_DT"
+	+"     , SALE.BUL_YN"
+	+"     , SALE.NTC_SCT_CD"
+	+"     , SALE.BUL_CONT"
+	+"     , SALE.QRY_CNT"
+	+"     , SALE.LKE_CNT"
+	+"     , SALE.GOODS_PRC"
+	+"     , SALE.GOODS_SALE_PRC"
+	+"     , SALE.PRCL_WAY"
+	+"     , SALE.SALE_CNT"
+	+"     , SALE.RGST_ID"
+	+"     , SALE.RGST_DATE"
+	+"     , SALE.UPDT_ID"
+	+"     , SALE.UPDT_DATE"
+	+"     , SALE.USE_YN"
+	+"     , SALE.DESCRIPTION"
+	+"  FROM SALE_BOARD SALE"
+	+"     , GOODS_INFO GOODS"
+	+" WHERE 1=1"
+	+"   AND SALE.GOODS_CD = GOODS.GOODS_CD"
+	+"   AND SALE.ENTR_NO = GOODS.ENTR_NO"
+	+"   AND SALE.SALE_BOARD_SEQ = ?"
+	;
+	
+	String SELECT_MYPAGE_GOODS_ONE =
+	 "SELECT GOODS.GOODS_CD"
+	+"     , GOODS.ENTR_NO"
+	+"     , GOODS.GOODS_NM"
+	+"     , GOODS.GOODS_PRC"
+	+"     , GOODS.INY_QTY"
+	+"     , GOODS.DLV_PRC"
+	+"     , GOODS.GOODS_SIZE"
+	+"     , GOODS.GOODS_CLR"
+	+"     , GOODS.IMG_PATH"
+	+"     , GOODS.IMG_NM"
+	+"     , GOODS.GOODS_INTR"
+	+"     , GOODS.SALE_STAT_CD"
+	+"     , GOODS.USE_YN"
+	+"     , GOODS.RGST_ID"
+	+"     , GOODS.RGST_DATE"
+	+"     , GOODS.UPDT_ID"
+	+"     , GOODS.UPDT_DATE"
+	+"     , SALE.SALE_BOARD_SEQ"
+	+"     , SALE.SALE_STAT_CD"
+	+"     , SALE.BUL_TIT_NM"
+	+"     , SALE.BUL_STRT_DT"
+	+"     , SALE.BUL_END_DT"
+	+"     , SALE.BUL_YN"
+	+"     , SALE.NTC_SCT_CD"
+	+"     , SALE.BUL_CONT"
+	+"     , SALE.QRY_CNT"
+	+"     , SALE.LKE_CNT"
+	+"     , SALE.GOODS_PRC"
+	+"     , SALE.GOODS_SALE_PRC"
+	+"     , SALE.PRCL_WAY"
+	+"     , SALE.SALE_CNT"
+	+"     , SALE.RGST_ID"
+	+"     , SALE.RGST_DATE"
+	+"     , SALE.UPDT_ID"
+	+"     , SALE.UPDT_DATE"
+	+"     , SALE.USE_YN"
+	+"     , SALE.DESCRIPTION"
+	+"  FROM SALE_BOARD SALE"
+	+"     , GOODS_INFO GOODS"
+	+" WHERE 1=1"
+	+"   AND SALE.GOODS_CD = GOODS.GOODS_CD"
+	+"   AND SALE.ENTR_NO = GOODS.ENTR_NO"
+	+"   AND SALE.GOODS_CD = ?"
+	;
+
+	String GOODS_DELETE =
+	"DELETE FROM GOODS_INFO "
 	+ " WHERE 1=1 "
 	+ "  AND GOODS_INFO_SEQ = ?" /*상품 시퀀스*/
 	;
+
+	String GOODS_DELETE_ALL =
+	"DELETE FROM GOODS_INFO "
+	;
 	
+	String GOODS_DROP_SEQ =
+	"DROP SEQUENCE SQ_GOODS_INFO_SEQ"
+	;
+	
+	String GOODS_CREATE_SEQ =
+	"CREATE SEQUENCE SQ_GOODS_INFO_SEQ"
+	;
 }

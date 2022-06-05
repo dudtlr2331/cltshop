@@ -167,4 +167,33 @@ public class QnaDaoOracle implements QnaDao{
 		return row;
 	}
 
+	@Override
+	public List<QnaVO> searchIdQnaList(QnaVO pvo) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<QnaVO> list = new ArrayList<QnaVO>();
+		try {
+			conn = commonDao.getConnection();
+			ps = conn.prepareStatement(QnaSql.SEARCH_ID_QNA_LIST);
+			ps.setString(1, pvo.getRgstId());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new QnaVO(rs.getLong("QNA_BOARD_SEQ"), rs.getString("TIT_NM") , rs.getString("CONT")
+						, rs.getString("RGST_ID"), rs.getString("RGST_DATE"), rs.getString("UPDT_ID")
+						, rs.getString("UPDT_DATE"), rs.getString("QNA_TP"), rs.getString("ANSR_STAT") 
+						, rs.getString("USE_YN") , rs.getString("PASS_YN") , rs.getString("PASS_WD")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				commonDao.closeAll(rs, ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
 }

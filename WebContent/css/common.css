@@ -1,4 +1,13 @@
 /* 공통 */
+* {
+  box-sizing: border-box;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+body{
+  background-color: #f3f7fa !important;
+}
+
 ul{
   padding: 0;
   margin: 0;
@@ -12,11 +21,33 @@ body{
 a{
   text-decoration: none;
   color: black;
+  font-size: 14px;
 }
 
 dl, dd, dt{
   margin: 0;
   padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button, input[type=button], input[type=submit]{
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+button:hover, input[type=button]:hover, input[type=submit]:hover{
+  background-color: #000000;
+  color: #ffffff;
+  padding: 5px;
 }
 
 /* 공통 해더 */
@@ -27,24 +58,49 @@ dl, dd, dt{
   align-items: center;
   padding: 14px;
 }
-#header_login{
-  display: flex;
-  justify-content: end;
-  margin-right: 22px;
-}
-#header_login div a{
-  color: gray;
-  font-size: 14px;
-}
-#header_login div span{
-  color: gray;
-  font-size: 14px;
-}
-
 
 .color_red{
   color: red;
 }
+
 .color_point{
   color: #d3a164;
+}
+
+/* 공통 */
+.w50{
+	width: 50px !important;
+}
+.w70{
+	width: 70px !important;
+}
+.w100{
+	width: 100px !important;
+}
+
+.item_list_area {
+  background-color: #ffffff;
+  padding-top: 5px;
+  text-align: center;
+}
+.title_area{
+  text-align: center;
+  background-color: #ffffff;
+  padding: 10px 5px 10px 5px;
+}
+.btn_area{
+  width: 100%;
+  padding: 10px;
+  text-align: right;
+}
+
+table{
+  width: 100%;
+  padding: 5px;
+  cursor: default;
+}
+
+.nodata{
+  text-align: center;
+  padding: 25px;
 }

@@ -1,70 +1,35 @@
-#content .icon{
+.item_list_area{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding-top: 60px;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-top: 50px;
-    font-size: 80px;
-	border-top: 1px solid;
-}
-#content .icon_btn{
-    display: flex;
-    flex-direction: row;
-    font-size: 17px;
-    border-bottom: 1px solid;
-}
-.icon_btn .a{
-    position: relative;
-    left: 285px;
-}
-.icon_btn .b{
-    position: relative;
-    left: 513px;
-}
-.icon_btn .c{
-    position: relative;
-    left: 777px;
-}
-.icon_btn .d{
-    position: relative;
-    left: 1080px;
-}
-#b_content .a{
-    font-size: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 150px;
-    padding-left: 30px;
-    padding-right: 40px;
-    border-bottom: 1px solid;
-}
-#b_content .b{
-    font-size: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-left: 70px;
-    padding-right: 70px;
-    border-bottom: 1px solid;
-}
-#b_content .b .b_money{
-    padding-left: 630px;
-}
-#b_content .b .b_progres{
-    padding-right: 25px;
-}
-#b_content .c{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding-left: 100px;
-    padding-right: 100px;
-    border-bottom: 1px solid #000;
 }
-#b_content img{
+
+.header_data{
+    margin-bottom: 40px;
+}
+
+.header_data .icon{
+    display: flex;
+    flex-display: row;
+}
+
+.header_data .icon span{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.header_data .icon i{
+    font-size: 80px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.data_list{
+    width: 100%;
+}
+
+.data_list img{
     width: 120px;
 }

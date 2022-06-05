@@ -10,4 +10,8 @@ public interface UserDao {
 	List<UserVO> selectListUser(UserVO pvo);
 	int updateUser(UserVO pvo);
 	int deleteUser(UserVO pvo);
+	UserVO userLogin(UserVO pvo);
+	int deleteUserAll();
+	int dropSeq();
+	int createSeq();
 }

@@ -136,6 +136,11 @@ body{
     height: 15px;
 }
 
+.admin_body input[type=radio]{
+	width: 15px;
+    height: 15px;
+}
+
 .admin_body button,
 .admin_body input[type=button],
 .admin_body input[type=submit]{

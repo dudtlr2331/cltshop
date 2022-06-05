@@ -2,67 +2,106 @@ package com.clt.shp.dress.sql;
 
 public interface DressSql{
 	String DRESS_INSERT = 
-	  "INSERT INTO DRESSROOM"
-	  + "( DRESSROOM_INFO_SEQ" /*드레스룸 시퀀스*/
-      + ", DRESSROOM_ID" /*드레스룸 번호*/
-	  + ", TAG_ID" /*태그 번호*/
-	  + ", USER_ID" /*회원 아이디*/
-	  + ", DRESSROOM_NAME" /*드레스룸 제목*/
-	  + ", DRESSROOM_DESCRIPTION" /*드레스룸 내용*/
-	  + ", DRESSROOM_DATE" /*드레스룸 작성일자*/
-	  + ", DRESSROOM_LIKE" /*드레스룸 좋아요 수*/
+	  "INSERT INTO SALE_BOARD_RVW"
+	  + "( SALE_BOARD_RPY_SEQ"
+      + ", SALE_BOARD_SEQ"
+      + ", GOODS_CD"
+      + ", ENTR_NO"
+      + ", BUL_TIT_NM"
+      + ", BUL_CONT"
+      + ", RPY_LVL"
+      + ", PAR_SALE_BOARD_RPY_SN"
+      + ", QRY_CNT"
+      + ", LKE_CNT"
+      + ", RGST_ID"
+      + ", RGST_DATE"
+      + ", UPDT_ID"
+      + ", UPDT_DATE"
+      + ", USE_YN"
+      + ", IMG_PATH"
+      + ", IMG_NM"
 	  + ") VALUES"
-	  + "( SQ_DRESSROOM_INFO_SEQ.NEXTVAL" /*드레스룸 시퀀스*/
-	  + ", (SELECT NVL(MAX(DRESSROOM_ID), 0) + 1 FROM DRESSROOM)" /*드레스룸 번호*/
-	  + ", ?" /*태그 번호*/
-	  + ", ?" /*회원 아이디*/
-	  + ", ?" /*드레스룸 제목*/
-	  + ", ?" /*드레스룸 내용*/
-	  + ", SYSDATE" /*드레스룸 작성일자*/
-	  + ", ?" /*드레스룸 좋아요 수*/
+	  + "( SQ_SALE_BOARD_RPY_SEQ.NEXTVAL"
+	  + ", ?"
+	  + ", ?"
+	  + ", ?"
+	  + ", ?"
+	  + ", ?"
+	  + ", ?"
+	  + ", ?"
+	  + ", ?"
+	  + ", ?"
+	  + ", ?"
+	  + ", SYSDATE"
+	  + ", ?"
+	  + ", SYSDATE"
+	  + ", ?"
+	  + ", ?"
+	  + ", ?"
 	  + ")"
 	;
 	
 	String DRESS_SELECT =
-	  "SELECT DRESSROOM_INFO_SEQ" /*드레스룸 시퀀스*/
-	+ "	    , DRESSROOM_ID" /*드레스룸 번호*/
-	+ "     , TAG_ID" /*태그 번호*/
-	+ "     , USER_ID" /*회원 아이디*/
-	+ "     , DRESSROOM_NAME" /*드레스룸 제목*/
-	+ "     , DRESSROOM_DESCRIPTION" /*드레스룸 내용*/
-	+ "     , DRESSROOM_DATE" /*드레스룸 작성일자*/
-	+ "     , DRESSROOM_LIKE" /*드레스룸 좋아요 수*/
-	+ "  FROM DRESSROOM"
-	+ " WHERE 1 = 1"
-	+ "   AND DRESSROOM_INFO_SEQ = ?" /*드레스룸 시퀀스*/
+	  "SELECT SALE_BOARD_RPY_SEQ"
+	  + ", SALE_BOARD_SEQ"
+      + ", GOODS_CD"
+      + ", ENTR_NO"
+      + ", BUL_TIT_NM"
+      + ", BUL_CONT"
+      + ", RPY_LVL"
+      + ", PAR_SALE_BOARD_RPY_SN"
+      + ", QRY_CNT"
+      + ", LKE_CNT"
+      + ", RGST_ID"
+      + ", RGST_DATE"
+      + ", UPDT_ID"
+      + ", UPDT_DATE"
+      + ", USE_YN"
+      + ", IMG_PATH"
+      + ", IMG_NM"
+	  + "  FROM SALE_BOARD_RVW"
+	  + " WHERE 1 = 1"
+	  + " AND SALE_BOARD_RPY_SEQ = ?"
 	;
 	
 	String DRESS_LIST =
-	  "SELECT DRESSROOM_INFO_SEQ" /*드레스룸 시퀀스*/
-	+ "	    , DRESSROOM_ID" /*드레스룸 번호*/
-	+ "     , TAG_ID" /*태그 번호*/
-	+ "     , USER_ID" /*회원 아이디*/
-	+ "     , DRESSROOM_NAME" /*드레스룸 제목*/
-	+ "     , DRESSROOM_DESCRIPTION" /*드레스룸 내용*/
-	+ "     , DRESSROOM_DATE" /*드레스룸 작성일자*/
-	+ "     , DRESSROOM_LIKE" /*드레스룸 좋아요 수*/
-	+ "  FROM DRESSROOM"
+      "SELECT SALE_BOARD_RPY_SEQ"
+    + ", SALE_BOARD_SEQ"
+    + ", GOODS_CD"
+    + ", ENTR_NO"
+    + ", BUL_TIT_NM"
+    + ", BUL_CONT"
+    + ", RPY_LVL"
+    + ", PAR_SALE_BOARD_RPY_SN"
+    + ", QRY_CNT"
+    + ", LKE_CNT"
+    + ", RGST_ID"
+    + ", RGST_DATE"
+    + ", UPDT_ID"
+    + ", UPDT_DATE"
+    + ", USE_YN"
+    + ", IMG_PATH"
+    + ", IMG_NM"
+	+ "  FROM SALE_BOARD_RVW"
 	+ " WHERE 1 = 1"
-	+ " ORDER BY DRESSROOM_INFO_SEQ ASC"
+	+ " ORDER BY SALE_BOARD_RPY_SEQ ASC"
 	;
 	
 	String DRESS_UPDATE =
-	  "UPDATE DRESSROOM "
-	+ "   SET DRESSROOM_NAME = ?" /*드레스룸 제목*/
-	+ "     , DRESSROOM_DESCRIPTION = ?" /*드레스룸 내용*/
+	  "UPDATE SALE_BOARD_RVW "
+	+ "   SET BUL_TIT_NM = ?"
+	+ "     , BUL_CONT = ?"
+	+ "     , USE_YN = ?"
+	+ "		, IMG_PATH = ?"
+	+ "		, IMG_NM = ?"
 	+ " WHERE 1=1"
-	+ "   AND DRESSROOM_INFO_SEQ = ?"
+	+ " AND SALE_BOARD_RPY_SEQ = ?"
 	;
 	
 	String DRESS_DELETE = 
-	  "DELETE FROM DRESSROOM "
+	  "DELETE FROM SALE_BOARD_RVW "
 	+ " WHERE 1=1 "
-	+ "  AND DRESSROOM_INFO_SEQ = ?" /*드레스룸 시퀀스*/
+	+ " AND SALE_BOARD_RPY_SEQ = ?"
 	;
 	
 }

@@ -1,86 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- menu start -->
-<header id="header_login">
-	<c:choose>
-		<c:when test="${empty sessionScope.loginInfo }">
-			<div>
-				<a href="DispatcherServlet?command=user_login">로그인</a>
-				<span>ㅣ </span>
-				<a href="DispatcherServlet?command=user_join" space="line">회원가입</a>
-			</div>
-		</c:when>
-	</c:choose>
-</header>
 <header id="header">
-	<div class="logo">쇼핑몰로고...</div>
+	<!-- <div class="logo"><a href="/DispatcherServlet?command=main_home_list"><bold style="font-size: 25px; margin-left: 20px;">CLT</bold> shop</a></div> -->
+	<div class="logo"><a href="/DispatcherServlet?command=main_home_list"><img src="/images/logo_01.png" /></a></div>
 	<div class="top_btn">
 		<c:choose>
 			<c:when test="${not empty sessionScope.loginInfo }">
-				<%-- <form action="DispatcherServlet?command=user_edit" method="post">
-					<span>${sessionScope.loginInfo.memberId }님 환영합니다.</span>
-					<input type="submit" value="수정" />
-				</form> --%>
-				
-				<span>${sessionScope.loginInfo.memberId }님 환영합니다.</span>
-				<input type="button" id="btn_edit" onclick="fn_user_edit('${sessionScope.loginInfo.memberSeq}')" value="수정">
-				<input type="button" id="logout_btn" onclick="fn_logout()" value="로그아웃">
-				<!-- <form action="DispatcherServlet?command=user_logout" method="post">
-					<input type="submit" id="logout_btn" value="로그아웃">
-         		</form> -->
+				<span>${sessionScope.loginInfo.usrId }님 환영합니다.</span>
+				<input type="button" class="w70" id="btn_edit" onclick="fn_user_edit('${sessionScope.loginInfo.usrBaseSeq}')" value="수정">
+				<input type="button" class="w70" id="logout_btn" onclick="location.href='DispatcherServlet?command=user_logout';" value="로그아웃">
+<%--				<input type="text" />--%>
+				<a href="DispatcherServlet?command=order_cart_list"><i class="fa-solid fa-cart-shopping"></i></a>
+				<a href="DispatcherServlet?command=mypage"><i class="fa-solid fa-user-large"></i></a>
 			</c:when>
+			<c:otherwise>
+				<div>
+					<input type="button" class="w70" onclick="location.href='DispatcherServlet?command=user_login'" value="로그인"/>
+				</div>
+			</c:otherwise>
 		</c:choose>
-		<input type="text" />
-		<a href="DispatcherServlet?command=goods_cart"><i class="fa-solid fa-cart-shopping"></i></a>
-		<a href="DispatcherServlet?command=mypage"><i class="fa-solid fa-user-large"></i></a>
 	</div>
 </header>
 <section id="main_benner">
 	<ul class="menu">
-		<a href="/DispatcherServlet?command=goods_list"><li>홈</li></a>
-		<a href="/DispatcherServlet?command=goods_category" class="menu_category_item_main"><li>카테고리</li></a>
+		<a href="/DispatcherServlet?command=main_home_list"><li>홈</li></a>
+		<a href="/DispatcherServlet?command=main_cata_list" class="menu_category_item_main"><li>카테고리</li></a>
 		<div class="menu_category">
 			<ul>
-				<li class="menu_category_item"><a href="/DispatcherServlet?command=goods_category"><div>카테고리</div></a></li>
-				<li class="menu_category_item"><a href=""><div>상의</div></a></li>
-				<li class="menu_category_item"><a href=""><div>아우터</div></a></li>
-				<li class="menu_category_item"><a href=""><div>바지</div></a></li>
+				<li class="menu_category_item"><a href="/DispatcherServlet?command=main_cata_list&searchType=all"><div>카테고리</div></a></li>
+				<c:forEach items="${oneDepthCateList}" var="obj">
+					<li class="menu_category_item"><a href="/DispatcherServlet?command=main_cata_list&searchCatgryCd=${obj.catgryCd}"><div>${obj.catgryNm}</div></a></li>
+				</c:forEach>
 			</ul>
 		</div>
-		<a href="DispatcherServlet?command=qna"><li>1:1문의</li></a>
-		<a href="DispatcherServlet?command=dress_main"><li>커뮤니티</li></a>
+		<a href="DispatcherServlet?command=main_drss_list"><li>커뮤니티</li></a>
+		<a href="DispatcherServlet?command=main_qna_list"><li>1:1문의</li></a>
 	</ul>
 </section>
+<c:if test="${not empty sessionScope.message}">
+	<script type="text/javascript">alert("${sessionScope.message}");</script>
+	<c:remove var="message" scope="session"/>
+</c:if>
 <!-- menu end -->
 <script>
-function fn_user_edit(memberSeq){
+//메인 화면 -------------------------------------------------------
+//메인 화면 카테고리 마우스 오버 시 하위 메뉴 노출
+const categoryMenuMain = document.querySelector(".menu_category_item_main");
+const categoryMenu = document.querySelector(".menu_category");
+categoryMenuMain.addEventListener("mouseenter", (event) => {
+	categoryMenu.classList.add("visible");
+});
+categoryMenu.addEventListener("mouseleave", (event) => {
+	categoryMenu.classList.remove("visible");
+});
+
+function fn_user_edit(usrBaseSeq){
 	const form = document.createElement('form');
 	form.method = 'post';
 	form.action = 'DispatcherServlet?command=user_edit';
 
 	const hiddenField = document.createElement('input');
 	hiddenField.type = 'hidden';
-	hiddenField.name = 'memberSeq';
-	hiddenField.value = memberSeq;
+	hiddenField.name = 'usrBaseSeq';
+	hiddenField.value = usrBaseSeq;
 	
 	form.appendChild(hiddenField);
 	
-	document.body.appendChild(form);
-	
-	form.submit();
-}
-
-function fn_logout(){
-	const form = document.createElement('form');
-	form.method = 'post';
-	form.action = 'DispatcherServlet?command=user_logout';
-	
-	const hiddenField = document.createElement('input');
-	hiddenField.type = 'submit';
-	
-	form.appendChild(hiddenField);
 	document.body.appendChild(form);
 	
 	form.submit();
 }
 </script>
-

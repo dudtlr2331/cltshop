@@ -10,4 +10,5 @@ public interface QnaDao {
 	List<QnaVO> selectQnaList(QnaVO pvo);
 	int updateQna(QnaVO pvo);
 	int deleteQna(QnaVO pvo);
+	List<QnaVO> searchIdQnaList(QnaVO pvo);
 }

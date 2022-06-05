@@ -20,7 +20,7 @@ public class AdmStatsController implements Controller{
 		ModelAndView modelAndView = new ModelAndView();
 		
 		//파라미터 셋팅
-		AdmStatsVO pvo = parameterSetting(req);
+//		AdmStatsVO pvo = parameterSetting(req);
 		
 		//비즈니스 처리
 		if(command.equals(HandlerMapping.ADM_STATS_SALES)) {
@@ -34,8 +34,8 @@ public class AdmStatsController implements Controller{
 		return modelAndView;
 	}
 
-	private AdmStatsVO parameterSetting(HttpServletRequest req) {
-		AdmStatsVO pvo = new AdmStatsVO();
-		return pvo;
-	}
+//	private AdmStatsVO parameterSetting(HttpServletRequest req) {
+//		AdmStatsVO pvo = new AdmStatsVO();
+//		return pvo;
+//	}
 }

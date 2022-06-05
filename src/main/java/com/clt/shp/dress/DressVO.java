@@ -3,80 +3,203 @@ package com.clt.shp.dress;
 import java.sql.Date;
 
 public class DressVO {
-	private long dressroomInfoSEQ;
-	private long dressroomId;
-	private int tagId;
-	private long userId;
-    private String dressroomName;
-	private String dressroomDescription;
-	private Date dressroomDate;
-	private int dressroomLike;
+	int saleBoardRpySeq;
+	int saleBoardSeq;
+	int goodsCd;
+	int entrNo;
+	String bulTitNm; //제목
+	String bulCont; //내용
+	int rpyLvl; //답글 레벨
+	int parSaleBoardRpySn; //부모답글 번호
+	int qryCnt; //조회수
+	int lkeCnt; //추천수
+	String rgstId;
+	String rgstDate;
+	String updtId;
+	String updtDate;
+	String useYn;
+	String imgPath;
+	String imgNm;
+	String noticeDoc;
 	
-	public DressVO() {
+	public DressVO(){
 		
 	}
-	
-	public DressVO(long dressroomInfoSEQ, long dressroomId, int tagId, long userId, String dressroomName, String dressroomDescription, Date dressroomDate, int dressroomLike) {
-		this.dressroomInfoSEQ = dressroomInfoSEQ;
-		this.dressroomId = dressroomId;
-		this.tagId = tagId;
-		this.userId = userId;
-		this.dressroomName = dressroomName;
-		this.dressroomDescription = dressroomDescription;
-		this.dressroomDate = dressroomDate;
-		this.dressroomLike = dressroomLike;
+
+	public DressVO(int saleBoardRpySeq, int saleBoardSeq, int goodsCd, int entrNo, String bulTitNm, String bulCont,
+			int rpyLvl, int parSaleBoardRpySn, int qryCnt, int lkeCnt, String rgstId, String rgstDate, String updtId,
+			String updtDate, String useYn, String imgPath, String imgNm) {
+		super();
+		this.saleBoardRpySeq = saleBoardRpySeq;
+		this.saleBoardSeq = saleBoardSeq;
+		this.goodsCd = goodsCd;
+		this.entrNo = entrNo;
+		this.bulTitNm = bulTitNm;
+		this.bulCont = bulCont;
+		this.rpyLvl = rpyLvl;
+		this.parSaleBoardRpySn = parSaleBoardRpySn;
+		this.qryCnt = qryCnt;
+		this.lkeCnt = lkeCnt;
+		this.rgstId = rgstId;
+		this.rgstDate = rgstDate;
+		this.updtId = updtId;
+		this.updtDate = updtDate;
+		this.useYn = useYn;
+		this.imgPath = imgPath;
+		this.imgNm = imgNm;
 	}
-	
-	public long getDressroomInfoSEQ() {
-		return dressroomInfoSEQ;
+
+	public String getNoticeDoc() {
+		return noticeDoc;
 	}
-	public void setDressroomInfoSEQ(long dressroomInfoSEQ) {
-		this.dressroomInfoSEQ = dressroomInfoSEQ;
+
+	public void setNoticeDoc(String noticeDoc) {
+		this.noticeDoc = noticeDoc;
 	}
-	public long getDressroomId() {
-		return dressroomId;
+
+	public int getSaleBoardRpySeq() {
+		return saleBoardRpySeq;
 	}
-	public void setDressroomId(long dressroomId) {
-		this.dressroomId = dressroomId;
+
+	public void setSaleBoardRpySeq(int saleBoardRpySeq) {
+		this.saleBoardRpySeq = saleBoardRpySeq;
 	}
-	public int getTagId() {
-		return tagId;
+
+	public int getSaleBoardSeq() {
+		return saleBoardSeq;
 	}
-	public void setTagId(int tagId) {
-		this.tagId = tagId;
+
+	public void setSaleBoardSeq(int saleBoardSeq) {
+		this.saleBoardSeq = saleBoardSeq;
 	}
-	public long getUserId() {
-		return userId;
+
+	public int getGoodsCd() {
+		return goodsCd;
 	}
-	public void setUserId(long userId) {
-		this.userId = userId;
+
+	public void setGoodsCd(int goodsCd) {
+		this.goodsCd = goodsCd;
 	}
-	public String getDressroomName() {
-		return dressroomName;
+
+	public int getEntrNo() {
+		return entrNo;
 	}
-	public void setDressroomName(String dressroomName) {
-		this.dressroomName = dressroomName;
+
+	public void setEntrNo(int entrNo) {
+		this.entrNo = entrNo;
 	}
-	public String getDressroomDescription() {
-		return dressroomDescription;
+
+	public String getBulTitNm() {
+		return bulTitNm;
 	}
-	public void setDressroomDescription(String dressroomDescription) {
-		this.dressroomDescription = dressroomDescription;
+
+	public void setBulTitNm(String bulTitNm) {
+		this.bulTitNm = bulTitNm;
 	}
-	public Date getDressroomDate() {
-		return dressroomDate;
+
+	public String getBulCont() {
+		return bulCont;
 	}
-	public void setDressroomDate(Date dressroomDate) {
-		this.dressroomDate = dressroomDate;
+
+	public void setBulCont(String bulCont) {
+		this.bulCont = bulCont;
 	}
-	public int getDressroomLike() {
-		return dressroomLike;
+
+	public int getRpyLvl() {
+		return rpyLvl;
 	}
-	public void setDressroomLike(int dressroomLike) {
-		this.dressroomLike = dressroomLike;
+
+	public void setRpyLvl(int rpyLvl) {
+		this.rpyLvl = rpyLvl;
 	}
+
+	public int getParSaleBoardRpySn() {
+		return parSaleBoardRpySn;
+	}
+
+	public void setParSaleBoardRpySn(int parSaleBoardRpySn) {
+		this.parSaleBoardRpySn = parSaleBoardRpySn;
+	}
+
+	public int getQryCnt() {
+		return qryCnt;
+	}
+
+	public void setQryCnt(int qryCnt) {
+		this.qryCnt = qryCnt;
+	}
+
+	public int getLkeCnt() {
+		return lkeCnt;
+	}
+
+	public void setLkeCnt(int lkeCnt) {
+		this.lkeCnt = lkeCnt;
+	}
+
+	public String getRgstId() {
+		return rgstId;
+	}
+
+	public void setRgstId(String rgstId) {
+		this.rgstId = rgstId;
+	}
+
+	public String getRgstDate() {
+		return rgstDate;
+	}
+
+	public void setRgstDate(String rgstDate) {
+		this.rgstDate = rgstDate;
+	}
+
+	public String getUpdtId() {
+		return updtId;
+	}
+
+	public void setUpdtId(String updtId) {
+		this.updtId = updtId;
+	}
+
+	public String getUpdtDate() {
+		return updtDate;
+	}
+
+	public void setUpdtDate(String updtDate) {
+		this.updtDate = updtDate;
+	}
+
+	public String getUseYn() {
+		return useYn;
+	}
+
+	public void setUseYn(String useYn) {
+		this.useYn = useYn;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	public String getImgNm() {
+		return imgNm;
+	}
+
+	public void setImgNm(String imgNm) {
+		this.imgNm = imgNm;
+	}
+
 	@Override
 	public String toString() {
-		return "DressVO [dressroomInfoSEQ=" + dressroomInfoSEQ + ", dressroomId=" + dressroomId + ", tagId=" + tagId + ", userId=" + userId + ", dressroomName=" + dressroomName + ", dressroomDescription=" + dressroomDescription + ", dressroomDate=" + dressroomDate + ", dressroomLike=" + dressroomLike + "]";
+		return "DressVO [saleBoardRpySeq=" + saleBoardRpySeq + ", saleBoardSeq=" + saleBoardSeq + ", goodsCd=" + goodsCd
+				+ ", entrNo=" + entrNo + ", bulTitNm=" + bulTitNm + ", bulCont=" + bulCont + ", rpyLvl=" + rpyLvl
+				+ ", parSaleBoardRpySn=" + parSaleBoardRpySn + ", qryCnt=" + qryCnt + ", lkeCnt=" + lkeCnt + ", rgstId="
+				+ rgstId + ", rgstDate=" + rgstDate + ", updtId=" + updtId + ", updtDate=" + updtDate + ", useYn="
+				+ useYn + ", imgPath=" + imgPath + ", imgNm=" + imgNm + "]";
 	}
+
 }

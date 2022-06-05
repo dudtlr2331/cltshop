@@ -41,7 +41,7 @@
 		<input type="password" name="passWd" value="${pvo.passWd}">
 	</div>
 	
-	<input type="button" value="목록" onclick="location.href='/DispatcherServlet?command=qna'"/>
+	<input type="button" value="목록" onclick="location.href='/DispatcherServlet?command=main_qna_list'"/>
     <input type="button" value="삭제" onclick="fn_qna_remove('${pvo.qnaBoardSeq}')"/>
     <input type="submit" value="수정"/>
 </form>

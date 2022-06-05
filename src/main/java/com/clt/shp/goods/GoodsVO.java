@@ -24,8 +24,36 @@ public class GoodsVO {
 	private String updtId;/*수정자*/
 	private Date updtDate;/*수정일*/
 	
+	private String searchEntrNo;
+	private String searchSaleBoardSeq;
+	
 	public GoodsVO() {
 	}
+	
+	public GoodsVO(long entrNo, String goodsNm, int goodsPrc, String catgryCd, String catgryCd2, int inyQty, int dlvPrc,
+			String goodsSize, String goodsClr, String imgPath, String imgNm, String goodsIntr, String saleStatCd,
+			String useYn, String rgstId, Date rgstDate, String updtId, Date updtDate) {
+		super();
+		this.entrNo = entrNo;
+		this.goodsNm = goodsNm;
+		this.goodsPrc = goodsPrc;
+		this.catgryCd = catgryCd;
+		this.catgryCd2 = catgryCd2;
+		this.inyQty = inyQty;
+		this.dlvPrc = dlvPrc;
+		this.goodsSize = goodsSize;
+		this.goodsClr = goodsClr;
+		this.imgPath = imgPath;
+		this.imgNm = imgNm;
+		this.goodsIntr = goodsIntr;
+		this.saleStatCd = saleStatCd;
+		this.useYn = useYn;
+		this.rgstId = rgstId;
+		this.rgstDate = rgstDate;
+		this.updtId = updtId;
+		this.updtDate = updtDate;
+	}
+
 	public GoodsVO(long goodsInfoSeq, long goodsCd, long entrNo, String goodsNm, int goodsPrc, String catgryCd, String catgryCd2,
 			int inyQty, int dlvPrc, String goodsSize, String goodsClr, String imgPath, String imgNm, String goodsIntr,
 			String saleStatCd, String useYn, String rgstId, Date rgstDate, String updtId, Date updtDate) {
@@ -171,13 +199,26 @@ public class GoodsVO {
 	public void setUpdtDate(Date updtDate) {
 		this.updtDate = updtDate;
 	}
-	
+	public String getSearchEntrNo() {
+		return searchEntrNo;
+	}
+	public void setSearchEntrNo(String searchEntrNo) {
+		this.searchEntrNo = searchEntrNo;
+	}
+	public String getSearchSaleBoardSeq() {
+		return searchSaleBoardSeq;
+	}
+	public void setSearchSaleBoardSeq(String searchSaleBoardSeq) {
+		this.searchSaleBoardSeq = searchSaleBoardSeq;
+	}
 	@Override
 	public String toString() {
-		return "AdmGoodsVO [goodsCd=" + goodsCd + ", entrNo=" + entrNo + ", goodsNm=" + goodsNm + ", goodsPrc="
-				+ goodsPrc + ", catgryCd=" + catgryCd + ", catgryCd2=" + catgryCd2 + ", inyQty=" + inyQty + ", dlvPrc="
-				+ dlvPrc + ", goodsSize=" + goodsSize + ", goodsClr=" + goodsClr + ", imgPath=" + imgPath + ", imgNm="
-				+ imgNm + ", goodsIntr=" + goodsIntr + ", saleStatCd=" + saleStatCd + ", useYn=" + useYn + ", rgstId="
-				+ rgstId + ", rgstDate=" + rgstDate + ", updtId=" + updtId + ", updtDate=" + updtDate + "]";
+		return "GoodsVO [goodsInfoSeq=" + goodsInfoSeq + ", goodsCd=" + goodsCd + ", entrNo=" + entrNo + ", goodsNm="
+				+ goodsNm + ", goodsPrc=" + goodsPrc + ", catgryCd=" + catgryCd + ", catgryCd2=" + catgryCd2
+				+ ", inyQty=" + inyQty + ", dlvPrc=" + dlvPrc + ", goodsSize=" + goodsSize + ", goodsClr=" + goodsClr
+				+ ", imgPath=" + imgPath + ", imgNm=" + imgNm + ", goodsIntr=" + goodsIntr + ", saleStatCd="
+				+ saleStatCd + ", useYn=" + useYn + ", rgstId=" + rgstId + ", rgstDate=" + rgstDate + ", updtId="
+				+ updtId + ", updtDate=" + updtDate + ", searchEntrNo=" + searchEntrNo + "]";
 	}
+	
 }

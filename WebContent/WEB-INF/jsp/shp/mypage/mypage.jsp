@@ -1,39 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/nomalMenu.jsp" %>
 <link href="/css/mypage.css" rel="stylesheet">
-
-<article id="content">
+<section class="title_area">
+	<h3 class="title">마이 페이지</h3>
+</section>
+<section class="item_list_area">
+<div class="header_data">
     <div class="icon">
-        <i class="fa-solid fa-truck"></i>
-        <i class="fa-solid fa-p"></i>
-        <i class="fa-solid fa-money-check-dollar"></i>
-        <i class="fa-solid fa-comments"></i>
+		<span>
+			<i class="fa-solid fa-truck"></i>
+			<a href="DispatcherServlet?command=mypage" class="a">주문/배송조회</a>
+		</span>
+		<span>
+			<i class="fa-solid fa-p"></i>
+			<a href="DispatcherServlet?command=mypage_point" class="b">포인트</a>
+		</span>
+		<span>
+			<i class="fa-solid fa-money-check-dollar"></i>
+			<a href="DispatcherServlet?command=mypage_coupon" class="c">쿠폰</a>
+		</span>
+		<span>
+			<i class="fa-solid fa-comments"></i>
+			<a href="DispatcherServlet?command=mypage_qna" class="d">Q&A</a>
+		</span>
     </div>
-    <div class="icon_btn">
-        <a href="DispatcherServlet?command=mypage" class="a">주문/배송조회 ></a>
-        <a href="DispatcherServlet?command=mypage_point" class="b">포인트 ></a>
-        <a href="DispatcherServlet?command=mypage_coupon" class="c">쿠폰 ></a>
-        <a href="DispatcherServlet?command=mypage_qna" class="d">Q&A</a>
-    </div>
-</article>
-<article id="b_content">
-    <div class="a">
-        <pre>2022.01.01 | 20115634931</pre>
-        <pre><a href="DispatcherServlet?command=mypage_detail">주문상세보기></a></pre>
-    </div>
-    <div class="b">
-        <pre>회사명</pre>
-        <pre class="b_money">주문금액</pre>
-        <pre class="b_progres">진행상황</pre>
-    </div>
-    <div class="c">
-        <div><img src="/images/아우터4.jpg"></div>
-        <div>
-            <div>[1+1] 후드티</div>
-            <div>그레이XL/다크그린XL</div>
-            <div>1개</div>
-        </div>
-        <div>55,900 원</div>
-        <div>구매확정</div>
-    </div>
-</article>
+</div>
+<div class="data_list">
+	<table>
+		<colgroup>
+			<col width="20%" />
+			<col width="20%" />
+			<col width="20%" />
+			<col width="20%" />
+			<col width="20%" />
+		</colgroup>
+		<tr>
+			<th>주문번호</th>
+			<th>썸네일</th>
+			<th>상품명</th>
+			<th>주문금액</th>
+			<th>주문상태</th>
+		</tr>
+		<c:if test="${empty mypgList }">
+			<tr>
+				<td colspan="5"><div class="nodata">주문내역이 없습니다.</div></td>
+			</tr>
+		</c:if>
+		<c:forEach items="${mypgList }" var="obj">
+			<tr>
+				<td>${obj.ordNo}</td>
+				<td><img src="${obj.imgPath}${obj.imgNm}"></td>
+				<td><a href="/DispatcherServlet?command=mypage_detail&ordNo=${obj.ordNo}">${obj.bulTitNm}</a></td>
+				<td>${obj.payMny}원</td>
+				<td>${obj.codeNm}</td>
+			</tr>
+		</c:forEach>
+	</table>
+</div>
+</section>

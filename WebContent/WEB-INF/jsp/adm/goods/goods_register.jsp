@@ -14,16 +14,17 @@
     		<th><div>판매처</div></th>
     		<td>
     			<select name="entrNo">
-    				<option value="1">온라인몰</option>
-    			</select>
+					<c:forEach items="${entrList}" var="obj">
+						<option value="${obj.entrNo}">${obj.entrNm}(${obj.entrNo})</option>
+					</c:forEach>
+				</select>
     		</td>
     		<th><div>판매상태</div></th>
     		<td>
     			<select name="saleStatCd">
-    				<option value="01">판매중</option>
-    				<option value="02">판매중지</option>
-    				<option value="03">품절</option>
-    				<option value="04">재고부족</option>
+    				<c:forEach items="${codeList}" var="obj">
+						<option value="${obj.codeNm}">${obj.codeNm}</option>
+					</c:forEach>
     			</select>
     		</td>
     	</tr>
@@ -38,12 +39,9 @@
             <td>
                 <select name="catgryCd" id="catgryCd">
                     <option value="">선택</option>
-                    <option value="S01">상의</option>
-                    <option value="S02">아우터</option>
-                    <option value="S03">바지</option>
-                    <option value="S04">원피스</option>
-                    <option value="S05">신발</option>
-                    <option value="S06">가방</option>
+                    <c:forEach items="${upperCodeList}" var="obj">
+                    	<option value="${obj.catgryCd}">${obj.catgryNm}</option>
+                    </c:forEach>
                 </select>
             </td>
             <th><div>소분류</div></th>
@@ -115,62 +113,53 @@
 </div>
 </form>
 <script>
-window.onload = ()=>{
-	let sel_catgryCd = document.querySelector('#catgryCd');
-	let sel_catgryCd2 = document.querySelector('#catgryCd2');
-	sel_catgryCd.addEventListener('change', (e)=>{
-		//option 삭제
-		let sel_catgryCd2_options = document.querySelectorAll('#catgryCd2 option');
-		for(let i=0; i<sel_catgryCd2_options.length; i++){
-			sel_catgryCd2_options[i].remove();
+(function(){
+	document.getElementById("catgryCd").addEventListener('change', makeRequest);
+	function makeRequest() {
+		httpRequest = new XMLHttpRequest();
+		if(!httpRequest) {
+			alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
+			return false;
 		}
-		
-		let selectedIdx = e.target.selectedIndex;
-		let selectedVal = e.target.value;
-		let optionList = [];
-		if(selectedVal == 'S01'){ //상의
-			optionList.push({'':'선택'});
-			optionList.push({'A01':'반팔'});
-			optionList.push({'A02':'긴팔'});
-		}
-		else if(selectedVal == 'S02'){ //아우터
-			optionList.push({'':'선택'});
-			optionList.push({'B01':'자켓'});
-			optionList.push({'B02':'패딩'});
-			optionList.push({'B03':'롱패딩'});
-		}
-		else if(selectedVal == 'S03'){ //바지
-			optionList.push({'':'선택'});
-			optionList.push({'C01':'청바지'});
-		}
-		else if(selectedVal == 'S04'){ //원피스
-			optionList.push({'':'선택'});
-			optionList.push({'D01':'원피스'});
-		}
-		else if(selectedVal == 'S05'){ //신발
-			optionList.push({'':'선택'});
-			optionList.push({'E01':'운동화'});
-		}
-		else if(selectedVal == 'S06'){ //가방
-			optionList.push({'':'선택'});
-			optionList.push({'F01':'책가방'});
-		}
-		
-		for(let obj in optionList){
-			let objValue = optionList[obj];
-			for(val in objValue) {
-				let option = document.createElement('option');
-				let key = val;
-				let value = objValue[key];
-				option.value = key;
-				option.innerHTML = value;
-				sel_catgryCd2.append(option);
+		let catgryCd = document.querySelector('#catgryCd').value;
+		httpRequest.onreadystatechange = alertContents;
+		httpRequest.open('POST', "DispatcherServlet?command=adm_cate_list_ajax");
+		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		/* httpRequest.setRequestHeader('Content-Type', 'application/json'); */
+		httpRequest.send('catgryCd='+encodeURIComponent(catgryCd));
+	}
+	
+	function alertContents() {
+		if (httpRequest.readyState === XMLHttpRequest.DONE) {
+			if (httpRequest.status === 200) {
+				var res = httpRequest.responseText;
+				console.log('res:' + res);
+				var rtnJson = JSON.parse(res);
+				if(rtnJson.result == 'success'){
+					let sel_catgryCd2 = document.querySelector('#catgryCd2');
+					let sel_catgryCd2_options = document.querySelectorAll('#catgryCd2 option');
+					for(let i=0; i<sel_catgryCd2_options.length; i++){
+						sel_catgryCd2_options[i].remove();
+					}
+					//추가
+					for(let i=0; i<rtnJson.dataList.length; i++){
+						let objValue = rtnJson.dataList[i];
+						let option = document.createElement('option');
+						let catgryCd = objValue['catgryCd'];
+						let catgryNm = objValue['catgryNm'];
+						option.value = catgryCd;
+						option.innerHTML = catgryNm;
+						sel_catgryCd2.append(option);
+					}
+				}else{
+					alert("에러 발생.");
+				}
+			} else {
+				alert('request에 뭔가 문제가 있어요.');
 			}
-			//option.value = 
 		}
-	});
-};
-
+	}
+})();
 
 function previewImg(e){
 	let reader = new FileReader();

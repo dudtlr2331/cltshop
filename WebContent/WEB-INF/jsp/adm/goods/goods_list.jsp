@@ -3,9 +3,11 @@
 <h2>상품 관리 > 상품 목록</h2>
 <div class="src_area">
 	<div>
-		<select>
-			<option>등록일순</option>
-			<option>이름순</option>
+		<select id="searchEntrNo" name="searchEntrNo">
+			<option value="" <c:if test="${empty searchEntrNo}">selected</c:if>>업체를 선택해 주세요</option>
+			<c:forEach items="${entrList}" var="obj">
+				<option value="${obj.entrNo}" <c:if test="${searchEntrNo eq obj.entrNo}">selected</c:if>>${obj.entrNm}(${obj.entrNo})</option>
+			</c:forEach>
 		</select>
 	</div>
 </div>
@@ -28,10 +30,10 @@
 	        </tr>
 	    </thead>
 	    <tbody>
-	    	<c:if test="${empty list }">
-	    		<tr><td colspan="12">데이터가 없습니다.</td></tr>
+	    	<c:if test="${empty goodsList}">
+	    		<tr><td colspan="12">표시할 데이터가 없습니다.</td></tr>
 	    	</c:if>
-	    	<c:forEach items="${list }" var="obj" varStatus="cnt">
+	    	<c:forEach items="${goodsList }" var="obj" varStatus="cnt">
 		        <tr>
 		            <td>
 		            	<input type="checkbox" id="cb">
@@ -44,7 +46,7 @@
 		            <td>${obj.saleStatCd}</td>
 		            <td>${obj.inyQty}</td>
 		            <td>${obj.dlvPrc}</td>
-		            <td>${obj.goodsClr}</td> 
+		            <td>${obj.goodsClr}</td>
 		            <td>${obj.goodsSize}</td>
 		            <td>${obj.rgstDate}</td>
 		        </tr>
@@ -55,4 +57,12 @@
 <div class="btn_area">
 	<input type="button" value="등록" onclick="location.href='/DispatcherServlet?command=adm_goods_register'" />
 </div>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", ()=>{
+	let sel_entrCd = document.querySelector("#searchEntrNo");
+	sel_entrCd.addEventListener('change', (e)=>{
+		location.href = '/DispatcherServlet?command=adm_goods_list&searchEntrNo='+sel_entrCd.value;
+	});
+});
+</script>
 <%@ include file="/WEB-INF/jsp/cmm/admFooter.jsp" %>

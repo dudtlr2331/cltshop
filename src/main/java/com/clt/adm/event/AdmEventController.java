@@ -12,6 +12,7 @@ import com.clt.cmm.servlet.ModelAndView;
 import com.clt.shp.event.EventVO;
 import com.clt.shp.event.dao.impl.EventDaoOracle;
 import com.clt.shp.event.service.EventService;
+import com.clt.shp.order.OrderVO;
 
 public class AdmEventController implements Controller{
 	private String command = "";
@@ -70,6 +71,26 @@ public class AdmEventController implements Controller{
 			int result = eventService.deleteEvent(pvo);
 			
 			modelAndView.setPath("/DispatcherServlet?command=adm_event_list");
+			modelAndView.setRedirect(false);
+		}
+		else if(command.equals(HandlerMapping.ADM_EVENT_LIST_AJAX)) {
+			List<EventVO> list = eventService.selectEventList(pvo);
+			
+			String json = "{\"result\":\"success\", \"data\":[";
+			for(int i=0; i<list.size(); i++) {
+				json += "{\"imgNm\":\""+list.get(i).getImgNm()+"\","
+				+ "\"imgPath\":\""+list.get(i).getImgPath()+"\""
+				+ "}"
+				;
+				if(i < list.size()-1) {
+					json +=",";
+				}
+			}
+			json += "]}";
+			
+			req.setAttribute("json", json);
+
+			modelAndView.setPath("jsonView.jsp");
 			modelAndView.setRedirect(false);
 		}
 		

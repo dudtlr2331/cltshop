@@ -20,7 +20,7 @@ public class AdmQnaController implements Controller{
 		ModelAndView modelAndView = new ModelAndView();
 		
 		//파라미터 셋팅
-		AdmQnaVO pvo = parameterSetting(req);
+//		AdmQnaVO pvo = parameterSetting(req);
 		
 		//비즈니스 처리
 		if(command.equals(HandlerMapping.ADM_QNA_LIST)) {
@@ -34,8 +34,8 @@ public class AdmQnaController implements Controller{
 		return modelAndView;
 	}
 
-	private AdmQnaVO parameterSetting(HttpServletRequest req) {
-		AdmQnaVO pvo = new AdmQnaVO();
-		return pvo;
-	}
+//	private AdmQnaVO parameterSetting(HttpServletRequest req) {
+//		AdmQnaVO pvo = new AdmQnaVO();
+//		return pvo;
+//	}
 }

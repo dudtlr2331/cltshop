@@ -2,12 +2,9 @@ package com.clt.shp.main.dao;
 
 import java.util.List;
 
-import com.clt.shp.main.MainVO;
+import com.clt.shp.main.GoodsDetailVO;
 
 public interface MainDao {
-	int insertMain(MainVO pvo);
-	MainVO selectMain(MainVO pvo);
-	List<MainVO> selectListMain(MainVO pvo);
-	int updateMain(MainVO pvo);
-	int deleteMain(MainVO pvo);
+	List<GoodsDetailVO> selectListMainHome(GoodsDetailVO pvo);
+	List<GoodsDetailVO> selectListMainCate(GoodsDetailVO pvo);
 }

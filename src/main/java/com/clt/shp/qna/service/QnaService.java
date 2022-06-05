@@ -67,4 +67,8 @@ public class QnaService {
 	public int deleteQna(QnaVO pvo) {
 		return dao.deleteQna(pvo);
 	}
+	
+	public List<QnaVO> searchIdQnaList(QnaVO pvo) {
+		return dao.searchIdQnaList(pvo);
+	}
 }

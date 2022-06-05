@@ -7,6 +7,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: #ffffff;
+	padding-top: 10px;
+	padding-bottom: 100px;
 }
 
 .section .input_area h1 {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/admHeader.jsp" %>
 <h2>회원 관리</h2>
+<form name="frm" action="DispatcherServlet?command=adm_user_search" method="post">
 <div class="src_area">
     <h4>회원 검색</h4>
     <div>
@@ -14,46 +15,46 @@
 	        <tr>
 	            <th class="col">검색</th>
 	            <td colspan="3">
-	             <select>
-	                 <option>아이디</option>
-	                 <option>이름</option>
+	             <select name="searchType">
+	                 <option value="">선택</option>
+	                 <option value="idType">아이디</option>
+	                 <option value="nameType">이름</option>
 	             </select>
-	             <input class="search" type="text"/>
+	             <input class="search" type="text" name="searchText" />
 	            </td>
 	        </tr>
 	        <tr>
 	            <th>회원등급</th>
 	            <td>
-	             <select>
-	                 <option>등급</option>
-	                 <option>회원</option>
-	                 <option>관리자</option>
+	             <select name="searchGradeUpperType" id="searchGradeUpperType">
+	                 <option value="grade">등급</option>
+	                 <option value="user">회원</option>
+	                 <option value="admin">관리자</option>
 	             </select>
 	            </td>
 	            <th>회원구분</th>
 	            <td>
-	                <label>빨강<input type="radio" name="color" value="red" checked="checked"></label><br/>
-	                <label>노랑<input type="radio" name="color" value="yellow"></label><br/>
-	                <label>파랑<input type="radio" name="color" value="blue"></label><br/>
+	            	<select name="searchGradeUnderType" id="searchGradeUnderType">
+	            	</select>
 	            </td>
 	        </tr>
 	        <tr>
 	            <th class="col">회원가입일</th>
-	            <td colspan="3"><input class="membership_date1" type="text"/><input class="membership_date2" type="text"/></td>
+	            <td colspan="3"><input class="membership_date1" name="searchStartRgstDate" type="date"/><input class="membership_date2" type="date" name="searchEndRgstDate"/></td>
 	        </tr>
 	    </table>
     </div>
     <div>
-        <div>검색 1명 / 전체 1명</div>
-        <select>
-            <option>회원가입순</option>
-            <option>번호 순</option>
+        <div>전체 1명 / 검색 1명</div>
+        <select id="user_sequence" name="user_sequence">
+            <option value="">전체</option>
+            <option value="num">번호 순</option>
+            <option value="rgst">회원 가입 순</option>
         </select>
     </div>
 </div>
-
-<button id="go" class="btn_prod">회원 등록</button>
-<button class="member_search_btn">검색</button>
+<input type="submit" class="member_search_btn" value="검색">
+</form>
 
 <div class="data_list">
 	<table>
@@ -61,7 +62,6 @@
 			<col width="3%"/>
 			<col width="10%"/>
 			<col width="17%"/>
-			<col width="10%"/>
 			<col width="10%"/>
 			<col width="10%"/>
 			<col width="10%"/>
@@ -80,53 +80,91 @@
 				<th>구매건수</th>
 				<th>구매금액</th>
 				<th>회원가입일</th>
-				<th>정보수정</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td><input type="checkbox"></td>
-				<td>01</td>
-				<td>user1/유저</td>
-				<td>홍길동</td>
-				<td>일반회원</td>
-				<td>1000원</td>
-				<td>1건</td>
-				<td>29,900원</td>
-				<td>2018-01-01</td>
-				<td>0</td>
-			</tr>
+			<c:if test="${empty list }">
+	    		<tr><td colspan="10">데이터가 없습니다.</td></tr>
+	    	</c:if>
+	    	<c:forEach items="${list }" var="obj">
+		        <tr>
+		        	<td><input type="checkbox"></td>
+		            <td>${obj.usrBaseSeq}</td>
+		            <td>${obj.usrId}</td>
+		            <td><a href="/DispatcherServlet?command=adm_user_detail&usrBaseSeq=${obj.usrBaseSeq}">${obj.usrNm}</a></td>
+		            <td>일반회원</td>
+		            <td>포인트</td>
+		            <td>구매건수</td>
+		            <td>구매금액</td>
+		            <td>${obj.rgstDate}</td>
+		        </tr>
+	    	</c:forEach>
 		</tbody>
 	</table>
 </div>
-
-<div id="popup" style="display: none;">
-    <h3>회원 등록</h3>
-    <div id="popup-text">
-        아이디  <input type="text"/><br>
-        닉네임  <input type="text"/><br>
-        이름  <input type="text"/><br>
-        등급  <input type="text"/><br>
-        적립금  <input type="text"/><br>
-        구매건수  <input type="text"/><br>
-        구매금액  <input type="text"/><br>
-        회원가입일  <input type="text"/><br>
-    </div>
-    <button id="exit" class="join_btn">등록</button>
-</div>
 <script>
-const go = document.querySelector("#go");
-const bg = document.querySelector("#bg");
-const popup = document.querySelector("#popup");
-const exit = document.querySelector("#exit");
+(function(){
+	document.getElementById("searchGradeUpperType").addEventListener('change', makeRequest);
+	function makeRequest() {
+		httpRequest = new XMLHttpRequest();
+		if(!httpRequest) {
+			alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
+			return false;
+		}
+		let searchGradeUpperType = document.querySelector('#searchGradeUpperType').value;
+		httpRequest.onreadystatechange = alertContents;
+		httpRequest.open('POST', "DispatcherServlet?command=adm_code_list_ajax");
+		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		httpRequest.send('searchGradeUpperType='+encodeURIComponent(searchGradeUpperType));
+	}
+	
+	function alertContents() {
+		if (httpRequest.readyState === XMLHttpRequest.DONE) {
+			if (httpRequest.status === 200) {
+				var res = httpRequest.responseText;
+				console.log('res:' + res);
+				var rtnJson = JSON.parse(res);
+				if(rtnJson.result == 'success'){
+					let sel_searchGradeUnderType = document.querySelector('#searchGradeUnderType');
+					let sel_searchGradeUnderType_options = document.querySelectorAll('#searchGradeUnderType option');
+					for(let i=0; i<sel_searchGradeUnderType_options.length; i++){
+						sel_searchGradeUnderType_options[i].remove();
+					}
+					//추가
+					for(let i=0; i<rtnJson.dataList.length; i++){
+						let objValue = rtnJson.dataList[i];
+						let option = document.createElement('option');
+						let codeNm = objValue['codeNm'];
+						let codeVal = objValue['codeVal'];
+						option.value = codeVal;
+						option.innerHTML = codeNm;
+						sel_searchGradeUnderType.append(option);
+					}
+				}else if(rtnJson.result == 'fail'){
+					let sel_searchGradeUnderType = document.querySelector('#searchGradeUnderType');
+					let sel_searchGradeUnderType_options = document.querySelectorAll('#searchGradeUnderType option');
+					for(let i=0; i<sel_searchGradeUnderType_options.length; i++){
+						sel_searchGradeUnderType_options[i].remove();
+					}
+					let option = document.createElement('option');
+					option.value = '';
+					option.innerHTML = '전체';
+					sel_searchGradeUnderType.append(option);
+				}else{
+					alert("에러 발생.");
+				}
+			} else {
+				alert('request에 뭔가 문제가 있어요.');
+			}
+		}
+	}
+})();
 
-go.addEventListener("click",function(){
-    bg.classList.remove("hidden");
-    popup.classList.remove("hidden");
-});
-exit.addEventListener("click",function(){
-    bg.classList.add("hidden");
-    popup.classList.add("hidden");
+document.addEventListener("DOMContentLoaded", ()=>{
+	let sel_user_sequence = document.querySelector("#user_sequence");
+	sel_user_sequence.addEventListener('change', (e)=>{
+		location.href = '/DispatcherServlet?command=adm_user_list&userSequence='+sel_user_sequence.value;
+	});
 });
 </script>
 <%@ include file="/WEB-INF/jsp/cmm/admFooter.jsp" %>

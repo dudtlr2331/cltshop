@@ -1,24 +1,30 @@
-.top_btn input {
-  height: 27px;
-  width: 250px;
+#header{
+  background-color: #ffffff;
 }
-/* .top_btn input[type:button]{
-  width: 70px;
-} */
+
 .top_btn i {
-  font-size: 27px;
+  font-size: 18px;
   margin: 0 3px;
 }
+
+/* 상단메뉴 시작 */
+#main_benner{
+  height: 60px;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+}
+
 #main_benner .menu {
   display: flex;
   list-style: none;
   justify-content: space-around;
-  background-color: beige;
   border-radius: 5px;
   margin-bottom: 5px;
+  background-color: #ffffff;
 }
 
 #main_benner .menu ul {
+  border-radius: 5px;
 }
 
 #main_benner .menu a {
@@ -28,55 +34,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
+/*상단메뉴 호버시*/
 #main_benner .menu a:hover{
-  background-color: gray;
-  color: white;
-}
-
-
-#main_benner .img_area {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#main_benner .img_area a {
-  font-size: 24px;
-  cursor: pointer;
-}
-
-#main_benner .img_area .images {
-  background: url("/cltshop/images/bnr_event.png");
-  width: 100%;
-  position: relative;
-}
-
-#main_benner .img_area .images img {
-  width: 100%;
-}
-
-#main_benner .img_area .images .icons {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: bisque;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-#main_benner .img_area .images .icons a {
-  cursor: pointer;
-  font-size: 18px;
+  border-radius: 10px;
+  color: #ff0000;
 }
 
 #product_ranking{
-  margin-top: 50px;
-  margin-left: 50px;
-  margin-right: 100px;
+  margin-top: 10px;
+  padding:20px
 }
 .product_group{
   display: flex;
@@ -92,7 +61,7 @@
 .img_area .img_a{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   padding-bottom: 25px;
 }
 .img_area .img_a .item{
@@ -100,7 +69,7 @@
   flex-direction: column;
   justify-content: space-around;
   width: 24%;
-  height: 450px;
+  height: 400px;
   cursor: pointer;
   position: relative;
   padding-left: 5px;
@@ -153,7 +122,7 @@
   height: 160px;
   opacity: 0;
   pointer-events: none;
-  background-color: beige;
+  background-color: #ffffff;
   z-index: 99;
 }
 
@@ -169,10 +138,10 @@
 .menu_category_item{
   width: 100%;
   height: 40px;
+  background-color: #ffffff;
 }
 
 .menu_category li a:hover{
-  background-color: gray;
   color: white;
 }
 

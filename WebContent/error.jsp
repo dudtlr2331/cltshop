@@ -12,7 +12,7 @@
 <body>
    <script type="text/javascript">
       alert("알수 없는 에러입니다. 시스템관리자에게 문의 주세요.");
-      location.href = '/DispatcherServlet?command=goods_list'
+      location.href = '/DispatcherServlet?command=main_home_list'
    </script>
 </body>
 </html>

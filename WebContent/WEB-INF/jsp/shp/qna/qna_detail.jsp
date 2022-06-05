@@ -19,6 +19,6 @@
 	<div>사용 여부</div>
 	<input type="text" value="${pvo.useYn}"><br/>
 	
-	<input type="button" value="목록" onclick="location.href='/DispatcherServlet?command=qna'"/>
+	<input type="button" value="목록" onclick="location.href='/DispatcherServlet?command=main_qna_list'"/>
     <input type="submit" value="수정"/>
 </form>

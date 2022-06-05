@@ -1,23 +1,41 @@
 package com.clt.adm.goods;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.clt.cmm.controller.Controller;
 import com.clt.cmm.servlet.HandlerMapping;
 import com.clt.cmm.servlet.ModelAndView;
+import com.clt.shp.cate.CateVO;
+import com.clt.shp.cate.dao.impl.CateDaoOracle;
+import com.clt.shp.cate.service.CateService;
+import com.clt.shp.code.CodeVO;
+import com.clt.shp.code.dao.impl.CodeDaoOracle;
+import com.clt.shp.code.service.CodeService;
+import com.clt.shp.entr.EntrVO;
+import com.clt.shp.entr.dao.impl.EntrDaoOracle;
+import com.clt.shp.entr.service.EntrService;
 import com.clt.shp.goods.GoodsVO;
 import com.clt.shp.goods.dao.impl.GoodsDaoOracle;
 import com.clt.shp.goods.service.GoodsService;
+import com.clt.shp.user.UserVO;
 
 public class AdmGoodsController implements Controller{
 	private String command = "";
 	private GoodsService goodsService;
+	private EntrService entrService;
+	private CateService cateService;
+	private CodeService codeService;
 	
 	public AdmGoodsController(String command) {
 		goodsService = new GoodsService(new GoodsDaoOracle());
+		entrService = new EntrService(new EntrDaoOracle());
+		cateService = new CateService(new CateDaoOracle());
+		codeService = new CodeService(new CodeDaoOracle());
 		this.command = command;
 	}
 
@@ -26,37 +44,142 @@ public class AdmGoodsController implements Controller{
 		ModelAndView modelAndView = new ModelAndView();
 		String leftMenuNav = HandlerMapping.ADM_GOODS_LIST;
 		
+		//세션
+		HttpSession session = req.getSession();
+		UserVO loginInfo = (UserVO) session.getAttribute("loginInfo");
+		
+		if(null == loginInfo) {
+			modelAndView.setPath("/DispatcherServlet?command=user_login");
+			modelAndView.setRedirect(true);
+			return modelAndView;
+		}
+		
 		//파라미터 셋팅
-		GoodsVO pvo = parameterSetting(req);
+		GoodsVO pvo = goodsService.parameterSetting(req);
 		
 		//비즈니스 처리
 		//상품 리스트 화면
 		if(command.equals(HandlerMapping.ADM_GOODS_LIST)) {
-			List<GoodsVO> list = goodsService.selectGoodsList(pvo);
-			req.setAttribute("list", list);
+			//검색 조건
+			String searchEntrNo = pvo.getSearchEntrNo();
+			
+			//업체 리스트
+			EntrVO entrVO = new EntrVO();
+			entrVO.setUsrId(loginInfo.getUsrId());
+			List<EntrVO> entrList = entrService.selectEntrList(entrVO);
+			
+			//판매 상태 공통코드
+			CodeVO codeVo = new CodeVO();
+			codeVo.setRgstId(loginInfo.getUsrId());
+			List<CodeVO> codeList = codeService.selectSaleStatCdList(codeVo);
+			
+			//상품 리스트
+			List<GoodsVO> goodsList = null;
+			if(entrList.size() > 0) {
+				if(null == searchEntrNo || "".equals(searchEntrNo) || "null".equals(searchEntrNo)) {
+					pvo.setEntrNo(entrList.get(0).getEntrNo());
+					searchEntrNo = "";
+				}else {
+					pvo.setEntrNo(Long.parseLong(searchEntrNo));
+					goodsList = goodsService.selectGoodsList(pvo);
+				}
+			}
+			
+			req.setAttribute("codeList", codeList);
+			req.setAttribute("entrList", entrList);
+			req.setAttribute("goodsList", goodsList);
+			req.setAttribute("searchEntrNo", searchEntrNo);
 			
 			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_list.jsp");
 			modelAndView.setRedirect(false);
 		}
+		//상품 리스트 Ajax
+		else if(command.equals(HandlerMapping.ADM_GOODS_LIST_AJAX)) {
+			String searchEntrNo = pvo.getSearchEntrNo();
+			pvo.setEntrNo(Long.parseLong(searchEntrNo));
+			List<GoodsVO> goodsList = goodsService.selectGoodsList(pvo);
+			
+			String json = "";
+			
+			try {
+				json = "{\"result\":\"success\",\"dataList\":[";
+				for(int i=0; i<goodsList.size(); i++) {
+					if(i>0) {
+						json += ",";
+					}
+					json += "{\"goodsCd\":\"" + goodsList.get(i).getGoodsCd() + "\",\"goodsNm\":\"" + goodsList.get(i).getGoodsNm() + "\"}";
+				}
+				json += "]}";
+			} catch (Exception e) {
+				json = "{\"result\":\"fail\"}";
+				e.printStackTrace();
+			}
+			
+			req.setAttribute("json", json);
+			
+			modelAndView.setPath("jsonView.jsp");
+			modelAndView.setRedirect(false);
+		}
 		//상품 등록 화면
 		else if(command.equals(HandlerMapping.ADM_GOODS_REGISTER)) {
+			//업체 리스트
+			EntrVO entrVO = new EntrVO();
+			entrVO.setUsrId(loginInfo.getUsrId());
+			List<EntrVO> entrList = entrService.selectEntrList(entrVO);
+			
+			//카테고리 리스트
+			CateVO cateVO = new CateVO();
+			List<CateVO> upperCodeList = cateService.selectCateList(cateVO);
+			cateVO.setCatgryCd(upperCodeList.get(0).getCatgryCd());
+			List<CateVO> underCodeList = cateService.selectCateUnList(cateVO);
+			
+			//공통 코드 - 판매 상태 리스트
+			CodeVO codeVo = new CodeVO();
+			codeVo.setRgstId(loginInfo.getUsrId());
+			List<CodeVO> codeList = codeService.selectSaleStatCdList(codeVo);
+			
+			req.setAttribute("codeList", codeList);
+			req.setAttribute("entrList", entrList);
+			req.setAttribute("upperCodeList", upperCodeList);
+			req.setAttribute("underCodeList", underCodeList);
+			
 			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_register.jsp");
 			modelAndView.setRedirect(false);
 		}
-		//상품 등록 액션
+		//상품 등록 엑션
 		else if(command.equals(HandlerMapping.ADM_GOODS_REGISTER_ACT)) {
 			int result = goodsService.insertGoods(pvo);
 			
 			req.setAttribute("pvo", pvo);
 			
-			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_edit.jsp");
-			modelAndView.setRedirect(false);
+			modelAndView.setPath("/DispatcherServlet?command=adm_goods_list");
+			modelAndView.setRedirect(true);
 		}
 		//상품 수정 화면
 		else if(command.equals(HandlerMapping.ADM_GOODS_EDIT)) {
 			GoodsVO rvo = goodsService.selectGoodsOne(pvo);
 			
+			//업체 리스트
+			EntrVO entrVO = new EntrVO();
+			entrVO.setUsrId(loginInfo.getUsrId());
+			List<EntrVO> entrList = entrService.selectEntrList(entrVO);
+			
+			//카테고리 리스트
+			CateVO cateVO = new CateVO();
+			List<CateVO> upperCodeList = cateService.selectCateList(cateVO);
+			cateVO.setCatgryCd(rvo.getCatgryCd());
+			List<CateVO> underCodeList = cateService.selectCateUnList(cateVO);
+			
+			//공통 코드 - 판매 상태 리스트
+			CodeVO codeVo = new CodeVO();
+			codeVo.setRgstId(loginInfo.getUsrId());
+			List<CodeVO> codeList = codeService.selectCodeList(codeVo);
+			
 			req.setAttribute("pvo", rvo);
+			req.setAttribute("codeList", codeList);
+			req.setAttribute("entrList", entrList);
+			req.setAttribute("upperCodeList", upperCodeList);
+			req.setAttribute("underCodeList", underCodeList);
 			
 			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_edit.jsp");
 			modelAndView.setRedirect(false);
@@ -67,15 +190,15 @@ public class AdmGoodsController implements Controller{
 			
 			req.setAttribute("pvo", pvo);
 			
-			modelAndView.setPath("/WEB-INF/jsp/adm/goods/goods_edit.jsp");
-			modelAndView.setRedirect(false);
+			modelAndView.setPath("/DispatcherServlet?command=adm_goods_list");
+			modelAndView.setRedirect(true);
 		}
 		//상품 삭제 엑션
 		else if(command.equals(HandlerMapping.ADM_GOODS_REMOVE_ACT)) {
 			int result = goodsService.deleteGoods(pvo);
 			
 			modelAndView.setPath("/DispatcherServlet?command=adm_goods_list");
-			modelAndView.setRedirect(false);
+			modelAndView.setRedirect(true);
 		}
 		//상품 문의 화면
 		else if(command.equals(HandlerMapping.ADM_GOODS_QNA)) {
@@ -88,58 +211,5 @@ public class AdmGoodsController implements Controller{
 		req.setAttribute("leftMenuNav", leftMenuNav);
 		
 		return modelAndView;
-	}
-
-	private GoodsVO parameterSetting(HttpServletRequest req) {
-		long goodsInfoSeq = req.getParameter("goodsInfoSeq") == null? 0L : Long.parseLong(req.getParameter("goodsInfoSeq"));
-		long goodsCd = req.getParameter("goodsCd") == null? 0L : Long.parseLong(req.getParameter("goodsCd"));
-		long entrNo = req.getParameter("entrNo") == null? 0L : Long.parseLong(req.getParameter("entrNo"));
-		String saleStatCd = req.getParameter("saleStatCd");
-		String goodsNm = req.getParameter("goodsNm");
-		int goodsPrc = req.getParameter("goodsPrc") == null? 0 : Integer.parseInt(req.getParameter("goodsPrc"));
-		String catgryCd = req.getParameter("catgryCd");
-		String catgryCd2 = req.getParameter("catgryCd2");
-		int inyQty = req.getParameter("inyQty") == null? 0 : Integer.parseInt(req.getParameter("inyQty"));
-		int dlvPrc = req.getParameter("dlvPrc") == null? 0 : Integer.parseInt(req.getParameter("dlvPrc"));
-		String goodsSize = req.getParameter("goodsSize");
-		String goodsClr = req.getParameter("goodsClr");
-		String useYn = req.getParameter("useYn");
-		String goodsIntr = req.getParameter("goodsIntr");
-		
-		GoodsVO pvo = new GoodsVO();
-		
-		pvo.setGoodsInfoSeq(goodsInfoSeq);
-		pvo.setGoodsCd(goodsCd);
-		pvo.setEntrNo(entrNo);
-		pvo.setSaleStatCd(saleStatCd);
-		pvo.setGoodsNm(goodsNm);
-		pvo.setGoodsPrc(goodsPrc);
-		pvo.setCatgryCd(catgryCd);
-		pvo.setCatgryCd2(catgryCd2);
-		pvo.setInyQty(inyQty);
-		pvo.setDlvPrc(dlvPrc);
-		pvo.setGoodsSize(goodsSize);
-		pvo.setGoodsClr(goodsClr);
-		pvo.setUseYn(useYn);
-		pvo.setGoodsIntr(goodsIntr);
-		
-		//첨부파일 있으면 셋팅
-		String imgPath = (String) req.getAttribute("imgPath");
-		if(null == imgPath || "".equals(imgPath)) {
-			imgPath = req.getParameter("imgPath");
-		}
-		String imgNm = (String) req.getAttribute("imgNm");
-		if(null == imgNm || "".equals(imgNm)) {
-			imgNm = req.getParameter("imgNm");
-		}
-		
-		if(null != imgPath && !"".equals(imgPath)) {
-			pvo.setImgPath(imgPath);
-		}
-		if(null != imgNm && !"".equals(imgNm)) {
-			pvo.setImgNm(imgNm);
-		}
-		
-		return pvo;
 	}
 }
