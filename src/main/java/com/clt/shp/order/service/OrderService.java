@@ -177,6 +177,10 @@ public class OrderService {
 	public List<OrderVO> searchOrdDtlGoods(OrderVO pvo) {
 		return dao.searchOrdDtlGoods(pvo);
 	}
+	
+	public List<OrderVO> selectOrdBaseList(OrderVO pvo) {
+		return dao.selectOrdBaseList(pvo);
+	}
 
 	//=장바구니============================================================================================================================/
 	public int insertBasket(OrderVO pvo){

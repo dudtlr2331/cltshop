@@ -23,6 +23,8 @@ public interface OrderDao {
 	OrderVO searchOrdNoList(OrderVO pvo);
 	List<OrderVO> searchOrdDtlGoods(OrderVO pvo);
 	
+	List<OrderVO> selectOrdBaseList(OrderVO pvo);
+	
 	//장바구니
 	int insertBasket(OrderVO pvo);
 	int deleteBasket(OrderVO pvo);

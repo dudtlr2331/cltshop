@@ -192,6 +192,37 @@ public interface OrderSql{
 	+ " AND ORD_NO = ?"
 	;
 	
+	//ord_base테이블을 리스트로 받는 sql
+	String ORDER_BASE_LIST_SELECT =
+			  "SELECT ORD_NO"
+			+ "		, USR_ID"
+			+ "		, ENTR_NO"
+			+ "		, ORD_STAT"
+			+ "		, ORDR_ID"
+			+ "		, ORDR_NM"
+			+ "		, ORDR_PHON"
+			+ "		, ORDR_EMAIL"
+			+ "		, ACQR_PHON"
+			+ "		, ACQR_NM"
+			+ "		, ACQR_ADDR"
+			+ "		, ACQR_ADDR_DTL"
+			+ "		, ACQR_EMAIL"
+			+ "		, PRCL_WAY"
+			+ "		, PACK_WAY"
+			+ "		, PAY_WAY"
+			+ "		, PAY_MNY"
+			+ "		, REQ_MEMO"
+			+ "		, ORD_DATE"
+			+ "		, UPDT_DATE"
+			+ "		, UPDT_ID"
+			+ "		, RGST_DATE"
+			+ "		, RGST_ID"
+			+ "		, BILL_NUM"
+			+ " FROM  ORD_BASE"
+			+ " WHERE 1=1"
+			;
+	
+	
 	String ORDER_LIST =
       "SELECT BASE.ORD_NO"
 	+ "		, BASE.USR_ID"
