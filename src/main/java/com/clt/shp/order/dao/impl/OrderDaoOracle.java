@@ -277,7 +277,6 @@ public class OrderDaoOracle implements OrderDao{
 		LogPreparedStatement ps = null;
 		ResultSet rs = null;
 		List<OrderVO> list = new ArrayList<OrderVO>();
-		OrderVO vo = null;
 		String sql = OrderSql.ORDER_BASE_LIST_SELECT;
 		try {
 			conn = commonDao.getConnection();
@@ -286,16 +285,16 @@ public class OrderDaoOracle implements OrderDao{
 			System.out.println(ps);
 			System.out.println("===========================================================");
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				vo = new OrderVO(rs.getString("ORD_NO"), rs.getString("USR_ID")
-					, rs.getLong("ENTR_NO"), rs.getString("ORD_STAT"), rs.getString("ORDR_ID")
-					, rs.getString("ORDR_NM"), rs.getString("ORDR_PHON"), rs.getString("ORDR_EMAIL")
-					, rs.getString("ACQR_PHON"), rs.getString("ACQR_NM"), rs.getString("ACQR_ADDR")
-					, rs.getString("ACQR_ADDR_DTL") , rs.getString("ACQR_EMAIL") , rs.getString("PRCL_WAY")
-					, rs.getString("PACK_WAY") , rs.getString("PAY_WAY"), rs.getLong("PAY_MNY")
-					, rs.getString("REQ_MEMO") , rs.getString("ORD_DATE") , rs.getString("UPDT_DATE")
-					, rs.getString("UPDT_ID") , rs.getString("RGST_DATE") , rs.getString("RGST_ID")
-					, rs.getLong("BILL_NUM"));
+			while (rs.next()) {
+				list.add(new OrderVO(rs.getString("ORD_NO"), rs.getString("USR_ID")
+						, rs.getLong("ENTR_NO"), rs.getString("ORD_STAT"), rs.getString("ORDR_ID")
+						, rs.getString("ORDR_NM"), rs.getString("ORDR_PHON"), rs.getString("ORDR_EMAIL")
+						, rs.getString("ACQR_PHON"), rs.getString("ACQR_NM"), rs.getString("ACQR_ADDR")
+						, rs.getString("ACQR_ADDR_DTL") , rs.getString("ACQR_EMAIL") , rs.getString("PRCL_WAY")
+						, rs.getString("PACK_WAY") , rs.getString("PAY_WAY"), rs.getLong("PAY_MNY")
+						, rs.getString("REQ_MEMO") , rs.getString("ORD_DATE") , rs.getString("UPDT_DATE")
+						, rs.getString("UPDT_ID") , rs.getString("RGST_DATE") , rs.getString("RGST_ID")
+						, rs.getLong("BILL_NUM")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

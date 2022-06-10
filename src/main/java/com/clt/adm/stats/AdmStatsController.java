@@ -32,11 +32,11 @@ public class AdmStatsController implements Controller{
 		//비즈니스 처리
 		if(command.equals(HandlerMapping.ADM_STATS_SALES)) {
 			List<OrderVO> orderBaseList = orderService.selectOrdBaseList(pvo);
-			List<OrderVO> orderDetailList = orderService.selectOrdDtlList(pvo);
+//			List<OrderVO> orderDetailList = orderService.selectOrdDtlList(pvo);
 			long payMnyResult = 0L;
-			int detailOrderCount = orderDetailList.size();
+			int detailOrderCount = orderBaseList.size();
 			
-			for (int i = 0; i < orderBaseList.size(); i++) {
+			for (int i = 0; i < detailOrderCount; i++) {
 				payMnyResult += orderBaseList.get(i).getPayMny();
 			}
 			
@@ -52,9 +52,4 @@ public class AdmStatsController implements Controller{
 				
 		return modelAndView;
 	}
-
-//	private AdmStatsVO parameterSetting(HttpServletRequest req) {
-//		AdmStatsVO pvo = new AdmStatsVO();
-//		return pvo;
-//	}
 }
