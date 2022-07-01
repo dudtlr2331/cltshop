@@ -24,9 +24,10 @@ public class MypgVO {
 
     private String usrId;
 
+    private long saleBoardRpySeq;
     public MypgVO(){}
 
-    public MypgVO(String ordNo, String rgstDate, String ordrId, String ordrNm, String ordrPhon, long payMny, String imgPath, String imgNm, String bulTitNm, int goodsQty, long goodsPrc, String ordStat, String codeNm, String payWay, long dlvPrc, String acqrNm, String acqrPhon, String acqrAddr, String acqrAddrDtl, String reqMemo) {
+    public MypgVO(String ordNo, String rgstDate, String ordrId, String ordrNm, String ordrPhon, long payMny, String imgPath, String imgNm, String bulTitNm, int goodsQty, long goodsPrc, String ordStat, String codeNm, String payWay, long dlvPrc, String acqrNm, String acqrPhon, String acqrAddr, String acqrAddrDtl, String reqMemo, long saleBoardRpySeq) {
         this.ordNo = ordNo;
         this.rgstDate = rgstDate;
         this.ordrId = ordrId;
@@ -47,6 +48,7 @@ public class MypgVO {
         this.acqrAddr = acqrAddr;
         this.acqrAddrDtl = acqrAddrDtl;
         this.reqMemo = reqMemo;
+        this.saleBoardRpySeq = saleBoardRpySeq;
     }
 
     public String getOrdNo() {
@@ -215,6 +217,14 @@ public class MypgVO {
 
     public void setUsrId(String usrId) {
         this.usrId = usrId;
+    }
+
+    public long getSaleBoardRpySeq() {
+        return saleBoardRpySeq;
+    }
+
+    public void setSaleBoardRpySeq(long saleBoardRpySeq) {
+        this.saleBoardRpySeq = saleBoardRpySeq;
     }
 
     @Override

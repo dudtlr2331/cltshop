@@ -23,6 +23,7 @@ public interface OrderDao {
 	OrderVO searchOrdNoList(OrderVO pvo);
 	List<OrderVO> searchOrdDtlGoods(OrderVO pvo);
 	
+	//매출관리 통계
 	List<OrderVO> selectOrdBaseList(OrderVO pvo);
 	
 	//장바구니

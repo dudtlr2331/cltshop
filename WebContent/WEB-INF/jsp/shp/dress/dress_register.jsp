@@ -1,77 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/nomalMenu.jsp" %>
-<style>
-a{
-	color: black !important;
-	text-decoration: none !important;
-}
-</style>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 
 <section class="title_area">
 	<h3 class="title">드레스룸 등록</h3>
 </section>
 
+<section class="item_list_area">
+<input type="hidden" name="saleBoardSeq">
 <form action="/DispatcherServlet?command=dress_register_act" method="post" enctype="multipart/form-data">
-<section id="dressroom_create">
-    <div>판매 게시판 시퀀스</div>
-	<input type="number" name="saleBoardSeq"><br/>
-	
-	<div>상위 카테고리</div>
-	<select name="oneDepthCateList" id="oneDepthCateList">
-		<option value="">선택</option>
-		<c:forEach items="${oneDepthCateList }" var="obj">
-			<option value="${obj.catgryCd}">${obj.catgryNm}</option>
-	    </c:forEach>
-    </select>
-	
-	<div>하위 카테고리</div>
-	<select name="twoDepthCateList" id="twoDepthCateList"> 
-   	</select>
-	
-	<div>상품</div>
-	<select name="goodsCd" id="searchGoodsList"> <!-- 상품 코드 -->
-   	</select>
-	
-	<div>상품 이미지</div>
-	<img id="goodsImg" src="">
-
-	<!-- <div>상품코드</div>
-	<input type="number" name="goodsCd"><br/> -->
-	
-	<div>거래처 번호</div>
-	<input type="number" name="entrNo"><br/>
-	
-    <div class="dressroom_create_detail">
-        <h3>제목 <input type="text" name="bulTitNm" id=""></h3>
-        <h3>내용</h3>
-        <span>파일 첨부</span><button>쇼핑몰 내 검색</button><button>사진</button><button>동영상</button>
-    </div>
-
-	<div>이미지</div>
-       	<input type="file" name="file1" onchange="previewImg(event);">
-       	<input type="hidden" name="imgPath" id="imgPath" />
-    	<input type="hidden" name="imgNm" id="imgNm" />
-	<div id="imgPreView"></div>
-	
-	<div class ='content'>
-		<jsp:include page="note.jsp"/>
-	</div>
-
-    <div>사용 여부</div>
-	<select name="useYn">
-      	<option value="Y">사용</option>
-    	<option value="N">미사용</option>
-    </select>
-    
-    <div class="dressroom_create_detail">
-        <h3>태그 : 남성, 겨울</h3>
-    </div>
-    
-    <div class="dressRoom_create_down">
+	<table>
+		<colgroup>
+			<col width="10%" />
+			<col width="40%" />
+			<col width="10%" />
+			<col width="40%" />
+		</colgroup>
+		<tr>
+			<th>리스트</th>
+			<td>
+				<select name="selectedSaleRvwItem">
+					<c:forEach items="${writeList}" var="obj">
+						<option value="${obj.ordNo}@${obj.saleBoardSeq}@${obj.goodsCd}@${obj.entrNo}">${obj.bulTitNm}</option>
+					</c:forEach>
+				</select>
+			</td>
+			<th>태그</th>
+			<td>
+				<div><input type="text" name="rvwTag" /></div>
+			</td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td colspan="3"><input type="text" name="bulTitNm"></td>
+		</tr>
+		<tr>
+			<th>대표 리뷰 이미지</th>
+			<td>
+				<input type="file" name="file1" onchange="previewImg(event);">
+				<input type="hidden" name="imgPath" id="imgPath" />
+				<input type="hidden" name="imgNm" id="imgNm" />
+			</td>
+			<th>미리보기</th>
+			<td><div id="imgPreView"></div></td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td colspan="3">
+				<textarea name="bulCont" id="summernote" value=""></textarea>
+			</td>
+		</tr>
+	</table>
+    <div class="btn_area">
         <input type="submit" value="등록" />
     </div>
-</section>
 </form>
+</section>
 <script>
 function previewImg(e){
 	let reader = new FileReader();
@@ -88,135 +73,13 @@ function previewImg(e){
 	reader.readAsDataURL(event.target.files[0]);
 }
 
-(function(){
-	document.getElementById("oneDepthCateList").addEventListener('change', makeRequest);
-	function makeRequest() {
-		httpRequest = new XMLHttpRequest();
-		if(!httpRequest) {
-			alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
-			return false;
-		}
-		let oneDepthCateList = document.querySelector('#oneDepthCateList').value;
-		httpRequest.onreadystatechange = alertContents;
-		httpRequest.open('POST', "DispatcherServlet?command=dress_cate_ajax");
-		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		httpRequest.send('oneDepthCateList='+encodeURIComponent(oneDepthCateList));
-	}
-	
-	function alertContents() {
-		if (httpRequest.readyState === XMLHttpRequest.DONE) {
-			if (httpRequest.status === 200) {
-				var res = httpRequest.responseText;
-				console.log('res:' + res);
-				var rtnJson = JSON.parse(res);
-				if(rtnJson.result == 'success'){
-					let sel_twoDepthCateList = document.querySelector('#twoDepthCateList');
-					let sel_twoDepthCateList_options = document.querySelectorAll('#twoDepthCateList option');
-					for(let i=0; i<sel_twoDepthCateList_options.length; i++){
-						sel_twoDepthCateList_options[i].remove();
-					}
-					//추가
-					for(let i=0; i<rtnJson.dataList.length; i++){
-						let objValue = rtnJson.dataList[i];
-						let option = document.createElement('option');
-						let catgryCd = objValue['catgryCd'];
-						let catgryNm = objValue['catgryNm'];
-						option.value = catgryCd;
-						option.innerHTML = catgryNm;
-						sel_twoDepthCateList.append(option);
-					}
-				}else{
-					alert("에러 발생.");
-				}
-			} else {
-				alert('request에 뭔가 문제가 있어요.');
-			}
-		}
-	}
-})();
-
-(function(){
-	document.getElementById("twoDepthCateList").addEventListener('change', makeRequest);
-	function makeRequest() {
-		httpRequest = new XMLHttpRequest();
-		if(!httpRequest) {
-			alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
-			return false;
-		}
-		let oneDepthCateList = document.querySelector('#oneDepthCateList').value;
-		let twoDepthCateList = document.querySelector('#twoDepthCateList').value;
-		httpRequest.onreadystatechange = alertContents;
-		httpRequest.open('POST', "DispatcherServlet?command=dress_cate_ajax2");
-		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		httpRequest.send('oneDepthCateList='+encodeURIComponent(oneDepthCateList)+'&twoDepthCateList='+encodeURIComponent(twoDepthCateList));
-	}
-	
-	function alertContents() {
-		if (httpRequest.readyState === XMLHttpRequest.DONE) {
-			if (httpRequest.status === 200) {
-				var res = httpRequest.responseText;
-				console.log('res:' + res);
-				var rtnJson = JSON.parse(res);
-				if(rtnJson.result == 'success'){
-					let sel_searchGoodsList = document.querySelector('#searchGoodsList');
-					let sel_searchGoodsList_options = document.querySelectorAll('#searchGoodsList option');
-					for(let i=0; i<sel_searchGoodsList_options.length; i++){
-						sel_searchGoodsList_options[i].remove();
-					}
-					//추가
-					for(let i=0; i<rtnJson.dataList.length; i++){
-						let objValue = rtnJson.dataList[i];
-						let option = document.createElement('option');
-						let goodsCd = objValue['goodsCd'];
-						let goodsNm = objValue['goodsNm'];
-						option.value = goodsCd;
-						option.innerHTML = goodsNm;
-						sel_searchGoodsList.append(option);
-					}
-				}else{
-					alert("에러 발생.");
-				}
-			} else {
-				alert('request에 뭔가 문제가 있어요.');
-			}
-		}
-	}
-})();
-
-(function(){
-	document.getElementById("searchGoodsList").addEventListener('change', makeRequest);
-	function makeRequest() {
-		httpRequest = new XMLHttpRequest();
-		if(!httpRequest) {
-			alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
-			return false;
-		}
-		let searchGoodsList = document.querySelector('#searchGoodsList').value;
-		httpRequest.onreadystatechange = alertContents;
-		httpRequest.open('POST', "DispatcherServlet?command=dress_cate_ajax3");
-		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		httpRequest.send('searchGoodsList='+encodeURIComponent(searchGoodsList));
-	}
-	
-	function alertContents() {
-		if (httpRequest.readyState === XMLHttpRequest.DONE) {
-			if (httpRequest.status === 200) {
-				var res = httpRequest.responseText;
-				console.log('res:' + res);
-				var rtnJson = JSON.parse(res);
-				if(rtnJson.result == 'success'){
-					//추가
-					let objValue = rtnJson.dataList[0];
-					let imgPath = objValue['imgPath'];
-					let imgNm = objValue['imgNm'];
-					document.getElementById("goodsImg").src = imgPath + imgNm;
-				}else{
-					alert("에러 발생.");
-				}
-			} else {
-				alert('request에 뭔가 문제가 있어요.');
-			}
-		}
-	}
-})();
+$(document).ready(function() {
+	$('#summernote').summernote({
+		height: 300,                 // set editor height
+		minHeight: null,             // set minimum height of editor
+		maxHeight: null,             // set maximum height of editor
+		focus: true                  // set focus to editable area after initializing summernote
+	});
+	$('#summernote').summernote();
+});
 </script>

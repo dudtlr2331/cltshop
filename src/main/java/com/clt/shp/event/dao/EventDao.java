@@ -10,4 +10,7 @@ public interface EventDao {
 	List<EventVO> selectEventList(EventVO pvo);
 	int updateEvent(EventVO pvo);
 	int deleteEvent(EventVO pvo);
+	int dropSeq();
+	int createSeq();
+	int deleteEventAll();
 }

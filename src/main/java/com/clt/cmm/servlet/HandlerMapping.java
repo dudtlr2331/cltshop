@@ -68,6 +68,8 @@ public class HandlerMapping {
    public static final String ADM_DRESSROOM_MANAGER_EDIT_ACT = "adm_dressroom_manager_edit_act";/*드레스룸 수정*/
    public static final String ADM_DRESSROOM_MANAGER_REMOVE_ACT = "adm_dressroom_manager_remove_act";/*드레스룸 삭제*/
    public static final String ADM_QNA_LIST = "adm_qna_list";/*1:1 문의 관리*/
+   public static final String ADM_QNA_ANSWER = "adm_qna_answer";/*1:1 문의 관리 - 문의 답변*/
+   public static final String ADM_QNA_ANSWER_ACT = "adm_qna_answer_act";/*1:1 문의 관리 - 문의 답변 등록 액션*/
    public static final String ADM_CPN_LIST = "adm_cpn_list";/*쿠폰/적립금 관리*/
    public static final String ADM_CPN_REGISTER = "adm_cpn_register";/*쿠폰/적립금 관리*/
    public static final String ADM_CPN_REGISTER_ACT = "adm_cpn_register_act";/*쿠폰/적립금 관리*/
@@ -117,6 +119,7 @@ public class HandlerMapping {
    //Q&A
    public static final String QNA_DETAIL = "qna_detail"; /*Q&A상세보기*/
    public static final String QNA_INSERT = "qna_insert"; /*Q&A작성*/
+   public static final String GOODS_DTL_QNA_INSERT = "goods_dtl_qna_insert"; /*Q&A작성*/
    public static final String QNA_INSERT_ACT = "qna_insert_act"; /*Q&A작성*/
    public static final String QNA_EDIT = "qna_edit"; /*Q&A수정*/
    public static final String QNA_EDIT_ACT = "qna_edit_act"; /*Q&A수정*/
@@ -204,6 +207,7 @@ public class HandlerMapping {
       }
       //Q&A
       else if(command.equals(HandlerMapping.QNA_INSERT)
+    		  || command.equals(HandlerMapping.GOODS_DTL_QNA_INSERT) 
     		 || command.equals(HandlerMapping.QNA_INSERT_ACT) 
     		 || command.equals(HandlerMapping.QNA_DETAIL)
     		 || command.equals(HandlerMapping.QNA_EDIT) 
@@ -303,7 +307,9 @@ public class HandlerMapping {
          controller = new AdmDressController(command);
       }
       //1:1 문의 관리
-      else if(command.equals(HandlerMapping.ADM_QNA_LIST)){
+      else if(command.equals(HandlerMapping.ADM_QNA_LIST)
+    		  || command.equals(HandlerMapping.ADM_QNA_ANSWER) 
+    		  || command.equals(HandlerMapping.ADM_QNA_ANSWER_ACT)){
          controller = new AdmQnaController(command);
       }
       //쿠폰 관리

@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/admHeader.jsp" %>
-<link href="/css/sales.css" rel="stylesheet">
+<%--<link href="/css/sales.css" rel="stylesheet">--%>
 <h2>매출현황</h2>
-<div class="count">
-    <table border="1">
+<div class="data_list">
+    <table style="border-top: 1px solid black;">
         <tr>
             <th rowspan="2">입금대기</th>
             <td>3건</td>
             <th rowspan="2">입금완료</th>
             <td>1건</td>
-            <th rowspan="4">주문처리 완료<br><br>${detailOrderCount}건<br><br>${payMnyResult}원</th>
+            <th rowspan="4" colspan="2">주문처리 완료<br><br>${detailOrderCount}건</th>
+            <td rowspan="4"><fmt:formatNumber value="${payMnyResult}" pattern="#,###" />원</td>
             <th>취소요청</th>
             <th>교환요청</th>
             <th>반품요청</th>

@@ -19,14 +19,16 @@
             <th>등록일</th>
             <th>답변상태</th>
         </tr>
-        <tr>
-            <td><input type="checkbox" id="cb"></td>
-            <td>01</td>
-            <td>문의 테스트입니다.</td>
-            <td>1(user1)</td>
-            <td>2021-01-01</td>
-            <td><button class="one_btn"><a href="/html/admin/one_management/one_management_answer.html">답변하기</a></button></td>
-        </tr>
+        <c:forEach items="${rvo}" var="obj">
+	        <tr>
+	            <td><input type="checkbox" id="cb"></td>
+	            <td>${obj.qnaBoardSeq}</td>
+	            <td>${obj.titNm}</td>
+	            <td>${obj.rgstId }</td>
+	            <td>${obj.rgstDate}</td>
+	            <td><button class="one_btn"><a href="/DispatcherServlet?command=adm_qna_answer&qnaBoardSeq=${obj.qnaBoardSeq}">답변하기</a></button></td>
+	        </tr>
+		</c:forEach>
     </table>
 </div>
 <%@ include file="/WEB-INF/jsp/cmm/admFooter.jsp" %>

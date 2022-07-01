@@ -51,7 +51,7 @@ public class DispatcherServlet extends HttpServlet{
 		
 		try{
 			//첨부파일 있으면 첨부파일 업로드
-			fileUpload(req, res);
+			fileUpload(req, res, command);
 			
 			//각 컨트롤러 로직 수행
 			mv = controller.execute(req, res);
@@ -74,11 +74,21 @@ public class DispatcherServlet extends HttpServlet{
 	}
 
 	//파일 업로드 로직
-	private void fileUpload(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	private void fileUpload(HttpServletRequest req, HttpServletResponse res, String command) throws ServletException, IOException {
 		String contentType = req.getContentType();
 		if (contentType != null && contentType.toLowerCase().startsWith("multipart/")) {
 			String saveDir = req.getServletContext().getInitParameter("uploadPath");
 			String tomcatPath = req.getServletContext().getInitParameter("tomcatPath");
+			String imgPath = "/images/";
+			
+			//path 설정
+			if(command.equals("dress_register_act")) {
+				saveDir += "reviews/";
+				tomcatPath += "reviews/";
+				imgPath += "reviews/";
+			}
+			
+			
 			Collection<Part> parts = req.getParts();
 			for (Part part : parts) {
 				System.out.printf("파라미터 명 : %s, contentType :  %s,  size : %d bytes \n", part.getName(), part.getContentType(), part.getSize());
@@ -86,7 +96,8 @@ public class DispatcherServlet extends HttpServlet{
 				if (part.getHeader("Content-Disposition").contains("filename=")) {
 					String fileName = getFileName(part);
 					if (part.getSize() > 0) {
-						System.out.printf("업로드 파일 명 : %s  \n", fileName);
+						System.out.println("saveDir:" + saveDir + File.separator + fileName);
+						System.out.println("tomcatPath:" + tomcatPath + File.separator + fileName);
 						part.write(saveDir + File.separator + fileName);
 						part.delete();
 						
@@ -106,7 +117,7 @@ public class DispatcherServlet extends HttpServlet{
 						output.close();
 						input.close();
 						
-						req.setAttribute("imgPath", "/images/");
+						req.setAttribute("imgPath", imgPath);
 						req.setAttribute("imgNm", fileName);
 					}
 				} else {

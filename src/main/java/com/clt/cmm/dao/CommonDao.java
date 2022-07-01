@@ -8,19 +8,23 @@ import java.sql.SQLException;
 
 public class CommonDao {
 	private DataSourceManager ds;
+	private ConnectionPool pool;
 
 	public CommonDao() {
+		System.out.println("commonDao start.....");
 //		try {
 //			Class.forName(DatabaseInfo.DB_DRIVER);
 //			System.out.println("Driver Loading....");
 //		} catch (ClassNotFoundException e) {
 //			e.printStackTrace();
 //		}
-		ds = DataSourceManager.getInstance();
+//		ds = DataSourceManager.getInstance();
+		pool = ConnectionPool.getInstance(DatabaseInfo.DB_URL, DatabaseInfo.DB_USER, DatabaseInfo.DB_PASS, 10/*초기커넥션*/, 20/*최대커넥션수*/);
 	}
 
 	public Connection getConnection() throws SQLException {
-		return ds.getConnection();
+//		return ds.getConnection();
+		return pool.getConnection();
 		
 //		Connection conn = null;
 //		try {
@@ -75,20 +79,20 @@ public class CommonDao {
 	}*/
 
 	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
-//		System.out.println("PreparedStatement Close.... ps, conn");
-//		if (null != ps && !ps.isClosed())
-//			ps.close();
-//		if (null != conn && !conn.isClosed())
-//			conn.close();
+		System.out.println("PreparedStatement Close.... ps, conn");
+		if (null != ps && !ps.isClosed())
+			ps.close();
+		if (null != conn)
+			pool.releaseConnection(conn); 
 	}
 
 	public void closeAll(ResultSet rs, PreparedStatement ps, Connection conn) throws SQLException {
-//		System.out.println("PreparedStatement Close.... ps, conn, rs");
-//		if (null != rs && !rs.isClosed())
-//			rs.close();
-//		if (null != ps && !ps.isClosed())
-//			ps.close();
-//		if (null != conn && !conn.isClosed())
-//			conn.close();
+		System.out.println("PreparedStatement Close.... ps, conn, rs");
+		if (null != rs && !rs.isClosed())
+			rs.close();
+		if (null != ps && !ps.isClosed())
+			ps.close();
+		if (null != conn && !conn.isClosed())
+			pool.releaseConnection(conn);
 	}
 }

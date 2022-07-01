@@ -21,7 +21,15 @@ public class EventVO {
 		this.eventRegistDate = eventRegistDate;
 		this.eventEndDate = eventEndDate;
 	}
-	
+
+	public EventVO(String eventName, String imgPath, String imgNm, String eventEndDate) {
+		super();
+		this.eventName = eventName;
+		this.imgPath = imgPath;
+		this.imgNm = imgNm;
+		this.eventEndDate = eventEndDate;
+	}
+
 	public long getEventInfoSeq() {
 		return eventInfoSeq;
 	}

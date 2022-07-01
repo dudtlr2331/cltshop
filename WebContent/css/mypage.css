@@ -28,6 +28,10 @@
 
 .data_list{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .data_list img{

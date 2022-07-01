@@ -28,8 +28,11 @@ public class DressService {
 		String updtId = req.getParameter("updtId");
 		String updtDate = req.getParameter("updtDate");
 		String useYn = req.getParameter("useYn");
+		String rvwTag = req.getParameter("rvwTag");
 
 		String noticeDoc = req.getParameter("noticeDoc");
+
+		String selectedSaleRvwItem = req.getParameter("selectedSaleRvwItem");
 
 		DressVO pvo = new DressVO();
 		
@@ -49,6 +52,8 @@ public class DressService {
 		pvo.setUpdtDate(updtDate);
 		pvo.setUseYn(useYn);
 		pvo.setNoticeDoc(noticeDoc);
+		pvo.setSelectedSaleRvwItem(selectedSaleRvwItem);
+		pvo.setRvwTag(rvwTag);
 		
 		//첨부파일 있으면 셋팅
 		String imgPath = (String) req.getAttribute("imgPath");
@@ -92,5 +97,12 @@ public class DressService {
 	
 	public int deleteDress(DressVO pvo) {
 		return dao.deleteDress(pvo);
+	}
+	public List<DressVO> goodsDtlDressList(DressVO pvo) {
+		return dao.goodsDtlDressList(pvo);
+	}
+
+	public List<DressVO> selectWriteSaleRvw(DressVO pvo){
+		return dao.selectWriteSaleRvw(pvo);
 	}
 }

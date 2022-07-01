@@ -43,8 +43,6 @@
    <!-- <div><img src="/images/아우터4.jpg"></div> -->
 	<div>
 		<div>${searchGoods.sale.bulTitNm}</div>
-		<div>그레이XL/다크그린XL</div>
-		<div>1개</div>
 	</div>
 	<div>${searchGoods.sale.goodsPrc}원</div>
 	<div>${ordList.codeNm}</div>

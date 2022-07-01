@@ -52,9 +52,16 @@ public class OrderVO {
 	private String checkedList;
 	private String key;
 	
+	private String rvwTag;
+	
+	//상세페이지 상품 옵션
+	private String colorOption;
+	private String sizeOption;
+	
 	String[] goodsNmArry;
 	Long[] goodsCdArry;
 	int[] goodsQtyArry;
+	private String[] saleBoardSeqs;
 
 	//파라미터
 	private String searchSaleBoardSeq;
@@ -126,7 +133,7 @@ public class OrderVO {
 			String ordrPhon, String ordrEmail, String acqrPhon, String acqrNm, String acqrAddr, String acqrAddrDtl,
 			String acqrEmail, String prclWay, String packWay, String payWay, Long payMny, String reqMemo,
 			String ordDate, String updtDate, String updtId, String rgstDate, String rgstId, Long billNum, Long ordDtlNo,
-			String goodsNm, Long goodsCd, int goodsQty, String codeNm) {
+			String goodsNm, Long goodsCd, int goodsQty, String codeNm, String rvwTag) {
 		super();
 		this.ordNo = ordNo;
 		this.usrId = usrId;
@@ -157,6 +164,7 @@ public class OrderVO {
 		this.goodsCd = goodsCd;
 		this.goodsQty = goodsQty;
 		this.codeNm = codeNm;
+		this.rvwTag = rvwTag;
 	}
 
 	public OrderVO(Long ordBasketSeq
@@ -558,6 +566,30 @@ public class OrderVO {
 
 	public void setGoodsQtyArry(int[] goodsQtyArry) {
 		this.goodsQtyArry = goodsQtyArry;
+	}
+
+	public String getColorOption() {
+		return colorOption;
+	}
+
+	public void setColorOption(String colorOption) {
+		this.colorOption = colorOption;
+	}
+
+	public String getSizeOption() {
+		return sizeOption;
+	}
+
+	public void setSizeOption(String sizeOption) {
+		this.sizeOption = sizeOption;
+	}
+
+	public String[] getSaleBoardSeqs() {
+		return saleBoardSeqs;
+	}
+
+	public void setSaleBoardSeqs(String[] saleBoardSeqs) {
+		this.saleBoardSeqs = saleBoardSeqs;
 	}
 
 	@Override

@@ -83,3 +83,4 @@
 		</div>
 	</div>
 </section>
+<%@ include file="/WEB-INF/jsp/cmm/auth.jsp" %>

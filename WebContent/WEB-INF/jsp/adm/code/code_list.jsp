@@ -17,10 +17,9 @@
             <th>제목</th>
             <th>작성자</th>
             <th>등록일</th>
-            <th>답변상태</th>
         </tr>
         <c:if test="${empty list }">
-	    		<tr><td colspan="6">데이터가 없습니다.</td></tr>
+	    		<tr><td colspan="5">데이터가 없습니다.</td></tr>
 	    </c:if>
 		<c:forEach items="${list }" var="obj">
 			<tr>

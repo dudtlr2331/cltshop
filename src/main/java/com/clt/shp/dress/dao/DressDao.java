@@ -10,4 +10,6 @@ public interface DressDao {
 	List<DressVO> selectDressList(DressVO pvo);
 	int updateDress(DressVO pvo);
 	int deleteDress(DressVO pvo);
+	List<DressVO> goodsDtlDressList(DressVO pvo);
+	List<DressVO> selectWriteSaleRvw(DressVO pvo);
 }

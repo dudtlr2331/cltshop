@@ -40,6 +40,8 @@ public class QnaDaoOracle implements QnaDao{
 			ps.setString(7, pvo.getUseYn());
 			ps.setString(8, pvo.getPassYn());
 			ps.setString(9, pvo.getPassWd());
+			ps.setLong(10, pvo.getGoodsCd());
+			ps.setString(11, pvo.getAnswer());
 
 			row = ps.executeUpdate();
 			
@@ -71,7 +73,7 @@ public class QnaDaoOracle implements QnaDao{
 				vo = new QnaVO(rs.getLong("QNA_BOARD_SEQ"), rs.getString("TIT_NM") , rs.getString("CONT")
 					, rs.getString("RGST_ID"), rs.getString("RGST_DATE"), rs.getString("UPDT_ID")
 					, rs.getString("UPDT_DATE"), rs.getString("QNA_TP"), rs.getString("ANSR_STAT") 
-					, rs.getString("USE_YN") , rs.getString("PASS_YN") , rs.getString("PASS_WD"));
+					, rs.getString("USE_YN") , rs.getString("PASS_YN") , rs.getString("PASS_WD"), rs.getLong("GOODS_CD"), rs.getString("ANSWER"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,7 +101,7 @@ public class QnaDaoOracle implements QnaDao{
 				list.add(new QnaVO(rs.getLong("QNA_BOARD_SEQ"), rs.getString("TIT_NM") , rs.getString("CONT")
 						, rs.getString("RGST_ID"), rs.getString("RGST_DATE"), rs.getString("UPDT_ID")
 						, rs.getString("UPDT_DATE"), rs.getString("QNA_TP"), rs.getString("ANSR_STAT") 
-						, rs.getString("USE_YN") , rs.getString("PASS_YN") , rs.getString("PASS_WD")));
+						, rs.getString("USE_YN") , rs.getString("PASS_YN") , rs.getString("PASS_WD"), rs.getLong("GOODS_CD"), rs.getString("ANSWER")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -195,5 +197,85 @@ public class QnaDaoOracle implements QnaDao{
 		}
 		return list;
 	}
+	
+	@Override
+	public List<QnaVO> searchGoodsCdQna(QnaVO pvo) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<QnaVO> list = new ArrayList<QnaVO>();
+		try {
+			conn = commonDao.getConnection();
+			ps = conn.prepareStatement(QnaSql.SEARCH_GOODS_CD_QNA);
+			ps.setLong(1, pvo.getGoodsCd());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new QnaVO(rs.getLong("QNA_BOARD_SEQ"), rs.getString("TIT_NM") , rs.getString("CONT")
+						, rs.getString("RGST_ID"), rs.getString("RGST_DATE"), rs.getString("UPDT_ID")
+						, rs.getString("UPDT_DATE"), rs.getString("QNA_TP"), rs.getString("ANSR_STAT") 
+						, rs.getString("USE_YN") , rs.getString("PASS_YN") , rs.getString("PASS_WD"), rs.getLong("GOODS_CD"), rs.getString("ANSWER")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				commonDao.closeAll(rs, ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	@Override
+	public List<QnaVO> unansweredQnaList(QnaVO pvo) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<QnaVO> list = new ArrayList<QnaVO>();
+		try {
+			conn = commonDao.getConnection();
+			ps = conn.prepareStatement(QnaSql.UNANSWERED_QNA_LIST);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new QnaVO(rs.getLong("QNA_BOARD_SEQ"), rs.getString("TIT_NM") , rs.getString("CONT")
+						, rs.getString("RGST_ID"), rs.getString("RGST_DATE"), rs.getString("UPDT_ID")
+						, rs.getString("UPDT_DATE"), rs.getString("QNA_TP"), rs.getString("ANSR_STAT") 
+						, rs.getString("USE_YN") , rs.getString("PASS_YN") , rs.getString("PASS_WD"), rs.getLong("GOODS_CD"), rs.getString("ANSWER")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				commonDao.closeAll(rs, ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	@Override
+	public int updateAnswerQna(QnaVO pvo) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		int row = 0;
+		try {
+			conn = commonDao.getConnection();
+			ps = conn.prepareStatement(QnaSql.QNA_ANSWER_UPDATE);
+			ps.setString(1, pvo.getAnswer());
+			ps.setLong(2, pvo.getQnaBoardSeq());
 
+			row = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				commonDao.closeAll(ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return row;
+	}
 }

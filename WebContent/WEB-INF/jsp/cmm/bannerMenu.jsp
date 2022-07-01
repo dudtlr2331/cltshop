@@ -101,21 +101,17 @@
 <script>
 var eventList = null;
 document.addEventListener('DOMContentLoaded', function(){
-	
-	
-		fn_ajax({
-			url: '/DispatcherServlet?command=adm_event_list_ajax',
-			method: 'get',
-			success: function(data){
-				eventList = data.data
-				for(var i=0; i<eventList.length; i++){
-					document.querySelector(".rollimgs").innerHTML += '<li><img src="'+eventList[i].imgPath+eventList[i].imgNm+'"/></li>';
-				}
-				banner.rollInit(4000); // 배너 롤링
+	fn_ajax({
+		url: '/DispatcherServlet?command=adm_event_list_ajax',
+		method: 'get',
+		success: function(data){
+			eventList = data.data
+			for(var i=0; i<eventList.length; i++){
+				document.querySelector(".rollimgs").innerHTML += '<li><img src="'+eventList[i].imgPath+eventList[i].imgNm+'"/></li>';
 			}
-		});
-	
-	
+			banner.rollInit(4000); // 배너 롤링
+		}
+	});
 });
 //앞뒤 클릭 이벤트 리스너
 document.querySelectorAll('.btnmove').forEach(function(item){

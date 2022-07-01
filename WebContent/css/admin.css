@@ -102,6 +102,9 @@ body{
 }
 
 /* 검색 데이터 테이블 */
+.admin_body .data_list{
+	width: 100%;
+}
 .admin_body .data_list table{
 	width: 100%;
 	margin-top: 10px;

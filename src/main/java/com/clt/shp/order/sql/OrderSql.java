@@ -88,13 +88,16 @@ public interface OrderSql{
 	+ "		, DTL.GOODS_CD"
 	+ "		, DTL.GOODS_QTY"
 	+ "		, STD.CODE_NM"
+    + "     , SALERVW.RVW_TAG"
 	+ "  FROM ORD_BASE BASE"
 	+ "     , ORD_DTL DTL"
 	+ "     , STD_CD_BASE STD"
+    + "     , SALE_BOARD_RVW SALERVW"
 	+ " WHERE 1=1"
 	+ " AND BASE.USR_ID = DTL.USR_ID"
 	+ " AND BASE.ORD_NO = DTL.ORD_NO"
 	+ " AND BASE.ORD_STAT = STD.CODE_VAL"
+    + " AND BASE.ORD_NO = SALERVW.ORD_NO(+)"
 	+ " AND STD.GRP_CD = 'STD004'"
 	+ " AND BASE.ORD_NO = ?"
 	;
@@ -134,6 +137,8 @@ public interface OrderSql{
 	  + ", RGST_DATE"
 	  + ", RGST_ID"
 	  + ", BILL_NUM"
+	  + ", SALE_BOARD_SEQ"
+	  + ", GOODS_CD"
 	  + ") VALUES"
 	  + "( ?"
 	  + ", ?"
@@ -157,6 +162,8 @@ public interface OrderSql{
 	  + ", SYSDATE"
 	  + ", ?"
 	  + ", SYSDATE"
+	  + ", ?"
+	  + ", ?"
 	  + ", ?"
 	  + ", ?"
 	  + ")"
@@ -222,7 +229,6 @@ public interface OrderSql{
 	+ " WHERE 1=1"
 	;
 	
-	
 	String ORDER_LIST =
       "SELECT BASE.ORD_NO"
 	+ "		, BASE.USR_ID"
@@ -260,6 +266,7 @@ public interface OrderSql{
 	+ " AND BASE.ORD_NO = DTL.ORD_NO"
 	+ " AND BASE.ORD_STAT = STD.CODE_VAL"
 	+ " AND STD.GRP_CD = 'STD004'"
+	+ " ORDER BY BASE.ORD_NO ASC"
 	;
 	
 	

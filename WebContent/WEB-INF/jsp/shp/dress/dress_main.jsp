@@ -128,8 +128,10 @@
 </style>
 
 <section class="title_area">
-	<h3 class="title">베스트 드레서 top 10</h3>
+	<h3 class="title">베스트 드레서 top5</h3>
 </section>
+
+<c:if test="${not empty list}">
 <div class="wrap_center">
     <div class="container">
         <div class="img_wrap">
@@ -140,57 +142,32 @@
                 <a href="#" title="다음"><i class="fa-solid fa-angle-right"></i></a>
             </div>
             <ul class="rollimgs">
-                <li><img src="/images/reviews/dress_sample1.png" /></li>
-                <li><img src="/images/reviews/dress_sample2.png" /></li>
-                <li><img src="/images/reviews/dress_sample3.png" /></li>
-                <li><img src="/images/reviews/dress_sample4.png" /></li>
+            	<c:forEach items="${list }" var="obj" begin="0" end="4">
+	                <li><a href="/DispatcherServlet?command=dress_detail&saleBoardRpySeq=${obj.saleBoardRpySeq}"><img src="${obj.imgPath}${obj.imgNm}"></a></li>
+            	</c:forEach>
             </ul>
         </div>
     </div>
 </div>
-
 <section class="best_dresser_list">
-    <div class="item">
-        <div><img src="/images/reviews/dress_sample1.png" /></div>
-        이름<br>
-        <i class="fa-solid fa-heart"></i>191
+<c:forEach items="${list }" var="obj" begin="0" end="4">
+	<div class="item">
+        <div><a href="/DispatcherServlet?command=dress_detail&saleBoardRpySeq=${obj.saleBoardRpySeq}"><img src="${obj.imgPath}${obj.imgNm}"></a></div>
+        <a href="/DispatcherServlet?command=dress_detail&saleBoardRpySeq=${obj.saleBoardRpySeq}">${obj.bulTitNm}</a>
+        <%-- <i class="fa-solid fa-heart"></i>${obj.lkeCnt} --%>
     </div>
-    <div class="item">
-        <div><img src="/images/reviews/dress_sample1.png" /></div>
-        이름<br>
-        <i class="fa-solid fa-heart"></i>191
-    </div>
-    <div class="item">
-        <div><img src="/images/reviews/dress_sample1.png" /></div>
-        이름<br>
-        <i class="fa-solid fa-heart"></i>85
-    </div>
-    <div class="item">
-        <div><img src="/images/reviews/dress_sample1.png" /></div>
-        이름<br>
-        <i class="fa-solid fa-heart"></i>34
-    </div>
-    <div class="item">
-        <div><img src="/images/reviews/dress_sample1.png" /></div>
-        이름<br>
-        <i class="fa-solid fa-heart"></i>34
-    </div>
+</c:forEach>
+    
 </section>
+</c:if>
 
 <section class="item_list_area">
     <div class="list_area">
-        <div class="list_search">
-            <div class="search_btn">
-                <a href="">이름순</a>
-                <a href="">최신순</a>
-                <a href="">좋아요순</a>
-            </div>
-            <div class="search_txt">
-                <input type="text"/>
-            </div>
-        </div>
+    	<c:if test="${empty list }">
+     		<div class="nodata">데이터가 없습니다.</div>
+       	</c:if>
         <div class="data_list">
-            <c:forEach items="${list }" var="obj">
+            <c:forEach items="${list }" var="obj" begin="5">
             <a href="/DispatcherServlet?command=dress_detail&saleBoardRpySeq=${obj.saleBoardRpySeq}">
             <div class="item">
                 <img src="${obj.imgPath}${obj.imgNm}">
@@ -206,67 +183,68 @@
         <a class="dressroom_create_btn_detail" href="DispatcherServlet?command=dress_register">드레스룸 만들기</a>
     </div>
 </section>
-
+<%@ include file="/WEB-INF/jsp/cmm/auth.jsp" %>
 <script>
-    document.addEventListener('DOMContentLoaded', function(){
-        banner.rollInit(4000); // 배너 롤링
+let listSize = '${listSize}'
+document.addEventListener('DOMContentLoaded', function(){
+	banner.rollInit(4000); // 배너 롤링    		
+});
+//앞뒤 클릭 이벤트 리스너
+document.querySelectorAll('.btnmove').forEach(function(item){
+    item.addEventListener('click', function(e){
+        clearInterval(banner.rollId);//롤링 인터벌 해제
+        //화살표 방향 구분
+        if(e.target.parentElement.parentElement.classList.contains('prev')){
+            banner.rollPrev();
+        }else{
+            banner.rollNext();
+        }
+        banner.rollId = setInterval(banner.rollNext, banner.interval);//롤링 인터벌 재호출
     });
-    //앞뒤 클릭 이벤트 리스너
-    document.querySelectorAll('.btnmove').forEach(function(item){
-        item.addEventListener('click', function(e){
-            clearInterval(banner.rollId);//롤링 인터벌 해제
-            //화살표 방향 구분
-            if(e.target.parentElement.parentElement.classList.contains('prev')){
-                banner.rollPrev();
-            }else{
-                banner.rollNext();
-            }
-            banner.rollId = setInterval(banner.rollNext, banner.interval);//롤링 인터벌 재호출
-        });
-    });
-    let banner = {
-        rollId: null,
-        interval: 2000,
+});
+let banner = {
+    rollId: null,
+    interval: 2000,
 
-        //롤링 배너 초기화
-        rollInit: function (newinterval) {
-            if(parseInt(newinterval) > 0){
-                this.interval = newinterval;
-            }
-            //현재 배너
-            let firstitem = document.querySelector('.rollimgs li');
-            if(firstitem){
-                firstitem.classList.add('currentroll');
-            }
-            //다음 배너
-            let seconditem = document.querySelectorAll('.rollimgs li')[1];
-            if(seconditem){
-                seconditem.classList.add('nextroll');
-            }
-            //이전 배너
-            document.querySelector('.rollimgs li:last-child').classList.add('prevroll');
-            this.rollId = setInterval(this.rollNext, this.interval);//롤링 인터벌 호출
-        },
+    //롤링 배너 초기화
+    rollInit: function (newinterval) {
+        if(parseInt(newinterval) > 0){
+            this.interval = newinterval;
+        }
+        //현재 배너
+        let firstitem = document.querySelector('.rollimgs li');
+        if(firstitem){
+            firstitem.classList.add('currentroll');
+        }
+        //다음 배너
+        let seconditem = document.querySelectorAll('.rollimgs li')[1];
+        if(seconditem){
+            seconditem.classList.add('nextroll');
+        }
+        //이전 배너
+        document.querySelector('.rollimgs li:last-child').classList.add('prevroll');
+        this.rollId = setInterval(this.rollNext, this.interval);//롤링 인터벌 호출
+    },
 
-        //다음 배너 롤링
-        rollNext: function () {
-            if(document.querySelector('.prevroll')){
-                document.querySelector('.prevroll').classList.remove('prevroll');
-            }
-            if(document.querySelector('.currentroll')){
-                document.querySelector('.currentroll').classList.add('prevroll');
-                document.querySelector('.currentroll').classList.remove('currentroll');
-            }
-            if(document.querySelector('.nextroll')){
-                document.querySelector('.nextroll').classList.add('currentroll');
-                document.querySelector('.nextroll').classList.remove('nextroll');
-            }
-            //다음 이미지 있으면 다음 롤링 이미지로 선택, 없으면 첫번째 이미지를 롤링 이미지로 지정
-            if(document.querySelector('.currentroll').nextElementSibling){
-                document.querySelector('.currentroll').nextElementSibling.classList.add('nextroll');
-            }else{
-                document.querySelector('.rollimgs li').classList.add('nextroll');
-            }
+    //다음 배너 롤링
+    rollNext: function () {
+        if(document.querySelector('.prevroll')){
+            document.querySelector('.prevroll').classList.remove('prevroll');
+        }
+        if(document.querySelector('.currentroll')){
+            document.querySelector('.currentroll').classList.add('prevroll');
+            document.querySelector('.currentroll').classList.remove('currentroll');
+        }
+        if(document.querySelector('.nextroll')){
+            document.querySelector('.nextroll').classList.add('currentroll');
+            document.querySelector('.nextroll').classList.remove('nextroll');
+        }
+        //다음 이미지 있으면 다음 롤링 이미지로 선택, 없으면 첫번째 이미지를 롤링 이미지로 지정
+        if(document.querySelector('.currentroll').nextElementSibling){
+            document.querySelector('.currentroll').nextElementSibling.classList.add('nextroll');
+        }else{
+            document.querySelector('.rollimgs li').classList.add('nextroll');
         }
     }
+}
 </script>

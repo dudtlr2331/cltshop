@@ -131,7 +131,7 @@ public class UserDaoOracle implements UserDao{
 					&& null == pvo.getSearchGradeUnderType() 
 					&& pvo.getSearchStartRgstDate().equals("") && pvo.getSearchEndRgstDate().equals("")){
 				
-				if(pvo.getUserSequence().equals("num") || pvo.getUserSequence().equals("")) {
+				if(null == pvo.getUserSequence() || pvo.getUserSequence().equals("") || pvo.getUserSequence().equals("num") ) {
 					sql += " ORDER BY USR_BASE_SEQ ASC";
 				}else {
 					sql += " ORDER BY RGST_DATE ASC";

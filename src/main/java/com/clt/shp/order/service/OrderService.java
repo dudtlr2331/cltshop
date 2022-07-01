@@ -59,9 +59,15 @@ public class OrderService {
 		String searchSaleBoardSeq = req.getParameter("searchSaleBoardSeq");
 		String checkedList = req.getParameter("checkedList");
 
+		//상세페이지 상품 옵션
+		String colorOption = req.getParameter("colorOption");
+		String sizeOption = req.getParameter("sizeOption");
+		
 		String[] goodsNmArry = req.getParameterValues("goodsNm");
 		String[] strGoodsCdArry = req.getParameterValues("goodsCd");
 		String[] strGoodsQtyArry = req.getParameterValues("goodsQty");
+		String[] saleBoardSeqs = req.getParameterValues("saleBoardSeqs");
+		
 		int goodsCdArryCnt = 1;
 		int goodsQtyArryCnt = 1;
 		
@@ -115,10 +121,12 @@ public class OrderService {
 		pvo.setSaleBoardSeq(saleBoardSeq);
 		pvo.setSearchSaleBoardSeq(searchSaleBoardSeq);
 		pvo.setCheckedList(checkedList);
-		
+		pvo.setColorOption(colorOption);
+		pvo.setSizeOption(sizeOption);
 		pvo.setGoodsNmArry(goodsNmArry);
 		pvo.setGoodsCdArry(goodsCdArry);
 		pvo.setGoodsQtyArry(goodsQtyArry);
+		pvo.setSaleBoardSeqs(saleBoardSeqs);
 		
 		return pvo;
 	}
@@ -178,7 +186,7 @@ public class OrderService {
 		return dao.searchOrdDtlGoods(pvo);
 	}
 	
-	public List<OrderVO> selectOrdBaseList(OrderVO pvo) {
+	public List<OrderVO> selectOrdBaseList(OrderVO pvo) { //매출관리
 		return dao.selectOrdBaseList(pvo);
 	}
 

@@ -9,6 +9,7 @@
 	display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 100%;
 }
 
 .items_header{

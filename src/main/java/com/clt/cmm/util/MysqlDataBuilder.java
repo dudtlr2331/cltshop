@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * 작성자 : 김준성 일자 : 2021. 01. 14. select, insert, update, delete 쿼리 java Object를
+ * select, insert, update, delete 쿼리 java Object를
  * 테이블 이름으로 파라미터를 받아 생성한다.
  */
 public class MysqlDataBuilder {

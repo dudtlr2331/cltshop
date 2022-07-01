@@ -95,9 +95,8 @@ public class MypgController implements Controller {
 			
 			ordVo.setUsrId(loginVo.getUsrId());
 			GoodsVO goodsVo = new GoodsVO();
-			List<OrderVO> ordGoodsList = orderService.searchOrdDtlGoods(ordVo);
 			
-			goodsVo.setGoodsCd(ordGoodsList.get(0).getGoodsCd());
+			goodsVo.setGoodsCd(ordList.getGoodsCd());
 			GoodsDetailVO searchGoods = goodsService.selectMypgGoodsOne(goodsVo);
 			
 			req.setAttribute("ordList", ordList);

@@ -93,7 +93,10 @@ public class OrderDaoOracle implements OrderDao{
 						, rs.getString("REQ_MEMO") , rs.getString("ORD_DATE") , rs.getString("UPDT_DATE")
 						, rs.getString("UPDT_ID") , rs.getString("RGST_DATE") , rs.getString("RGST_ID")
 						, rs.getLong("BILL_NUM") , rs.getLong("ORD_DTL_NO") , rs.getString("GOODS_NM")
-						, rs.getLong("GOODS_CD") , rs.getInt("GOODS_QTY") , rs.getString("CODE_NM")));
+						, rs.getLong("GOODS_CD") , rs.getInt("GOODS_QTY") , rs.getString("CODE_NM")
+						, rs.getString("RVW_TAG")
+						)
+				);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -133,7 +136,9 @@ public class OrderDaoOracle implements OrderDao{
 						, rs.getString("REQ_MEMO") , rs.getString("ORD_DATE") , rs.getString("UPDT_DATE")
 						, rs.getString("UPDT_ID") , rs.getString("RGST_DATE") , rs.getString("RGST_ID")
 						, rs.getLong("BILL_NUM") , rs.getLong("ORD_DTL_NO") , rs.getString("GOODS_NM")
-						, rs.getLong("GOODS_CD") , rs.getInt("GOODS_QTY") , rs.getString("CODE_NM"));
+						, rs.getLong("GOODS_CD") , rs.getInt("GOODS_QTY") , rs.getString("CODE_NM")
+						, rs.getString("RVW_TAG")
+				);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -215,6 +220,8 @@ public class OrderDaoOracle implements OrderDao{
 			ps.setString(19, pvo.getUpdtId());
 			ps.setString(20, pvo.getRgstId());
 			ps.setLong(21, pvo.getBillNum());
+			ps.setLong(22, pvo.getSaleBoardSeq());
+			ps.setLong(23, pvo.getGoodsCd());
 			System.out.println("=SQL=======================================================");
 			System.out.println(ps);
 			System.out.println("===========================================================");
@@ -272,7 +279,7 @@ public class OrderDaoOracle implements OrderDao{
 	}
 	
 	@Override
-	public List<OrderVO> selectOrdBaseList(OrderVO pvo){
+	public List<OrderVO> selectOrdBaseList(OrderVO pvo){ //매출관리
 		Connection conn = null;
 		LogPreparedStatement ps = null;
 		ResultSet rs = null;

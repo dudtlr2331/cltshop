@@ -15,6 +15,8 @@ public class QnaVO {
 	private String useYn;
 	private String passYn;
 	private String passWd;
+	private long goodsCd;
+	private String answer;
 	
 	public QnaVO() {
 		
@@ -35,6 +37,25 @@ public class QnaVO {
 		this.useYn = useYn;
 		this.passYn = passYn;
 		this.passWd = passWd;
+	}
+	
+	public QnaVO(long qnaBoardSeq, String titNm, String cont, String rgstId, String rgstDate, String updtId,
+			String updtDate, String qnaTp, String ansrStat, String useYn, String passYn, String passWd, long goodsCd, String answer) {
+		super();
+		this.qnaBoardSeq = qnaBoardSeq;
+		this.titNm = titNm;
+		this.cont = cont;
+		this.rgstId = rgstId;
+		this.rgstDate = rgstDate;
+		this.updtId = updtId;
+		this.updtDate = updtDate;
+		this.qnaTp = qnaTp;
+		this.ansrStat = ansrStat;
+		this.useYn = useYn;
+		this.passYn = passYn;
+		this.passWd = passWd;
+		this.goodsCd = goodsCd;
+		this.answer = answer;
 	}
 
 	public long getQnaBoardSeq() {
@@ -131,6 +152,22 @@ public class QnaVO {
 
 	public void setPassWd(String passWd) {
 		this.passWd = passWd;
+	}
+
+	public long getGoodsCd() {
+		return goodsCd;
+	}
+
+	public void setGoodsCd(long goodsCd) {
+		this.goodsCd = goodsCd;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 
 	@Override

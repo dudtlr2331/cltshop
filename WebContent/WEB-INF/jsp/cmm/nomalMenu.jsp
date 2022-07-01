@@ -32,7 +32,7 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<a href="DispatcherServlet?command=main_drss_list"><li>커뮤니티</li></a>
+		<a href="DispatcherServlet?command=main_drss_list"><li>드레스룸</li></a>
 		<a href="DispatcherServlet?command=main_qna_list"><li>1:1문의</li></a>
 	</ul>
 </section>

@@ -31,6 +31,7 @@ textarea {
 </section>
 <section class="item_list_area">
 <form name="frm" action="DispatcherServlet?command=order_register" method="post">
+<input type="hidden" name="saleBoardSeq" value="${detail.sale.saleBoardSeq}">
 <input type="hidden" name="entrNo" value="${detail.goods.entrNo}">
 <input type="hidden" name="goodsNm" value="${detail.goods.goodsNm}"> <!-- 상품명 -->
 <input type="hidden" name="goodsCd" value="${detail.goods.goodsCd}"> <!-- 상품 코드 -->
@@ -87,7 +88,7 @@ textarea {
 		<th>상품 명</th>
 		<td>${detail.goods.goodsNm}</td>
 		<th>옵션 정보</th>
-		<td></td>
+		<td>${optionInfo[0] }, ${optionInfo[1] }</td>
 	</tr>
 	<tr>
 		<th>수량</th>
@@ -103,7 +104,7 @@ textarea {
 	</tr>
 	<tr>
 		<th>배송지</th>
-		<td></td>
+		<td>${sessionScope.loginInfo.loadAddrBase}(${sessionScope.loginInfo.loadAddrDtl})</td>
 		<th>결제 수단</th>
 		<td>
 			<select name="payWay">

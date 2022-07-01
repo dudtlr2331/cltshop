@@ -56,6 +56,7 @@ public class MypgDaoOracle implements MypgDao {
                     ,rs.getString(18)
                     ,rs.getString(19)
                     ,rs.getString(20)
+                    ,rs.getLong(21)
                 );
                 list.add(vo);
             }

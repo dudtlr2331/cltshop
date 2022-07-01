@@ -46,6 +46,11 @@ public class DressController implements Controller {
 		CateVO cateVO = new CateVO();
 		GoodsDetailVO mainVO = new GoodsDetailVO();
 		
+		//공통 코드 가져오기
+		List<CateVO> oneDepthCateList = cateService.selectCateList(cateVO);
+	
+		req.setAttribute("oneDepthCateList", oneDepthCateList);
+		
 		//파라미터 셋팅
 		DressVO pvo = dressService.parameterSetting(req);
 		
@@ -53,6 +58,7 @@ public class DressController implements Controller {
 		if(command.equals(HandlerMapping.DRESS_MAIN)) {
 			List<DressVO> list = dressService.selectDressList(pvo);
 			req.setAttribute("list", list);
+			req.setAttribute("listSize", list.size());
 			
 			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_main.jsp");
 			modelAndView.setRedirect(false);
@@ -64,9 +70,11 @@ public class DressController implements Controller {
 				modelAndView.setRedirect(true);
 				return modelAndView;
 			}
-			//공통 코드 가져오기
-			List<CateVO> oneDepthCateList = cateService.selectCateList(cateVO);
-			req.setAttribute("oneDepthCateList", oneDepthCateList);
+
+			DressVO dressVO = new DressVO();
+			dressVO.setUsrId(loginVo.getUsrId());
+			List<DressVO> writeList = dressService.selectWriteSaleRvw(dressVO);
+			req.setAttribute("writeList", writeList);
 			
 			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_register.jsp");
 			modelAndView.setRedirect(false);
@@ -97,7 +105,7 @@ public class DressController implements Controller {
 			req.setAttribute("json", json);
 			
 			modelAndView.setPath("jsonView.jsp");
-			modelAndView.setRedirect(true);
+			modelAndView.setRedirect(false);
 		}
 		else if(command.equals(HandlerMapping.DRESS_CATE_AJAX2)){
 			String oneDepthCate = req.getParameter("oneDepthCateList");
@@ -159,7 +167,18 @@ public class DressController implements Controller {
 		}
 		else if(command.equals(HandlerMapping.DRESS_REGISTER_ACT)) {
 			pvo.setRgstId(loginVo.getUsrId());
-			pvo.setBulCont(pvo.getNoticeDoc());
+
+			String[] strArr = null;
+
+			if(null != pvo.getSelectedSaleRvwItem()){
+				strArr = pvo.getSelectedSaleRvwItem().split("@");
+			}
+
+			pvo.setOrdNo(strArr[0]);
+			pvo.setSaleBoardSeq(Integer.parseInt(strArr[1]));
+			pvo.setGoodsCd(Integer.parseInt(strArr[2]));
+			pvo.setEntrNo(Integer.parseInt(strArr[3]));
+
 			int result = dressService.insertDress(pvo);
 			
 			req.setAttribute("pvo", pvo);

@@ -104,3 +104,42 @@ table{
   text-align: center;
   padding: 25px;
 }
+
+/*푸터*/
+.footer{
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  padding-top: 5px;
+  color: #c0c0c0;
+}
+
+.footer div{
+	padding: 3px;
+}
+
+/*게시글*/
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+table{
+  width: 90%;
+}
+table tr th, table tr td{
+  padding: 5px;
+}
+input[type=text], input[type=password], input[type=number], select, textarea{
+  width: 100%;
+}
+
+.note-editor{
+  text-align: left !important;
+}
+
+/*부트스트랩 css방지*/
+input, button, select, textarea {
+  line-height: normal !important;
+}

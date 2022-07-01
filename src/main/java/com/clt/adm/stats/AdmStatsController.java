@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.clt.cmm.controller.Controller;
 import com.clt.cmm.servlet.HandlerMapping;
 import com.clt.cmm.servlet.ModelAndView;
+import com.clt.shp.goods.GoodsVO;
 import com.clt.shp.order.OrderVO;
 import com.clt.shp.order.dao.impl.OrderDaoOracle;
 import com.clt.shp.order.service.OrderService;

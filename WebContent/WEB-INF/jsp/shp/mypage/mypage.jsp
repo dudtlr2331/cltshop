@@ -28,11 +28,12 @@
 <div class="data_list">
 	<table>
 		<colgroup>
+			<col width="10%" />
 			<col width="20%" />
 			<col width="20%" />
 			<col width="20%" />
 			<col width="20%" />
-			<col width="20%" />
+			<col width="10%" />
 		</colgroup>
 		<tr>
 			<th>주문번호</th>
@@ -40,10 +41,11 @@
 			<th>상품명</th>
 			<th>주문금액</th>
 			<th>주문상태</th>
+			<th></th>
 		</tr>
 		<c:if test="${empty mypgList }">
 			<tr>
-				<td colspan="5"><div class="nodata">주문내역이 없습니다.</div></td>
+				<td colspan="6"><div class="nodata">주문내역이 없습니다.</div></td>
 			</tr>
 		</c:if>
 		<c:forEach items="${mypgList }" var="obj">
@@ -53,6 +55,11 @@
 				<td><a href="/DispatcherServlet?command=mypage_detail&ordNo=${obj.ordNo}">${obj.bulTitNm}</a></td>
 				<td>${obj.payMny}원</td>
 				<td>${obj.codeNm}</td>
+				<td>
+					<c:if test="${obj.saleBoardRpySeq eq 0}">
+						<input type="button" onclick="location.href='/DispatcherServlet?command=dress_register&ordNo=${obj.ordNo}'" value="드레스룸 등록" />
+					</c:if>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

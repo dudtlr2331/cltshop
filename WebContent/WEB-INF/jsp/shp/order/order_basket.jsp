@@ -93,6 +93,7 @@ textarea {
 <input type="hidden" name="goodsNm" value="${obj.goods.goodsNm}"> <!-- 상품명 -->
 <input type="hidden" name="goodsCd" value="${obj.goods.goodsCd}"> <!-- 상품 코드 -->
 <input type="hidden" name="payMny" value="${totalPayment}">
+<input type="hidden" name="saleBoardSeqs" value="${obj.order.saleBoardSeq}">
 	<table>
 		<colgroup>
 			<col width="20%" />

@@ -2,12 +2,12 @@
 <%@ include file="/WEB-INF/jsp/cmm/bannerMenu.jsp"%>
 <section id="product_ranking" class="item_list_area">
 	<h2>Today 랭킹</h2>
-	<div class="product_group">
+	<!-- <div class="product_group">
 		<pre>전체</pre>
 		<pre>상의</pre>
 		<pre>아우터</pre>
 		<pre>바지</pre>
-	</div>
+	</div> -->
 	<c:choose>
 		<c:when test="${not empty mainHomeList }">
 		<div class="img_area">
@@ -38,3 +38,4 @@
 		</c:otherwise>
 	</c:choose>
 </section>
+<%@ include file="/WEB-INF/jsp/cmm/auth.jsp" %>

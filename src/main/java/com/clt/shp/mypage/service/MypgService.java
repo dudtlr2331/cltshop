@@ -37,6 +37,7 @@ public class MypgService {
 		String acqrAddr = req.getParameter("acqrAddr");
 		String acqrAddrDtl = req.getParameter("acqrAddrDtl");
 		String reqMemo = req.getParameter("reqMemo");
+		long saleBoardRpySeq = req.getParameter("saleBoardRpySeq") == null ? 0 : Long.parseLong(req.getParameter("saleBoardRpySeq"));
 
 		String usrId = req.getParameter("usrId");
 
@@ -61,7 +62,7 @@ public class MypgService {
 		pvo.setAcqrAddr(acqrAddr);
 		pvo.setAcqrAddrDtl(acqrAddrDtl);
 		pvo.setReqMemo(reqMemo);
-
+		pvo.setSaleBoardRpySeq(saleBoardRpySeq);
 		pvo.setUsrId(usrId);
 		return pvo;
 	}

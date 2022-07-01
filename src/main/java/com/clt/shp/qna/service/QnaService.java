@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.clt.cmm.util.StringUtils;
 import com.clt.shp.qna.QnaVO;
 import com.clt.shp.qna.dao.QnaDao;
 
@@ -29,6 +30,8 @@ public class QnaService {
 		String useYn = req.getParameter("useYn");
 		String passYn = req.getParameter("passYn");
 		String passWd = req.getParameter("passWd");
+		long goodsCd = StringUtils.nullToInt(req.getParameter("goodsCd"));
+		String answer= req.getParameter("answer");
 		
 		QnaVO pvo = new QnaVO();
 		
@@ -44,6 +47,8 @@ public class QnaService {
 		pvo.setUseYn(useYn);
 		pvo.setPassYn(passYn);
 		pvo.setPassWd(passWd);
+		pvo.setGoodsCd(goodsCd);
+		pvo.setAnswer(answer);
 		
 		return pvo;
 	}
@@ -70,5 +75,14 @@ public class QnaService {
 	
 	public List<QnaVO> searchIdQnaList(QnaVO pvo) {
 		return dao.searchIdQnaList(pvo);
+	}
+	public List<QnaVO> searchGoodsCdQna(QnaVO pvo) {
+		return dao.searchGoodsCdQna(pvo);
+	}
+	public List<QnaVO> unansweredQnaList(QnaVO pvo) {
+		return dao.unansweredQnaList(pvo);
+	}
+	public int updateAnswerQna(QnaVO pvo) {
+		return dao.updateAnswerQna(pvo);
 	}
 }

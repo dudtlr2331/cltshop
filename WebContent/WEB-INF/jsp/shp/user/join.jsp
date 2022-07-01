@@ -19,7 +19,7 @@
 </c:if>
 
 <header id="header">
-	<div class="logo"><a href="/DispatcherServlet?command=main_home_list"><bold style="font-size: 25px; margin-left: 20px;">CLT</bold> shop</a></div>
+	<div class="logo"><a href="/DispatcherServlet?command=main_home_list"><img src="/images/logo_01.png" /></a></div>
 </header>
 <section id="section" class="section">
 	<div class="input_area">
@@ -42,13 +42,8 @@
 			<input type="submit" value="가입하기"/>
 		</form>
 		</div>
-		<div class="top_log">
-			<pre> 아이디 찾기 |</pre>
-			<pre> 비밀번호 찾기 |</pre>
-			<pre><a href="DispatcherServlet?command=user_join"> 회원가입</a></pre>
-		</div>
 	</div>
-	<div class="btn_area">
+	<!-- <div class="btn_area">
 		<div class="bottom">
 			<pre class="a">SNS 로그인/가입</pre>
 		</div>
@@ -58,7 +53,7 @@
 			<i class="fa-brands fa-facebook"></i>
 			<i class="fa-brands fa-google"></i>
 		</div>
-	</div>
+	</div> -->
 </section>
 <script>
 (function(){document.getElementById("ajaxBtn").addEventListener('click', makeRequest);

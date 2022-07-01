@@ -63,9 +63,9 @@
 			<col width="10%"/>
 			<col width="17%"/>
 			<col width="10%"/>
-			<col width="10%"/>
-			<col width="10%"/>
-			<col width="10%"/>
+			<!-- <col width="10%"/> -->
+			<!-- <col width="10%"/> -->
+			<!-- <col width="10%"/> -->
 			<col width="10%"/>
 			<col width="10%"/>
 		</colgroup>
@@ -76,9 +76,9 @@
 				<th>아이디/닉네임</th>
 				<th>이름</th>
 				<th>등급</th>
-				<th>적립금</th>
-				<th>구매건수</th>
-				<th>구매금액</th>
+				<!-- <th>적립금</th> -->
+				<!-- <th>구매건수</th> -->
+				<!-- <th>구매금액</th> -->
 				<th>회원가입일</th>
 			</tr>
 		</thead>
@@ -92,10 +92,10 @@
 		            <td>${obj.usrBaseSeq}</td>
 		            <td>${obj.usrId}</td>
 		            <td><a href="/DispatcherServlet?command=adm_user_detail&usrBaseSeq=${obj.usrBaseSeq}">${obj.usrNm}</a></td>
-		            <td>일반회원</td>
-		            <td>포인트</td>
-		            <td>구매건수</td>
-		            <td>구매금액</td>
+		            <td>관리자</td>
+		            <!-- <td>포인트</td> -->
+		            <!-- <td>구매건수</td> -->
+		            <!-- <td>구매금액</td> -->
 		            <td>${obj.rgstDate}</td>
 		        </tr>
 	    	</c:forEach>

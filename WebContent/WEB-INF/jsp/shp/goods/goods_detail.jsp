@@ -6,7 +6,7 @@
     <div>
         <ul class="product_menu_list_upperbar">
             <li class="product_menu_item select" data-link="#product_menu">상품정보</li>
-            <li class="product_menu_item" data-link="#product_review">리뷰</li>
+            <li class="product_menu_item" data-link="#product_review">드레스룸</li>
             <li class="product_menu_item" data-link="#product_qna">Q&A</li>
             <li class="product_menu_item" data-link="#product_order_detail">주문정보</li>
         </ul>
@@ -15,7 +15,7 @@
 <!-- 상품 메인 -->
 <section id="product_main">
     <div class="product_image">
-        <img alt="메인이미지" src="${detail.goods.imgPath}${detail.goods.imgNm}">
+        <img alt="메인이미지" src="${detail.goods.imgPath}${detail.goods.imgNm} " width="348" height="349">
     </div>
     <div class="product_main_detail">
         <h3>${detail.sale.bulTitNm}</h3>
@@ -23,25 +23,27 @@
         <h5>배송비 <fmt:formatNumber value="${detail.goods.dlvPrc}" pattern="#,###" />원</h5>
         <h4>예상 구매가 ${detail.sale.goodsPrc - detail.sale.goodsSalePrc + detail.goods.dlvPrc}원</h4>
         <h5>적립 <fmt:formatNumber value="${(detail.sale.goodsPrc - detail.sale.goodsSalePrc) * 0.03}" pattern="#,###" />원</h5>
-        <h5>리뷰정보 718개 <a href="#">리뷰 보기</a></h5>
-        <select name="colorOption" id="product_main_detail_select">
+       <!--  <h5>리뷰정보 718개 <a href="#">리뷰 보기</a></h5> -->
+        <select name="colorOption" id="colorOption">
             <option value="">[컬러] 옵션을 선택하세요.</option>
-            <option value="W">흰색</option>
-            <option value="B">검정색</option>
-            <option value="G">회색</option>
+            <option value="흰색">흰색</option>
+            <option value="검정색">검정색</option>
+            <option value="회색">회색</option>
+            <option value="파란색">파란색</option>
         </select>
-        <select name="sizeOption" id="product_main_detail_select">
+        <select name="sizeOption" id="sizeOption">
             <option value="">[사이즈] 옵션을 선택하세요.</option>
+            <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
             <option value="XL">XL</option>
         </select>
-        <h3>총 상품 금액 0원</h3>
+        <h3>총 상품 금액 ${detail.sale.goodsPrc - detail.sale.goodsSalePrc + detail.goods.dlvPrc}원</h3>
         <c:if test="${not empty sessionScope.loginInfo }">
 	        <button class="product_main_detail_button_mid" onclick="fn_add_basket('${detail.sale.saleBoardSeq}')">장바구니</button>
         </c:if>
-        <button class="product_main_detail_button_mid" onclick="location.href='/DispatcherServlet?command=order&searchSaleBoardSeq='+${detail.sale.saleBoardSeq}">바로구매</button>
-        <button class="product_main_detail_button_small">♥</button>
+        <button class="product_main_detail_button_mid" onclick="fn_order()">바로구매</button>
+        <!-- <button class="product_main_detail_button_small">♥</button> -->
     </div>
 </section>
 <!-- 상품 중간 메뉴 -->
@@ -49,7 +51,7 @@
     <div>
         <ul class="product_menu_list">
             <li class="product_menu_item select" data-link="#product_menu">상품정보</li>
-            <li class="product_menu_item" data-link="#product_review">리뷰</li>
+            <li class="product_menu_item" data-link="#product_review">드레스룸</li>
             <li class="product_menu_item" data-link="#product_qna">Q&A</li>
             <li class="product_menu_item" data-link="#product_order_detail">주문정보</li>
         </ul>
@@ -59,121 +61,59 @@
 <section id="product_detail">
     <div>
         <div class="product_detail_image">
-            이미지
+           	<img src="${detail.goods.imgPath}${detail.goods.imgNm}" width="697" height="697"/></br>
         </div>
         <div class="product_detail_document">
             <h3>상품 설명</h3>
-            블라 블라 블라 블라 <br>
-            블라 블라 블라 블라 <br>
-            블라 블라 블라 블라 <br>
-            블라 블라 블라 블라 <br>
-            블라 블라 블라 블라
+            ${detail.sale.bulCont}
         </div>
         <div class="product_detail_document">
             <h3>사이즈 정보</h3>
-            블라 블라 블라 블라 <br>
-            블라 블라 블라 블라 <br>
-            블라 블라 블라 블라 <br>
-            블라 블라 블라 블라 <br>
-            블라 블라 블라 블라
+            <img src="/images/top_size.png" width="800" height="800"/></br>
+            <img src="/images/pants_size.png" width="800" height="800"/>
         </div>
     </div>
 </section>
 <!-- 상품 리뷰 -->
 <section id="product_review">
-    <div>
-        <div class="product_review_titlebar">
-            <div class="product_review_title">
-                <h4>사진 리뷰 346</h4>
-            </div>
-            <div class="product_review_sort">
-                <h4><a href="">전체</a> | <a href="">사진 리뷰</a> | <a href="">텍스트 리뷰</a></h4>
-            </div>
-        </div>
-        <div class="product_review_box">
-            <div class="product_review_detail">
-                <div class="product_review_profile">
-                    <div class="product_review_profile_image">
-                        이미지
-                    </div>
-                    <div class="product_review_profile_detail">
-                        <div>
-                            <a href="">wa*****</a><br>
-                            <a href="">2022.01.01</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product_review_document">
-                <h5>178cm</h5>
-                옷이 어쩌구 저쩌구<br>
-                사이즈가 어쩌구 저쩌구
-            </div>
-            <div class="product_review_image">
-                이미지
-            </div>
-        </div>
-        <div class="product_review_box">
-            <div class="product_review_detail">
-                <div class="product_review_profile">
-                    <div class="product_review_profile_image">
-                        이미지
-                    </div>
-                    <div class="product_review_profile_detail">
-                        <div>
-                            <a href="">rl***</a><br>
-                            <a href="">2022.01.01</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product_review_document">
-                <h5>180cm</h5>
-                키가 어쩌구 저쩌구<br>
-                내용이 어쩌구 저쩌구
-            </div>
-            <div class="product_review_image">
-                이미지
-            </div>
-        </div>
-        <button class="product_review_button">더 많은 사진 리뷰 보기 ></button>
-        <div class="product_review_titlebar">
-            <div class="product_review_title">
-                <h4>텍스트 리뷰 372</h4>
-            </div>
-        </div>
-        <div class="product_review_box">
-            <div class="product_review_detail">
-                <div class="product_review_profile">
-                    <div class="product_review_profile_image">
-                        이미지
-                    </div>
-                    <div class="product_review_profile_detail">
-                        <div>
-                            <a href="">yg******</a><br>
-                            <a href="">2022.01.01</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product_review_document">
-                <h5>160cm</h5>
-                사진이 어쩌구 저쩌구<br>
-                리뷰가 어쩌구 저쩌구
-            </div>
-        </div>
-        <button class="product_review_button">더 많은 텍스트 리뷰 보기 ></button>
-    </div>
+	<div>
+		<div class="product_review_titlebar">
+			<div class="product_review_title">
+				<h4>드레스룸</h4>
+			</div>
+			<div class="product_review_sort">
+				
+			</div>
+		</div>
+		<c:if test="${empty rvo }">
+			<div class="nodata">작성된 드레스룸이 없습니다.</div>
+		</c:if>
+		<c:forEach items="${rvo}" var="obj">
+			<div class="product_review_box">
+				<div class=""><a href="/DispatcherServlet?command=dress_detail&saleBoardRpySeq=${obj.saleBoardRpySeq}">제목 : ${obj.bulTitNm}</a></div> <!-- 제목 -->
+				<div class="product_review_detail">
+					<div class="product_review_profile">
+						<div class="product_review_profile_detail">
+							<div>${obj.rgstId }<br>${obj.rgstDate }</div> <!-- 작성자, 작성일 -->
+						</div>
+					</div>
+				</div>
+				<div class="product_review_document">내용 : ${obj.bulCont }</div> <!-- 내용 -->
+				<div class="product_review_image"><img src="${obj.imgPath }${obj.imgNm }" width="298" height="298"/></div> <!-- 이미지 -->
+			</div>
+		</c:forEach>
+		<button class="product_review_button" onclick="location.href='/DispatcherServlet?command=main_drss_list'">더 많은 드레스룸 보기 ></button>
+	</div>
 </section>
 <!-- 상품 QnA -->
 <section id="product_qna">
     <div>
         <div class="product_qna_titlebar">
             <div class="product_qna_title">
-                <h4>QnA 342</h4>
+                <h4>Q&A</h4>
             </div>
             <div class="product_qna_buttonbar">
-                <button class="product_qna_button">문의 내용 작성하기</button>
+                <button class="product_qna_button" onclick="location.href='/DispatcherServlet?command=goods_dtl_qna_insert&goodsCd='+${detail.goods.goodsCd}">문의 내용 작성하기</button>
             </div>
         </div>
         <div class="product_qna_detail">
@@ -185,47 +125,19 @@
                     <li>작성일</li>
                 </ul>
             </div>
-            <div class="product_qna_table_content">
-                <ul>
-                    <li>답변완료</li>
-                    <li>내용</li>
-                    <li>kim****</li>
-                    <li>2021.12.31</li>
-                </ul>
-            </div>
-            <div class="product_qna_table_content">
-                <ul>
-                    <li>답변대기</li>
-                    <li>비밀글 입니다</li>
-                    <li>hap***</li>
-                    <li>2022.01.01</li>
-                </ul>
-            </div>
-            <div class="product_qna_table_content">
-                <ul>
-                    <li>답변대기</li>
-                    <li>내용</li>
-                    <li>han****</li>
-                    <li>2022.01.01</li>
-                </ul>
-            </div>
-        </div>
-        <div class="product_qna_page">
-            <a href="">&lt&lt</a>
-            <a href="">&lt</a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href="">6</a>
-            <a href="">7</a>
-            <a href="">8</a>
-            <a href="">9</a>
-            <a href="">10</a>
-            <a href="">&gt</a>
-            <a class="" href="">&gt&gt</a>
-        </div>
+            <c:if test="${empty rqvo }">
+            	<div class="nodata">문의가 없습니다.</div>
+			</c:if>
+            <c:forEach items="${rqvo}" var="obj">
+	           <div class="product_qna_table_content">
+	               <ul>
+	                   <li>${obj.ansrStat }</li>
+	                   <li><a href="/DispatcherServlet?command=qna_detail&qnaBoardSeq=${obj.qnaBoardSeq}">${obj.cont }</a></li>
+	                   <li>${obj.rgstId }</li>
+	                   <li>${obj.rgstDate }</li>
+	               </ul>
+	           </div>
+            </c:forEach>
     </div>
 </section>
 <!-- 상품 주문 정보 -->
@@ -236,70 +148,72 @@
         </div>
         <table class="product_order_table">
             <tr>
-                <th class="product_order_table_title">배송방법</th>
-                <th class="product_order_table_document"></th>
+                <th class="product_order_table_title">배송 기간</th>
+                <th class="product_order_table_document">평일기준 익일 순차적 배송</br>
+                	정상 배송 당일, 순차적으로 출고되어 정상 운영일에 발송되지 않을 수 있습니다.</br>
+                	(최대 2~3일 소요)</br>
+					배송 일정 및 기타 상품 관련 문의는 아래 고객센터로 접수 바랍니다.</br>
+					고객센터 : 070-0000-0000</th>
             </tr>
             <tr>
-                <th class="product_order_table_title">배송사</th>
-                <th class="product_order_table_document"></th>
+                <th class="product_order_table_title">배송 마감일</th>
+                <th class="product_order_table_document">평일기준 오후 3시마감</th>
             </tr>
             <tr>
-                <th class="product_order_table_title">배송비</th>
-                <th class="product_order_table_document"></th>
-            </tr>
-            <tr>
-                <th class="product_order_table_title">묶음 배송 여부</th>
-                <th class="product_order_table_document"></th>
-            </tr>
-            <tr>
-                <th class="product_order_table_title">배송기간</th>
-                <th class="product_order_table_document"></th>
+                <th class="product_order_table_title">상담 가능일</th>
+                <th class="product_order_table_document">운영시간 10시 ~ 17시</th>
             </tr>
         </table>
         <div class="product_order_title">
-            <h4>교환 / 반품 안내</h4>
+            <h4>교환/반품 안내</h4>
         </div>
-        <table class="product_order_table">
+        <table class="product_order_table"> <!-- 주문 정보 -->
             <tr>
-                <th class="product_order_table_title">교환 / 반품 비용(왕복 비용)</th>
-                <th class="product_order_table_document"></th>
-            </tr>
-            <tr>
-                <th class="product_order_table_title">교환 / 반품 신청 기준일</th>
-                <th class="product_order_table_document"></th>
-            </tr>
-            <tr>
-                <th class="product_order_table_title">교환 / 반품 제한사항</th>
-                <th class="product_order_table_document"></th>
-            </tr>
+                <th class="product_order_table_title">교환/반품 정보</th>
+                <th class="product_order_table_document">반품 및 교환은 상품 수령 후 7일 이내에 신청하실 수 있습니다.</br>
+					재화 등의 내용이 표시, 광고의 내용과 다르거나 계약내용과 다르게 이행된 경우에는 전자상거래법 제17조3항에 따라 청약철회를 할 수 있습니다.</br>
+					교환/환불이 발생하는 경우 그 원인을 제공한 자가 배송비를 부담합니다.</br>
+					- 고객변심 : 최초 배송비 + 반품 배송비 + (교환의 경우) 교환 배송비는 고객이 부담</br>
+					- 판매자귀책 : 최초 배송비 + 반품 배송비 + (교환의 경우) 교환 배송비는 판매자가 부담</br>
+					다음의 경우는 교환 및 환불이 불가능합니다.</br>
+					- 반품/교환 가능 기간을 초과한 경우</br>
+					- 상품 및 구성품을 분실하였거나 취급부주의로 인한 오염/파손/고장된 경우</br>
+					- 상품을 착용하였거나 세탁, 수선한 경우</br>
+					- 소비자 과실로 인한 옷의 변색(예 : 착생, 화장품 오염 등)</br>
+					- 착용으로 인한 니트류 상품의 늘어남 발생 및 가죽 제품의 주름 발생</br>
+					- 명품은 택 제거 후 반품 불가</br>
+					- 상품의 가치가 현저히 감소하여 재판매가 불가할 경우</br>
+					- 구매확정된 주문의 경우</br>
+					- 귀금속류의 경우는 소비자분쟁해결 기준에 의거 교환만 가능합니다.</br>
+					(단, 함량미달의 경우에는 환불이 가능함)</br>
         </table>
-        <div class="product_order_title">
+        <div class="product_order_title"> <!-- 판매자 정보 -->
             <h4>판매자 정보</h4>
         </div>
         <table class="product_order_table">
             <tr>
                 <th class="product_order_table_title">상호 / 대표자</th>
-                <th class="product_order_table_document"></th>
+                <th class="product_order_table_document">CLTshop / 성영식</th>
             </tr>
             <tr>
                 <th class="product_order_table_title">연락처</th>
-                <th class="product_order_table_document"></th>
+                <th class="product_order_table_document">010-1234-5678</th>
             </tr>
             <tr>
                 <th class="product_order_table_title">E-mail</th>
-                <th class="product_order_table_document"></th>
+                <th class="product_order_table_document">cltshop@gmail.com</th>
             </tr>
             <tr>
                 <th class="product_order_table_title">사업장 소재지</th>
-                <th class="product_order_table_document"></th>
+                <th class="product_order_table_document">경기 부천시 소사로 56</th>
             </tr>
             <tr>
-                <th class="product_order_table_title">통신판매 신고번호</th>
-                <th class="product_order_table_document"></th>
+                <th class="product_order_table_title">통신판매업신고</th>
+                <th class="product_order_table_document">2022-부천소사-0001</th>
             </tr>
             <tr>
-                <th class="product_order_table_title">사업자 정보</th>
-                <th class="product_order_table_document"></th>
+                <th class="product_order_table_title">사업자 번호</th>
+                <th class="product_order_table_document">123-12-12345</th>
             </tr>
         </table>
     </div>
@@ -340,4 +254,15 @@ document.addEventListener("scroll", () => {
      productUpperbar.classList.add('invisible');
  }
 });
+//바로 구매 버튼 클릭시
+function fn_order(){
+	let select_color_option = document.querySelector("#colorOption");
+	let select_size_option = document.querySelector("#sizeOption");
+	
+	if(select_color_option.value != "" &&  select_size_option.value != ""){
+		location.href='/DispatcherServlet?command=order&searchSaleBoardSeq='+${detail.sale.saleBoardSeq}+'&colorOption='+select_color_option.value+'&sizeOption='+select_size_option.value;
+	}else{
+		alert("옵션을 선택해주세요.");
+	}
+}
 </script>

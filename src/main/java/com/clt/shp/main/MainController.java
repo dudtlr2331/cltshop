@@ -100,6 +100,7 @@ public class MainController implements Controller{
 			DressVO dressVO = new DressVO();
 			List<DressVO> list = dressService.selectDressList(dressVO);
 			req.setAttribute("list", list);
+			req.setAttribute("listSize", list.size());
 			
 			modelAndView.setPath("/WEB-INF/jsp/shp/dress/dress_main.jsp");
 			modelAndView.setRedirect(false);

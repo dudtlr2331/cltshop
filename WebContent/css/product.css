@@ -191,10 +191,12 @@
 }
 
 .product_qna_table_title{
-    margin-top: 50px;
     width: 800px;
-    height: 30px;
+    height: 45px;
     border-bottom: 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .product_qna_table_title ul{
@@ -238,7 +240,6 @@
 /* 상품 주문 정보 */
 #product_order_detail{
     padding-top: 50px;
-    margin-bottom: 100px;
     justify-content: center;
     align-items: center;
     display: flex;

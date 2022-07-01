@@ -52,3 +52,5 @@
 		<input type="button" class="w70" value="작성하기" onclick="location.href='/DispatcherServlet?command=qna_insert'" />
 	</div>
 </section>
+
+<%@ include file="/WEB-INF/jsp/cmm/auth.jsp" %>

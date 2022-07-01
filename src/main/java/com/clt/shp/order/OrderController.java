@@ -68,6 +68,9 @@ public class OrderController implements Controller {
 		
 		//비즈니스 로직
 		if(command.equals(HandlerMapping.ORDER)) { //상품 리스트
+			String optionInfo[] = {pvo.getColorOption(),pvo.getSizeOption()};
+			req.setAttribute("optionInfo", optionInfo);
+			
 			GoodsDetailVO detail = goodsService.selectGoodsDetail(goodsPvo.getSearchSaleBoardSeq());
 			req.setAttribute("detail", detail);
 			
@@ -214,6 +217,11 @@ public class OrderController implements Controller {
 		else if(command.equals(HandlerMapping.ORDER_CART_REGISTER_ACT)) { //장바구니 구매 액션 (주문테이블에 넣기)order_cart_register_act
 			String seq = pvo.getCheckedList();
 			String[] seqs = seq.split(",");
+			
+			//묶음 주문하면 리뷰를 1건밖에 못쓴다...
+			if(null != pvo.getSaleBoardSeqs() && null != pvo.getSaleBoardSeqs()[0] && !"".equals(pvo.getSaleBoardSeqs()[0])) {
+				pvo.setSaleBoardSeq(Long.parseLong(pvo.getSaleBoardSeqs()[0]));
+			}
 			
 			pvo.setOrdStat("02"); //주문 상태 - 결제 완료
 			orderService.insertOrd(pvo);

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/admHeader.jsp" %>
-<h2>상품 관리 > 상품 목록 > 상품 등록</h2>
+<h2>업체 관리 > 업체 목록 > 업체 수정</h2>
 <form action="/DispatcherServlet?command=adm_entr_edit_act" method="post" enctype="multipart/form-data" onsubmit="return fn_edit()">
 <input type="hidden" name="entrNo" value="${evo.entrNo }" />
 <div class="data_list">

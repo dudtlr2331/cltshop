@@ -1,34 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/cmm/admHeader.jsp" %>
-
+<style>
+	.title_area, .item_list_area{
+		text-align: left;
+	}
+</style>
+<section class="title_area">
+	<h3 class="title">공통코드 관리 > 상세</h3>
+</section>
+<section class="item_list_area">
 <form name="frm" action="DispatcherServlet?command=adm_code_edit_act" method="post" onsubmit="return fn_code_edit()">
-	<input type="text" name="stdCdBaseSeq" value="${pvo.stdCdBaseSeq }" />
-	
-	<div>코드 이름</div>
-	<input type="text" name="codeNm"  value="${pvo.codeNm}"><br/>
+	<input type="hidden" name="stdCdBaseSeq" value="${pvo.stdCdBaseSeq }" />
 
-	<div>코드 값</div>
-	<input type="text" name="codeVal"  value="${pvo.codeVal}"><br/>
-	
-	<label for="codeDesc">설명</label><br/>
-    <textarea rows="20" cols="50" name="codeDesc">${pvo.codeDesc}</textarea><br/>
-	
-	<div>코드 그룹</div>
-	<input type="text" name="grpCd" value="${pvo.grpCd}"><br/>
-	
-	<div>코드 순번</div>
-	<input type="number" name="grpOrdr" value="${pvo.grpOrdr}"><br/>
-	
-	<div>사용 여부</div>
-	<select name="useYn">
-      	<option value="Y" <c:if test="${pvo.useYn eq 'Y'}" >selected</c:if>>사용</option>
-    	<option value="N" <c:if test="${pvo.useYn eq 'N'}" >selected</c:if>>미사용</option>
-    </select>
-	
-	<input type="button" value="목록" onclick="location.href='/DispatcherServlet?command=adm_code_list'"/>
-    <input type="button" value="삭제" onclick="fn_code_remove('${pvo.stdCdBaseSeq}')"/>
-	<input type="submit" value="수정" />
+	<table>
+		<colgroup>
+			<col width="10%" />
+			<col width="40%" />
+			<col width="10%" />
+			<col width="40%" />
+		</colgroup>
+		<tr>
+			<th>코드 이름</th>
+			<td>
+				<input type="text" name="codeNm"  value="${pvo.codeNm}">
+			</td>
+			<th>코드 값</th>
+			<td>
+				<input type="text" name="codeVal"  value="${pvo.codeVal}">
+			</td>
+		</tr>
+		<tr>
+			<th>코드 순번</th>
+			<td><input type="number" name="grpOrdr" value="${pvo.grpOrdr}"></td>
+			<th>코드 그룹</th>
+			<td><input type="text" name="grpCd" value="${pvo.grpCd}"></td>
+		</tr>
+		<tr>
+			<th>사용 여부</th>
+			<td colspan="3">
+				<select name="useYn">
+					<option value="Y" <c:if test="${pvo.useYn eq 'Y'}" >selected</c:if>>사용</option>
+					<option value="N" <c:if test="${pvo.useYn eq 'N'}" >selected</c:if>>미사용</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="4">설명</th>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<textarea rows="20" cols="50" name="codeDesc">${pvo.codeDesc}</textarea>
+			</td>
+		</tr>
+	</table>
+	<div class="btn_area">
+		<input type="button" value="목록" onclick="location.href='/DispatcherServlet?command=adm_code_list'"/>
+		<input type="button" value="삭제" onclick="fn_code_remove('${pvo.stdCdBaseSeq}')"/>
+		<input type="submit" value="수정" />
+	</div>
 </form>
+</section>
 <%@ include file="/WEB-INF/jsp/cmm/admFooter.jsp" %>
 <script>
 //상품수정
